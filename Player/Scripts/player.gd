@@ -22,8 +22,10 @@ func get_input():
 
 
 func move_player():
-
-	velocity = direction * move_speed
+	if Input.get_action_strength("sprint"):
+		velocity=direction*(move_speed+100)
+	else:
+		velocity = direction * move_speed
 	move_and_slide()
 
 

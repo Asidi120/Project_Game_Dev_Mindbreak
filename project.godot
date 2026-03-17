@@ -21,6 +21,10 @@ window/size/viewport_width=900
 window/size/viewport_height=700
 window/stretch/mode="viewport"
 
+[global_group]
+
+Players=""
+
 [input]
 
 up={

@@ -222,21 +222,49 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qvnen"]
 
-[node name="EvilWolf" type="CharacterBody2D" unique_id=246727369]
+[sub_resource type="CircleShape2D" id="CircleShape2D_8ppc7"]
+radius = 135.0
+
+[node name="EvilWolfWithPoints" type="Node2D" unique_id=697092607]
+
+[node name="EvilWolf" type="CharacterBody2D" parent="." unique_id=246727369]
 script = ExtResource("1_8ppc7")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1938056192]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="EvilWolf" unique_id=1938056192]
 position = Vector2(0, -32)
 sprite_frames = SubResource("SpriteFrames_m8kn1")
 animation = &"attack"
 autoplay = "idle"
 
-[node name="Area2D" type="Area2D" parent="." unique_id=1934571482]
+[node name="Attack_Area" type="Area2D" parent="EvilWolf" unique_id=1934571482]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=194672428]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EvilWolf/Attack_Area" unique_id=194672428]
 position = Vector2(-17, -14)
 shape = SubResource("CircleShape2D_qvnen")
 
-[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[node name="Follow_Area" type="Area2D" parent="EvilWolf" unique_id=2122249004]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EvilWolf/Follow_Area" unique_id=1514690277]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_8ppc7")
+debug_color = Color(0.9219775, 0.5182506, 0.51914895, 0.41960785)
+
+[node name="PatrolPoints" type="Node2D" parent="." unique_id=1648978633]
+
+[node name="Point1" type="Marker2D" parent="PatrolPoints" unique_id=1642810365 groups=["PatrolPoints"]]
+position = Vector2(81, -43)
+
+[node name="Point2" type="Marker2D" parent="PatrolPoints" unique_id=1406160144 groups=["PatrolPoints"]]
+position = Vector2(-77, -25)
+
+[node name="Point3" type="Marker2D" parent="PatrolPoints" unique_id=1051555249 groups=["PatrolPoints"]]
+position = Vector2(-18, 42)
+
+[node name="Point4" type="Marker2D" parent="PatrolPoints" unique_id=1214234633 groups=["PatrolPoints"]]
+position = Vector2(85, 44)
+
+[connection signal="animation_finished" from="EvilWolf/AnimatedSprite2D" to="EvilWolf" method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="body_entered" from="EvilWolf/Attack_Area" to="EvilWolf" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="EvilWolf/Attack_Area" to="EvilWolf" method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="EvilWolf/Follow_Area" to="EvilWolf" method="_on_follow_area_body_entered"]
+[connection signal="body_exited" from="EvilWolf/Follow_Area" to="EvilWolf" method="_on_follow_area_body_exited"]

@@ -13,7 +13,8 @@
 position = Vector2(-19.041672, -1.7495117)
 
 [node name="Player" parent="BleakYellowGrass" unique_id=257810088 instance=ExtResource("2_14ufp")]
+unique_name_in_owner = true
 position = Vector2(19.041672, 1.7495117)
 
-[node name="EvilWolf" parent="." unique_id=246727369 instance=ExtResource("4_io0k8")]
-position = Vector2(231, 4)
+[node name="EvilWolfWithPoints" parent="." unique_id=697092607 instance=ExtResource("4_io0k8")]
+position = Vector2(271, 0)

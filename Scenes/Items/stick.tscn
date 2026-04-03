@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://thfp6dkj2dwq"]
+
+[ext_resource type="Script" uid="uid://cvtmhh1hpljyx" path="res://Scripts/item.gd" id="1_otk88"]
+[ext_resource type="Texture2D" uid="uid://b3b521rbrcqhh" path="res://OtherSprites/Items/Items.png" id="2_ebxsh"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_5y8f6"]
+a = Vector2(1, 0)
+b = Vector2(-10, 12)
+
+[node name="Stick" type="Area2D" unique_id=13035520]
+script = ExtResource("1_otk88")
+item_id = "stick"
+item_name = "Stick"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1214337420]
+position = Vector2(3, -1)
+texture = ExtResource("2_ebxsh")
+region_enabled = true
+region_rect = Rect2(15.666821, 142.98404, 16.64846, 17.699951)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1266554538]
+position = Vector2(7, -6)
+shape = SubResource("SegmentShape2D_5y8f6")

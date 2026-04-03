@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cgc3sk5yjh5sm" path="res://OtherSprites/Premium_Trees_Black_Outline.png" id="1_0vwjc"]
 [ext_resource type="Script" uid="uid://c7k5arpsh422n" path="res://Scripts/tree.gd" id="1_rsuno"]
+[ext_resource type="PackedScene" uid="uid://bhk8wb8aud5hg" path="res://Scenes/wood.tscn" id="2_l7sa7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rsuno"]
 size = Vector2(8, 27)
@@ -11,6 +12,7 @@ size = Vector2(13.325687, 10.845661)
 
 [node name="Tree" type="StaticBody2D" unique_id=669837160]
 script = ExtResource("1_rsuno")
+wood_scene = ExtResource("2_l7sa7")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=621871514]
 texture = ExtResource("1_0vwjc")

@@ -1,13 +1,15 @@
 extends StaticBody2D
 var player_in_range := false
-var hits_needed := 4 #ilosc potrzebnych uderzen
+@export var hits_needed := 4 #ilosc potrzebnych uderzen
+@export var object_id := ""
 var hits := 0
 
-@export var wood_scene: PackedScene #instancja sceny drewna
+@export var scene: PackedScene #instancja sceny struktury
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	$Area2D.body_entered.connect(_on_area_2d_body_entered) #podpięcie automatyczne do innych struktur
+	$Area2D.body_exited.connect(_on_area_2d_body_exited)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -17,25 +19,25 @@ func _process(delta: float) -> void:
 		print("Uderzenie: ", hits)
 
 		if hits >= hits_needed: #jesli player przekroczy ilosc uderzen
-			print("drzewo zniszczone")
-			queue_free() #drzewo znika
-			drop_wood()
+			print(object_id, " destroyed")
+			queue_free() #struktura znika
+			drop_item()
 			
 			
 			
 			
-func drop_wood():
-	if wood_scene:
-		var wood = wood_scene.instantiate()
-		get_parent().add_child(wood)
-		wood.global_position = global_position + Vector2(0, 20)
+func drop_item():
+	if scene:
+		var item = scene.instantiate()
+		get_parent().add_child(item)
+		item.global_position = global_position + Vector2(0, 20)
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
-		player_in_range = true #player w drzewie
+		player_in_range = true #player w obrębie struktury
 
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body.name == "Player":
-		player_in_range = false #player poza drzewem
+		player_in_range = false #player poza strukturą

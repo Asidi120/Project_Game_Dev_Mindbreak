@@ -20,11 +20,11 @@ func _process(delta: float) -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
-		body.add_item(self)
+		body.add_item(self) #wywołuje add item z playera
 
 func _on_body_exited(body: Node2D) -> void:
 	if body.name == "Player":
-		body.remove_item(self)
+		body.remove_item(self) #wywołuje remove item z playera
 		
 func collect():
 	print("+1 ", item_name)

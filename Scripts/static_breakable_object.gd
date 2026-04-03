@@ -5,7 +5,7 @@ var player_in_range := false
 var hits := 0
 
 @export var scene: PackedScene #instancja sceny struktury
-
+@export var scene2: PackedScene
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$Area2D.body_entered.connect(_on_area_2d_body_entered) #podpięcie automatyczne do innych struktur
@@ -31,6 +31,11 @@ func drop_item():
 		var item = scene.instantiate()
 		get_parent().add_child(item)
 		item.global_position = global_position + Vector2(0, 20)
+		
+	if scene2:
+		var item2 = scene2.instantiate()
+		get_parent().add_child(item2)
+		item2.global_position = global_position + Vector2(10, 35)
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:

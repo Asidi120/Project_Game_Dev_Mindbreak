@@ -13,14 +13,19 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if player_in_range and Input.is_action_just_pressed("pick_up"): #jesli player w zasiegu i nacisniete F item zostaje zebrany
-		queue_free() #item znika po wejściu w niego
-		print("+1 ", item_name)
+	#if player_in_range and Input.is_action_just_pressed("pick_up"): #jesli player w zasiegu i nacisniete F item zostaje zebrany
+		#queue_free() #item znika po wejściu w niego
+		#print("+1 ", item_name)
+		pass
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
-		player_in_range = true
+		body.add_item(self)
 
 func _on_body_exited(body: Node2D) -> void:
 	if body.name == "Player":
-		player_in_range = false
+		body.remove_item(self)
+		
+func collect():
+	print("+1 ", item_name)
+	queue_free()

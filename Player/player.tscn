@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://ce67ralp6odp" path="res://Player/Sprite/ExamplePlayerSprite.png" id="1_l8h54"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4ntmi"]
-size = Vector2(44.999573, 17.99936)
+size = Vector2(31.999146, 17.99936)
 
 [sub_resource type="Animation" id="Animation_4ntmi"]
 length = 0.001
@@ -102,7 +102,7 @@ _data = {
 script = ExtResource("1_4ntmi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=747600270]
-position = Vector2(0.00042713247, -18.500214)
+position = Vector2(-0.0009601973, -12)
 rotation = 1.5710098
 shape = SubResource("RectangleShape2D_4ntmi")
 

@@ -2,6 +2,7 @@ class_name Player extends CharacterBody2D
 
 var move_speed = 100
 var direction = Vector2.ZERO
+var items_in_range = [] #przechowuje itemy w zasięgu gracza
 
 @onready var anim = $AnimationPlayer
 @onready var sprite = $Sprite2D
@@ -60,3 +61,15 @@ func update_flip():
 		sprite.flip_h = true
 	elif velocity.x > 0:
 		sprite.flip_h = false
+		
+func _process(delta):
+	if Input.is_action_just_pressed("pick_up") and items_in_range.size() > 0:
+		var item = items_in_range[0]  # bierze pierwszy
+		item.collect()
+		
+func add_item(item): #dodaje item do listy itemów w zasięgu
+	items_in_range.append(item)
+
+func remove_item(item): #usuwa item z listy zasięgu
+	items_in_range.erase(item)
+	

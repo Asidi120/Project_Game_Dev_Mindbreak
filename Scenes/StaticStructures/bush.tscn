@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://do35dwig5w8gm"]
+
+[ext_resource type="Texture2D" uid="uid://cwfs677lcks4k" path="res://OtherSprites/Bush 1 - GREEN 2.png" id="1_6r6ay"]
+[ext_resource type="Script" uid="uid://xihm3wugii01" path="res://Scripts/static_breakable_object.gd" id="1_c0a6k"]
+[ext_resource type="PackedScene" uid="uid://thfp6dkj2dwq" path="res://Scenes/Items/stick.tscn" id="2_5jp6s"]
+[ext_resource type="PackedScene" uid="uid://dre6w3svhd6ko" path="res://Scenes/Items/stone.tscn" id="3_d1ube"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k4fjl"]
+size = Vector2(27, 19)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0g5n5"]
+size = Vector2(42, 25)
+
+[node name="Bush" type="StaticBody2D" unique_id=194477259]
+script = ExtResource("1_c0a6k")
+hits_needed = 3
+object_id = "bush"
+scene = ExtResource("2_5jp6s")
+scene2 = ExtResource("3_d1ube")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1877447958]
+z_index = -2
+texture = ExtResource("1_6r6ay")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1689938043]
+z_index = -2
+position = Vector2(-1.5, 0.5)
+shape = SubResource("RectangleShape2D_k4fjl")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1645182401]
+z_index = -2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1919728637]
+z_index = -2
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_0g5n5")

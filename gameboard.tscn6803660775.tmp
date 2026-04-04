@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://dmu8muxbn5hnk"]
+
+[ext_resource type="PackedScene" uid="uid://c2e0o08q8buid" path="res://Player/player.tscn" id="2_14ufp"]
+[ext_resource type="PackedScene" uid="uid://bngnbg51yitf7" path="res://Tile Maps/Grass01.tscn" id="2_yyygo"]
+[ext_resource type="PackedScene" uid="uid://c75udmyukhfvk" path="res://Tile Maps/Bleak_yellow_grass.tscn" id="3_yyygo"]
+[ext_resource type="PackedScene" uid="uid://cm00qlqub0neu" path="res://Enemies/Spirit_Wolf/EvilWolf.tscn" id="4_io0k8"]
+[ext_resource type="PackedScene" uid="uid://by20bk2bsvhjj" path="res://Scenes/tree.tscn" id="5_u8jvi"]
+
+[node name="Playground" type="Node2D" unique_id=571104678]
+
+[node name="Grass01" parent="." unique_id=1278695867 instance=ExtResource("2_yyygo")]
+
+[node name="BleakYellowGrass" parent="." unique_id=1241843371 instance=ExtResource("3_yyygo")]
+position = Vector2(-19.041672, -1.7495117)
+
+[node name="Player" parent="BleakYellowGrass" unique_id=257810088 instance=ExtResource("2_14ufp")]
+unique_name_in_owner = true
+position = Vector2(19.041672, 1.7495117)
+
+[node name="EvilWolfWithPoints" parent="." unique_id=697092607 instance=ExtResource("4_io0k8")]
+position = Vector2(271, 0)
+
+[node name="Tree" parent="." unique_id=669837160 instance=ExtResource("5_u8jvi")]
+position = Vector2(-174, -73)
+scale = Vector2(1.1599988, 1.1599988)

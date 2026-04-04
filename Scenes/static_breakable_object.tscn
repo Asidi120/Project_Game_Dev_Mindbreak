@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://b5d7fyodnw8mo"]
+
+[ext_resource type="Script" uid="uid://xihm3wugii01" path="res://Scripts/static_breakable_object.gd" id="1_w0a8g"]
+
+[node name="StaticBreakableObject" type="StaticBody2D" unique_id=928062116]
+script = ExtResource("1_w0a8g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=189272268]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1834977308]
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1973408038]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1917863461]
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

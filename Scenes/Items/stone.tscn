@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://dre6w3svhd6ko"]
+
+[ext_resource type="Script" uid="uid://cvtmhh1hpljyx" path="res://Scripts/item.gd" id="1_lx5v6"]
+[ext_resource type="Texture2D" uid="uid://ewclvb7o1os" path="res://OtherSprites/512x1024.png" id="2_lx5v6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qgar0"]
+radius = 5.0
+
+[node name="Stone" type="Area2D" unique_id=1292270059]
+z_index = -1
+script = ExtResource("1_lx5v6")
+item_id = "stone"
+item_name = "Stone"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=31446442]
+scale = Vector2(0.120619185, 0.120619155)
+texture = ExtResource("2_lx5v6")
+region_enabled = true
+region_rect = Rect2(264.63068, 901.2435, 126.00806, 107.02051)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=79536984]
+shape = SubResource("CircleShape2D_qgar0")

@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://c2ba84dn3m3oh" path="res://Player/Scripts/player.gd" id="1_4ntmi"]
 [ext_resource type="Texture2D" uid="uid://ce67ralp6odp" path="res://Player/Sprite/ExamplePlayerSprite.png" id="1_l8h54"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4ntmi"]
-radius = 3.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4ntmi"]
+size = Vector2(44, 17.99936)
 
 [sub_resource type="Animation" id="Animation_4ntmi"]
 length = 0.001
@@ -102,9 +102,9 @@ _data = {
 script = ExtResource("1_4ntmi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=747600270]
-position = Vector2(-1, 2)
+position = Vector2(0.0003204639, -18.000427)
 rotation = 1.5710098
-shape = SubResource("CapsuleShape2D_4ntmi")
+shape = SubResource("RectangleShape2D_4ntmi")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=187051942]
 position = Vector2(0, -18)

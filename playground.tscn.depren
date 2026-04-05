@@ -1,0 +1,102 @@
+[gd_scene format=3 uid="uid://8gxcbnn0drdn"]
+
+[ext_resource type="Script" uid="uid://dfkh1vhqc5wbu" path="res://Scripts/gameboard.gd" id="1_yjl7g"]
+[ext_resource type="PackedScene" uid="uid://bngnbg51yitf7" path="res://Tile Maps/Grass01.tscn" id="2_f7pug"]
+[ext_resource type="PackedScene" uid="uid://c75udmyukhfvk" path="res://Tile Maps/Bleak_yellow_grass.tscn" id="3_jgc46"]
+[ext_resource type="PackedScene" uid="uid://c2e0o08q8buid" path="res://Player/player.tscn" id="4_dk0co"]
+[ext_resource type="PackedScene" uid="uid://bhk8wb8aud5hg" path="res://Scenes/Items/wood.tscn" id="5_pactg"]
+[ext_resource type="PackedScene" uid="uid://dre6w3svhd6ko" path="res://Scenes/Items/stone.tscn" id="6_ycdrs"]
+[ext_resource type="PackedScene" uid="uid://thfp6dkj2dwq" path="res://Scenes/Items/stick.tscn" id="7_5m40n"]
+[ext_resource type="PackedScene" uid="uid://cm00qlqub0neu" path="res://Enemies/Spirit_Wolf/EvilWolf.tscn" id="8_x6kx1"]
+[ext_resource type="PackedScene" uid="uid://by20bk2bsvhjj" path="res://Scenes/StaticStructures/tree.tscn" id="9_jufm4"]
+[ext_resource type="PackedScene" uid="uid://0o2u3jdd6y1" path="res://Scenes/StaticStructures/boulder.tscn" id="10_ymgag"]
+[ext_resource type="PackedScene" uid="uid://do35dwig5w8gm" path="res://Scenes/StaticStructures/bush.tscn" id="11_u2qr3"]
+[ext_resource type="Texture2D" uid="uid://d34crl0llr6ot" path="res://Player/Sprite/hp_bar/HealthBar DARK.png" id="12_vnugj"]
+[ext_resource type="Script" uid="uid://dfgdasket7d4t" path="res://Scripts/healthbar.gd" id="13_2yo0f"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_weqgu"]
+atlas = ExtResource("12_vnugj")
+region = Rect2(19, 30, 62, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ggwj2"]
+atlas = ExtResource("12_vnugj")
+region = Rect2(18, 40, 64, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xwda2"]
+atlas = ExtResource("12_vnugj")
+region = Rect2(18, 29, 63, 8)
+
+[sub_resource type="GDScript" id="GDScript_xwda2"]
+script/source = "extends Label
+
+@onready var player: Player = %Player
+
+func _ready() -> void:
+	pass
+
+func _process(delta: float) -> void:
+	pass
+"
+
+[node name="Playground" type="Node2D" unique_id=571104678]
+position = Vector2(-17, -37)
+script = ExtResource("1_yjl7g")
+
+[node name="Grass01" parent="." unique_id=1278695867 instance=ExtResource("2_f7pug")]
+z_index = -12
+
+[node name="BleakYellowGrass" parent="." unique_id=1241843371 instance=ExtResource("3_jgc46")]
+position = Vector2(-19.041672, -1.7495117)
+
+[node name="Player" parent="BleakYellowGrass" unique_id=257810088 instance=ExtResource("4_dk0co")]
+unique_name_in_owner = true
+position = Vector2(19.041672, 1.7495117)
+
+[node name="Wood" parent="BleakYellowGrass" unique_id=1592250268 instance=ExtResource("5_pactg")]
+position = Vector2(-207.95833, 86.74951)
+
+[node name="Stone" parent="BleakYellowGrass" unique_id=1292270059 instance=ExtResource("6_ycdrs")]
+position = Vector2(-158.95833, 48.74951)
+
+[node name="Stick" parent="BleakYellowGrass" unique_id=13035520 instance=ExtResource("7_5m40n")]
+position = Vector2(-196.95833, 98.74951)
+
+[node name="EvilWolfWithPoints" parent="." unique_id=697092607 instance=ExtResource("8_x6kx1")]
+position = Vector2(271, 0)
+
+[node name="Tree" parent="." unique_id=669837160 instance=ExtResource("9_jufm4")]
+position = Vector2(-174, -73)
+scale = Vector2(1.1599988, 1.1599988)
+
+[node name="Boulder" parent="." unique_id=2132276029 instance=ExtResource("10_ymgag")]
+position = Vector2(-279, 148)
+
+[node name="Bush" parent="." unique_id=194477259 instance=ExtResource("11_u2qr3")]
+position = Vector2(-282, 19)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1072751443]
+
+[node name="hp_bar" type="TextureProgressBar" parent="CanvasLayer" unique_id=7326749]
+custom_minimum_size = Vector2(300, 40)
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -50.0
+offset_right = 310.0
+offset_bottom = -10.0
+grow_vertical = 0
+max_value = 200.0
+nine_patch_stretch = true
+texture_under = SubResource("AtlasTexture_weqgu")
+texture_over = SubResource("AtlasTexture_ggwj2")
+texture_progress = SubResource("AtlasTexture_xwda2")
+tint_under = Color(0.36185044, 0.19952738, 0.16397086, 0.85882354)
+script = ExtResource("13_2yo0f")
+
+[node name="hp_label" type="Label" parent="CanvasLayer" unique_id=1536956169]
+offset_left = 136.0
+offset_top = 651.0
+offset_right = 176.0
+offset_bottom = 674.0
+script = SubResource("GDScript_xwda2")

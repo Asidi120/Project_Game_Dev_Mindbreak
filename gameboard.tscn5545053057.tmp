@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://dmu8muxbn5hnk"]
+
+[ext_resource type="PackedScene" uid="uid://c2e0o08q8buid" path="res://Player/player.tscn" id="2_14ufp"]
+[ext_resource type="PackedScene" uid="uid://bngnbg51yitf7" path="res://Tile Maps/Grass01.tscn" id="2_yyygo"]
+[ext_resource type="PackedScene" uid="uid://c75udmyukhfvk" path="res://Tile Maps/Bleak_yellow_grass.tscn" id="3_yyygo"]
+[ext_resource type="PackedScene" uid="uid://cm00qlqub0neu" path="res://Enemies/Spirit_Wolf/EvilWolf.tscn" id="4_io0k8"]
+[ext_resource type="PackedScene" uid="uid://bhk8wb8aud5hg" path="res://Scenes/Items/wood.tscn" id="4_k3t11"]
+[ext_resource type="PackedScene" uid="uid://dre6w3svhd6ko" path="res://Scenes/Items/stone.tscn" id="5_654c7"]
+[ext_resource type="PackedScene" uid="uid://by20bk2bsvhjj" path="res://Scenes/StaticStructures/tree.tscn" id="5_u8jvi"]
+[ext_resource type="PackedScene" uid="uid://thfp6dkj2dwq" path="res://Scenes/Items/stick.tscn" id="6_4xq17"]
+[ext_resource type="PackedScene" uid="uid://do35dwig5w8gm" path="res://Scenes/StaticStructures/bush.tscn" id="7_6f8ln"]
+[ext_resource type="PackedScene" uid="uid://0o2u3jdd6y1" path="res://Scenes/StaticStructures/boulder.tscn" id="9_j1234"]
+[ext_resource type="Texture2D" uid="uid://d34crl0llr6ot" path="res://Player/Sprite/hp_bar/HealthBar DARK.png" id="11_jwjds"]
+[ext_resource type="Script" uid="uid://dfgdasket7d4t" path="res://Scripts/healthbar.gd" id="12_xwda2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ggwj2"]
+atlas = ExtResource("11_jwjds")
+region = Rect2(9, 93, 76, 19)
+
+[node name="Playground" type="Node2D" unique_id=571104678]
+position = Vector2(-17, -37)
+
+[node name="Grass01" parent="." unique_id=1278695867 instance=ExtResource("2_yyygo")]
+z_index = -12
+
+[node name="BleakYellowGrass" parent="." unique_id=1241843371 instance=ExtResource("3_yyygo")]
+position = Vector2(-19.041672, -1.7495117)
+
+[node name="Player" parent="BleakYellowGrass" unique_id=257810088 instance=ExtResource("2_14ufp")]
+unique_name_in_owner = true
+position = Vector2(19.041672, 1.7495117)
+
+[node name="Wood" parent="BleakYellowGrass" unique_id=1592250268 instance=ExtResource("4_k3t11")]
+position = Vector2(-207.95833, 86.74951)
+
+[node name="Stone" parent="BleakYellowGrass" unique_id=1292270059 instance=ExtResource("5_654c7")]
+position = Vector2(-158.95833, 48.74951)
+
+[node name="Stick" parent="BleakYellowGrass" unique_id=13035520 instance=ExtResource("6_4xq17")]
+position = Vector2(-196.95833, 98.74951)
+
+[node name="EvilWolfWithPoints" parent="." unique_id=697092607 instance=ExtResource("4_io0k8")]
+position = Vector2(271, 0)
+
+[node name="Tree" parent="." unique_id=669837160 instance=ExtResource("5_u8jvi")]
+position = Vector2(-174, -73)
+scale = Vector2(1.1599988, 1.1599988)
+
+[node name="Boulder" parent="." unique_id=2132276029 instance=ExtResource("9_j1234")]
+position = Vector2(-279, 148)
+
+[node name="Bush" parent="." unique_id=194477259 instance=ExtResource("7_6f8ln")]
+position = Vector2(-282, 19)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1072751443]
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer" unique_id=7326749]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = -630.0
+offset_right = 128.0
+offset_bottom = -599.0
+grow_vertical = 0
+max_value = 200.0
+texture_over = SubResource("AtlasTexture_ggwj2")
+script = ExtResource("12_xwda2")

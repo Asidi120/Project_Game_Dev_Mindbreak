@@ -1,0 +1,159 @@
+[gd_scene format=3 uid="uid://dmct4fd2kdncm"]
+
+[ext_resource type="Script" uid="uid://dfkh1vhqc5wbu" path="res://Scripts/gameboard.gd" id="1_5lgnv"]
+[ext_resource type="PackedScene" uid="uid://bngnbg51yitf7" path="res://Tile Maps/Grass01.tscn" id="2_djkbh"]
+[ext_resource type="PackedScene" uid="uid://c75udmyukhfvk" path="res://Tile Maps/Bleak_yellow_grass.tscn" id="3_vj8hk"]
+[ext_resource type="PackedScene" uid="uid://c2e0o08q8buid" path="res://Player/player.tscn" id="4_b7mh3"]
+[ext_resource type="PackedScene" uid="uid://bhk8wb8aud5hg" path="res://Scenes/Items/wood.tscn" id="5_07tfq"]
+[ext_resource type="PackedScene" uid="uid://dre6w3svhd6ko" path="res://Scenes/Items/stone.tscn" id="6_dt752"]
+[ext_resource type="PackedScene" uid="uid://thfp6dkj2dwq" path="res://Scenes/Items/stick.tscn" id="7_tc4ax"]
+[ext_resource type="PackedScene" uid="uid://cm00qlqub0neu" path="res://Enemies/Spirit_Wolf/EvilWolf.tscn" id="8_l7aru"]
+[ext_resource type="PackedScene" uid="uid://by20bk2bsvhjj" path="res://Scenes/StaticStructures/tree.tscn" id="9_bm257"]
+[ext_resource type="PackedScene" uid="uid://0o2u3jdd6y1" path="res://Scenes/StaticStructures/boulder.tscn" id="10_08ji3"]
+[ext_resource type="PackedScene" uid="uid://do35dwig5w8gm" path="res://Scenes/StaticStructures/bush.tscn" id="11_42c27"]
+[ext_resource type="Texture2D" uid="uid://d34crl0llr6ot" path="res://Player/Sprite/hp_bar/HealthBar DARK.png" id="12_g0rsy"]
+[ext_resource type="Script" uid="uid://dfgdasket7d4t" path="res://Scripts/healthbar.gd" id="13_65dde"]
+[ext_resource type="Script" uid="uid://bg4om7e84kh7o" path="res://Scripts/staminabar.gd" id="14_djkbh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_weqgu"]
+atlas = ExtResource("12_g0rsy")
+region = Rect2(28, 88, 56, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5lgnv"]
+atlas = ExtResource("12_g0rsy")
+region = Rect2(28, 88, 56, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_djkbh"]
+atlas = ExtResource("12_g0rsy")
+region = Rect2(19, 34, 59, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b7mh3"]
+atlas = ExtResource("12_g0rsy")
+region = Rect2(19, 45, 59, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_07tfq"]
+atlas = ExtResource("12_g0rsy")
+region = Rect2(19, 34, 59, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dt752"]
+atlas = ExtResource("12_g0rsy")
+region = Rect2(17, 11, 59, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tc4ax"]
+atlas = ExtResource("12_g0rsy")
+region = Rect2(18, 22, 60, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l7aru"]
+atlas = ExtResource("12_g0rsy")
+region = Rect2(16, 11, 60, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vj8hk"]
+atlas = ExtResource("12_g0rsy")
+region = Rect2(9, 93, 76, 20)
+
+[node name="Playground" type="Node2D" unique_id=571104678]
+position = Vector2(-17, -37)
+script = ExtResource("1_5lgnv")
+
+[node name="Grass01" parent="." unique_id=1278695867 instance=ExtResource("2_djkbh")]
+z_index = -12
+
+[node name="BleakYellowGrass" parent="." unique_id=1241843371 instance=ExtResource("3_vj8hk")]
+position = Vector2(-19.041672, -1.7495117)
+
+[node name="Player" parent="BleakYellowGrass" unique_id=257810088 instance=ExtResource("4_b7mh3")]
+unique_name_in_owner = true
+position = Vector2(19.041672, 1.7495117)
+
+[node name="Wood" parent="BleakYellowGrass" unique_id=1592250268 instance=ExtResource("5_07tfq")]
+position = Vector2(-207.95833, 86.74951)
+
+[node name="Stone" parent="BleakYellowGrass" unique_id=1292270059 instance=ExtResource("6_dt752")]
+position = Vector2(-158.95833, 48.74951)
+
+[node name="Stick" parent="BleakYellowGrass" unique_id=13035520 instance=ExtResource("7_tc4ax")]
+position = Vector2(-196.95833, 98.74951)
+
+[node name="EvilWolfWithPoints" parent="." unique_id=697092607 instance=ExtResource("8_l7aru")]
+position = Vector2(271, 0)
+
+[node name="Tree" parent="." unique_id=669837160 instance=ExtResource("9_bm257")]
+position = Vector2(-174, -73)
+scale = Vector2(1.1599988, 1.1599988)
+
+[node name="Boulder" parent="." unique_id=2132276029 instance=ExtResource("10_08ji3")]
+position = Vector2(-279, 148)
+
+[node name="Bush" parent="." unique_id=194477259 instance=ExtResource("11_42c27")]
+position = Vector2(-282, 19)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1072751443]
+
+[node name="hp_bar" type="TextureProgressBar" parent="CanvasLayer" unique_id=7326749]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 88.0
+offset_top = -48.0
+offset_right = 312.0
+offset_bottom = -34.0
+grow_vertical = 0
+max_value = 200.0
+nine_patch_stretch = true
+texture_under = SubResource("AtlasTexture_weqgu")
+texture_progress = SubResource("AtlasTexture_5lgnv")
+tint_under = Color(0.36185044, 0.19952738, 0.16397086, 0.85882354)
+script = ExtResource("13_65dde")
+
+[node name="hp_label" type="Label" parent="CanvasLayer" unique_id=1536956169]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 172.0
+offset_top = -54.0
+offset_right = 212.0
+offset_bottom = -31.0
+grow_vertical = 0
+
+[node name="stamina_bar" type="TextureProgressBar" parent="CanvasLayer" unique_id=414128137]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 79.0
+offset_top = -33.0
+offset_right = 301.0
+offset_bottom = -13.0
+grow_vertical = 0
+nine_patch_stretch = true
+texture_under = SubResource("AtlasTexture_djkbh")
+texture_over = SubResource("AtlasTexture_b7mh3")
+texture_progress = SubResource("AtlasTexture_07tfq")
+tint_under = Color(0.91330606, 0.7629983, 0.64685506, 0.67600006)
+script = ExtResource("14_djkbh")
+
+[node name="hunger_bar" type="TextureProgressBar" parent="CanvasLayer" unique_id=1178149246]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 73.0
+offset_top = -68.0
+offset_right = 273.0
+offset_bottom = -50.0
+grow_vertical = 0
+nine_patch_stretch = true
+texture_under = SubResource("AtlasTexture_dt752")
+texture_over = SubResource("AtlasTexture_tc4ax")
+texture_progress = SubResource("AtlasTexture_l7aru")
+tint_under = Color(0.91132057, 0.79118866, 0.6908011, 0.53800005)
+
+[node name="healthbardecor" type="TextureRect" parent="CanvasLayer" unique_id=379240010]
+custom_minimum_size = Vector2(300, 70)
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = -76.0
+offset_right = 316.0
+offset_bottom = -6.0
+grow_vertical = 0
+texture = SubResource("AtlasTexture_vj8hk")

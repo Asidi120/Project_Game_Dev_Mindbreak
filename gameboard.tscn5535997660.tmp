@@ -10,6 +10,12 @@
 [ext_resource type="PackedScene" uid="uid://thfp6dkj2dwq" path="res://Scenes/Items/stick.tscn" id="6_4xq17"]
 [ext_resource type="PackedScene" uid="uid://do35dwig5w8gm" path="res://Scenes/StaticStructures/bush.tscn" id="7_6f8ln"]
 [ext_resource type="PackedScene" uid="uid://0o2u3jdd6y1" path="res://Scenes/StaticStructures/boulder.tscn" id="9_j1234"]
+[ext_resource type="Texture2D" uid="uid://d34crl0llr6ot" path="res://Player/Sprite/hp_bar/HealthBar DARK.png" id="11_jwjds"]
+[ext_resource type="Script" uid="uid://dfgdasket7d4t" path="res://Scripts/healthbar.gd" id="12_xwda2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ggwj2"]
+atlas = ExtResource("11_jwjds")
+region = Rect2(9, 93, 76, 19)
 
 [node name="Playground" type="Node2D" unique_id=571104678]
 position = Vector2(-17, -37)
@@ -45,3 +51,18 @@ position = Vector2(-279, 148)
 
 [node name="Bush" parent="." unique_id=194477259 instance=ExtResource("7_6f8ln")]
 position = Vector2(-282, 19)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1072751443]
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer" unique_id=7326749]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = -630.0
+offset_right = 128.0
+offset_bottom = -599.0
+grow_vertical = 0
+max_value = 200.0
+texture_over = SubResource("AtlasTexture_ggwj2")
+script = ExtResource("12_xwda2")

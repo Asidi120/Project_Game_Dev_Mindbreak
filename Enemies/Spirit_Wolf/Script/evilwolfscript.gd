@@ -22,6 +22,7 @@ var attack_cooldown: float = 1.2
 var can_attack = true
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var player: Player = $"../../BleakYellowGrass/Player"
 
 func _ready():
 	patrol_origin = global_position
@@ -74,6 +75,7 @@ func try_attack():
 	velocity = Vector2.ZERO
 	animated_sprite_2d.play("attack")
 	print("Attack!")
+	player.take_damage(10)
 	attack_recovery()
 	attack_cooldown_timer()
 

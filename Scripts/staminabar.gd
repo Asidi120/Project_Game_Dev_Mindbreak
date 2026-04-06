@@ -10,11 +10,9 @@ func _ready():
 	update_bar(player.current_stamina, player.max_stamina)
 	value=player.current_stamina
 	target_stamina=player.current_stamina
-	#hp_label.text=str(int(target_stamina))+"/"+str(int(player.max_hp))
 
 func update_bar(current_stamina, max_stamina):
 	target_stamina = current_stamina  # ustawiamy cel zamiast ustawiać od razu ilosc hp
-	#stamina_bar.text=str(int(target_stamina))+"/"+str(int(max_stamina))
 
 func _process(delta):
 	# płynne przejście hp w pasku do target_hp

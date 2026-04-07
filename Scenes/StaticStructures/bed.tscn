@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c2c3i2hws4mko" path="res://Scenes/StaticStructures/bed.gd" id="1_b02y7"]
 [ext_resource type="Texture2D" uid="uid://ds0ngwsqirkev" path="res://Sprites/Furniture.png" id="1_olsg3"]
+[ext_resource type="FontFile" uid="uid://c0l8fv5sgwm3v" path="res://Fonts/Star Crush.ttf" id="3_j70dt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b02y7"]
 atlas = ExtResource("1_olsg3")
@@ -24,6 +25,25 @@ size = Vector2(29, 14)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8kxfb"]
 size = Vector2(32, 8)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_j70dt"]
+atlas = ExtResource("1_olsg3")
+region = Rect2(33, 189, 31, 14)
+
+[sub_resource type="LabelSettings" id="LabelSettings_8kxfb"]
+font = ExtResource("3_j70dt")
+font_size = 6
+outline_size = 1
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_xtdod"]
+font = ExtResource("3_j70dt")
+font_size = 8
+outline_size = 1
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j70dt"]
+radius = 45.099888
+
 [node name="Bed" type="Node2D" unique_id=1754547488]
 script = ExtResource("1_b02y7")
 
@@ -45,8 +65,8 @@ texture = SubResource("AtlasTexture_xtdod")
 
 [node name="Duvet" type="Sprite2D" parent="." unique_id=1464370308]
 z_index = 2
-position = Vector2(0, -1)
-scale = Vector2(1, 1.06)
+position = Vector2(0, 1.8750005)
+scale = Vector2(1, 1.21)
 texture = SubResource("AtlasTexture_fj1nx")
 
 [node name="CollisionWithBed" type="StaticBody2D" parent="." unique_id=698727050]
@@ -59,5 +79,41 @@ shape = SubResource("RectangleShape2D_j70dt")
 position = Vector2(0, -23)
 shape = SubResource("RectangleShape2D_8kxfb")
 
+[node name="front_bed" type="Sprite2D" parent="." unique_id=247189987]
+z_index = 3
+position = Vector2(1, 20)
+scale = Vector2(1.016129, 1)
+texture = SubResource("AtlasTexture_j70dt")
+
+[node name="ClickEToSleep" type="Label" parent="." unique_id=1975779768]
+visible = false
+texture_filter = 1
+offset_left = -20.0
+offset_top = -34.0
+offset_right = 22.0
+offset_bottom = -27.0
+text = "Click 'E' to sleep"
+label_settings = SubResource("LabelSettings_8kxfb")
+metadata/_edit_use_anchors_ = true
+
+[node name="CantSleepLabel" type="Label" parent="." unique_id=809521003]
+visible = false
+z_index = 4
+texture_filter = 1
+offset_left = -59.0
+offset_top = -8.0
+offset_right = 60.0
+text = "You can't sleep at daytime"
+label_settings = SubResource("LabelSettings_xtdod")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="ShowingClickLabelArea" type="Area2D" parent="." unique_id=335084437]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShowingClickLabelArea" unique_id=1089002135]
+shape = SubResource("CircleShape2D_j70dt")
+
 [connection signal="body_entered" from="Sleeping_area" to="." method="_on_sleeping_area_body_entered"]
 [connection signal="body_exited" from="Sleeping_area" to="." method="_on_sleeping_area_body_exited"]
+[connection signal="body_entered" from="ShowingClickLabelArea" to="." method="_on_showing_click_label_area_body_entered"]
+[connection signal="body_exited" from="ShowingClickLabelArea" to="." method="_on_showing_click_label_area_body_exited"]

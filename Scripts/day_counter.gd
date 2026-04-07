@@ -14,10 +14,21 @@ func _process(delta):
 	clock_texture_update(delta)
 	
 func time_passage(delta):
-	time += 10*delta  # acceleration of time (1 second = 20 minutes in game)
+	time += 10*delta  # acceleration of time (1 second = 10 minutes in game)
 	hours = int(time / 60) % 24
 	minutes = int(time) % 60
 	days=time/1440
+	
+func skip_to_morning():
+	var target_time = 6 * 60 # 6:00 morning = 360 minutes
+	var current_time = int(time) % 1440
+	
+	var diff = target_time - current_time
+	
+	if diff <= 0:
+		diff += 1440  # next day
+		
+	time += diff
 
 func clock_texture_update(delta): #update of clock texture and smoth update between night clock and day clock
 	if hours==3 or hours == 15:

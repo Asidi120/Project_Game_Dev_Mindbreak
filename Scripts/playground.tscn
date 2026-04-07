@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://dmct4fd2kdncm"]
 
-[ext_resource type="Script" uid="uid://dfkh1vhqc5wbu" path="res://Scripts/gameboard.gd" id="1_5lgnv"]
 [ext_resource type="PackedScene" uid="uid://bngnbg51yitf7" path="res://Tile Maps/Grass01.tscn" id="2_djkbh"]
 [ext_resource type="PackedScene" uid="uid://c75udmyukhfvk" path="res://Tile Maps/Bleak_yellow_grass.tscn" id="3_vj8hk"]
 [ext_resource type="PackedScene" uid="uid://c2e0o08q8buid" path="res://Player/player.tscn" id="4_b7mh3"]
@@ -18,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://c1w1adrgxc7pf" path="res://Sprites/clock0.png" id="16_b7mh3"]
 [ext_resource type="Script" uid="uid://dmrjabrt0njvq" path="res://Scripts/day_counter.gd" id="17_07tfq"]
 [ext_resource type="Texture2D" uid="uid://8qn3jb53vo6c" path="res://Sprites/clock4.png" id="17_dt752"]
+[ext_resource type="PackedScene" uid="uid://dwr75oy600gxk" path="res://Scenes/StaticStructures/bed.tscn" id="19_l7aru"]
 [ext_resource type="Script" uid="uid://bs3h32b6gxe2i" path="res://Scripts/day_night_overlay.gd" id="19_tc4ax"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_djkbh"]
@@ -60,7 +60,6 @@ region = Rect2(9, 93, 76, 20)
 
 [node name="Playground" type="Node2D" unique_id=571104678]
 position = Vector2(-17, -37)
-script = ExtResource("1_5lgnv")
 
 [node name="Grass01" parent="." unique_id=1278695867 instance=ExtResource("2_djkbh")]
 z_index = -12
@@ -203,3 +202,6 @@ script = ExtResource("17_07tfq")
 [node name="DayNightOverlay" type="CanvasModulate" parent="." unique_id=1490973845]
 position = Vector2(819, 160)
 script = ExtResource("19_tc4ax")
+
+[node name="Bed" parent="." unique_id=1754547488 instance=ExtResource("19_l7aru")]
+position = Vector2(125, 189)

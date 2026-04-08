@@ -67,31 +67,40 @@ z_index = -12
 [node name="BleakYellowGrass" parent="." unique_id=1241843371 instance=ExtResource("3_vj8hk")]
 position = Vector2(-19.041672, -1.7495117)
 
-[node name="Player" parent="BleakYellowGrass" unique_id=257810088 instance=ExtResource("4_b7mh3")]
-unique_name_in_owner = true
-position = Vector2(19.041672, 1.7495117)
+[node name="level" type="Node2D" parent="BleakYellowGrass" unique_id=633388220]
+y_sort_enabled = true
 
-[node name="Wood" parent="BleakYellowGrass" unique_id=1592250268 instance=ExtResource("5_07tfq")]
+[node name="Wood" parent="BleakYellowGrass/level" unique_id=1592250268 instance=ExtResource("5_07tfq")]
 position = Vector2(-207.95833, 86.74951)
 
-[node name="Stone" parent="BleakYellowGrass" unique_id=1292270059 instance=ExtResource("6_dt752")]
+[node name="Stone" parent="BleakYellowGrass/level" unique_id=1292270059 instance=ExtResource("6_dt752")]
 position = Vector2(-158.95833, 48.74951)
 
-[node name="Stick" parent="BleakYellowGrass" unique_id=13035520 instance=ExtResource("7_tc4ax")]
+[node name="Stick" parent="BleakYellowGrass/level" unique_id=13035520 instance=ExtResource("7_tc4ax")]
 position = Vector2(-196.95833, 98.74951)
 
-[node name="EvilWolfWithPoints" parent="." unique_id=697092607 instance=ExtResource("8_l7aru")]
-position = Vector2(271, 0)
-
-[node name="Tree" parent="." unique_id=669837160 instance=ExtResource("9_bm257")]
-position = Vector2(-174, -73)
+[node name="Tree" parent="BleakYellowGrass/level" unique_id=669837160 instance=ExtResource("9_bm257")]
+position = Vector2(-154.95833, -71.25049)
 scale = Vector2(1.1599988, 1.1599988)
 
-[node name="Boulder" parent="." unique_id=2132276029 instance=ExtResource("10_08ji3")]
-position = Vector2(-279, 148)
+[node name="Player" parent="BleakYellowGrass/level" unique_id=257810088 instance=ExtResource("4_b7mh3")]
+unique_name_in_owner = true
+position = Vector2(19.041687, 1.7495117)
 
-[node name="Bush" parent="." unique_id=194477259 instance=ExtResource("11_42c27")]
-position = Vector2(-282, 19)
+[node name="Boulder" parent="BleakYellowGrass/level" unique_id=2132276029 instance=ExtResource("10_08ji3")]
+position = Vector2(-259.9583, 149.74951)
+
+[node name="Bush" parent="BleakYellowGrass/level" unique_id=194477259 instance=ExtResource("11_42c27")]
+position = Vector2(-262.9583, 20.749512)
+
+[node name="Bed" parent="BleakYellowGrass/level" unique_id=1754547488 instance=ExtResource("19_l7aru")]
+position = Vector2(152.04167, 254.74951)
+
+[node name="Tree2" parent="BleakYellowGrass/level" unique_id=1667716825 instance=ExtResource("9_bm257")]
+position = Vector2(115.04167, -79.25049)
+
+[node name="EvilWolfWithPoints" parent="BleakYellowGrass/level" unique_id=697092607 instance=ExtResource("8_l7aru")]
+position = Vector2(290.0417, 1.7495117)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1072751443]
 
@@ -202,6 +211,3 @@ script = ExtResource("17_07tfq")
 [node name="DayNightOverlay" type="CanvasModulate" parent="." unique_id=1490973845]
 position = Vector2(819, 160)
 script = ExtResource("19_tc4ax")
-
-[node name="Bed" parent="." unique_id=1754547488 instance=ExtResource("19_l7aru")]
-position = Vector2(125, 189)

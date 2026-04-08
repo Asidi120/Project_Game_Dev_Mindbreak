@@ -22,7 +22,7 @@ var attack_cooldown: float = 1.2
 var can_attack = true
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
-@onready var player: Player = $"../../BleakYellowGrass/Player"
+@onready var player: Player = $"../../Player"
 
 func _ready():
 	patrol_origin = global_position

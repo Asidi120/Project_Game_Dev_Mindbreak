@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bhk8wb8aud5hg" path="res://Scenes/Items/wood.tscn" id="2_l7sa7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rsuno"]
-size = Vector2(8, 27)
+size = Vector2(10, 10.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l7sa7"]
 size = Vector2(13.325687, 10.845661)
@@ -16,18 +16,21 @@ object_id = "tree"
 scene = ExtResource("2_l7sa7")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=621871514]
+position = Vector2(29, 51)
 texture = ExtResource("1_0vwjc")
+offset = Vector2(-28, -85)
 region_enabled = true
 region_rect = Rect2(451.5, 115.25, 60.5, 108.75)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1326982635]
-position = Vector2(-2, 24.5)
+y_sort_enabled = true
+position = Vector2(-1.000001, -1.6501274)
 shape = SubResource("RectangleShape2D_rsuno")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1071285620]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2083692366]
-position = Vector2(-1.999999, 14.650127)
+position = Vector2(-3, -20)
 scale = Vector2(1.9511187, 4.8321476)
 shape = SubResource("RectangleShape2D_l7sa7")
 

@@ -4,12 +4,21 @@
 [ext_resource type="Texture2D" uid="uid://ds0ngwsqirkev" path="res://Sprites/Furniture.png" id="1_olsg3"]
 [ext_resource type="FontFile" uid="uid://c0l8fv5sgwm3v" path="res://Fonts/Star Crush.ttf" id="3_j70dt"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_olsg3"]
+radius = 20.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j70dt"]
+size = Vector2(29, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8kxfb"]
+size = Vector2(32, 8)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j70dt"]
+radius = 45.099888
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_b02y7"]
 atlas = ExtResource("1_olsg3")
 region = Rect2(32, 149, 32, 54)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_olsg3"]
-radius = 17.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xtdod"]
 atlas = ExtResource("1_olsg3")
@@ -19,99 +28,99 @@ region = Rect2(64, 146, 16, 10)
 atlas = ExtResource("1_olsg3")
 region = Rect2(71, 164, 24, 25)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_j70dt"]
-size = Vector2(29, 14)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8kxfb"]
-size = Vector2(32, 8)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_j70dt"]
 atlas = ExtResource("1_olsg3")
 region = Rect2(33, 189, 31, 14)
 
 [sub_resource type="LabelSettings" id="LabelSettings_8kxfb"]
 font = ExtResource("3_j70dt")
-font_size = 6
+font_size = 24
 outline_size = 1
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_xtdod"]
 font = ExtResource("3_j70dt")
-font_size = 8
+font_size = 24
 outline_size = 1
 outline_color = Color(0, 0, 0, 1)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_j70dt"]
-radius = 45.099888
-
 [node name="Bed" type="Node2D" unique_id=1754547488]
+position = Vector2(0, 20)
 script = ExtResource("1_b02y7")
-
-[node name="Bed under" type="Sprite2D" parent="." unique_id=1588758865]
-z_index = -1
-texture = SubResource("AtlasTexture_b02y7")
 
 [node name="Sleeping_area" type="Area2D" parent="." unique_id=1353252386]
 
 [node name="SleepAreaShape" type="CollisionShape2D" parent="Sleeping_area" unique_id=1486360366]
 z_index = 3
-position = Vector2(0, -3)
+position = Vector2(0, -20)
 shape = SubResource("CircleShape2D_olsg3")
-
-[node name="Pillow" type="Sprite2D" parent="." unique_id=754902531]
-z_index = -1
-position = Vector2(0, -17)
-texture = SubResource("AtlasTexture_xtdod")
-
-[node name="Duvet" type="Sprite2D" parent="." unique_id=1464370308]
-z_index = 2
-position = Vector2(0, 1.8750005)
-scale = Vector2(1, 1.21)
-texture = SubResource("AtlasTexture_fj1nx")
 
 [node name="CollisionWithBed" type="StaticBody2D" parent="." unique_id=698727050]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionWithBed" unique_id=1652779962]
-position = Vector2(0.5, 20)
+position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_j70dt")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="CollisionWithBed" unique_id=1937263151]
-position = Vector2(0, -23)
+position = Vector2(-1, -38)
 shape = SubResource("RectangleShape2D_8kxfb")
 
+[node name="ShowingClickLabelArea" type="Area2D" parent="." unique_id=335084437]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShowingClickLabelArea" unique_id=1089002135]
+position = Vector2(0, -20)
+shape = SubResource("CircleShape2D_j70dt")
+
+[node name="Bed under" type="Sprite2D" parent="." unique_id=1588758865]
+z_index = -1
+position = Vector2(0, -17)
+texture = SubResource("AtlasTexture_b02y7")
+
+[node name="Pillow" type="Sprite2D" parent="." unique_id=754902531]
+z_index = -1
+position = Vector2(0, -33)
+texture = SubResource("AtlasTexture_xtdod")
+
+[node name="duvet_node" type="Node2D" parent="." unique_id=1363583836]
+y_sort_enabled = true
+position = Vector2(0, 17)
+
+[node name="Duvet" type="Sprite2D" parent="duvet_node" unique_id=1464370308]
+position = Vector2(0, -17)
+scale = Vector2(1, 1.21)
+texture = SubResource("AtlasTexture_fj1nx")
+offset = Vector2(0, -12)
+
 [node name="front_bed" type="Sprite2D" parent="." unique_id=247189987]
-z_index = 3
-position = Vector2(1, 20)
-scale = Vector2(1.016129, 1)
+position = Vector2(1, 3)
 texture = SubResource("AtlasTexture_j70dt")
 
 [node name="ClickEToSleep" type="Label" parent="." unique_id=1975779768]
 visible = false
+z_index = 3
 texture_filter = 1
-offset_left = -20.0
-offset_top = -34.0
-offset_right = 22.0
-offset_bottom = -27.0
+offset_left = -82.0
+offset_top = -69.0
+offset_right = 82.0
+offset_bottom = -46.0
 text = "Click 'E' to sleep"
 label_settings = SubResource("LabelSettings_8kxfb")
+horizontal_alignment = 1
+vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="CantSleepLabel" type="Label" parent="." unique_id=809521003]
 visible = false
 z_index = 4
 texture_filter = 1
-offset_left = -59.0
-offset_top = -8.0
-offset_right = 60.0
+offset_left = -133.0
+offset_top = -29.0
+offset_right = 135.0
+offset_bottom = -6.0
 text = "You can't sleep at daytime"
 label_settings = SubResource("LabelSettings_xtdod")
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
-
-[node name="ShowingClickLabelArea" type="Area2D" parent="." unique_id=335084437]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ShowingClickLabelArea" unique_id=1089002135]
-shape = SubResource("CircleShape2D_j70dt")
 
 [connection signal="body_entered" from="Sleeping_area" to="." method="_on_sleeping_area_body_entered"]
 [connection signal="body_exited" from="Sleeping_area" to="." method="_on_sleeping_area_body_exited"]

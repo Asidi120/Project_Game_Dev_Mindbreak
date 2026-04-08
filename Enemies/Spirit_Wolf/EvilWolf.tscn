@@ -3,6 +3,9 @@
 [ext_resource type="Script" uid="uid://htik4r6mo1j0" path="res://Enemies/Spirit_Wolf/Script/evilwolfscript.gd" id="1_8ppc7"]
 [ext_resource type="Texture2D" uid="uid://m0j7dbrgrkkg" path="res://Enemies/Spirit_Wolf/Sprite/Massacre Sprite Sheet.png" id="1_qvnen"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_8ppc7"]
+radius = 135.0
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_8ppc7"]
 atlas = ExtResource("1_qvnen")
 region = Rect2(0, 64, 64, 64)
@@ -222,32 +225,7 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qvnen"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_8ppc7"]
-radius = 135.0
-
 [node name="EvilWolfWithPoints" type="Node2D" unique_id=697092607]
-
-[node name="EvilWolf" type="CharacterBody2D" parent="." unique_id=246727369]
-script = ExtResource("1_8ppc7")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="EvilWolf" unique_id=1938056192]
-position = Vector2(0, -32)
-sprite_frames = SubResource("SpriteFrames_m8kn1")
-animation = &"attack"
-autoplay = "idle"
-
-[node name="Attack_Area" type="Area2D" parent="EvilWolf" unique_id=1934571482]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EvilWolf/Attack_Area" unique_id=194672428]
-position = Vector2(-17, -14)
-shape = SubResource("CircleShape2D_qvnen")
-
-[node name="Follow_Area" type="Area2D" parent="EvilWolf" unique_id=2122249004]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EvilWolf/Follow_Area" unique_id=1514690277]
-position = Vector2(0, 1)
-shape = SubResource("CircleShape2D_8ppc7")
-debug_color = Color(0.9219775, 0.5182506, 0.51914895, 0.41960785)
 
 [node name="PatrolPoints" type="Node2D" parent="." unique_id=1648978633]
 
@@ -263,8 +241,31 @@ position = Vector2(-18, 42)
 [node name="Point4" type="Marker2D" parent="PatrolPoints" unique_id=1214234633 groups=["PatrolPoints"]]
 position = Vector2(85, 44)
 
+[node name="EvilWolf" type="CharacterBody2D" parent="." unique_id=246727369]
+script = ExtResource("1_8ppc7")
+
+[node name="Follow_Area" type="Area2D" parent="EvilWolf" unique_id=2122249004]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EvilWolf/Follow_Area" unique_id=1514690277]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_8ppc7")
+debug_color = Color(0.9219775, 0.5182506, 0.51914895, 0.41960785)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="EvilWolf" unique_id=1938056192]
+position = Vector2(0, -31)
+sprite_frames = SubResource("SpriteFrames_m8kn1")
+animation = &"attack"
+autoplay = "idle"
+
+[node name="Attack_Area" type="Area2D" parent="EvilWolf" unique_id=1934571482]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EvilWolf/Attack_Area" unique_id=194672428]
+z_index = 1
+position = Vector2(-16, -13)
+shape = SubResource("CircleShape2D_qvnen")
+
+[connection signal="body_entered" from="EvilWolf/Follow_Area" to="EvilWolf" method="_on_follow_area_body_entered"]
+[connection signal="body_exited" from="EvilWolf/Follow_Area" to="EvilWolf" method="_on_follow_area_body_exited"]
 [connection signal="animation_finished" from="EvilWolf/AnimatedSprite2D" to="EvilWolf" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="EvilWolf/Attack_Area" to="EvilWolf" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="EvilWolf/Attack_Area" to="EvilWolf" method="_on_area_2d_body_exited"]
-[connection signal="body_entered" from="EvilWolf/Follow_Area" to="EvilWolf" method="_on_follow_area_body_entered"]
-[connection signal="body_exited" from="EvilWolf/Follow_Area" to="EvilWolf" method="_on_follow_area_body_exited"]

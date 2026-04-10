@@ -24,6 +24,8 @@ window/stretch/mode="viewport"
 [global_group]
 
 Players=""
+Clock=""
+PlayerBar=""
 
 [input]
 

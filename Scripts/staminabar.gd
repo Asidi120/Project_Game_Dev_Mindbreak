@@ -1,7 +1,7 @@
 extends TextureProgressBar
 
-@onready var player = %Player
-@onready var stamina_bar: TextureProgressBar = $CanvasLayer/stamina_bar
+@onready var player: Player = $"../../../BleakYellowGrass/level/Player"
+@onready var stamina_bar: TextureProgressBar = $"."
 
 var target_stamina:float=0
 

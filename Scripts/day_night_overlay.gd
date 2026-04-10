@@ -1,9 +1,13 @@
 extends CanvasModulate
 
-@onready var day_counter: Label = $"../CanvasLayer/day_counter"
+var clock
+var day_counter
 
 var target_color = Color(1, 1, 1)  # day deafault
-	
+func _ready() -> void:
+	clock = get_tree().get_first_node_in_group("Clock")
+	day_counter = clock.get_node_or_null("day_counter")
+
 func _process(delta: float) -> void:
 	if day_counter.hours >= 20 and day_counter.hours < 22:
 		target_color = Color(0.901, 0.622, 0.443, 1.0)  # dusk 

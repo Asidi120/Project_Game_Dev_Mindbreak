@@ -1,0 +1,128 @@
+[gd_scene format=3 uid="uid://317bak6hdgps"]
+
+[ext_resource type="Texture2D" uid="uid://d34crl0llr6ot" path="res://Player/Sprite/hp_bar/HealthBar DARK.png" id="1_4say3"]
+[ext_resource type="Script" uid="uid://cqt5nyb1vdosp" path="res://Scripts/playerbar.gd" id="1_hdqpu"]
+[ext_resource type="Script" uid="uid://bg4om7e84kh7o" path="res://Scripts/staminabar.gd" id="2_hdqpu"]
+[ext_resource type="Script" uid="uid://c4ge23nfre5nx" path="res://Scripts/hunger_bar.gd" id="3_5o004"]
+[ext_resource type="Script" uid="uid://dfgdasket7d4t" path="res://Scripts/healthbar.gd" id="4_qqhfj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_djkbh"]
+atlas = ExtResource("1_4say3")
+region = Rect2(19, 34, 59, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b7mh3"]
+atlas = ExtResource("1_4say3")
+region = Rect2(19, 45, 59, 4)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_07tfq"]
+atlas = ExtResource("1_4say3")
+region = Rect2(20, 35, 59, 2)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dt752"]
+atlas = ExtResource("1_4say3")
+region = Rect2(18, 12, 57, 2)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tc4ax"]
+atlas = ExtResource("1_4say3")
+region = Rect2(18, 22, 61, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l7aru"]
+atlas = ExtResource("1_4say3")
+region = Rect2(16, 11, 60, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_weqgu"]
+atlas = ExtResource("1_4say3")
+region = Rect2(28, 88, 56, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5lgnv"]
+atlas = ExtResource("1_4say3")
+region = Rect2(28, 88, 56, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vj8hk"]
+atlas = ExtResource("1_4say3")
+region = Rect2(9, 93, 76, 20)
+
+[node name="PlayerBar" type="Control" unique_id=160299636 groups=["PlayerBar"]]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_hdqpu")
+
+[node name="stamina_bar" type="TextureProgressBar" parent="." unique_id=582171018 groups=["PlayerBar"]]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 79.0
+offset_top = 627.0
+offset_right = 301.0
+offset_bottom = 647.0
+grow_vertical = 0
+nine_patch_stretch = true
+texture_under = SubResource("AtlasTexture_djkbh")
+texture_over = SubResource("AtlasTexture_b7mh3")
+texture_progress = SubResource("AtlasTexture_07tfq")
+tint_under = Color(0.91330606, 0.7629983, 0.64685506, 0.67600006)
+script = ExtResource("2_hdqpu")
+
+[node name="hunger_bar" type="TextureProgressBar" parent="." unique_id=2013076725 groups=["PlayerBar"]]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 73.0
+offset_top = 592.0
+offset_right = 273.0
+offset_bottom = 610.0
+grow_vertical = 0
+max_value = 150.0
+nine_patch_stretch = true
+texture_under = SubResource("AtlasTexture_dt752")
+texture_over = SubResource("AtlasTexture_tc4ax")
+texture_progress = SubResource("AtlasTexture_l7aru")
+tint_under = Color(0.91132057, 0.79118866, 0.6908011, 0.53800005)
+script = ExtResource("3_5o004")
+
+[node name="hp_bar" type="TextureProgressBar" parent="." unique_id=415315757 groups=["PlayerBar"]]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 88.0
+offset_top = 612.0
+offset_right = 312.0
+offset_bottom = 626.0
+grow_vertical = 0
+max_value = 200.0
+nine_patch_stretch = true
+texture_under = SubResource("AtlasTexture_weqgu")
+texture_progress = SubResource("AtlasTexture_5lgnv")
+tint_under = Color(0.36185044, 0.19952738, 0.16397086, 0.85882354)
+script = ExtResource("4_qqhfj")
+
+[node name="healthbardecor" type="TextureRect" parent="." unique_id=1940533141 groups=["PlayerBar"]]
+custom_minimum_size = Vector2(300, 70)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 584.0
+offset_right = 316.0
+offset_bottom = 654.0
+grow_vertical = 0
+texture = SubResource("AtlasTexture_vj8hk")
+
+[node name="hp_label" type="Label" parent="." unique_id=1763196833 groups=["PlayerBar"]]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 172.0
+offset_top = 606.0
+offset_right = 212.0
+offset_bottom = 629.0
+grow_vertical = 0

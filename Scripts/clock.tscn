@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://2ur8j7c1v2un"]
+
+[ext_resource type="Script" uid="uid://dmrjabrt0njvq" path="res://Scripts/day_counter.gd" id="1_756xr"]
+[ext_resource type="Texture2D" uid="uid://8qn3jb53vo6c" path="res://Sprites/clock4.png" id="2_slr35"]
+[ext_resource type="Texture2D" uid="uid://c1w1adrgxc7pf" path="res://Sprites/clock0.png" id="3_rdka5"]
+
+[node name="Clock" type="Control" unique_id=385021879]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="day_counter" type="Label" parent="." unique_id=1103331008]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 762.0
+offset_top = 123.0
+offset_right = 802.0
+offset_bottom = 146.0
+grow_horizontal = 0
+script = ExtResource("1_756xr")
+
+[node name="clock_overlay" type="TextureRect" parent="." unique_id=1483333510]
+modulate = Color(0, 0, 0, 0.69000006)
+top_level = true
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -120.0
+offset_bottom = 120.0
+grow_horizontal = 0
+texture = ExtResource("2_slr35")
+
+[node name="clock" type="TextureRect" parent="." unique_id=561191610]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 740.0
+offset_right = 860.0
+offset_bottom = 120.0
+grow_horizontal = 0
+texture = ExtResource("3_rdka5")

@@ -1,17 +1,24 @@
 extends Node2D
+
 @onready var click_e_to_sleep: Label = $ClickEToSleep
 @onready var cant_sleep_label: Label = $CantSleepLabel
-@onready var day_counter: Label = $"../../../CanvasLayer/day_counter"
 @onready var day_night_overlay: CanvasModulate = $"../../../DayNightOverlay"
 
-var can_sleep:=false
-var target_color=Color(1,1,1,1)
+var clock
+var day_counter
+
+var can_sleep := false
+var target_color = Color(1,1,1,1)
 var sleeping = false
 var sleep_timer = 0.0 
-var label_timer=1.5
+var label_timer = 1.5
 var showing_label = false
-var entered_bed_area=false
+var entered_bed_area = false
 
+func _ready() -> void:
+	clock = get_tree().get_first_node_in_group("Clock")
+	day_counter = clock.get_node_or_null("day_counter")
+		
 func _process(delta: float) -> void:
 	if can_sleep:
 		if (day_counter.hours>=22 or day_counter.hours<6):

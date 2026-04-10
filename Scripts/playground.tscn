@@ -10,56 +10,13 @@
 [ext_resource type="PackedScene" uid="uid://by20bk2bsvhjj" path="res://Scenes/StaticStructures/tree.tscn" id="9_bm257"]
 [ext_resource type="PackedScene" uid="uid://0o2u3jdd6y1" path="res://Scenes/StaticStructures/boulder.tscn" id="10_08ji3"]
 [ext_resource type="PackedScene" uid="uid://do35dwig5w8gm" path="res://Scenes/StaticStructures/bush.tscn" id="11_42c27"]
-[ext_resource type="Texture2D" uid="uid://d34crl0llr6ot" path="res://Player/Sprite/hp_bar/HealthBar DARK.png" id="12_g0rsy"]
-[ext_resource type="Script" uid="uid://dfgdasket7d4t" path="res://Scripts/healthbar.gd" id="13_65dde"]
-[ext_resource type="Script" uid="uid://bg4om7e84kh7o" path="res://Scripts/staminabar.gd" id="14_djkbh"]
-[ext_resource type="Script" uid="uid://c4ge23nfre5nx" path="res://Scripts/hunger_bar.gd" id="14_vj8hk"]
-[ext_resource type="Texture2D" uid="uid://c1w1adrgxc7pf" path="res://Sprites/clock0.png" id="16_b7mh3"]
-[ext_resource type="Script" uid="uid://dmrjabrt0njvq" path="res://Scripts/day_counter.gd" id="17_07tfq"]
-[ext_resource type="Texture2D" uid="uid://8qn3jb53vo6c" path="res://Sprites/clock4.png" id="17_dt752"]
+[ext_resource type="PackedScene" uid="uid://2ur8j7c1v2un" path="res://Scripts/clock.tscn" id="13_vj8hk"]
+[ext_resource type="PackedScene" uid="uid://317bak6hdgps" path="res://Scripts/player_bar.tscn" id="14_b7mh3"]
+[ext_resource type="PackedScene" uid="uid://fhgceyryjqfs" path="res://Scenes/DeathPanel.tscn" id="19_bm257"]
 [ext_resource type="PackedScene" uid="uid://dwr75oy600gxk" path="res://Scenes/StaticStructures/bed.tscn" id="19_l7aru"]
 [ext_resource type="Script" uid="uid://bs3h32b6gxe2i" path="res://Scripts/day_night_overlay.gd" id="19_tc4ax"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_djkbh"]
-atlas = ExtResource("12_g0rsy")
-region = Rect2(19, 34, 59, 4)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_b7mh3"]
-atlas = ExtResource("12_g0rsy")
-region = Rect2(19, 45, 59, 4)
-filter_clip = true
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_07tfq"]
-atlas = ExtResource("12_g0rsy")
-region = Rect2(20, 35, 59, 2)
-filter_clip = true
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dt752"]
-atlas = ExtResource("12_g0rsy")
-region = Rect2(18, 12, 57, 2)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_tc4ax"]
-atlas = ExtResource("12_g0rsy")
-region = Rect2(18, 22, 61, 4)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_l7aru"]
-atlas = ExtResource("12_g0rsy")
-region = Rect2(16, 11, 60, 4)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_weqgu"]
-atlas = ExtResource("12_g0rsy")
-region = Rect2(28, 88, 56, 4)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5lgnv"]
-atlas = ExtResource("12_g0rsy")
-region = Rect2(28, 88, 56, 4)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vj8hk"]
-atlas = ExtResource("12_g0rsy")
-region = Rect2(9, 93, 76, 20)
-
 [node name="Playground" type="Node2D" unique_id=571104678]
-position = Vector2(-17, -37)
 
 [node name="Grass01" parent="." unique_id=1278695867 instance=ExtResource("2_djkbh")]
 z_index = -12
@@ -104,109 +61,14 @@ position = Vector2(290.0417, 1.7495117)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1072751443]
 
-[node name="stamina_bar" type="TextureProgressBar" parent="CanvasLayer" unique_id=414128137]
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 79.0
-offset_top = -33.0
-offset_right = 301.0
-offset_bottom = -13.0
-grow_vertical = 0
-nine_patch_stretch = true
-texture_under = SubResource("AtlasTexture_djkbh")
-texture_over = SubResource("AtlasTexture_b7mh3")
-texture_progress = SubResource("AtlasTexture_07tfq")
-tint_under = Color(0.91330606, 0.7629983, 0.64685506, 0.67600006)
-script = ExtResource("14_djkbh")
+[node name="Clock" parent="CanvasLayer" unique_id=385021879 groups=["Clock"] instance=ExtResource("13_vj8hk")]
 
-[node name="hunger_bar" type="TextureProgressBar" parent="CanvasLayer" unique_id=1178149246]
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 73.0
-offset_top = -68.0
-offset_right = 273.0
-offset_bottom = -50.0
-grow_vertical = 0
-max_value = 150.0
-nine_patch_stretch = true
-texture_under = SubResource("AtlasTexture_dt752")
-texture_over = SubResource("AtlasTexture_tc4ax")
-texture_progress = SubResource("AtlasTexture_l7aru")
-tint_under = Color(0.91132057, 0.79118866, 0.6908011, 0.53800005)
-script = ExtResource("14_vj8hk")
+[node name="PlayerBar" parent="CanvasLayer" unique_id=160299636 instance=ExtResource("14_b7mh3")]
 
-[node name="hp_bar" type="TextureProgressBar" parent="CanvasLayer" unique_id=7326749]
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 88.0
-offset_top = -48.0
-offset_right = 312.0
-offset_bottom = -34.0
-grow_vertical = 0
-max_value = 200.0
-nine_patch_stretch = true
-texture_under = SubResource("AtlasTexture_weqgu")
-texture_progress = SubResource("AtlasTexture_5lgnv")
-tint_under = Color(0.36185044, 0.19952738, 0.16397086, 0.85882354)
-script = ExtResource("13_65dde")
-
-[node name="healthbardecor" type="TextureRect" parent="CanvasLayer" unique_id=379240010]
-custom_minimum_size = Vector2(300, 70)
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 16.0
-offset_top = -76.0
-offset_right = 316.0
-offset_bottom = -6.0
-grow_vertical = 0
-texture = SubResource("AtlasTexture_vj8hk")
-
-[node name="hp_label" type="Label" parent="CanvasLayer" unique_id=1536956169]
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 172.0
-offset_top = -54.0
-offset_right = 212.0
-offset_bottom = -31.0
-grow_vertical = 0
-
-[node name="clock" type="TextureRect" parent="CanvasLayer" unique_id=1260328760]
-custom_minimum_size = Vector2(120, 120)
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -40.0
-offset_bottom = 40.0
-grow_horizontal = 0
-texture = ExtResource("16_b7mh3")
-
-[node name="clock_overlay" type="TextureRect" parent="CanvasLayer" unique_id=846681077]
-modulate = Color(0, 0, 0, 0.69000006)
+[node name="DeathPanel" parent="CanvasLayer" unique_id=67905963 instance=ExtResource("19_bm257")]
+visible = false
+self_modulate = Color(0.4840902, 0.0045073065, 8.904189e-07, 1)
 top_level = true
-custom_minimum_size = Vector2(120, 120)
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -120.0
-offset_bottom = 120.0
-grow_horizontal = 0
-texture = ExtResource("17_dt752")
-
-[node name="day_counter" type="Label" parent="CanvasLayer" unique_id=380600171]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -98.0
-offset_top = 123.0
-offset_right = -58.0
-offset_bottom = 146.0
-grow_horizontal = 0
-script = ExtResource("17_07tfq")
 
 [node name="DayNightOverlay" type="CanvasModulate" parent="." unique_id=1490973845]
 position = Vector2(819, 160)

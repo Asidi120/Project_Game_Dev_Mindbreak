@@ -1,5 +1,9 @@
 class_name Player extends CharacterBody2D
 
+@onready var death_panel: Control = $"../../../CanvasLayer/DeathPanel"
+@onready var player_bar: Control = $"../../../CanvasLayer/PlayerBar"
+@onready var clock: Control = $"../../../CanvasLayer/Clock"
+
 signal hp_changed(current_hp, max_hp)
 signal stamina_usage(current_stamina, max_stamina)
 signal hunger_changed(current_hunger,max_hunger)
@@ -20,6 +24,7 @@ var max_hunger=150
 var hunger_timer:float= 0.0
 var hunger_interval_normal:float= 2.0
 var hunger_interval_sprint:float= 0.5
+var spawn_point=global_position
 
 @onready var anim = $AnimationPlayer
 @onready var sprite = $Sprite2D
@@ -44,6 +49,9 @@ func heal(amount):
 
 func die():
 	print("player died")
+	death_panel.visible=true
+	get_tree().paused=true
+	player_bar.reset()
 
 func update_hunger(delta):
 	var interval = hunger_interval_normal

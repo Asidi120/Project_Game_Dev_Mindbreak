@@ -1,6 +1,6 @@
 extends TextureProgressBar
 
-@onready var player = %Player
+@onready var player: Player = $"../../../BleakYellowGrass/level/Player"
 @onready var hp_label: Label = $"../hp_label"
 
 var target_hp:float=0

@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://317bak6hdgps"]
 
 [ext_resource type="Texture2D" uid="uid://d34crl0llr6ot" path="res://Player/Sprite/hp_bar/HealthBar DARK.png" id="1_4say3"]
-[ext_resource type="Script" uid="uid://cqt5nyb1vdosp" path="res://Scripts/playerbar.gd" id="1_hdqpu"]
 [ext_resource type="Script" uid="uid://bg4om7e84kh7o" path="res://Scripts/staminabar.gd" id="2_hdqpu"]
 [ext_resource type="Script" uid="uid://c4ge23nfre5nx" path="res://Scripts/hunger_bar.gd" id="3_5o004"]
 [ext_resource type="Script" uid="uid://dfgdasket7d4t" path="res://Scripts/healthbar.gd" id="4_qqhfj"]
@@ -49,7 +48,6 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-script = ExtResource("1_hdqpu")
 
 [node name="stamina_bar" type="TextureProgressBar" parent="." unique_id=582171018 groups=["PlayerBar"]]
 layout_mode = 1

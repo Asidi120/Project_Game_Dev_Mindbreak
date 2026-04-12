@@ -51,7 +51,6 @@ func die():
 	print("player died")
 	death_panel.visible=true
 	get_tree().paused=true
-	player_bar.reset()
 
 func update_hunger(delta):
 	var interval = hunger_interval_normal

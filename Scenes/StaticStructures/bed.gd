@@ -33,6 +33,8 @@ func _process(delta: float) -> void:
 			click_e_to_sleep.visible=true
 		else:
 			click_e_to_sleep.visible=false
+	else:
+		click_e_to_sleep.visible=false
 	if sleeping:
 		sleeping_in_action(delta)
 

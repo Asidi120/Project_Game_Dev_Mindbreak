@@ -6,11 +6,6 @@ var hits := 0
 
 @export var scene: PackedScene #instancja sceny struktury
 @export var scene2: PackedScene
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	$Area2D.body_entered.connect(_on_area_2d_body_entered) #podpięcie automatyczne do innych struktur
-	$Area2D.body_exited.connect(_on_area_2d_body_exited)
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

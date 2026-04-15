@@ -1,4 +1,4 @@
-class_name EvilWolf extends CharacterBody2D
+class_name BringerOfDeath extends CharacterBody2D
 
 signal hp_changed(current_hp, max_hp)
 signal died
@@ -7,13 +7,14 @@ enum State { PATROL, CHASE, ATTACK, HIT, DEAD }
 
 var is_taking_damage = false
 var is_dead = false
+var player_in_attack_range=false
 
 # --- STATS ---
 @export var max_hp: int = 100
 var current_hp: int
 
 @export var speed: float = 80
-@export var attack_range: float = 30
+@export var attack_range: float = 100
 @export var attack_cooldown: float = 1.2
 
 var lose_target_delay = 0.5
@@ -30,10 +31,12 @@ var patrol_points: Array = []
 var patrol_index: int = 0
 var patrol_origin: Vector2
 
-@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var sprite: AnimatedSprite2D = $Visual/AnimatedSprite2D
 @onready var hp_bar = $Hp_bar
-@onready var points_container: Node2D = $"../PatrolPoints"
-
+@onready var visual: Node2D = $Visual
+@onready var normal_attack_area: Area2D = $Normal_attack_Area
+@onready var points_container: Node2D = $"../PatrolPionts"
+@onready var follow_area: Area2D = $Follow_Area
 
 func _ready():
 	current_hp = max_hp
@@ -42,14 +45,20 @@ func _ready():
 	
 	if "target" in hp_bar:
 		hp_bar.set_target(self)
-	print("Wolf HP:", current_hp)
+	print("BrinderOFDeath HP:", current_hp)
 	for p in points_container.get_children():
 		patrol_points.append(p)
 
 func _physics_process(delta):
-	if state == State.DEAD or state == State.HIT:
+	if state == State.DEAD or state == State.HIT or state == State.ATTACK:
 		move_and_slide()
 		return
+	if target == null:
+		var bodies = follow_area.get_overlapping_bodies()
+		for b in bodies:
+			if b.is_in_group("Players"):
+				target = b
+				state = State.CHASE
 
 	match state:
 		State.PATROL:
@@ -84,35 +93,34 @@ func chase():
 		return
 
 	var distance = global_position.distance_to(target.global_position)
-
-	if distance > attack_range:
-		velocity = (target.global_position - global_position).normalized() * speed
-	else:
+	if player_in_attack_range:
+		velocity = Vector2.ZERO
 		start_attack()
+	else:
+		velocity = (target.global_position - global_position).normalized() * speed
 
 func start_attack():
-	if not can_attack:
+	if not can_attack or state == State.DEAD:
 		return
 
 	state = State.ATTACK
 	can_attack = false
 	velocity = Vector2.ZERO
-
 	sprite.play("attack")
-
-	if target and target.has_method("take_damage"):
+	await get_tree().create_timer(1).timeout
+	if target and player_in_attack_range and target.has_method("take_damage"):
 		target.take_damage(10)
-
 	await sprite.animation_finished
 
 	state = State.CHASE
-	await get_tree().create_timer(attack_cooldown).timeout
+	#await get_tree().create_timer(attack_cooldown).timeout
 	can_attack = true
 
 # DAMAGE SYSTEM
 func take_damage(amount: int):
 	if state == State.DEAD:
 		return
+
 	current_hp -= amount
 	current_hp = clamp(current_hp, 0, max_hp)
 	print("Wolf hp: ",current_hp)
@@ -126,7 +134,7 @@ func take_damage(amount: int):
 func enter_hit_state():
 	state = State.HIT
 	velocity = Vector2.ZERO
-	sprite.play("dmg_taken")
+	sprite.play("hurt")
 	await sprite.animation_finished
 	state = State.CHASE
 
@@ -163,21 +171,25 @@ func play_anim(name: String):
 
 func update_flip():
 	if velocity.x < 0:
-		sprite.flip_h = false
+		visual.scale.x = 1
+		normal_attack_area.position.x=0
 	elif velocity.x > 0:
-		sprite.flip_h = true
+		normal_attack_area.position.x=85
+		visual.scale.x = -1
 
 # DETECTION
 
 func _on_follow_area_body_entered(body):
 	if body.is_in_group("Players"):
 		target = body
+		losing_target = false
 		state = State.CHASE
+		can_attack=true
 
 func _on_follow_area_body_exited(body):
 	if body == target:
 		start_losing_target()
-
+		
 func start_losing_target():
 	losing_target = true
 	await get_tree().create_timer(lose_target_delay).timeout
@@ -193,3 +205,11 @@ func shift_patrol_points():
 	for p in patrol_points:
 		p.global_position += offset
 	patrol_origin = global_position
+
+func _on_normal_attack_area_body_entered(body):
+	if body.is_in_group("Players"):
+		player_in_attack_range = true
+
+func _on_normal_attack_area_body_exited(body):
+	if body.is_in_group("Players"):
+		player_in_attack_range = false

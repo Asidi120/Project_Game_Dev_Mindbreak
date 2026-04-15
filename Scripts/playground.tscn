@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://by20bk2bsvhjj" path="res://Scenes/StaticStructures/tree.tscn" id="9_bm257"]
 [ext_resource type="PackedScene" uid="uid://0o2u3jdd6y1" path="res://Scenes/StaticStructures/boulder.tscn" id="10_08ji3"]
 [ext_resource type="PackedScene" uid="uid://do35dwig5w8gm" path="res://Scenes/StaticStructures/bush.tscn" id="11_42c27"]
+[ext_resource type="PackedScene" uid="uid://k84l1fx6ixln" path="res://Enemies/BringerOfDeath/BringerOfDeath.tscn" id="12_b7mh3"]
 [ext_resource type="PackedScene" uid="uid://2ur8j7c1v2un" path="res://Scripts/clock.tscn" id="13_vj8hk"]
 [ext_resource type="PackedScene" uid="uid://317bak6hdgps" path="res://Scripts/player_bar.tscn" id="14_b7mh3"]
 [ext_resource type="PackedScene" uid="uid://fhgceyryjqfs" path="res://Scenes/DeathPanel.tscn" id="19_bm257"]
@@ -56,8 +57,11 @@ position = Vector2(152.04167, 254.74951)
 [node name="Tree2" parent="BleakYellowGrass/level" unique_id=1667716825 instance=ExtResource("9_bm257")]
 position = Vector2(115.04167, -79.25049)
 
-[node name="EvilWolfWithPoints" parent="BleakYellowGrass/level" unique_id=697092607 instance=ExtResource("8_l7aru")]
+[node name="EvilWolfWithPoints" parent="BleakYellowGrass/level" unique_id=697092607 groups=["Enemies"] instance=ExtResource("8_l7aru")]
 position = Vector2(290.0417, 1.7495117)
+
+[node name="BringerOfDeath" parent="BleakYellowGrass/level" unique_id=2039038124 instance=ExtResource("12_b7mh3")]
+position = Vector2(-255.95833, 364.7495)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1072751443]
 

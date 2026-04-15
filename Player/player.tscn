@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c2ba84dn3m3oh" path="res://Player/Scripts/player.gd" id="1_4ntmi"]
 [ext_resource type="Texture2D" uid="uid://ce67ralp6odp" path="res://Player/Sprite/ExamplePlayerSprite.png" id="1_l8h54"]
+[ext_resource type="Script" uid="uid://ttiddxaqgsgm" path="res://Scripts/playerattackhitbox.gd" id="3_btcbx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4ntmi"]
 size = Vector2(10.999573, 17.99936)
@@ -98,6 +99,9 @@ _data = {
 &"walk_up": SubResource("Animation_fhl08")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_4ntmi"]
+radius = 23.021729
+
 [node name="Player" type="CharacterBody2D" unique_id=257810088 groups=["Players"]]
 script = ExtResource("1_4ntmi")
 
@@ -120,3 +124,14 @@ libraries/ = SubResource("AnimationLibrary_gwnis")
 position = Vector2(0, 6)
 zoom = Vector2(1.5, 1.5)
 position_smoothing_enabled = true
+
+[node name="AttackHitbox" type="Area2D" parent="." unique_id=990617455]
+monitoring = false
+script = ExtResource("3_btcbx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackHitbox" unique_id=270531353]
+position = Vector2(14, -17)
+shape = SubResource("CircleShape2D_4ntmi")
+
+[connection signal="area_entered" from="AttackHitbox" to="AttackHitbox" method="_on_area_entered"]
+[connection signal="body_entered" from="AttackHitbox" to="AttackHitbox" method="_on_body_entered"]

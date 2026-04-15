@@ -6,6 +6,8 @@ class_name Player extends CharacterBody2D
 signal hp_changed(current_hp, max_hp)
 signal stamina_usage(current_stamina, max_stamina)
 signal hunger_changed(current_hunger,max_hunger)
+@onready var attack_hitbox: Area2D = $AttackHitbox
+var is_attacking = false
 
 var move_speed = 100
 var direction = Vector2.ZERO
@@ -24,16 +26,31 @@ var hunger_timer:float= 0.0
 var hunger_interval_normal:float= 2.0
 var hunger_interval_sprint:float= 0.5
 var spawn_point=global_position
+var already_hit = []
 
 @onready var anim = $AnimationPlayer
 @onready var sprite = $Sprite2D
 func _ready():
 	hp_bar.set_target(self)
+	attack_hitbox.monitoring=false
+	
 func _physics_process(delta):
 	get_input()
 	move_player(delta)
 	update_animation()
 	update_hunger(delta)
+	if Input.is_action_just_pressed("attack") and not is_attacking:
+		attack()
+
+func attack():
+	is_attacking = true
+	#sprite.play("attack")
+	attack_hitbox.monitoring = true  # włącz hitbox
+	await get_tree().create_timer(0.2).timeout  # czas uderzenia
+	attack_hitbox.monitoring = false
+	#await sprite.animation_finished
+	is_attacking = false
+	already_hit=[]
 
 func take_damage(amount):
 	current_hp -= amount

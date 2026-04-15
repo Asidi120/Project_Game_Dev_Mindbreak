@@ -267,7 +267,7 @@ debug_color = Color(0.9219775, 0.5182506, 0.51914895, 0.41960785)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="EvilWolf" unique_id=1938056192]
 position = Vector2(0, -31)
 sprite_frames = SubResource("SpriteFrames_m8kn1")
-animation = &"attack"
+animation = &"death"
 autoplay = "idle"
 
 [node name="Attack_Area" type="Area2D" parent="EvilWolf" unique_id=1934571482]
@@ -300,5 +300,6 @@ shape = SubResource("RectangleShape2D_bjf20")
 [connection signal="animation_finished" from="EvilWolf/AnimatedSprite2D" to="EvilWolf" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="EvilWolf/Attack_Area" to="EvilWolf" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="EvilWolf/Attack_Area" to="EvilWolf" method="_on_area_2d_body_exited"]
+[connection signal="area_entered" from="EvilWolf/Hitbox" to="EvilWolf" method="_on_hitbox_area_entered"]
 [connection signal="body_entered" from="EvilWolf/Hitbox" to="EvilWolf" method="_on_hitbox_body_entered"]
 [connection signal="body_exited" from="EvilWolf/Hitbox" to="EvilWolf" method="_on_hitbox_body_exited"]

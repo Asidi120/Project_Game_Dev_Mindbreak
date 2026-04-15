@@ -3,11 +3,12 @@ class_name BringerOfDeath extends CharacterBody2D
 signal hp_changed(current_hp, max_hp)
 signal died
 
-enum State { PATROL, CHASE, ATTACK, HIT, DEAD }
+enum State { PATROL, CHASE, ATTACK, RANGED_ATTACK, HIT, DEAD }
 
 var is_taking_damage = false
 var is_dead = false
 var player_in_attack_range=false
+var player_in_spell_range=false
 
 # --- STATS ---
 @export var max_hp: int = 100
@@ -37,6 +38,7 @@ var patrol_origin: Vector2
 @onready var normal_attack_area: Area2D = $Normal_attack_Area
 @onready var points_container: Node2D = $"../PatrolPionts"
 @onready var follow_area: Area2D = $Follow_Area
+@export var spell_scene: PackedScene = preload("uid://cc6mqodld7i5h")
 
 func _ready():
 	current_hp = max_hp
@@ -50,7 +52,7 @@ func _ready():
 		patrol_points.append(p)
 
 func _physics_process(delta):
-	if state == State.DEAD or state == State.HIT or state == State.ATTACK:
+	if state == State.DEAD or state == State.HIT or state == State.ATTACK or state==State.RANGED_ATTACK:
 		move_and_slide()
 		return
 	if target == null:
@@ -67,6 +69,8 @@ func _physics_process(delta):
 			chase()
 		State.ATTACK:
 			velocity = Vector2.ZERO
+		State.RANGED_ATTACK:
+			velocity=Vector2.ZERO
 
 	move_and_slide()
 	update_animation()
@@ -96,6 +100,9 @@ func chase():
 	if player_in_attack_range:
 		velocity = Vector2.ZERO
 		start_attack()
+	elif player_in_spell_range:
+		velocity = Vector2.ZERO
+		cast_spell()
 	else:
 		velocity = (target.global_position - global_position).normalized() * speed
 
@@ -114,6 +121,23 @@ func start_attack():
 
 	state = State.CHASE
 	#await get_tree().create_timer(attack_cooldown).timeout
+	can_attack = true
+
+func cast_spell():
+	if not can_attack or state == State.DEAD:
+		return
+
+	state = State.RANGED_ATTACK
+	can_attack = false
+	velocity = Vector2.ZERO
+	sprite.play("cast")
+	await get_tree().create_timer(1).timeout
+	var spell = spell_scene.instantiate()
+	get_tree().current_scene.add_child(spell)
+	spell.global_position = global_position
+	spell.init(target)
+	await sprite.animation_finished
+	state = State.CHASE
 	can_attack = true
 
 # DAMAGE SYSTEM
@@ -158,6 +182,8 @@ func update_animation():
 	if is_taking_damage:
 		return
 	if state == State.ATTACK:
+		return
+	if state == State.RANGED_ATTACK:
 		return
 	if velocity.length() < 1:
 		play_anim("idle")
@@ -213,3 +239,11 @@ func _on_normal_attack_area_body_entered(body):
 func _on_normal_attack_area_body_exited(body):
 	if body.is_in_group("Players"):
 		player_in_attack_range = false
+
+func _on_spell_range_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Players"):
+		player_in_spell_range = true
+
+func _on_spell_range_body_exited(body: Node2D) -> void:
+	if body.is_in_group("Players"):
+		player_in_spell_range = false

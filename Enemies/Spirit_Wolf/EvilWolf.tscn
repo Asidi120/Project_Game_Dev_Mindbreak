@@ -238,7 +238,7 @@ region = Rect2(18, 152, 59, 6)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bjf20"]
 size = Vector2(57, 24)
 
-[node name="EvilWolfWithPoints" type="Node2D" unique_id=697092607]
+[node name="EvilWolfWithPoints" type="Node2D" unique_id=697092607 groups=["Enemies"]]
 
 [node name="PatrolPoints" type="Node2D" parent="." unique_id=1648978633]
 

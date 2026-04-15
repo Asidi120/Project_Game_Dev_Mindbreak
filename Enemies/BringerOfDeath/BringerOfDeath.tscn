@@ -22,7 +22,7 @@ radius = 33.0
 height = 126.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_so0cg"]
-radius = 180.04443
+radius = 237.00844
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mfvm1"]
 atlas = ExtResource("2_035mu")
@@ -407,6 +407,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_7kqxg"]
+radius = 166.04819
+
 [node name="BringerOfDeath" type="Node2D" unique_id=2039038124]
 position = Vector2(0, -24)
 
@@ -455,6 +458,12 @@ animation = &"attack"
 frame = 9
 frame_progress = 1.0
 
+[node name="Spell_Range" type="Area2D" parent="BringerOfDeath" unique_id=849328103]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BringerOfDeath/Spell_Range" unique_id=721911686]
+position = Vector2(1, 0)
+shape = SubResource("CircleShape2D_7kqxg")
+
 [node name="PatrolPionts" type="Node2D" parent="." unique_id=1696371687]
 
 [node name="Point1" type="Marker2D" parent="PatrolPionts" unique_id=776949948 groups=["PatrolPoints"]]
@@ -467,3 +476,5 @@ position = Vector2(-91, -3)
 [connection signal="body_exited" from="BringerOfDeath/Normal_attack_Area" to="BringerOfDeath" method="_on_normal_attack_area_body_exited"]
 [connection signal="body_entered" from="BringerOfDeath/Follow_Area" to="BringerOfDeath" method="_on_follow_area_body_entered"]
 [connection signal="body_exited" from="BringerOfDeath/Follow_Area" to="BringerOfDeath" method="_on_follow_area_body_exited"]
+[connection signal="body_entered" from="BringerOfDeath/Spell_Range" to="BringerOfDeath" method="_on_spell_range_body_entered"]
+[connection signal="body_exited" from="BringerOfDeath/Spell_Range" to="BringerOfDeath" method="_on_spell_range_body_exited"]

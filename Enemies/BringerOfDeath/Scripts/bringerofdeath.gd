@@ -138,6 +138,7 @@ func cast_spell():
 	spell.init(target)
 	await sprite.animation_finished
 	state = State.CHASE
+	await get_tree().create_timer(3).timeout
 	can_attack = true
 
 # DAMAGE SYSTEM

@@ -411,7 +411,6 @@ animations = [{
 radius = 166.04819
 
 [node name="BringerOfDeath" type="Node2D" unique_id=2039038124]
-position = Vector2(0, -24)
 
 [node name="BringerOfDeath" type="CharacterBody2D" parent="." unique_id=485098827]
 script = ExtResource("1_7kqxg")

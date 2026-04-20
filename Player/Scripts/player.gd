@@ -30,19 +30,52 @@ var already_hit = []
 
 @onready var anim = $AnimationPlayer
 @onready var sprite = $Sprite2D
+
+enum State { IDLE, MOVE, ATTACK, DEAD, STUNNED }
+var state: State = State.IDLE
+
+# STATUS EFFECTS
+var is_stunned = false
+var is_slowed = false
+var is_poisoned = false
+var is_buffed = false
+
+var slow_multiplier = 0.5
+var buff_multiplier = 1.5
+var poison_damage = 2
+
 func _ready():
 	hp_bar.set_target(self)
 	attack_hitbox.monitoring=false
 	
 func _physics_process(delta):
-	get_input()
-	move_player(delta)
-	update_animation()
 	update_hunger(delta)
-	if Input.is_action_just_pressed("attack") and not is_attacking:
+
+	match state:
+		State.IDLE:
+			get_input()
+			move_player(delta)
+			if velocity != Vector2.ZERO:
+				state = State.MOVE
+		State.MOVE:
+			get_input()
+			move_player(delta)
+			if velocity == Vector2.ZERO:
+				state = State.IDLE
+		State.ATTACK:
+			velocity = Vector2.ZERO
+		State.STUNNED:
+			velocity = Vector2.ZERO
+		State.DEAD:
+			return
+
+	update_animation()
+
+	if Input.is_action_just_pressed("attack") and not is_attacking and state != State.STUNNED:
 		attack()
 
 func attack():
+	state = State.ATTACK
 	is_attacking = true
 	#sprite.play("attack")
 	attack_hitbox.monitoring = true  # włącz hitbox
@@ -50,12 +83,60 @@ func attack():
 	attack_hitbox.monitoring = false
 	#await sprite.animation_finished
 	is_attacking = false
-	already_hit=[]
+	already_hit = []
+
+	state = State.IDLE
+
+func apply_stun(duration: float):
+	if state == State.DEAD:
+		return
+		
+	state = State.STUNNED
+	is_stunned = true
+	velocity = Vector2.ZERO
+	
+	await get_tree().create_timer(duration).timeout
+	
+	is_stunned = false
+	state = State.IDLE
+	
+func apply_slow(duration: float, multiplier: float = 0.5):
+	is_slowed = true
+	slow_multiplier = multiplier
+	
+	await get_tree().create_timer(duration).timeout
+	
+	is_slowed = false
+	slow_multiplier = 1.0
+	
+func apply_poison(duration: float):
+	if is_poisoned:
+		return
+		
+	is_poisoned = true
+	
+	var time = 0.0
+	while time < duration:
+		await get_tree().create_timer(1.0).timeout
+		take_damage(poison_damage)
+		time += 1.0
+	
+	is_poisoned = false
+	
+func apply_buff(duration: float, multiplier: float = 1.5):
+	is_buffed = true
+	buff_multiplier = multiplier
+	
+	await get_tree().create_timer(duration).timeout
+	
+	is_buffed = false
+	buff_multiplier = 1.0
 
 func take_damage(amount):
 	current_hp -= amount
 	current_hp = clamp(current_hp, 0, max_hp)
 	emit_signal("hp_changed", current_hp, max_hp)
+	print("Player hp:",current_hp)
 	if current_hp<=0:
 		die()
 
@@ -65,9 +146,13 @@ func heal(amount):
 	emit_signal("hp_changed", current_hp, max_hp)
 
 func die():
+	if state == State.DEAD:
+		return
+		
+	state = State.DEAD
 	print("player died")
-	death_panel.visible=true
-	get_tree().paused=true
+	death_panel.visible = true
+	get_tree().paused = true
 
 func update_hunger(delta):
 	var interval = hunger_interval_normal
@@ -90,20 +175,29 @@ func get_input():
 	direction = direction.normalized()
 
 func move_player(delta):
+	var final_speed = move_speed
+
+	if is_slowed:
+		final_speed *= slow_multiplier
+		
+	if is_buffed:
+		final_speed *= buff_multiplier
+
 	if Input.get_action_strength("sprint") > 0:
 		current_stamina -= 15 * delta
-		if current_stamina<10 or current_hunger<=1:
-			velocity = direction * move_speed
+		if current_stamina < 10 or current_hunger <= 1:
+			velocity = direction * final_speed
 		else:
-			velocity = direction*(move_speed+100)
-			was_sprinting=true
+			velocity = direction * (final_speed + 100)
+			was_sprinting = true
 	else:
-		velocity = direction * move_speed
+		velocity = direction * final_speed
 		if was_sprinting:
-			was_sprinting=false
+			was_sprinting = false
 			stamina_recovery()
 		if !in_stamina_recovery:
 			current_stamina += 30 * delta
+
 	current_stamina = clamp(current_stamina, 0, max_stamina)
 	emit_signal("stamina_usage", current_stamina, max_stamina)
 	move_and_slide()

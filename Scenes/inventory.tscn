@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://x166r6kvfqjc"]
+
+[ext_resource type="Texture2D" uid="uid://dxd2olg7wq3gi" path="res://OtherSprites/Inventory_2.png" id="1_wdn4f"]
+
+[node name="Inventory" type="Control" unique_id=1630870992]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Panel" type="TextureRect" parent="." unique_id=45228536]
+layout_mode = 0
+offset_right = 275.0
+offset_bottom = 175.0
+texture = ExtResource("1_wdn4f")
+stretch_mode = 5
+
+[node name="GridContainer" type="GridContainer" parent="Panel" unique_id=1911285255]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0

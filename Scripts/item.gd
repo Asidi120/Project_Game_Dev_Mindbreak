@@ -3,6 +3,20 @@ var player_in_range := false
 
 @export var item_id := ""
 @export var item_name := ""
+#var texture = get_icon()
+
+@onready var sprite_2d: Sprite2D = $Sprite2D
+
+func get_icon() -> Texture2D:
+	if sprite_2d.region_enabled:
+		var atlas_texture = AtlasTexture.new()
+		atlas_texture.atlas = sprite_2d.texture
+		atlas_texture.region = sprite_2d.region_rect
+		return atlas_texture
+	else:
+		return sprite_2d.texture
+
+
 
 
 # Called when the node enters the scene tree for the first time.
@@ -27,5 +41,10 @@ func _on_body_exited(body: Node2D) -> void:
 		body.remove_item(self) #wywołuje remove item z playera
 		
 func collect():
+	var item = {
+		"item_id" : item_id,
+		"texture": get_icon()
+	}
 	print("+1 ", item_name)
 	queue_free()
+	return item

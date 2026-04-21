@@ -28,6 +28,8 @@ var hunger_interval_sprint:float= 0.5
 var spawn_point=global_position
 var already_hit = []
 
+var inventory = {}
+
 @onready var anim = $AnimationPlayer
 @onready var sprite = $Sprite2D
 func _ready():
@@ -141,9 +143,20 @@ func update_flip():
 		sprite.flip_h = false
 
 func _process(delta):
+	#Zbieranie itemów i dodawanie ich do ekwipunka wraz z ich ilością
 	if Input.is_action_just_pressed("pick_up") and items_in_range.size() > 0:
 		var item = items_in_range[0]  # bierze pierwszy
-		item.collect()
+		var item_picked_up = item.collect()
+		if item_picked_up["item_id"] not in inventory:
+			inventory[item_picked_up["item_id"]] = {
+				"amount": 1,
+				"texture": item_picked_up["texture"]
+			}
+		else:
+			inventory[item_picked_up["item_id"]]["amount"] += 1
+		print(inventory)
+
+
 		
 func add_item(item): #dodaje item do listy itemów w zasięgu
 	items_in_range.append(item)

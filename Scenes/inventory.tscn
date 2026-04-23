@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://x166r6kvfqjc"]
 
+[ext_resource type="Script" uid="uid://lbtnkb22ldyi" path="res://Scripts/inventory.gd" id="1_k5gp2"]
 [ext_resource type="Texture2D" uid="uid://dxd2olg7wq3gi" path="res://OtherSprites/Inventory_2.png" id="1_wdn4f"]
 
 [node name="Inventory" type="Control" unique_id=1630870992]
@@ -7,6 +8,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("1_k5gp2")
 
 [node name="Panel" type="TextureRect" parent="." unique_id=45228536]
 custom_minimum_size = Vector2(600, 400)

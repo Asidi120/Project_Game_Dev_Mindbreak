@@ -28,7 +28,8 @@ var hunger_interval_sprint:float= 0.5
 var spawn_point=global_position
 var already_hit = []
 
-var inventory = {}
+var inventory = []
+const MAX_STACK = 2 #maksymalna ilość w stacku
 
 #odwołanie do node ekwipunka ZMIENIĆ JEŚLI SIĘ PRZEENIESIE !!!!
 @onready var inventory_ui = get_tree().current_scene.get_node("CanvasLayer/Control/CenterContainer/Inventory")
@@ -152,13 +153,23 @@ func _process(delta):
 	if Input.is_action_just_pressed("pick_up") and items_in_range.size() > 0:
 		var item = items_in_range[0]  # bierze pierwszy
 		var item_picked_up = item.collect()
-		if item_picked_up["item_id"] not in inventory or inventory[item_picked_up["item_id"]]["amount"] >= 2:
-			inventory[item_picked_up["item_id"]] = {
+		var amount = 0
+		var found = false
+		for i in range(inventory.size() - 1, -1, -1): #sprawdza liste od tyłu
+			var item_data = inventory[i]
+			if item_data["item_id"] == item_picked_up["item_id"]: #jeśli znaleziono i mniej niż maxslot to dodaje amount
+				found = true
+				amount = item_data["amount"]
+				if amount < MAX_STACK:
+					item_data["amount"] += 1
+				break
+		if not found or amount == MAX_STACK: #jeśli nie znaleiono lub przekroczy max stack to nowy dodaje
+			
+			inventory.append({
+				"item_id": item_picked_up["item_id"],
 				"amount": 1,
 				"texture": item_picked_up["texture"]
-			}
-		else:
-			inventory[item_picked_up["item_id"]]["amount"] += 1
+			})
 		
 		inventory_ui.refresh(inventory) #wywołanie odświeżenia ekwipunka z inventory
 		print(inventory)

@@ -64,6 +64,12 @@ position = Vector2(290.0417, 1.7495117)
 [node name="BringerOfDeath" parent="BleakYellowGrass/level" unique_id=2039038124 instance=ExtResource("12_b7mh3")]
 position = Vector2(-255.95833, 364.7495)
 
+[node name="Wood2" parent="BleakYellowGrass/level" unique_id=301539799 instance=ExtResource("5_07tfq")]
+position = Vector2(-205.95833, -17.250488)
+
+[node name="Wood3" parent="BleakYellowGrass/level" unique_id=1775142645 instance=ExtResource("5_07tfq")]
+position = Vector2(-117.95833, -26.250488)
+
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1072751443]
 
 [node name="Control" type="Control" parent="CanvasLayer" unique_id=1172847181]

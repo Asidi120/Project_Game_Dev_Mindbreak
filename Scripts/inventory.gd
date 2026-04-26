@@ -12,14 +12,11 @@ func _process(delta: float) -> void: #pojawianie się ewkipunku na E
 	if Input.is_action_just_pressed("inventory"):
 		visible = !visible
 
-func refresh(inventory: Dictionary) -> void: #odświeżanie ekwipunka
+func refresh(player_inventory: Array) -> void:
 	for child in grid.get_children():
 		child.queue_free()
 
-	for item_id in inventory.keys():
-		var item_data = inventory[item_id]
-
+	for item_data in player_inventory:
 		var slot = slot_scene.instantiate()
 		grid.add_child(slot)
-
 		slot.set_item(item_data["texture"], item_data["amount"])

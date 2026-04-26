@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://cbhn33315cmms"]
+
+[ext_resource type="Script" uid="uid://dmjm4q0r3nfua" path="res://Scripts/item_slot.gd" id="1_qaprs"]
+
+[node name="ItemSlot" type="Panel" unique_id=1329976802]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_qaprs")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1414001968]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="." unique_id=1438049430]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0

@@ -30,6 +30,9 @@ var already_hit = []
 
 var inventory = {}
 
+#odwołanie do node ekwipunka ZMIENIĆ JEŚLI SIĘ PRZEENIESIE !!!!
+@onready var inventory_ui = get_tree().current_scene.get_node("CanvasLayer/Control/CenterContainer/Inventory")
+
 @onready var anim = $AnimationPlayer
 @onready var sprite = $Sprite2D
 func _ready():
@@ -154,6 +157,8 @@ func _process(delta):
 			}
 		else:
 			inventory[item_picked_up["item_id"]]["amount"] += 1
+		
+		inventory_ui.refresh(inventory) #wywołanie odświeżenia ekwipunka z inventory
 		print(inventory)
 
 

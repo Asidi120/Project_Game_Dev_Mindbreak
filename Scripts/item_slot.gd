@@ -14,3 +14,5 @@ func _process(delta: float) -> void:
 func set_item(texture: Texture2D, amount: int) -> void: #ustawia teksturke i ilosc (label)
 	icon.texture = texture
 	amount_label.text = str(amount)
+	#icon.position = Vector2(38, 58) + (Vector2(64, 64) - icon.size) / 2 - Vector2(7, 7)
+	icon.position = Vector2(7, 7)

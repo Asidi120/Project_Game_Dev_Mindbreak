@@ -40,6 +40,8 @@ func _ready():
 	attack_hitbox.monitoring=false
 	
 func _physics_process(delta):
+	if inventory_ui.visible: #blokuje playera jeśli ekwipunek otwarty
+		return
 	get_input()
 	move_player(delta)
 	update_animation()
@@ -150,7 +152,7 @@ func _process(delta):
 	if Input.is_action_just_pressed("pick_up") and items_in_range.size() > 0:
 		var item = items_in_range[0]  # bierze pierwszy
 		var item_picked_up = item.collect()
-		if item_picked_up["item_id"] not in inventory:
+		if item_picked_up["item_id"] not in inventory or inventory[item_picked_up["item_id"]]["amount"] >= 2:
 			inventory[item_picked_up["item_id"]] = {
 				"amount": 1,
 				"texture": item_picked_up["texture"]

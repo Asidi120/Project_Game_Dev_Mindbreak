@@ -2,6 +2,7 @@ extends Panel
 
 signal slot_clicked(slot)
 
+var item_data = null
 var selected := false
 @onready var icon: TextureRect = $TextureRect
 @onready var amount_label: Label = $Label
@@ -14,10 +15,10 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-func set_item(texture: Texture2D, amount: int) -> void: #ustawia teksturke i ilosc (label)
-	icon.texture = texture
-	amount_label.text = str(amount)
-	#icon.position = Vector2(38, 58) + (Vector2(64, 64) - icon.size) / 2 - Vector2(7, 7)
+func set_item(data: Dictionary) -> void: #ustawia teksturke i ilosc (label)
+	item_data = data
+	icon.texture = data["texture"]
+	amount_label.text = str(data["amount"])
 	icon.position = Vector2(7, 7)
 	
 func _gui_input(event: InputEvent) -> void:
@@ -30,7 +31,7 @@ func set_selected(value: bool) -> void:
 
 	if selected: #rysowanie obramowania
 		var style := StyleBoxFlat.new()
-		style.bg_color = Color(0.0, 0.0, 0.0, 0.196)
+		style.bg_color = Color(0.0, 0.0, 0.0, 0.235)
 		style.border_color = Color.BLACK
 		style.set_border_width_all(5)
 		add_theme_stylebox_override("panel", style)

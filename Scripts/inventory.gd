@@ -63,7 +63,7 @@ func refresh(player_inventory: Array) -> void:
 			#selected_slot = slot #zaznaczamy nowy
 			#selected_slot.set_selected(true)
 func _on_slot_clicked(slot):
-	if selected_slot == slot:
+	if selected_slot == slot: #jeśli ten sam to odznaczamy
 		slot.set_selected(false)
 		selected_slot = null
 		return

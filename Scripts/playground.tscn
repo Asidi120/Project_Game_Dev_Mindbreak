@@ -106,3 +106,18 @@ top_level = true
 [node name="DayNightOverlay" type="CanvasModulate" parent="." unique_id=1490973845]
 position = Vector2(819, 160)
 script = ExtResource("19_tc4ax")
+
+[node name="Stone" parent="." unique_id=1826651587 instance=ExtResource("6_dt752")]
+position = Vector2(-248, 50)
+
+[node name="Stone2" parent="." unique_id=1075539586 instance=ExtResource("6_dt752")]
+position = Vector2(-180, 9)
+
+[node name="Stick" parent="." unique_id=399330163 instance=ExtResource("7_tc4ax")]
+position = Vector2(-263, -58)
+
+[node name="Stick2" parent="." unique_id=1986307383 instance=ExtResource("7_tc4ax")]
+position = Vector2(-256, -34)
+
+[node name="Stone3" parent="." unique_id=338843384 instance=ExtResource("6_dt752")]
+position = Vector2(-255, 74)

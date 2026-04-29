@@ -4,6 +4,8 @@ signal slot_clicked(slot)
 
 var item_data = null
 var selected := false
+
+var slot_index = -1
 @onready var icon: TextureRect = $TextureRect
 @onready var amount_label: Label = $Label
 # Called when the node enters the scene tree for the first time.
@@ -38,3 +40,8 @@ func set_selected(value: bool) -> void:
 	else:
 		var style_clear = StyleBoxEmpty.new()
 		add_theme_stylebox_override("panel", style_clear)
+
+func clear_item():
+	item_data = null
+	icon.texture = null
+	amount_label.text = ""

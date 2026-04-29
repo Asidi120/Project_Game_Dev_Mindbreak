@@ -30,6 +30,7 @@ var already_hit = []
 
 var inventory = []
 const MAX_STACK = 2 #maksymalna ilość w stacku
+const MAX_SLOT = 18
 
 #odwołanie do node ekwipunka ZMIENIĆ JEŚLI SIĘ PRZEENIESIE !!!!
 @onready var inventory_ui = get_tree().current_scene.get_node("CanvasLayer/Control/CenterContainer/Inventory")
@@ -39,6 +40,9 @@ const MAX_STACK = 2 #maksymalna ilość w stacku
 func _ready():
 	hp_bar.set_target(self)
 	attack_hitbox.monitoring=false
+	
+	for i in range(MAX_SLOT):
+		inventory.append(null)
 	
 func _physics_process(delta):
 	if inventory_ui.visible: #blokuje playera jeśli ekwipunek otwarty
@@ -156,20 +160,23 @@ func _process(delta):
 		var amount = 0
 		var found = false
 		for i in range(inventory.size() - 1, -1, -1): #sprawdza liste od tyłu
-			var item_data = inventory[i]
-			if item_data["item_id"] == item_picked_up["item_id"]: #jeśli znaleziono i mniej niż maxslot to dodaje amount
-				found = true
-				amount = item_data["amount"]
-				if amount < MAX_STACK:
-					item_data["amount"] += 1
-				break
+			if inventory[i] != null:
+				var item_data = inventory[i]
+				if item_data["item_id"] == item_picked_up["item_id"]: #jeśli znaleziono i mniej niż maxslot to dodaje amount
+					found = true
+					amount = item_data["amount"]
+					if amount < MAX_STACK:
+						item_data["amount"] += 1
+					break
 		if not found or amount == MAX_STACK: #jeśli nie znaleiono lub przekroczy max stack to nowy dodaje
-			
-			inventory.append({
-				"item_id": item_picked_up["item_id"],
-				"amount": 1,
-				"texture": item_picked_up["texture"]
-			})
+			for i in range(inventory.size()):
+				if inventory[i] == null:
+					inventory[i]={
+						"item_id": item_picked_up["item_id"],
+						"amount": 1,
+						"texture": item_picked_up["texture"]
+					}
+					break
 		
 		inventory_ui.refresh(inventory) #wywołanie odświeżenia ekwipunka z inventory
 		print(inventory)

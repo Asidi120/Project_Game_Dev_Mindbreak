@@ -2,6 +2,7 @@ extends Control
 
 var selected_slot = null
 var MAX_SLOT = 18
+const MAX_STACK = 3 #maksymalna ilość w stacku
 
 var current_inventory: Array
 
@@ -38,31 +39,8 @@ func refresh(player_inventory: Array) -> void:
 
 		slot.slot_clicked.connect(_on_slot_clicked)
 
-#func _on_slot_clicked(slot, player_inventory: Array):
-	##var change := false
-	##if selected_slot.item_data != null:
-	#
-		#if selected_slot == slot: #jeśli ten sam to odznaczamy
-			#slot.set_selected(false)
-			#selected_slot = null
-		#else:
-			#if selected_slot != null: #jeśli inny to go odznacz
-				#selected_slot.set_selected(false)
-				#
-				##zamiana przedmiotów
-				#if slot.item_data == null:
-					#var previous_slot = selected_slot.item_data
-					#selected_slot.clear_item() 
-					#slot.set_item(previous_slot)
-				#
-				#else:
-					#var previous_slot = selected_slot.item_data
-					#selected_slot.set_item(slot.item_data)
-					#slot.set_item(previous_slot)
-			#
-			#selected_slot = slot #zaznaczamy nowy
-			#selected_slot.set_selected(true)
 func _on_slot_clicked(slot):
+	var czy_dodanie_do_stacka = false
 	if selected_slot == slot: #jeśli ten sam to odznaczamy
 		slot.set_selected(false)
 		selected_slot = null
@@ -73,8 +51,22 @@ func _on_slot_clicked(slot):
 		var b = slot.slot_index
 
 		var temp = current_inventory[a]
-		current_inventory[a] = current_inventory[b]
-		current_inventory[b] = temp
+		
+		#ręczne dodawanie do stacka jeśli jest miejsce 
+		if slot.item_data != null and selected_slot.item_data != null:
+			if selected_slot.item_data["item_id"] == slot.item_data["item_id"]:
+				if slot.item_data["amount"] < MAX_STACK:
+					var ile_do_stacka = MAX_STACK - slot.item_data["amount"]
+					current_inventory[a]["amount"] -= ile_do_stacka
+					current_inventory[b]["amount"] += ile_do_stacka
+					
+					if current_inventory[a]["amount"] == 0:
+						current_inventory[a] = null
+						print("esfesfse")
+					czy_dodanie_do_stacka = true
+		if not czy_dodanie_do_stacka:
+			current_inventory[a] = current_inventory[b]
+			current_inventory[b] = temp
 
 		refresh(current_inventory)
 		selected_slot = null

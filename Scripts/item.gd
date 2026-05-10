@@ -1,4 +1,5 @@
 extends Area2D
+class_name Item
 var player_in_range := false
 
 @export var item_id := ""

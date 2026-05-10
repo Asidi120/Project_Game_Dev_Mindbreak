@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bcludh5t7uiln"]
 
-[ext_resource type="Script" uid="uid://cvtmhh1hpljyx" path="res://Scripts/item.gd" id="1_f2riy"]
+[ext_resource type="Script" uid="uid://b8sml5hh8donk" path="res://Scripts/food_item.gd" id="1_f2riy"]
 [ext_resource type="Texture2D" uid="uid://b3b521rbrcqhh" path="res://OtherSprites/Items/Items.png" id="2_evoku"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jov10"]

@@ -10,6 +10,7 @@ size = Vector2(36.61953, 34.193924)
 script = ExtResource("1_tfydv")
 item_id = "wood"
 item_name = "Wood"
+item_scene = null
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=834627305]
 z_index = -1

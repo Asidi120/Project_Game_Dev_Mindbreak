@@ -11,6 +11,7 @@ z_index = -1
 script = ExtResource("1_lx5v6")
 item_id = "stone"
 item_name = "Stone"
+item_scene = null
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=31446442]
 scale = Vector2(0.120619185, 0.120619155)

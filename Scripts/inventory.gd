@@ -19,6 +19,9 @@ func _process(delta: float) -> void: #pojawianie się ewkipunku na E
 		visible = !visible
 		if not visible:
 			clear_selection() #zaznaczenie odklikuje sie po wyłączeniu ekwipunka
+	#branie rzeczy z ekwipunka
+	if Input.is_action_just_pressed("pick_up"):
+		pick_from_inventory()
 
 
 func refresh(player_inventory: Array) -> void:
@@ -79,3 +82,24 @@ func clear_selection():
 	if selected_slot != null:
 		selected_slot.set_selected(false)
 		selected_slot = null
+		
+func drop_item(slot):
+	var item_data = slot.item_data
+	var item_id = item_data["item_id"]
+	
+	print("DROP item_id: ", item_id)
+
+	var scene = load("res://Scenes/Items/" + item_id + ".tscn")
+
+	if scene == null:
+		print("Brak sceny dla itemu: ", item_id)
+		return
+
+	var item_instance = scene.instantiate()
+	get_tree().current_scene.add_child(item_instance)
+	item_instance.global_position = Vector2(10, 10)
+	
+func pick_from_inventory():
+	if selected_slot != null and selected_slot.item_data != null:
+			print("wybrano item")
+			drop_item(selected_slot)

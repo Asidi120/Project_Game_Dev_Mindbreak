@@ -11,9 +11,10 @@
 [ext_resource type="PackedScene" uid="uid://0o2u3jdd6y1" path="res://Scenes/StaticStructures/boulder.tscn" id="10_08ji3"]
 [ext_resource type="PackedScene" uid="uid://do35dwig5w8gm" path="res://Scenes/StaticStructures/bush.tscn" id="11_42c27"]
 [ext_resource type="PackedScene" uid="uid://k84l1fx6ixln" path="res://Enemies/BringerOfDeath/BringerOfDeath.tscn" id="12_b7mh3"]
-[ext_resource type="PackedScene" uid="uid://x166r6kvfqjc" path="res://Scenes/inventory.tscn" id="13_07tfq"]
+[ext_resource type="PackedScene" path="res://Scenes/inventory.tscn" id="13_07tfq"]
 [ext_resource type="PackedScene" uid="uid://2ur8j7c1v2un" path="res://Scripts/clock.tscn" id="13_vj8hk"]
 [ext_resource type="PackedScene" uid="uid://317bak6hdgps" path="res://Scripts/player_bar.tscn" id="14_b7mh3"]
+[ext_resource type="PackedScene" uid="uid://bcludh5t7uiln" path="res://Scenes/Items/meat.tscn" id="18_dt752"]
 [ext_resource type="PackedScene" uid="uid://fhgceyryjqfs" path="res://Scenes/DeathPanel.tscn" id="19_bm257"]
 [ext_resource type="PackedScene" uid="uid://dwr75oy600gxk" path="res://Scenes/StaticStructures/bed.tscn" id="19_l7aru"]
 [ext_resource type="Script" uid="uid://bs3h32b6gxe2i" path="res://Scripts/day_night_overlay.gd" id="19_tc4ax"]
@@ -121,3 +122,6 @@ position = Vector2(-256, -34)
 
 [node name="Stone3" parent="." unique_id=338843384 instance=ExtResource("6_dt752")]
 position = Vector2(-255, 74)
+
+[node name="Meat" parent="." unique_id=6965398 instance=ExtResource("18_dt752")]
+position = Vector2(-74, -17)

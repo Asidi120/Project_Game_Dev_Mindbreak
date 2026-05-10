@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://0o2u3jdd6y1" path="res://Scenes/StaticStructures/boulder.tscn" id="10_08ji3"]
 [ext_resource type="PackedScene" uid="uid://do35dwig5w8gm" path="res://Scenes/StaticStructures/bush.tscn" id="11_42c27"]
 [ext_resource type="PackedScene" uid="uid://k84l1fx6ixln" path="res://Enemies/BringerOfDeath/BringerOfDeath.tscn" id="12_b7mh3"]
+[ext_resource type="PackedScene" uid="uid://x166r6kvfqjc" path="res://Scenes/inventory.tscn" id="13_07tfq"]
 [ext_resource type="PackedScene" uid="uid://2ur8j7c1v2un" path="res://Scripts/clock.tscn" id="13_vj8hk"]
 [ext_resource type="PackedScene" uid="uid://317bak6hdgps" path="res://Scripts/player_bar.tscn" id="14_b7mh3"]
 [ext_resource type="PackedScene" uid="uid://fhgceyryjqfs" path="res://Scenes/DeathPanel.tscn" id="19_bm257"]
@@ -57,13 +58,41 @@ position = Vector2(152.04167, 254.74951)
 [node name="Tree2" parent="BleakYellowGrass/level" unique_id=1667716825 instance=ExtResource("9_bm257")]
 position = Vector2(115.04167, -79.25049)
 
-[node name="EvilWolfWithPoints" parent="BleakYellowGrass/level" unique_id=697092607 groups=["Enemies"] instance=ExtResource("8_l7aru")]
+[node name="EvilWolfWithPoints" parent="BleakYellowGrass/level" unique_id=697092607 instance=ExtResource("8_l7aru")]
 position = Vector2(290.0417, 1.7495117)
 
 [node name="BringerOfDeath" parent="BleakYellowGrass/level" unique_id=2039038124 instance=ExtResource("12_b7mh3")]
 position = Vector2(-255.95833, 364.7495)
 
+[node name="Wood2" parent="BleakYellowGrass/level" unique_id=301539799 instance=ExtResource("5_07tfq")]
+position = Vector2(-205.95833, -17.250488)
+
+[node name="Wood3" parent="BleakYellowGrass/level" unique_id=1775142645 instance=ExtResource("5_07tfq")]
+position = Vector2(-117.95833, -26.250488)
+
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1072751443]
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=1172847181]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/Control" unique_id=1425884122]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Inventory" parent="CanvasLayer/Control/CenterContainer" unique_id=1630870992 instance=ExtResource("13_07tfq")]
+custom_minimum_size = Vector2(500, 400)
+layout_mode = 2
 
 [node name="Clock" parent="CanvasLayer" unique_id=385021879 groups=["Clock"] instance=ExtResource("13_vj8hk")]
 
@@ -77,3 +106,18 @@ top_level = true
 [node name="DayNightOverlay" type="CanvasModulate" parent="." unique_id=1490973845]
 position = Vector2(819, 160)
 script = ExtResource("19_tc4ax")
+
+[node name="Stone" parent="." unique_id=1826651587 instance=ExtResource("6_dt752")]
+position = Vector2(-248, 50)
+
+[node name="Stone2" parent="." unique_id=1075539586 instance=ExtResource("6_dt752")]
+position = Vector2(-180, 9)
+
+[node name="Stick" parent="." unique_id=399330163 instance=ExtResource("7_tc4ax")]
+position = Vector2(-263, -58)
+
+[node name="Stick2" parent="." unique_id=1986307383 instance=ExtResource("7_tc4ax")]
+position = Vector2(-256, -34)
+
+[node name="Stone3" parent="." unique_id=338843384 instance=ExtResource("6_dt752")]
+position = Vector2(-255, 74)

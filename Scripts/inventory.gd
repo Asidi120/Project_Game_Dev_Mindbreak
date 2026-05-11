@@ -90,6 +90,7 @@ func drop_item(slot):
 	print("DROP item_id: ", item_id)
 
 	var scene = load("res://Scenes/Items/" + item_id + ".tscn")
+	
 
 	if scene == null:
 		print("Brak sceny dla itemu: ", item_id)

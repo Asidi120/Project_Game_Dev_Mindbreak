@@ -18,9 +18,6 @@ func _process(delta: float) -> void:
 			queue_free() #struktura znika
 			drop_item()
 			
-			
-			
-			
 func drop_item():
 	if scene:
 		var item = scene.instantiate()
@@ -32,11 +29,9 @@ func drop_item():
 		get_parent().add_child(item2)
 		item2.global_position = global_position + Vector2(10, 35)
 
-
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
 		player_in_range = true #player w obrębie struktury
-
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body.name == "Player":

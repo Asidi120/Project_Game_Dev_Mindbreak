@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://x166r6kvfqjc" path="res://Scenes/inventory.tscn" id="13_07tfq"]
 [ext_resource type="PackedScene" uid="uid://2ur8j7c1v2un" path="res://Scripts/clock.tscn" id="13_vj8hk"]
 [ext_resource type="PackedScene" uid="uid://317bak6hdgps" path="res://Scripts/player_bar.tscn" id="14_b7mh3"]
+[ext_resource type="PackedScene" uid="uid://bnvix2ex2pbsw" path="res://Enemies/IceGolem/IceColem.tscn" id="17_07tfq"]
 [ext_resource type="PackedScene" uid="uid://fhgceyryjqfs" path="res://Scenes/DeathPanel.tscn" id="19_bm257"]
 [ext_resource type="PackedScene" uid="uid://dwr75oy600gxk" path="res://Scenes/StaticStructures/bed.tscn" id="19_l7aru"]
 [ext_resource type="Script" uid="uid://bs3h32b6gxe2i" path="res://Scripts/day_night_overlay.gd" id="19_tc4ax"]
@@ -62,7 +63,7 @@ position = Vector2(115.04167, -79.25049)
 position = Vector2(290.0417, 1.7495117)
 
 [node name="BringerOfDeath" parent="BleakYellowGrass/level" unique_id=2039038124 instance=ExtResource("12_b7mh3")]
-position = Vector2(-255.95833, 364.7495)
+position = Vector2(-529.9583, 605.7495)
 
 [node name="Wood2" parent="BleakYellowGrass/level" unique_id=301539799 instance=ExtResource("5_07tfq")]
 position = Vector2(-205.95833, -17.250488)
@@ -102,6 +103,12 @@ layout_mode = 2
 visible = false
 self_modulate = Color(0.4840902, 0.0045073065, 8.904189e-07, 1)
 top_level = true
+
+[node name="Crafting" type="Control" parent="CanvasLayer" unique_id=1281508474]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="DayNightOverlay" type="CanvasModulate" parent="." unique_id=1490973845]
 position = Vector2(819, 160)

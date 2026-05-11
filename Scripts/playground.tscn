@@ -59,10 +59,10 @@ position = Vector2(152.04167, 254.74951)
 position = Vector2(115.04167, -79.25049)
 
 [node name="EvilWolfWithPoints" parent="BleakYellowGrass/level" unique_id=697092607 instance=ExtResource("8_l7aru")]
-position = Vector2(290.0417, 1.7495117)
+position = Vector2(636.0417, -154.25049)
 
 [node name="BringerOfDeath" parent="BleakYellowGrass/level" unique_id=2039038124 instance=ExtResource("12_b7mh3")]
-position = Vector2(-255.95833, 364.7495)
+position = Vector2(-529.9583, 605.7495)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1072751443]
 
@@ -75,9 +75,15 @@ visible = false
 self_modulate = Color(0.4840902, 0.0045073065, 8.904189e-07, 1)
 top_level = true
 
+[node name="Crafting" type="Control" parent="CanvasLayer" unique_id=1281508474]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
 [node name="DayNightOverlay" type="CanvasModulate" parent="." unique_id=1490973845]
 position = Vector2(819, 160)
 script = ExtResource("19_tc4ax")
 
 [node name="IceGolem" parent="." unique_id=431811086 instance=ExtResource("17_07tfq")]
-position = Vector2(703, 498)
+position = Vector2(1318, 626)

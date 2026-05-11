@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://b70fk741qrjt7"]
+
+[ext_resource type="PackedScene" uid="uid://2ur8j7c1v2un" path="res://Scripts/clock.tscn" id="1_vow1y"]
+[ext_resource type="PackedScene" uid="uid://317bak6hdgps" path="res://Scripts/player_bar.tscn" id="2_ne771"]
+[ext_resource type="PackedScene" uid="uid://fhgceyryjqfs" path="res://Scenes/DeathPanel.tscn" id="3_xxqia"]
+
+[node name="HUD" type="CanvasLayer" unique_id=1148326026 groups=["hud"]]
+
+[node name="Clock" parent="." unique_id=385021879 groups=["Clock"] instance=ExtResource("1_vow1y")]
+
+[node name="PlayerBar" parent="." unique_id=160299636 instance=ExtResource("2_ne771")]
+
+[node name="DeathPanel" parent="." unique_id=67905963 instance=ExtResource("3_xxqia")]
+visible = false
+self_modulate = Color(0.4840902, 0.0045073065, 8.904189e-07, 1)
+top_level = true

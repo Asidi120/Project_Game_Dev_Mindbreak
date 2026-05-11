@@ -1,0 +1,84 @@
+[gd_scene format=3 uid="uid://djh8hvchvj68o"]
+
+[node name="CreatePlayerControl" type="Control" unique_id=493679978]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="." unique_id=5826306]
+layout_mode = 0
+offset_left = 398.0
+offset_top = 20.0
+offset_right = 491.0
+offset_bottom = 43.0
+text = "word create"
+
+[node name="WordNameLineEdit" type="LineEdit" parent="." unique_id=707543293]
+layout_mode = 0
+offset_left = 221.0
+offset_top = 82.0
+offset_right = 289.5
+offset_bottom = 113.0
+
+[node name="WordNameLabel" type="Label" parent="." unique_id=414739071]
+layout_mode = 0
+offset_left = 118.0
+offset_top = 86.0
+offset_right = 215.0
+offset_bottom = 109.0
+text = "Word Name:"
+
+[node name="CharacterNameLineEdit" type="LineEdit" parent="." unique_id=2060608873]
+layout_mode = 0
+offset_left = 221.0
+offset_top = 128.0
+offset_right = 289.5
+offset_bottom = 159.0
+
+[node name="CharacterNameLabel2" type="Label" parent="." unique_id=1106692316]
+layout_mode = 0
+offset_left = 83.0
+offset_top = 133.0
+offset_right = 215.0
+offset_bottom = 156.0
+text = "Character Name:"
+
+[node name="PlayerPreview" type="Control" parent="." unique_id=1267705947]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Skin" type="TextureRect" parent="PlayerPreview" unique_id=493034437]
+layout_mode = 1
+anchors_preset = -1
+anchor_bottom = 0.5
+offset_left = 576.0
+offset_top = 259.0
+offset_right = 676.0
+offset_bottom = 262.0
+
+[node name="Hair" type="TextureRect" parent="PlayerPreview" unique_id=1856989140]
+layout_mode = 1
+anchors_preset = -1
+anchor_bottom = 0.5
+offset_left = 591.0
+offset_top = 273.0
+offset_right = 631.0
+offset_bottom = 293.0
+
+[node name="Clothes" type="TextureRect" parent="PlayerPreview" unique_id=1618389305]
+layout_mode = 0
+offset_left = 631.0
+offset_top = 317.0
+offset_right = 671.0
+offset_bottom = 357.0
+
+[node name="Hat" type="TextureRect" parent="PlayerPreview" unique_id=644301065]
+layout_mode = 0
+offset_left = 666.0
+offset_top = 269.0
+offset_right = 706.0
+offset_bottom = 309.0

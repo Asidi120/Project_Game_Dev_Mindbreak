@@ -1,14 +1,16 @@
 extends TextureProgressBar
 
-@onready var player: Player = $"../../../BleakYellowGrass/level/Player"
-
+var player: Player
 var target_hunger: float = 0
 
 func _ready():
-	player.hunger_changed.connect(update_bar)
-	update_bar(player.current_hunger, player.max_hunger)
-	value = player.current_hunger
-	target_hunger = player.current_hunger
+	await get_tree().process_frame
+	player = get_tree().get_first_node_in_group("player")
+	if player:
+		player.hunger_changed.connect(update_bar)
+		update_bar(player.current_hunger, player.max_hunger)
+		value = player.current_hunger
+		target_hunger = player.current_hunger
 
 func update_bar(current_hunger, max_hunger):
 	max_value = max_hunger

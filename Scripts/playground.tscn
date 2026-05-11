@@ -11,9 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://0o2u3jdd6y1" path="res://Scenes/StaticStructures/boulder.tscn" id="10_08ji3"]
 [ext_resource type="PackedScene" uid="uid://do35dwig5w8gm" path="res://Scenes/StaticStructures/bush.tscn" id="11_42c27"]
 [ext_resource type="PackedScene" uid="uid://k84l1fx6ixln" path="res://Enemies/BringerOfDeath/BringerOfDeath.tscn" id="12_b7mh3"]
-[ext_resource type="PackedScene" uid="uid://2ur8j7c1v2un" path="res://Scripts/clock.tscn" id="13_vj8hk"]
-[ext_resource type="PackedScene" uid="uid://317bak6hdgps" path="res://Scripts/player_bar.tscn" id="14_b7mh3"]
-[ext_resource type="PackedScene" uid="uid://fhgceyryjqfs" path="res://Scenes/DeathPanel.tscn" id="19_bm257"]
+[ext_resource type="PackedScene" uid="uid://b70fk741qrjt7" path="res://hud/HUD.tscn" id="14_djkbh"]
 [ext_resource type="PackedScene" uid="uid://dwr75oy600gxk" path="res://Scenes/StaticStructures/bed.tscn" id="19_l7aru"]
 [ext_resource type="Script" uid="uid://bs3h32b6gxe2i" path="res://Scripts/day_night_overlay.gd" id="19_tc4ax"]
 
@@ -57,23 +55,14 @@ position = Vector2(152.04167, 254.74951)
 [node name="Tree2" parent="BleakYellowGrass/level" unique_id=1667716825 instance=ExtResource("9_bm257")]
 position = Vector2(115.04167, -79.25049)
 
-[node name="EvilWolfWithPoints" parent="BleakYellowGrass/level" unique_id=697092607 groups=["Enemies"] instance=ExtResource("8_l7aru")]
+[node name="EvilWolfWithPoints" parent="BleakYellowGrass/level" unique_id=697092607 instance=ExtResource("8_l7aru")]
 position = Vector2(290.0417, 1.7495117)
 
 [node name="BringerOfDeath" parent="BleakYellowGrass/level" unique_id=2039038124 instance=ExtResource("12_b7mh3")]
 position = Vector2(-255.95833, 364.7495)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1072751443]
-
-[node name="Clock" parent="CanvasLayer" unique_id=385021879 groups=["Clock"] instance=ExtResource("13_vj8hk")]
-
-[node name="PlayerBar" parent="CanvasLayer" unique_id=160299636 instance=ExtResource("14_b7mh3")]
-
-[node name="DeathPanel" parent="CanvasLayer" unique_id=67905963 instance=ExtResource("19_bm257")]
-visible = false
-self_modulate = Color(0.4840902, 0.0045073065, 8.904189e-07, 1)
-top_level = true
-
 [node name="DayNightOverlay" type="CanvasModulate" parent="." unique_id=1490973845]
 position = Vector2(819, 160)
 script = ExtResource("19_tc4ax")
+
+[node name="HUD" parent="." unique_id=1148326026 instance=ExtResource("14_djkbh")]

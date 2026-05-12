@@ -28,6 +28,13 @@ var hunger_interval_sprint:float= 0.5
 var spawn_point=Vector2.ZERO
 var already_hit = []
 
+var inventory = []
+const MAX_STACK = 2 #maksymalna ilość w stacku
+const MAX_SLOT = 18
+
+#odwołanie do node ekwipunka ZMIENIĆ JEŚLI SIĘ PRZEENIESIE !!!!
+@onready var inventory_ui = get_tree().current_scene.get_node("CanvasLayer/Control/CenterContainer/Inventory")
+
 @onready var anim = $AnimationPlayer
 
 # Warstwy sprite'a — sprite wskazuje na LayerBody żeby flip_h działał na wszystkich
@@ -43,15 +50,61 @@ func _ready() -> void:
 		clock       = hud.get_node("Clock")
 		hp_bar      = hud.get_node("PlayerBar/hp_bar")
 
+@onready var sprite = $Sprite2D
+
+enum State { IDLE, MOVE, ATTACK, DEAD, STUNNED }
+var state: State = State.IDLE
+
+# STATUS EFFECTS
+var is_stunned = false
+var is_slowed = false
+var is_poisoned = false
+var is_buffed = false
+
+var slow_multiplier = 0.5
+var buff_multiplier = 1.5
+var poison_damage = 2
+
+func _ready():
+	hp_bar.set_target(self)
+	attack_hitbox.monitoring=false
+	
+	for i in range(MAX_SLOT):
+		inventory.append(null)
+	
 func _physics_process(delta):
+	if inventory_ui.visible: #blokuje playera jeśli ekwipunek otwarty
+		return
 	get_input()
 	move_player(delta)
 	update_animation()
 	update_hunger(delta)
-	if Input.is_action_just_pressed("attack") and not is_attacking:
+
+	match state:
+		State.IDLE:
+			get_input()
+			move_player(delta)
+			if velocity != Vector2.ZERO:
+				state = State.MOVE
+		State.MOVE:
+			get_input()
+			move_player(delta)
+			if velocity == Vector2.ZERO:
+				state = State.IDLE
+		State.ATTACK:
+			velocity = Vector2.ZERO
+		State.STUNNED:
+			velocity = Vector2.ZERO
+		State.DEAD:
+			return
+
+	update_animation()
+
+	if Input.is_action_just_pressed("attack") and not is_attacking and state != State.STUNNED:
 		attack()
 
 func attack():
+	state = State.ATTACK
 	is_attacking = true
 	attack_hitbox.monitoring = true
 	await get_tree().create_timer(0.2).timeout
@@ -59,11 +112,59 @@ func attack():
 	is_attacking = false
 	already_hit = []
 
+	state = State.IDLE
+
+func apply_stun(duration: float):
+	if state == State.DEAD:
+		return
+		
+	state = State.STUNNED
+	is_stunned = true
+	velocity = Vector2.ZERO
+	
+	await get_tree().create_timer(duration).timeout
+	
+	is_stunned = false
+	state = State.IDLE
+	
+func apply_slow(duration: float, multiplier: float = 0.5):
+	is_slowed = true
+	slow_multiplier = multiplier
+	
+	await get_tree().create_timer(duration).timeout
+	
+	is_slowed = false
+	slow_multiplier = 1.0
+	
+func apply_poison(duration: float):
+	if is_poisoned:
+		return
+		
+	is_poisoned = true
+	
+	var time = 0.0
+	while time < duration:
+		await get_tree().create_timer(1.0).timeout
+		take_damage(poison_damage)
+		time += 1.0
+	
+	is_poisoned = false
+	
+func apply_buff(duration: float, multiplier: float = 1.5):
+	is_buffed = true
+	buff_multiplier = multiplier
+	
+	await get_tree().create_timer(duration).timeout
+	
+	is_buffed = false
+	buff_multiplier = 1.0
+
 func take_damage(amount):
 	current_hp -= amount
 	current_hp = clamp(current_hp, 0, max_hp)
 	emit_signal("hp_changed", current_hp, max_hp)
-	if current_hp <= 0:
+	print("Player hp:",current_hp)
+	if current_hp<=0:
 		die()
 
 func heal(amount):
@@ -72,8 +173,12 @@ func heal(amount):
 	emit_signal("hp_changed", current_hp, max_hp)
 
 func die():
+	if state == State.DEAD:
+		return
+		
+	state = State.DEAD
 	print("player died")
-#	death_panel.visible = true
+	death_panel.visible = true
 	get_tree().paused = true
 
 func update_hunger(delta):
@@ -97,20 +202,29 @@ func get_input():
 	direction = direction.normalized()
 
 func move_player(delta):
+	var final_speed = move_speed
+
+	if is_slowed:
+		final_speed *= slow_multiplier
+		
+	if is_buffed:
+		final_speed *= buff_multiplier
+
 	if Input.get_action_strength("sprint") > 0:
 		current_stamina -= 15 * delta
 		if current_stamina < 10 or current_hunger <= 1:
-			velocity = direction * move_speed
+			velocity = direction * final_speed
 		else:
-			velocity = direction * (move_speed + 100)
+			velocity = direction * (final_speed + 100)
 			was_sprinting = true
 	else:
-		velocity = direction * move_speed
+		velocity = direction * final_speed
 		if was_sprinting:
 			was_sprinting = false
 			stamina_recovery()
 		if !in_stamina_recovery:
 			current_stamina += 30 * delta
+
 	current_stamina = clamp(current_stamina, 0, max_stamina)
 	emit_signal("stamina_usage", current_stamina, max_stamina)
 	move_and_slide()
@@ -148,12 +262,68 @@ func update_flip():
 	layer_hair.flip_h    = flipped
 	layer_clothes.flip_h = flipped
 
+#func _process(delta):
+	##Zbieranie itemów i dodawanie ich do ekwipunka wraz z ich ilością
+	#if Input.is_action_just_pressed("pick_up") and items_in_range.size() > 0:
+		#var item = items_in_range[0]  # bierze pierwszy
+		#var item_picked_up = item.collect()
+		#var amount = 0
+		#var found = false
+		#for i in range(inventory.size() - 1, -1, -1): #sprawdza liste od tyłu
+			#if inventory[i] != null:
+				#var item_data = inventory[i]
+				#if item_data["item_id"] == item_picked_up["item_id"]: #jeśli znaleziono i mniej niż maxslot to dodaje amount
+					#found = true
+					#amount = item_data["amount"]
+					#if amount < MAX_STACK:
+						#item_data["amount"] += 1
+					#break
+		#if not found or amount == MAX_STACK: #jeśli nie znaleiono lub przekroczy max stack to nowy dodaje
+			#for i in range(inventory.size()):
+				#if inventory[i] == null:
+					#inventory[i]={
+						#"item_id": item_picked_up["item_id"],
+						#"amount": 1,
+						#"texture": item_picked_up["texture"]
+					#}
+					#break
+		#
+		#inventory_ui.refresh(inventory) #wywołanie odświeżenia ekwipunka z inventory
+		#print(inventory)
 func _process(delta):
 	if Input.is_action_just_pressed("pick_up") and items_in_range.size() > 0:
 		var item = items_in_range[0]
-		item.collect()
+		var item_picked_up = item.collect()
+		var added = false
 
-func add_item(item):
+		# 1. Spróbuj dodać do istniejącego stacka, który NIE jest pełny
+		for i in range(inventory.size() - 1, -1, -1):
+			if inventory[i] != null:
+				var item_data = inventory[i]
+
+				if item_data["item_id"] == item_picked_up["item_id"] and item_data["amount"] < MAX_STACK:
+					item_data["amount"] += 1
+					added = true
+					break
+
+		# 2. Jeśli nie udało się dodać do stacka, dodaj do pustego slota
+		if not added:
+			for i in range(inventory.size()):
+				if inventory[i] == null:
+					inventory[i] = {
+						"item_id": item_picked_up["item_id"],
+						"amount": 1,
+						"texture": item_picked_up["texture"]
+					}
+					added = true
+					break
+
+		inventory_ui.refresh(inventory)
+		print(inventory)
+
+
+		
+func add_item(item): #dodaje item do listy itemów w zasięgu
 	items_in_range.append(item)
 
 func remove_item(item):

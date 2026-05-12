@@ -20,8 +20,9 @@ func _on_pressed() -> void:
 	player.current_hunger=player.max_hunger
 	player.current_stamina=player.max_stamina
 	player.global_position = player.spawn_point
+	player.state=player.State.IDLE
 	hunger_bar.update_bar(player.current_hunger,player.max_hunger)
 	stamina_bar.update_bar(player.current_stamina,player.max_stamina)
-	hp_bar.update_bar(player.current_hp,player.max_hp)
+	hp_bar.update_bar(player.max_hp,player.max_hp)
 	get_tree().paused=false
 	death_panel.visible=false

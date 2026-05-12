@@ -1,16 +1,18 @@
-class_name BringerOfDeath extends CharacterBody2D
+class_name IceGolem extends CharacterBody2D
 
 signal hp_changed(current_hp, max_hp)
 signal died
 
-enum State { PATROL, CHASE, ATTACK, RANGED_ATTACK, HIT, DEAD }
+enum State { PATROL, CHASE, ATTACK, HIT, DEAD }
 
 var is_taking_damage = false
 var is_dead = false
 var player_in_attack_range=false
-var player_in_spell_range=false
-var player_in_hitbox=false
-
+var player_in_spell_range=false 
+var player_in_hitbox=false # atak playera w zasiegu hiboxa
+var attack_interrupted = false #czy atak przerwany
+var can_be_interrupted = false #czy atak moze byc przerwany - wczesna faza
+var attack_id = 0
 
 # --- STATS ---
 @export var max_hp: int = 100
@@ -49,12 +51,12 @@ func _ready():
 	
 	if "target" in hp_bar:
 		hp_bar.set_target(self)
-	print("BrinderOFDeath HP:", current_hp)
+	print("IceGolem HP:", current_hp)
 	for p in points_container.get_children():
 		patrol_points.append(p)
 
 func _physics_process(delta):
-	if state == State.DEAD or state == State.HIT or state == State.ATTACK or state==State.RANGED_ATTACK:
+	if state == State.DEAD:
 		move_and_slide()
 		return
 	if target == null:
@@ -71,8 +73,9 @@ func _physics_process(delta):
 			chase()
 		State.ATTACK:
 			velocity = Vector2.ZERO
-		State.RANGED_ATTACK:
-			velocity=Vector2.ZERO
+		State.HIT:
+			# tylko brak ruchu, ale AI dalej działa
+			velocity = Vector2.ZERO
 
 	move_and_slide()
 	update_animation()
@@ -86,7 +89,7 @@ func patrol():
 	var point = patrol_points[patrol_index]
 	var distance = global_position.distance_to(point.global_position)
 	
-	if distance < 20:
+	if distance < 50:
 		patrol_index = (patrol_index + 1) % patrol_points.size()
 		velocity = Vector2.ZERO
 		return
@@ -101,70 +104,71 @@ func chase():
 	if player_in_attack_range:
 		velocity = Vector2.ZERO
 		start_attack()
-	elif player_in_spell_range:
-		velocity = Vector2.ZERO
-		cast_spell()
 	else:
 		velocity = (target.global_position - global_position).normalized() * speed
 
 func start_attack():
-	if not can_attack or state == State.DEAD:
+	if not can_attack or state != State.CHASE:
 		return
-
-	state = State.ATTACK
+	print("Start Attack")
 	can_attack = false
+	state = State.ATTACK
+	attack_interrupted = false
+	can_be_interrupted = true
 	velocity = Vector2.ZERO
 	sprite.play("attack")
-	await get_tree().create_timer(1).timeout
-	if target and player_in_attack_range and target.has_method("take_damage"):
+	print('faza 1')
+	await get_tree().create_timer(0.8).timeout
+	print('faza 2')
+	can_be_interrupted = false
+	await get_tree().create_timer(0.5).timeout
+	print('faza 3 dmg')
+	if target and not attack_interrupted and player_in_attack_range and target.has_method("take_damage"):
 		target.take_damage(10)
+		target.apply_stun(2.0)
+		print("obrazenia")
 	await sprite.animation_finished
 	state = State.CHASE
 	can_attack = true
 
-func cast_spell():
-	if not can_attack or state == State.DEAD or player_in_attack_range:
+func interrupt_attack():
+	if state != State.ATTACK:
 		return
-
-	state = State.RANGED_ATTACK
-	can_attack = false
-	velocity = Vector2.ZERO
-	sprite.play("cast")
-	await get_tree().create_timer(0.1).timeout
-	var spell = spell_scene.instantiate()
-	get_tree().current_scene.add_child(spell)
-	spell.global_position = global_position
-	spell.init(target)
-	await sprite.animation_finished
-	state = State.CHASE
-	await get_tree().create_timer(3).timeout
+	attack_interrupted = true
+	can_be_interrupted = false
+	print("atak przerwanys")
+	sprite.stop()
+	enter_hit_state()
 	can_attack = true
 
 # DAMAGE SYSTEM
 func take_damage(amount: int):
 	if state == State.DEAD:
 		return
-
 	current_hp -= amount
 	current_hp = clamp(current_hp, 0, max_hp)
-	print("BringerOfDeath hp: ",current_hp)
+	print("IceGolem hp: ", current_hp)
 	emit_signal("hp_changed", current_hp, max_hp)
-
-	if current_hp <= 0:
-		die()
+	if state == State.ATTACK:
+		if can_be_interrupted:
+			interrupt_attack()
+		else:
+			print("nie moze byc interupted hptaken")
 	else:
 		enter_hit_state()
+	if current_hp <= 0:
+		die()
 		
 func enter_hit_state():
+	if state == State.DEAD:
+		return
 	state = State.HIT
 	velocity = Vector2.ZERO
-	sprite.play("hurt")
+	sprite.play("hurt")  
 	await sprite.animation_finished
-	await get_tree().create_timer(0.1).timeout
+
 	state = State.CHASE
-
 # DEATH
-
 func die():
 	if state == State.DEAD:
 		return
@@ -184,7 +188,7 @@ func update_animation():
 		return
 	if state == State.ATTACK:
 		return
-	if state == State.RANGED_ATTACK:
+	if state == State.HIT:
 		return
 	if velocity.length() < 1:
 		play_anim("idle")
@@ -198,21 +202,20 @@ func play_anim(name: String):
 
 func update_flip():
 	if velocity.x < 0:
-		visual.scale.x = 1
-		normal_attack_area.position.x = 0
-	elif velocity.x > 0:
 		visual.scale.x = -1
-		normal_attack_area.position.x = 85
+		normal_attack_area.position.x = -55
+	elif velocity.x > 0:
+		visual.scale.x = 1
+		normal_attack_area.position.x = -20
 	elif velocity.x == 0 and target:
 		if target.global_position.x < global_position.x:
-			visual.scale.x = 1
-			normal_attack_area.position.x = 0
-		else:
 			visual.scale.x = -1
-			normal_attack_area.position.x = 85
+			normal_attack_area.position.x = -55
+		else:
+			visual.scale.x = 1
+			normal_attack_area.position.x = -20
 
 # DETECTION
-
 func _on_follow_area_body_entered(body):
 	if body.is_in_group("Players"):
 		target = body
@@ -247,14 +250,6 @@ func _on_normal_attack_area_body_entered(body):
 func _on_normal_attack_area_body_exited(body):
 	if body.is_in_group("Players"):
 		player_in_attack_range = false
-
-func _on_spell_range_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Players"):
-		player_in_spell_range = true
-
-func _on_spell_range_body_exited(body: Node2D) -> void:
-	if body.is_in_group("Players"):
-		player_in_spell_range = false
 
 func _on_hitbox_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Players"):

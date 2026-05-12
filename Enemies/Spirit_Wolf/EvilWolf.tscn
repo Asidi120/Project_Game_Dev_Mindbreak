@@ -258,6 +258,7 @@ position = Vector2(85, 44)
 script = ExtResource("1_8ppc7")
 
 [node name="Follow_Area" type="Area2D" parent="EvilWolf" unique_id=2122249004]
+monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EvilWolf/Follow_Area" unique_id=1514690277]
 position = Vector2(0, 1)

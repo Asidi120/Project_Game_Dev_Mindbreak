@@ -4,6 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://dj54xe27ee0w4" path="res://Tile Maps/world_tiles.png" id="2_cw7yw"]
 [ext_resource type="PackedScene" uid="uid://c2e0o08q8buid" path="res://Player/player.tscn" id="3_kmqk7"]
 [ext_resource type="PackedScene" uid="uid://b70fk741qrjt7" path="res://hud/HUD.tscn" id="4_cw7yw"]
+[ext_resource type="PackedScene" uid="uid://cm00qlqub0neu" path="res://Enemies/Spirit_Wolf/EvilWolf.tscn" id="5_s7w4w"]
+[ext_resource type="PackedScene" uid="uid://bhk8wb8aud5hg" path="res://Scenes/Items/wood.tscn" id="7_ump0c"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mu4sj"]
 texture = ExtResource("2_cw7yw")
@@ -34,3 +36,13 @@ offset_bottom = 23.0
 [node name="Player" parent="." unique_id=257810088 instance=ExtResource("3_kmqk7")]
 
 [node name="HUD" parent="." unique_id=1148326026 instance=ExtResource("4_cw7yw")]
+
+[node name="EvilWolfWithPoints" parent="." unique_id=697092607 instance=ExtResource("5_s7w4w")]
+position = Vector2(451.99997, 276)
+rotation = 0.67159015
+
+[node name="Wood" parent="." unique_id=1592250268 instance=ExtResource("7_ump0c")]
+position = Vector2(208, -38)
+
+[node name="Wood2" parent="." unique_id=297404989 instance=ExtResource("7_ump0c")]
+position = Vector2(284, -37)

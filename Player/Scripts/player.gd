@@ -29,28 +29,19 @@ var spawn_point=Vector2.ZERO
 var already_hit = []
 
 var inventory = []
-const MAX_STACK = 2 #maksymalna ilość w stacku
+const MAX_STACK = 2
 const MAX_SLOT = 18
 
-#odwołanie do node ekwipunka ZMIENIĆ JEŚLI SIĘ PRZEENIESIE !!!!
-@onready var inventory_ui = get_tree().current_scene.get_node("CanvasLayer/Control/CenterContainer/Inventory")
+# Inventory UI — szukane przez grupę żeby działało w każdej scenie
+var inventory_ui = null
 
 @onready var anim = $AnimationPlayer
 
-# Warstwy sprite'a — sprite wskazuje na LayerBody żeby flip_h działał na wszystkich
+# Warstwy sprite'a
 @onready var sprite:          Sprite2D = $Layers/LayerBody
 @onready var layer_body:      Sprite2D = $Layers/LayerBody
 @onready var layer_hair:      Sprite2D = $Layers/LayerHair
 @onready var layer_clothes:   Sprite2D = $Layers/LayerClothes
-
-func _ready() -> void:
-	var hud = get_tree().get_first_node_in_group("hud")
-	if hud:
-		death_panel = hud.get_node("DeathPanel")
-		clock       = hud.get_node("Clock")
-		hp_bar      = hud.get_node("PlayerBar/hp_bar")
-
-@onready var sprite = $Sprite2D
 
 enum State { IDLE, MOVE, ATTACK, DEAD, STUNNED }
 var state: State = State.IDLE
@@ -65,16 +56,39 @@ var slow_multiplier = 0.5
 var buff_multiplier = 1.5
 var poison_damage = 2
 
-func _ready():
-	hp_bar.set_target(self)
-	attack_hitbox.monitoring=false
-	
+func _ready() -> void:
+	await get_tree().process_frame
+	add_to_group("player")
+	add_to_group("Players")
+
+	# HUD
+	var hud = get_tree().get_first_node_in_group("hud")
+	if hud:
+		death_panel = hud.get_node_or_null("DeathPanel")
+		clock       = hud.get_node_or_null("Clock")
+		hp_bar      = hud.get_node_or_null("PlayerBar/hp_bar")
+		if hp_bar:
+			hp_bar.set_target(self)
+
+	# Inventory UI
+	inventory_ui = get_tree().get_first_node_in_group("inventory")
+
+	attack_hitbox.monitoring = false
+	spawn_point = global_position
+
 	for i in range(MAX_SLOT):
 		inventory.append(null)
-	
+
+	apply_appearance()
+
 func _physics_process(delta):
-	if inventory_ui.visible: #blokuje playera jeśli ekwipunek otwarty
+	if state == State.DEAD:
 		return
+
+	# Blokuj ruch gdy ekwipunek otwarty
+	if inventory_ui and inventory_ui.visible:
+		return
+
 	get_input()
 	move_player(delta)
 	update_animation()
@@ -82,23 +96,15 @@ func _physics_process(delta):
 
 	match state:
 		State.IDLE:
-			get_input()
-			move_player(delta)
 			if velocity != Vector2.ZERO:
 				state = State.MOVE
 		State.MOVE:
-			get_input()
-			move_player(delta)
 			if velocity == Vector2.ZERO:
 				state = State.IDLE
 		State.ATTACK:
 			velocity = Vector2.ZERO
 		State.STUNNED:
 			velocity = Vector2.ZERO
-		State.DEAD:
-			return
-
-	update_animation()
 
 	if Input.is_action_just_pressed("attack") and not is_attacking and state != State.STUNNED:
 		attack()
@@ -111,51 +117,40 @@ func attack():
 	attack_hitbox.monitoring = false
 	is_attacking = false
 	already_hit = []
-
 	state = State.IDLE
 
 func apply_stun(duration: float):
 	if state == State.DEAD:
 		return
-		
 	state = State.STUNNED
 	is_stunned = true
 	velocity = Vector2.ZERO
-	
 	await get_tree().create_timer(duration).timeout
-	
 	is_stunned = false
 	state = State.IDLE
-	
+
 func apply_slow(duration: float, multiplier: float = 0.5):
 	is_slowed = true
 	slow_multiplier = multiplier
-	
 	await get_tree().create_timer(duration).timeout
-	
 	is_slowed = false
 	slow_multiplier = 1.0
-	
+
 func apply_poison(duration: float):
 	if is_poisoned:
 		return
-		
 	is_poisoned = true
-	
 	var time = 0.0
 	while time < duration:
 		await get_tree().create_timer(1.0).timeout
 		take_damage(poison_damage)
 		time += 1.0
-	
 	is_poisoned = false
-	
+
 func apply_buff(duration: float, multiplier: float = 1.5):
 	is_buffed = true
 	buff_multiplier = multiplier
-	
 	await get_tree().create_timer(duration).timeout
-	
 	is_buffed = false
 	buff_multiplier = 1.0
 
@@ -163,8 +158,8 @@ func take_damage(amount):
 	current_hp -= amount
 	current_hp = clamp(current_hp, 0, max_hp)
 	emit_signal("hp_changed", current_hp, max_hp)
-	print("Player hp:",current_hp)
-	if current_hp<=0:
+	print("Player hp:", current_hp)
+	if current_hp <= 0:
 		die()
 
 func heal(amount):
@@ -175,10 +170,10 @@ func heal(amount):
 func die():
 	if state == State.DEAD:
 		return
-		
 	state = State.DEAD
 	print("player died")
-	death_panel.visible = true
+	if death_panel:
+		death_panel.visible = true
 	get_tree().paused = true
 
 func update_hunger(delta):
@@ -203,10 +198,8 @@ func get_input():
 
 func move_player(delta):
 	var final_speed = move_speed
-
 	if is_slowed:
 		final_speed *= slow_multiplier
-		
 	if is_buffed:
 		final_speed *= buff_multiplier
 
@@ -256,57 +249,27 @@ func play_anim(anim_name):
 		anim.play(anim_name)
 
 func update_flip():
-	# Flip na wszystkich warstwach jednocześnie
 	var flipped: bool = velocity.x < 0
 	layer_body.flip_h    = flipped
 	layer_hair.flip_h    = flipped
 	layer_clothes.flip_h = flipped
 
-#func _process(delta):
-	##Zbieranie itemów i dodawanie ich do ekwipunka wraz z ich ilością
-	#if Input.is_action_just_pressed("pick_up") and items_in_range.size() > 0:
-		#var item = items_in_range[0]  # bierze pierwszy
-		#var item_picked_up = item.collect()
-		#var amount = 0
-		#var found = false
-		#for i in range(inventory.size() - 1, -1, -1): #sprawdza liste od tyłu
-			#if inventory[i] != null:
-				#var item_data = inventory[i]
-				#if item_data["item_id"] == item_picked_up["item_id"]: #jeśli znaleziono i mniej niż maxslot to dodaje amount
-					#found = true
-					#amount = item_data["amount"]
-					#if amount < MAX_STACK:
-						#item_data["amount"] += 1
-					#break
-		#if not found or amount == MAX_STACK: #jeśli nie znaleiono lub przekroczy max stack to nowy dodaje
-			#for i in range(inventory.size()):
-				#if inventory[i] == null:
-					#inventory[i]={
-						#"item_id": item_picked_up["item_id"],
-						#"amount": 1,
-						#"texture": item_picked_up["texture"]
-					#}
-					#break
-		#
-		#inventory_ui.refresh(inventory) #wywołanie odświeżenia ekwipunka z inventory
-		#print(inventory)
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("pick_up") and items_in_range.size() > 0:
 		var item = items_in_range[0]
 		var item_picked_up = item.collect()
+		if not item_picked_up:
+			return
 		var added = false
 
-		# 1. Spróbuj dodać do istniejącego stacka, który NIE jest pełny
 		for i in range(inventory.size() - 1, -1, -1):
 			if inventory[i] != null:
 				var item_data = inventory[i]
-
 				if item_data["item_id"] == item_picked_up["item_id"] and item_data["amount"] < MAX_STACK:
 					item_data["amount"] += 1
 					added = true
 					break
 
-		# 2. Jeśli nie udało się dodać do stacka, dodaj do pustego slota
 		if not added:
 			for i in range(inventory.size()):
 				if inventory[i] == null:
@@ -318,12 +281,11 @@ func _process(delta):
 					added = true
 					break
 
-		inventory_ui.refresh(inventory)
+		if inventory_ui:
+			inventory_ui.refresh(inventory)
 		print(inventory)
 
-
-		
-func add_item(item): #dodaje item do listy itemów w zasięgu
+func add_item(item):
 	items_in_range.append(item)
 
 func remove_item(item):
@@ -342,25 +304,24 @@ func apply_appearance() -> void:
 		return
 
 	var skin_colors := [
-		Color(1.00, 0.85, 0.70),  # jasna
-		Color(0.87, 0.68, 0.50),  # pszeniczna
-		Color(0.67, 0.45, 0.28),  # oliwkowa
-		Color(0.45, 0.28, 0.14),  # ciemna
-		Color(0.25, 0.15, 0.07),  # bardzo ciemna
+		Color(1.00, 0.85, 0.70),
+		Color(0.87, 0.68, 0.50),
+		Color(0.67, 0.45, 0.28),
+		Color(0.45, 0.28, 0.14),
+		Color(0.25, 0.15, 0.07),
 	]
 	var hair_colors := [
-		Color(0.10, 0.07, 0.04),  # czarne
-		Color(0.35, 0.20, 0.08),  # brązowe
-		Color(0.72, 0.52, 0.18),  # blond
-		Color(0.75, 0.20, 0.08),  # rude
-		Color(0.85, 0.85, 0.85),  # siwe
-		Color(0.50, 0.10, 0.70),  # fioletowe
-		Color(0.10, 0.40, 0.85),  # niebieskie
+		Color(0.10, 0.07, 0.04),
+		Color(0.35, 0.20, 0.08),
+		Color(0.72, 0.52, 0.18),
+		Color(0.75, 0.20, 0.08),
+		Color(0.85, 0.85, 0.85),
+		Color(0.50, 0.10, 0.70),
+		Color(0.10, 0.40, 0.85),
 	]
 
 	var si: int = clampi(data.get("skin_index", 0), 0, skin_colors.size() - 1)
 	var hi: int = clampi(data.get("hair_color",  0), 0, hair_colors.size() - 1)
 
-	layer_body.modulate  = skin_colors[si]
-	layer_hair.modulate  = hair_colors[hi]
-	# layer_clothes i layer_hat możesz też modulować gdy będziesz miał kolory ubrań
+	layer_body.modulate = skin_colors[si]
+	layer_hair.modulate = hair_colors[hi]

@@ -1,14 +1,15 @@
 extends TextureProgressBar
 
 var target: Node
-
-@onready var hp_label: Label = $"../hp_label"
-
+var hp_label: Label
 var target_hp: float = 0
+
+func _ready():
+	hp_label = get_node_or_null("../hp_label")
 
 func set_target(t):
 	target = t
-	await get_tree().process_frame # game needs time to build itself for code to work
+	await get_tree().process_frame
 	if target.has_signal("hp_changed"):
 		target.hp_changed.connect(update_bar)
 	update_bar(target.current_hp, target.max_hp)

@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://dmct4fd2kdncm"]
+[gd_scene format=3 uid="uid://hpf3xqyh42ii"]
 
 [ext_resource type="PackedScene" uid="uid://bngnbg51yitf7" path="res://Tile Maps/Grass01.tscn" id="2_djkbh"]
 [ext_resource type="PackedScene" uid="uid://c75udmyukhfvk" path="res://Tile Maps/Bleak_yellow_grass.tscn" id="3_vj8hk"]
@@ -11,12 +11,15 @@
 [ext_resource type="PackedScene" uid="uid://0o2u3jdd6y1" path="res://Scenes/StaticStructures/boulder.tscn" id="10_08ji3"]
 [ext_resource type="PackedScene" uid="uid://do35dwig5w8gm" path="res://Scenes/StaticStructures/bush.tscn" id="11_42c27"]
 [ext_resource type="PackedScene" uid="uid://k84l1fx6ixln" path="res://Enemies/BringerOfDeath/BringerOfDeath.tscn" id="12_b7mh3"]
+[ext_resource type="PackedScene" uid="uid://dip4u0j6ns75l" path="res://Scenes/Items/seashell_1.tscn" id="13_b7mh3"]
+[ext_resource type="PackedScene" uid="uid://b2xsnnamjqttb" path="res://Scenes/Items/seashell_2.tscn" id="14_07tfq"]
 [ext_resource type="PackedScene" uid="uid://b70fk741qrjt7" path="res://hud/HUD.tscn" id="14_djkbh"]
 [ext_resource type="PackedScene" uid="uid://bnvix2ex2pbsw" path="res://Enemies/IceGolem/IceColem.tscn" id="17_07tfq"]
 [ext_resource type="PackedScene" uid="uid://dwr75oy600gxk" path="res://Scenes/StaticStructures/bed.tscn" id="19_l7aru"]
 [ext_resource type="Script" uid="uid://bs3h32b6gxe2i" path="res://Scripts/day_night_overlay.gd" id="19_tc4ax"]
 
 [node name="Playground" type="Node2D" unique_id=571104678]
+scale = Vector2(1.9740651, 1.9740651)
 
 [node name="Grass01" parent="." unique_id=1278695867 instance=ExtResource("2_djkbh")]
 z_index = -12
@@ -36,13 +39,19 @@ position = Vector2(-158.95833, 48.74951)
 [node name="Stick" parent="BleakYellowGrass/level" unique_id=13035520 instance=ExtResource("7_tc4ax")]
 position = Vector2(-196.95833, 98.74951)
 
+[node name="Seashell_1" parent="BleakYellowGrass/level" unique_id=604079078 instance=ExtResource("13_b7mh3")]
+position = Vector2(-103.95834, -13.250481)
+
+[node name="Seashell_2" parent="BleakYellowGrass/level" unique_id=532884544 instance=ExtResource("14_07tfq")]
+position = Vector2(-144.07352, -10.408142)
+
 [node name="Tree" parent="BleakYellowGrass/level" unique_id=669837160 instance=ExtResource("9_bm257")]
 position = Vector2(-154.95833, -71.25049)
 scale = Vector2(1.1599988, 1.1599988)
 
 [node name="Player" parent="BleakYellowGrass/level" unique_id=257810088 instance=ExtResource("4_b7mh3")]
 unique_name_in_owner = true
-position = Vector2(19.041687, 1.7495117)
+position = Vector2(-66.56847, -17.5001)
 
 [node name="Boulder" parent="BleakYellowGrass/level" unique_id=2132276029 instance=ExtResource("10_08ji3")]
 position = Vector2(-259.9583, 149.74951)
@@ -69,4 +78,4 @@ position = Vector2(819, 160)
 script = ExtResource("19_tc4ax")
 
 [node name="IceGolem" parent="." unique_id=431811086 instance=ExtResource("17_07tfq")]
-position = Vector2(1318, 626)
+position = Vector2(467.56305, 185.91077)

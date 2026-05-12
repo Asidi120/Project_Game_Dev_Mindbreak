@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bb63vlq5w24ph" path="res://Player/char_a_pONE2_1out_pfpn_v01.png" id="5_od3ui"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4ntmi"]
-size = Vector2(10.999573, 17.99936)
+size = Vector2(8.695815, 17.99936)
 
 [sub_resource type="Animation" id="Animation_4ntmi"]
 length = 0.001
@@ -221,17 +221,20 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4ntmi"]
-radius = 23.021729
+radius = 13.606599
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_gwnis"]
 load_path = "res://.godot/imported/char_a_pONE2_0bas_humn_v04.png-7fe56d198b5035753b80108534e66b4c.ctex"
 
 [node name="Player" type="CharacterBody2D" unique_id=257810088 groups=["Players", "player"]]
+position = Vector2(-0.9999962, 9.536743e-07)
+scale = Vector2(1.2515533, 1.2515533)
 script = ExtResource("1_4ntmi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=747600270]
-position = Vector2(-2.3283064e-10, 2)
+position = Vector2(-1.9073486e-06, 0.3528738)
 rotation = 1.5710098
+scale = Vector2(1.0000001, 1.0000001)
 shape = SubResource("RectangleShape2D_4ntmi")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1921015665]
@@ -239,7 +242,8 @@ libraries/ = SubResource("AnimationLibrary_gwnis")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1622828104]
 position = Vector2(0, 6)
-zoom = Vector2(1.5, 1.5)
+scale = Vector2(-48.14899, -2.746066)
+zoom = Vector2(2.25, 2.25)
 position_smoothing_enabled = true
 
 [node name="AttackHitbox" type="Area2D" parent="." unique_id=990617455]
@@ -247,29 +251,30 @@ monitoring = false
 script = ExtResource("3_btcbx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackHitbox" unique_id=270531353]
-position = Vector2(14, -17)
+position = Vector2(7.191305, -8.78908)
 shape = SubResource("CircleShape2D_4ntmi")
 
 [node name="Layers" type="Node2D" parent="." unique_id=1445210320]
+position = Vector2(0.00024032593, -5.722046e-06)
 
 [node name="LayerBody" type="Sprite2D" parent="Layers" unique_id=185890683]
 texture = SubResource("CompressedTexture2D_gwnis")
 centered = false
-offset = Vector2(-20, -50)
+offset = Vector2(-32, -40)
 hframes = 8
 vframes = 8
 
 [node name="LayerHair" type="Sprite2D" parent="Layers" unique_id=1580009899]
 texture = ExtResource("4_vtle1")
 centered = false
-offset = Vector2(-20, -50)
+offset = Vector2(-32, -40)
 hframes = 8
 vframes = 8
 
 [node name="LayerClothes" type="Sprite2D" parent="Layers" unique_id=645934433]
 texture = ExtResource("5_od3ui")
 centered = false
-offset = Vector2(-20, -50)
+offset = Vector2(-32, -40)
 hframes = 8
 vframes = 8
 

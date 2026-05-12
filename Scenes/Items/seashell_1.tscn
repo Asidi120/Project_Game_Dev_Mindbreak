@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://dip4u0j6ns75l"]
+
+[ext_resource type="Script" uid="uid://cvtmhh1hpljyx" path="res://Scripts/item.gd" id="1_akd5r"]
+[ext_resource type="Texture2D" uid="uid://c1d5vnun6wiqj" path="res://OtherSprites/Items/ChatGPT Image 12 maj 2026, 22_22_40.png" id="2_jvbk7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mc6tm"]
+
+[node name="Seashell_1" type="Area2D" unique_id=604079078]
+z_index = -1
+scale = Vector2(0.6406222, 0.6406222)
+script = ExtResource("1_akd5r")
+item_id = "seashell1"
+item_name = "Seashell1"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1984872830]
+z_index = -1
+position = Vector2(-0.5000041, -1.500004)
+scale = Vector2(0.030273449, 0.030273449)
+texture = ExtResource("2_jvbk7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=708047904]
+z_index = -1
+position = Vector2(0, -1)
+shape = SubResource("CircleShape2D_mc6tm")

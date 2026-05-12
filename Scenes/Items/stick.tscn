@@ -9,6 +9,7 @@ b = Vector2(-10, 12)
 
 [node name="Stick" type="Area2D" unique_id=13035520]
 z_index = -1
+scale = Vector2(1.2399994, 1.2399994)
 script = ExtResource("1_otk88")
 item_id = "stick"
 item_name = "Stick"

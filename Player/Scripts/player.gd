@@ -82,29 +82,27 @@ func _ready() -> void:
 	apply_appearance()
 
 func _physics_process(delta):
-	if state == State.DEAD:
-		return
-
-	# Blokuj ruch gdy ekwipunek otwarty
-	if inventory_ui and inventory_ui.visible:
-		return
-
-	get_input()
-	move_player(delta)
-	update_animation()
 	update_hunger(delta)
 
 	match state:
 		State.IDLE:
+			get_input()
+			move_player(delta)
 			if velocity != Vector2.ZERO:
 				state = State.MOVE
 		State.MOVE:
+			get_input()
+			move_player(delta)
 			if velocity == Vector2.ZERO:
 				state = State.IDLE
 		State.ATTACK:
 			velocity = Vector2.ZERO
 		State.STUNNED:
 			velocity = Vector2.ZERO
+		State.DEAD:
+			return
+
+	update_animation()
 
 	if Input.is_action_just_pressed("attack") and not is_attacking and state != State.STUNNED:
 		attack()

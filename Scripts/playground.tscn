@@ -11,11 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://0o2u3jdd6y1" path="res://Scenes/StaticStructures/boulder.tscn" id="10_08ji3"]
 [ext_resource type="PackedScene" uid="uid://do35dwig5w8gm" path="res://Scenes/StaticStructures/bush.tscn" id="11_42c27"]
 [ext_resource type="PackedScene" uid="uid://k84l1fx6ixln" path="res://Enemies/BringerOfDeath/BringerOfDeath.tscn" id="12_b7mh3"]
-[ext_resource type="PackedScene" uid="uid://x166r6kvfqjc" path="res://Scenes/inventory.tscn" id="13_07tfq"]
-[ext_resource type="PackedScene" uid="uid://2ur8j7c1v2un" path="res://Scripts/clock.tscn" id="13_vj8hk"]
-[ext_resource type="PackedScene" uid="uid://317bak6hdgps" path="res://Scripts/player_bar.tscn" id="14_b7mh3"]
-[ext_resource type="PackedScene" uid="uid://bnvix2ex2pbsw" path="res://Enemies/IceGolem/IceColem.tscn" id="17_07tfq"]
-[ext_resource type="PackedScene" uid="uid://fhgceyryjqfs" path="res://Scenes/DeathPanel.tscn" id="19_bm257"]
+[ext_resource type="PackedScene" uid="uid://b70fk741qrjt7" path="res://hud/HUD.tscn" id="14_djkbh"]
 [ext_resource type="PackedScene" uid="uid://dwr75oy600gxk" path="res://Scenes/StaticStructures/bed.tscn" id="19_l7aru"]
 [ext_resource type="Script" uid="uid://bs3h32b6gxe2i" path="res://Scripts/day_night_overlay.gd" id="19_tc4ax"]
 
@@ -114,6 +110,7 @@ offset_bottom = 40.0
 position = Vector2(819, 160)
 script = ExtResource("19_tc4ax")
 
+[node name="HUD" parent="." unique_id=1148326026 instance=ExtResource("14_djkbh")]
 [node name="Stone" parent="." unique_id=1826651587 instance=ExtResource("6_dt752")]
 position = Vector2(-248, 50)
 

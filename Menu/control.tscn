@@ -1,0 +1,89 @@
+[gd_scene format=3 uid="uid://slaq7pytbmyb"]
+
+[ext_resource type="Texture2D" uid="uid://c787km104b8v4" path="res://MenuIcon/Settings_Not-Pressed.png" id="1_10yyq"]
+[ext_resource type="Texture2D" uid="uid://bv7rn747n2fw1" path="res://MenuIcon/Quit_Not-Pressed.png" id="1_s2ihl"]
+[ext_resource type="Script" uid="uid://coskw6alrpk6f" path="res://button_quit.gd" id="1_v8wi0"]
+[ext_resource type="Texture2D" uid="uid://c7g7a1td7hidb" path="res://MenuIcon/4.jpg" id="1_xumgl"]
+[ext_resource type="Texture2D" uid="uid://dfwjvyfxkkud4" path="res://MenuIcon/Load_Not-Pressed.png" id="2_a7b2e"]
+[ext_resource type="Script" uid="uid://mogkv68s656h" path="res://Menu/button_settings.gd" id="2_xumgl"]
+[ext_resource type="Script" uid="uid://3d7eem68mtp5" path="res://Menu/button_load_game.gd" id="3_f1of3"]
+[ext_resource type="Texture2D" uid="uid://b7fgep6tuss00" path="res://MenuIcon/new_game.png" id="5_mf0fr"]
+[ext_resource type="Texture2D" uid="uid://d3hlprs1tdp42" path="res://MenuIcon/untitled (2).png" id="6_bsg70"]
+[ext_resource type="Script" uid="uid://dpj6c4nor5l6j" path="res://Menu/button_new_game.gd" id="6_r1fsn"]
+
+[node name="Control" type="Control" unique_id=1639269480]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = -11.0
+offset_right = 3.0
+offset_bottom = -11.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect_Background" type="TextureRect" parent="." unique_id=1818799626]
+layout_mode = 0
+offset_left = -13.0
+offset_top = 10.0
+offset_right = 1267.0
+offset_bottom = 730.0
+texture = ExtResource("1_xumgl")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1632610071]
+layout_mode = 0
+offset_left = 199.0
+offset_top = -25.0
+offset_right = 748.0
+offset_bottom = 365.0
+texture = ExtResource("6_bsg70")
+
+[node name="Button_LoadGame" type="Button" parent="." unique_id=1738451393]
+layout_mode = 0
+offset_left = 344.0
+offset_top = 352.0
+offset_right = 514.0
+offset_bottom = 407.0
+icon = ExtResource("2_a7b2e")
+flat = true
+expand_icon = true
+script = ExtResource("3_f1of3")
+
+[node name="Button_NewGame" type="Button" parent="." unique_id=491230286]
+layout_mode = 0
+offset_left = 344.0
+offset_top = 299.0
+offset_right = 512.0
+offset_bottom = 354.0
+icon = ExtResource("5_mf0fr")
+flat = true
+expand_icon = true
+script = ExtResource("6_r1fsn")
+
+[node name="Button_Settings" type="Button" parent="." unique_id=547277840]
+layout_mode = 0
+offset_left = 345.0
+offset_top = 405.0
+offset_right = 516.0
+offset_bottom = 458.0
+icon = ExtResource("1_10yyq")
+flat = true
+expand_icon = true
+script = ExtResource("2_xumgl")
+
+[node name="Button_Quit" type="Button" parent="." unique_id=988101472]
+layout_mode = 0
+offset_left = 346.0
+offset_top = 453.0
+offset_right = 515.0
+offset_bottom = 509.0
+icon = ExtResource("1_s2ihl")
+flat = true
+expand_icon = true
+script = ExtResource("1_v8wi0")
+
+[connection signal="pressed" from="Button_LoadGame" to="Button_LoadGame" method="_on_pressed"]
+[connection signal="pressed" from="Button_NewGame" to="Button_NewGame" method="_on_pressed"]
+[connection signal="pressed" from="Button_Settings" to="Button_Settings" method="_on_pressed"]
+[connection signal="pressed" from="Button_Quit" to="Button_Quit" method="_on_pressed"]

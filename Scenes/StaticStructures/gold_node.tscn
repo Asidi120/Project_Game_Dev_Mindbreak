@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://b26q11ema0ac0"]
+
+[ext_resource type="Script" uid="uid://xihm3wugii01" path="res://Scripts/static_breakable_object.gd" id="1_3t51k"]
+[ext_resource type="PackedScene" uid="uid://dg26t4k8uw43m" path="res://Scenes/Items/gold_ore.tscn" id="2_3t51k"]
+[ext_resource type="Texture2D" uid="uid://b6jevr51klwhe" path="res://OtherSprites/Stones_ores_bars/gold_node.png" id="3_t1rwh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_blcey"]
+size = Vector2(36, 10.693589)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oedoi"]
+size = Vector2(43.96569, 23.267914)
+
+[node name="GoldNode" type="StaticBody2D" unique_id=2132276029]
+script = ExtResource("1_3t51k")
+hits_needed = 5
+object_id = "goldnode"
+scene = ExtResource("2_3t51k")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=807240751]
+position = Vector2(1, -1)
+scale = Vector2(1.5600015, 1.5600015)
+texture = ExtResource("3_t1rwh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=520123235]
+position = Vector2(1, -0.5000005)
+scale = Vector2(0.6423392, 1.9637935)
+shape = SubResource("RectangleShape2D_blcey")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1064712434]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1298316451]
+position = Vector2(0.82475847, -1.4035208)
+scale = Vector2(0.8108486, 1.1686891)
+shape = SubResource("RectangleShape2D_oedoi")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

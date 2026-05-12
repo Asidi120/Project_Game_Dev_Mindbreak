@@ -14,9 +14,15 @@
 [ext_resource type="PackedScene" uid="uid://dip4u0j6ns75l" path="res://Scenes/Items/seashell_1.tscn" id="13_b7mh3"]
 [ext_resource type="PackedScene" uid="uid://b2xsnnamjqttb" path="res://Scenes/Items/seashell_2.tscn" id="14_07tfq"]
 [ext_resource type="PackedScene" uid="uid://b70fk741qrjt7" path="res://hud/HUD.tscn" id="14_djkbh"]
+[ext_resource type="PackedScene" uid="uid://1r3rsuljqmfo" path="res://Scenes/StaticStructures/iron_node.tscn" id="16_dt752"]
 [ext_resource type="PackedScene" uid="uid://bnvix2ex2pbsw" path="res://Enemies/IceGolem/IceColem.tscn" id="17_07tfq"]
+[ext_resource type="PackedScene" uid="uid://c3w7if2mv8ywo" path="res://Scenes/Items/iron_ore.tscn" id="17_42c27"]
+[ext_resource type="PackedScene" uid="uid://dg26t4k8uw43m" path="res://Scenes/Items/gold_ore.tscn" id="18_g0rsy"]
+[ext_resource type="PackedScene" uid="uid://bau48p344pmtq" path="res://Scenes/StaticStructures/copper_node.tscn" id="19_65dde"]
 [ext_resource type="PackedScene" uid="uid://dwr75oy600gxk" path="res://Scenes/StaticStructures/bed.tscn" id="19_l7aru"]
 [ext_resource type="Script" uid="uid://bs3h32b6gxe2i" path="res://Scripts/day_night_overlay.gd" id="19_tc4ax"]
+[ext_resource type="PackedScene" uid="uid://y4gpdxpa8gcw" path="res://Scenes/StaticStructures/diamond_node.tscn" id="20_af7ae"]
+[ext_resource type="PackedScene" uid="uid://b26q11ema0ac0" path="res://Scenes/StaticStructures/gold_node.tscn" id="21_jbcv3"]
 
 [node name="Playground" type="Node2D" unique_id=571104678]
 scale = Vector2(1.9740651, 1.9740651)
@@ -72,6 +78,24 @@ position = Vector2(636.0417, -154.25049)
 position = Vector2(-529.9583, 605.7495)
 
 [node name="HUD" parent="BleakYellowGrass" unique_id=1148326026 instance=ExtResource("14_djkbh")]
+
+[node name="IronNode" parent="BleakYellowGrass" unique_id=1153327483 instance=ExtResource("16_dt752")]
+position = Vector2(-160.7903, 193.73914)
+
+[node name="IronOre" parent="BleakYellowGrass" unique_id=218306114 instance=ExtResource("17_42c27")]
+position = Vector2(-203.34209, 128.89832)
+
+[node name="GoldOre" parent="BleakYellowGrass" unique_id=2120493795 instance=ExtResource("18_g0rsy")]
+position = Vector2(-180.54648, 123.83262)
+
+[node name="CopperNode" parent="BleakYellowGrass" unique_id=1372399059 instance=ExtResource("19_65dde")]
+position = Vector2(-248.42671, 191.71286)
+
+[node name="DiamondNode" parent="BleakYellowGrass" unique_id=402616874 instance=ExtResource("20_af7ae")]
+position = Vector2(-106.58742, 190.19315)
+
+[node name="GoldNode" parent="BleakYellowGrass" unique_id=1936754934 instance=ExtResource("21_jbcv3")]
+position = Vector2(-49.8517, 189.18001)
 
 [node name="DayNightOverlay" type="CanvasModulate" parent="." unique_id=1490973845]
 position = Vector2(819, 160)

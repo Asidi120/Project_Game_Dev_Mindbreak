@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://bl4i6j40xg412"]
+
+[ext_resource type="Script" uid="uid://cvtmhh1hpljyx" path="res://Scripts/item.gd" id="1_dj610"]
+[ext_resource type="Texture2D" uid="uid://csigku5b4t6s7" path="res://OtherSprites/Stones_ores_bars/copper_ore.png" id="2_dj610"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qgar0"]
+radius = 5.0
+
+[node name="CopperOre" type="Area2D" unique_id=1292270059]
+z_index = -1
+scale = Vector2(1.1600013, 1.1600013)
+script = ExtResource("1_dj610")
+item_id = "copper_ore"
+item_name = "CopperOre"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=485898290]
+position = Vector2(0.862068, -0.862068)
+scale = Vector2(0.96441936, 0.96441936)
+texture = ExtResource("2_dj610")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=79536984]
+scale = Vector2(1.4137948, 1)
+shape = SubResource("CircleShape2D_qgar0")

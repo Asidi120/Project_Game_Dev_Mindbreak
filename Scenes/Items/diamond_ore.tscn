@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://iqmeit2sjngx"]
+
+[ext_resource type="Script" uid="uid://cvtmhh1hpljyx" path="res://Scripts/item.gd" id="1_r6jmn"]
+[ext_resource type="Texture2D" uid="uid://bmjsg676wfo0y" path="res://OtherSprites/Stones_ores_bars/mystrile_ore.png" id="2_r6jmn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qgar0"]
+radius = 5.0
+
+[node name="DiamondOre" type="Area2D" unique_id=1292270059]
+z_index = -1
+scale = Vector2(1.1600013, 1.1600013)
+script = ExtResource("1_r6jmn")
+item_id = "diamond_ore"
+item_name = "DiamondOre"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=485898290]
+position = Vector2(1.7241362, -2.5862038)
+scale = Vector2(0.93103373, 0.93103373)
+texture = ExtResource("2_r6jmn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=79536984]
+position = Vector2(0, -0.86206806)
+scale = Vector2(1.2413789, 1.1069759)
+shape = SubResource("CircleShape2D_qgar0")

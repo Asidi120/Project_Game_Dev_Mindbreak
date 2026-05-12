@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://c3w7if2mv8ywo"]
+
+[ext_resource type="Script" uid="uid://cvtmhh1hpljyx" path="res://Scripts/item.gd" id="1_762gm"]
+[ext_resource type="Texture2D" uid="uid://dohgksh5xhawc" path="res://OtherSprites/Stones_ores_bars/silver_ore.png" id="2_762gm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qgar0"]
+radius = 5.0
+
+[node name="IronOre" type="Area2D" unique_id=1292270059]
+z_index = -1
+scale = Vector2(1.1600013, 1.1600013)
+script = ExtResource("1_762gm")
+item_id = "iron_ore"
+item_name = "IronOre"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=485898290]
+position = Vector2(0, -0.862068)
+scale = Vector2(1.1724125, 1.1724125)
+texture = ExtResource("2_762gm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=79536984]
+shape = SubResource("CircleShape2D_qgar0")

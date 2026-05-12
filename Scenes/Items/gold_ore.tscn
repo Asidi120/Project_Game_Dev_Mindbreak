@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://dg26t4k8uw43m"]
+
+[ext_resource type="Script" uid="uid://cvtmhh1hpljyx" path="res://Scripts/item.gd" id="1_aq6yt"]
+[ext_resource type="Texture2D" uid="uid://by6y1ssd0eeyn" path="res://OtherSprites/Stones_ores_bars/gold_ore.png" id="2_aq6yt"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qgar0"]
+radius = 5.0
+
+[node name="GoldOre" type="Area2D" unique_id=1292270059]
+z_index = -1
+scale = Vector2(1.1600013, 1.1600013)
+script = ExtResource("1_aq6yt")
+item_id = "gold_ore"
+item_name = "GoldOre"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=485898290]
+position = Vector2(0.86206806, 5.9604645e-08)
+scale = Vector2(0.9505825, 0.9505825)
+texture = ExtResource("2_aq6yt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=79536984]
+shape = SubResource("CircleShape2D_qgar0")

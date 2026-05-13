@@ -9,9 +9,19 @@ static var current_inventory: Array
 @onready var grid: GridContainer = $Panel/GridContainer
 var slot_scene = preload("res://Scenes/item_slot.tscn")
 
+@onready var background: TextureRect = $Panel
+
 var slot_offset := 0
 var linked_ui = []
 
+static var inventory_visible = false
+
+#zmiana teksturki i pozycji fast eq
+func set_inventory_style(texture: Texture2D, new_position: Vector2) -> void:
+	background.texture = texture
+	position = new_position
+
+	position = new_position
 func _ready() -> void:
 	if self.name == "Inventory":
 		visible = false
@@ -22,8 +32,16 @@ func _process(_delta: float) -> void:
 	if self.name == "Inventory":
 		if Input.is_action_just_pressed("inventory"):
 			visible = !visible
+			inventory_visible = !inventory_visible
+			print(inventory_visible)
 			if not visible:
 				clear_selection()
+	if self.name == "FastEq":
+		if Input.is_action_just_pressed("inventory"):
+			if inventory_visible:
+				set_inventory_style(load("res://OtherSprites/fasteq.png"), Vector2(300, 100))
+			else:
+				set_inventory_style(load("res://OtherSprites/Quick-Access-Inventory.png"), Vector2(300, 400))
 				
 func refresh_all() -> void:
 	for ui in get_tree().get_nodes_in_group("inventory_ui"):

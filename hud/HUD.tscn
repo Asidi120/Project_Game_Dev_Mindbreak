@@ -26,13 +26,20 @@ self_modulate = Color(0.4840902, 0.0045073065, 8.904189e-07, 1)
 top_level = true
 
 [node name="Inventory" parent="." unique_id=1630870992 groups=["inventory_ui"] instance=ExtResource("4_akegq")]
-offset_left = 279.0
-offset_top = 85.0
-offset_right = 279.0
-offset_bottom = 85.0
+offset_left = 296.0
+offset_top = 64.0
+offset_right = 296.0
+offset_bottom = 64.0
 
-[node name="FastEq" parent="." unique_id=73452857 groups=["fasteq", "inventory_ui"] instance=ExtResource("5_s5l88")]
-offset_left = 254.0
-offset_top = 413.0
-offset_right = 294.0
-offset_bottom = 453.0
+[node name="FastEq" parent="." unique_id=73452857 groups=["inventory_ui"] instance=ExtResource("5_s5l88")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -406.0
+offset_top = -7.0
+offset_right = -406.0
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2

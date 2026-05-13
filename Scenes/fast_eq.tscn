@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://lbtnkb22ldyi" path="res://Scripts/inventory.gd" id="1_hy4ax"]
 [ext_resource type="Texture2D" uid="uid://bikv22mtxq1af" path="res://OtherSprites/Quick-Access-Inventory.png" id="2_hy4ax"]
 
-[node name="FastEq" type="Control" unique_id=1630870992 groups=["inventory"]]
+[node name="FastEq" type="Control" unique_id=1630870992 groups=["fasteq"]]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -22,6 +22,7 @@ offset_right = 706.0
 offset_bottom = 479.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1.0351727, 1.0351727)
 texture = ExtResource("2_hy4ax")
 stretch_mode = 5
 

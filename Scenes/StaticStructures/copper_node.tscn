@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://bau48p344pmtq"]
+
+[ext_resource type="Script" uid="uid://xihm3wugii01" path="res://Scripts/static_breakable_object.gd" id="1_dmpex"]
+[ext_resource type="PackedScene" uid="uid://bl4i6j40xg412" path="res://Scenes/Items/copper_ore.tscn" id="2_dmpex"]
+[ext_resource type="Texture2D" uid="uid://rpprm43gif85" path="res://OtherSprites/Stones_ores_bars/copper_node.png" id="3_rp0y1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_blcey"]
+size = Vector2(30.55555, 22)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oedoi"]
+size = Vector2(43.96569, 23.267914)
+
+[node name="CopperNode" type="StaticBody2D" unique_id=2132276029]
+script = ExtResource("1_dmpex")
+hits_needed = 5
+object_id = "coppernode"
+scene = ExtResource("2_dmpex")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=807240751]
+position = Vector2(1, -1)
+scale = Vector2(1.9200003, 1.9200003)
+texture = ExtResource("3_rp0y1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=520123235]
+position = Vector2(1.0000005, 1)
+scale = Vector2(0.72000015, 1)
+shape = SubResource("RectangleShape2D_blcey")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1064712434]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1298316451]
+position = Vector2(1, 1)
+scale = Vector2(0.8108486, 1.1686891)
+shape = SubResource("RectangleShape2D_oedoi")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

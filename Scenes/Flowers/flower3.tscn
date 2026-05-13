@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://8cboa8ut7h7y"]
+
+[ext_resource type="Script" uid="uid://cvtmhh1hpljyx" path="res://Scripts/item.gd" id="1_sjpl1"]
+[ext_resource type="Texture2D" uid="uid://cn3ephtoqx37g" path="res://OtherSprites/Flowers/LavenderOUTLINED.png" id="2_sjpl1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d43ed"]
+size = Vector2(15.295227, 20)
+
+[node name="Flower3" type="Area2D" unique_id=13035520]
+z_index = -1
+scale = Vector2(1.2399994, 1.2399994)
+script = ExtResource("1_sjpl1")
+item_id = "flower3"
+item_name = "Flower3"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1622709971]
+scale = Vector2(0.51599216, 0.51599216)
+texture = ExtResource("2_sjpl1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1266554538]
+position = Vector2(0.0019769003, 0.40321648)
+rotation = -1.5756979
+scale = Vector2(1.0017768, -0.2959776)
+shape = SubResource("RectangleShape2D_d43ed")

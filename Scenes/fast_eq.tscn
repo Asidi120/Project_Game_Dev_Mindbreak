@@ -16,13 +16,13 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 146.0
+offset_left = 163.0
 offset_top = 119.0
-offset_right = 706.0
+offset_right = 723.0
 offset_bottom = 479.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(1.0351727, 1.0351727)
+scale = Vector2(0.95195025, 0.95195025)
 texture = ExtResource("2_hy4ax")
 stretch_mode = 5
 

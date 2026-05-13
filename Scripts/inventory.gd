@@ -39,9 +39,9 @@ func _process(_delta: float) -> void:
 	if self.name == "FastEq":
 		if Input.is_action_just_pressed("inventory"):
 			if inventory_visible:
-				set_inventory_style(load("res://OtherSprites/fasteq.png"), Vector2(300, 100))
+				set_inventory_style(load("res://OtherSprites/fasteq.png"), Vector2(300, 400))
 			else:
-				set_inventory_style(load("res://OtherSprites/Quick-Access-Inventory.png"), Vector2(300, 400))
+				set_inventory_style(load("res://OtherSprites/Quick-Access-Inventory.png"), Vector2(300, 450))
 				
 func refresh_all() -> void:
 	for ui in get_tree().get_nodes_in_group("inventory_ui"):

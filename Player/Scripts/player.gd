@@ -34,7 +34,7 @@ const MAX_SLOT = 18
 
 # Inventory UI — szukane przez grupę żeby działało w każdej scenie
 var inventory_ui = null
-
+var fasteq_ui = null
 @onready var anim = $AnimationPlayer
 
 # Warstwy sprite'a
@@ -72,7 +72,8 @@ func _ready() -> void:
 
 	# Inventory UI
 	inventory_ui = get_tree().get_first_node_in_group("inventory")
-
+	fasteq_ui = get_tree().get_first_node_in_group("fasteq")
+	
 	attack_hitbox.monitoring = false
 	spawn_point = global_position
 
@@ -278,9 +279,11 @@ func _process(_delta):
 					}
 					added = true
 					break
-
+		if fasteq_ui:
+			fasteq_ui.refresh(inventory)		
+			
 		if inventory_ui:
-			inventory_ui.refresh(inventory)
+				inventory_ui.refresh(inventory)
 		print(inventory)
 
 func add_item(item):

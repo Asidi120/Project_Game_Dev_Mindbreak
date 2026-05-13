@@ -28,6 +28,9 @@ Players=""
 Clock=""
 PlayerBar=""
 Enemies=""
+inventory=""
+fasteq=""
+inventory_ui=""
 
 [input]
 

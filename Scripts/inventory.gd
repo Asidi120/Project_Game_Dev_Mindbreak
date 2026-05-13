@@ -1,9 +1,11 @@
 extends Control
 
 static var selected_slot = null
-var MAX_SLOT = 24
+const MAX_SLOT = 24
+const INVENTORY_SLOTS = 18
+const FASTEQ_SLOTS = 6
 const MAX_STACK = 3
-var current_inventory: Array
+static var current_inventory: Array
 @onready var grid: GridContainer = $Panel/GridContainer
 var slot_scene = preload("res://Scenes/item_slot.tscn")
 
@@ -28,12 +30,14 @@ func refresh_all() -> void:
 		ui.refresh(current_inventory)
 		
 func refresh(player_inventory: Array) -> void:
+	var slots_to_show := 0
+
 	if self.name == "Inventory":
-		MAX_SLOT = 18
-		slot_offset = 6
+		slots_to_show = INVENTORY_SLOTS
+		slot_offset = FASTEQ_SLOTS
 
 	if self.name == "FastEq":
-		MAX_SLOT = 6
+		slots_to_show = FASTEQ_SLOTS
 		slot_offset = 0
 
 	current_inventory = player_inventory
@@ -41,7 +45,7 @@ func refresh(player_inventory: Array) -> void:
 	for child in grid.get_children():
 		child.queue_free()
 
-	for i in range(MAX_SLOT):
+	for i in range(slots_to_show):
 		var slot = slot_scene.instantiate()
 		grid.add_child(slot)
 
@@ -61,7 +65,7 @@ func refresh(player_inventory: Array) -> void:
 func swap_slots(from_index: int, to_index: int) -> void:
 	if from_index == to_index:
 		return
-	
+
 	if from_index < 0 or from_index >= current_inventory.size():
 		return
 
@@ -71,21 +75,31 @@ func swap_slots(from_index: int, to_index: int) -> void:
 	var a = current_inventory[from_index]
 	var b = current_inventory[to_index]
 
-	# Spróbuj połączyć stacki jeśli ten sam item
+	# jeśli kliknięto/przeniesiono do pustego slota
+	if b == null:
+		current_inventory[to_index] = a
+		current_inventory[from_index] = null
+		refresh_all()
+		return
+
+	# jeśli ten sam item, próbuj stackować
 	if a != null and b != null and a["item_id"] == b["item_id"]:
 		var space = MAX_STACK - b["amount"]
+
 		if space > 0:
 			var transfer = min(space, a["amount"])
-			current_inventory[to_index]["amount"]   += transfer
+			current_inventory[to_index]["amount"] += transfer
 			current_inventory[from_index]["amount"] -= transfer
+
 			if current_inventory[from_index]["amount"] <= 0:
 				current_inventory[from_index] = null
+
 			refresh_all()
 			return
 
-	# Zwykła zamiana
+	# zwykła zamiana
 	current_inventory[from_index] = b
-	current_inventory[to_index]   = a
+	current_inventory[to_index] = a
 	refresh_all()
 
 
@@ -93,50 +107,15 @@ func swap_slots(from_index: int, to_index: int) -> void:
 
 func _on_slot_clicked(slot) -> void:
 	if selected_slot == slot:
-		slot.set_selected(false)
-		selected_slot = null
+		clear_all_selections()
 		return
 
 	if selected_slot != null:
-		var a = selected_slot.slot_index
-		var b = slot.slot_index
-
-		if a < 0 or a >= current_inventory.size():
-			selected_slot = null
-			return
-
-		if b < 0 or b >= current_inventory.size():
-			selected_slot = null
-			return
-
-		var item_a = current_inventory[a]
-		var item_b = current_inventory[b]
-
-		# stackowanie
-		if item_a != null and item_b != null and item_a["item_id"] == item_b["item_id"]:
-			var space = MAX_STACK - item_b["amount"]
-
-			if space > 0:
-				var transfer = min(space, item_a["amount"])
-
-				current_inventory[b]["amount"] += transfer
-				current_inventory[a]["amount"] -= transfer
-
-				if current_inventory[a]["amount"] <= 0:
-					current_inventory[a] = null
-			else:
-				current_inventory[a] = item_b
-				current_inventory[b] = item_a
-		else:
-			# zwykła zamiana
-			current_inventory[a] = item_b
-			current_inventory[b] = item_a
-
-		selected_slot.set_selected(false)
-		selected_slot = null
-		refresh_all()
+		swap_slots(selected_slot.slot_index, slot.slot_index)
+		clear_all_selections()
 		return
 
+	clear_all_selections()
 	selected_slot = slot
 	selected_slot.set_selected(true)
 

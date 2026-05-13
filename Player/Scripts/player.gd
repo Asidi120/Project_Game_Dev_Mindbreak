@@ -30,7 +30,7 @@ var already_hit = []
 
 var inventory = []
 const MAX_STACK = 2
-const MAX_SLOT = 18
+const MAX_SLOT = 24
 
 # Inventory UI — szukane przez grupę żeby działało w każdej scenie
 var inventory_ui = null

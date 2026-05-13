@@ -23,6 +23,7 @@
 [ext_resource type="Script" uid="uid://bs3h32b6gxe2i" path="res://Scripts/day_night_overlay.gd" id="19_tc4ax"]
 [ext_resource type="PackedScene" uid="uid://y4gpdxpa8gcw" path="res://Scenes/StaticStructures/diamond_node.tscn" id="20_af7ae"]
 [ext_resource type="PackedScene" uid="uid://b26q11ema0ac0" path="res://Scenes/StaticStructures/gold_node.tscn" id="21_jbcv3"]
+[ext_resource type="PackedScene" uid="uid://ck0dk8vywervm" path="res://Scenes/StaticStructures/tree_spruce.tscn" id="24_g0rsy"]
 
 [node name="Playground" type="Node2D" unique_id=571104678]
 scale = Vector2(1.9740651, 1.9740651)
@@ -55,6 +56,12 @@ position = Vector2(-144.07352, -10.408142)
 position = Vector2(-154.95833, -71.25049)
 scale = Vector2(1.1599988, 1.1599988)
 
+[node name="Tree2" parent="BleakYellowGrass/level" unique_id=1667716825 instance=ExtResource("9_bm257")]
+position = Vector2(115.04167, -79.25048)
+
+[node name="SpruceTree" parent="BleakYellowGrass/level" unique_id=194041211 instance=ExtResource("24_g0rsy")]
+position = Vector2(-35.161194, -65.117584)
+
 [node name="Player" parent="BleakYellowGrass/level" unique_id=257810088 instance=ExtResource("4_b7mh3")]
 unique_name_in_owner = true
 position = Vector2(-66.56847, -17.5001)
@@ -67,9 +74,6 @@ position = Vector2(-262.9583, 20.749512)
 
 [node name="Bed" parent="BleakYellowGrass/level" unique_id=1754547488 instance=ExtResource("19_l7aru")]
 position = Vector2(152.04167, 254.74951)
-
-[node name="Tree2" parent="BleakYellowGrass/level" unique_id=1667716825 instance=ExtResource("9_bm257")]
-position = Vector2(115.04167, -79.25049)
 
 [node name="EvilWolfWithPoints" parent="BleakYellowGrass/level" unique_id=697092607 instance=ExtResource("8_l7aru")]
 position = Vector2(636.0417, -154.25049)

@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://eefttw5s6myk" path="res://OtherSprites/Stones_ores_bars/silver_node.png" id="3_b3gx0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_blcey"]
-size = Vector2(36, 22.5)
+size = Vector2(30.55555, 19)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oedoi"]
 size = Vector2(43.96569, 23.267914)
@@ -16,13 +16,13 @@ hits_needed = 5
 object_id = "ironnode"
 scene = ExtResource("2_b3gx0")
 
-[node name="SilverNode" type="Sprite2D" parent="." unique_id=807240751]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=807240751]
 position = Vector2(1, -1)
 scale = Vector2(1.5600015, 1.5600015)
 texture = ExtResource("3_b3gx0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=520123235]
-position = Vector2(1, -0.25)
+position = Vector2(1.0000002, -0.5)
 scale = Vector2(0.72000015, 1)
 shape = SubResource("RectangleShape2D_blcey")
 

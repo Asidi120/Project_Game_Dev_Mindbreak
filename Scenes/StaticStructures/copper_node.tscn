@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://rpprm43gif85" path="res://OtherSprites/Stones_ores_bars/copper_node.png" id="3_rp0y1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_blcey"]
-size = Vector2(36, 22.5)
+size = Vector2(30.55555, 22)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oedoi"]
 size = Vector2(43.96569, 23.267914)
@@ -22,7 +22,7 @@ scale = Vector2(1.9200003, 1.9200003)
 texture = ExtResource("3_rp0y1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=520123235]
-position = Vector2(1, -0.25)
+position = Vector2(1.0000005, 1)
 scale = Vector2(0.72000015, 1)
 shape = SubResource("RectangleShape2D_blcey")
 

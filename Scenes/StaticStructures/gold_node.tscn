@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://b6jevr51klwhe" path="res://OtherSprites/Stones_ores_bars/gold_node.png" id="3_t1rwh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_blcey"]
-size = Vector2(36, 10.693589)
+size = Vector2(34.249817, 10.693589)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oedoi"]
 size = Vector2(43.96569, 23.267914)
@@ -22,7 +22,7 @@ scale = Vector2(1.5600015, 1.5600015)
 texture = ExtResource("3_t1rwh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=520123235]
-position = Vector2(1, -0.5000005)
+position = Vector2(0.9999994, -0.5000005)
 scale = Vector2(0.6423392, 1.9637935)
 shape = SubResource("RectangleShape2D_blcey")
 

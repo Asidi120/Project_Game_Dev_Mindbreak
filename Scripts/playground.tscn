@@ -24,6 +24,11 @@
 [ext_resource type="PackedScene" uid="uid://y4gpdxpa8gcw" path="res://Scenes/StaticStructures/diamond_node.tscn" id="20_af7ae"]
 [ext_resource type="PackedScene" uid="uid://b26q11ema0ac0" path="res://Scenes/StaticStructures/gold_node.tscn" id="21_jbcv3"]
 [ext_resource type="PackedScene" uid="uid://ck0dk8vywervm" path="res://Scenes/StaticStructures/tree_spruce.tscn" id="24_g0rsy"]
+[ext_resource type="PackedScene" uid="uid://cfhqdgk1shpxi" path="res://Scenes/Flowers/flower1.tscn" id="25_65dde"]
+[ext_resource type="PackedScene" uid="uid://cqy2nbccn5in6" path="res://Scenes/Flowers/flower2.tscn" id="26_fkpol"]
+[ext_resource type="PackedScene" uid="uid://8cboa8ut7h7y" path="res://Scenes/Flowers/flower3.tscn" id="27_m6jsy"]
+[ext_resource type="PackedScene" uid="uid://cx8c6x4vg4ifg" path="res://Scenes/Flowers/flower4.tscn" id="28_swx2f"]
+[ext_resource type="PackedScene" uid="uid://cdrocg7pqwwbh" path="res://Scenes/Flowers/flower5.tscn" id="29_vnnrc"]
 
 [node name="Playground" type="Node2D" unique_id=571104678]
 scale = Vector2(1.9740651, 1.9740651)
@@ -107,3 +112,18 @@ script = ExtResource("19_tc4ax")
 
 [node name="IceGolem" parent="." unique_id=431811086 instance=ExtResource("17_07tfq")]
 position = Vector2(467.56305, 185.91077)
+
+[node name="Flower1" parent="." unique_id=1629567358 instance=ExtResource("25_65dde")]
+position = Vector2(-228.96915, 19.756187)
+
+[node name="Flower2" parent="." unique_id=1461700609 instance=ExtResource("26_fkpol")]
+position = Vector2(-212.75894, 20.769325)
+
+[node name="Flower3" parent="." unique_id=1647036115 instance=ExtResource("27_m6jsy")]
+position = Vector2(-190.97647, 19.249619)
+
+[node name="Flower4" parent="." unique_id=2082807197 instance=ExtResource("28_swx2f")]
+position = Vector2(-173.24657, 20.769325)
+
+[node name="Flower5" parent="." unique_id=1776031276 instance=ExtResource("29_vnnrc")]
+position = Vector2(-153.49039, 19.249619)

@@ -3,25 +3,35 @@ extends Node2D
 # ─────────────────────────────────────────────
 #  Ustawienia świata
 # ─────────────────────────────────────────────
-const WORLD_WIDTH  := 200   # kafelki w poziomie
-const WORLD_HEIGHT := 200   # kafelki w pionie
-const TILE_SIZE    := 16    # rozmiar kafelka w pikselach
+const WORLD_WIDTH  := 200
+const WORLD_HEIGHT := 200
+const TILE_SIZE    := 16
 
-# Progi biome (szum 0.0 – 1.0)
+# Progi biomów (szum 0.0 – 1.0)
 const OCEAN_MAX    := 0.30
-const BEACH_MAX    := 0.38
+const BEACH_MAX    := 0.33
 const PLAINS_MAX   := 0.55
 const FOREST_MAX   := 0.70
 const MOUNTAIN_MAX := 0.85
-# powyżej 0.85 → śnieg
 
-# ID kafelków w TileSet (kolumna w atlasie, licząc od 0)
-const TILE_OCEAN    := Vector2i(0, 0)
-const TILE_BEACH    := Vector2i(1, 0)
-const TILE_PLAINS   := Vector2i(2, 0)
-const TILE_FOREST   := Vector2i(3, 0)
-const TILE_MOUNTAIN := Vector2i(4, 0)
-const TILE_SNOW     := Vector2i(5, 0)
+# ID terenów w Terrain Set 0
+const TERRAIN_WATER    := 0
+const TERRAIN_BEACH    := 1
+const TERRAIN_GRASS    := 2
+const TERRAIN_MOUNTAIN := 3
+
+# ─────────────────────────────────────────────
+#  Sceny obiektów
+# ─────────────────────────────────────────────
+const SCENE_FLOWER1   := preload("res://Scenes/Flowers/flower1.tscn")
+const SCENE_FLOWER2   := preload("res://Scenes/Flowers/flower2.tscn")
+const SCENE_FLOWER3   := preload("res://Scenes/Flowers/flower3.tscn")
+const SCENE_FLOWER4   := preload("res://Scenes/Flowers/flower4.tscn")
+const SCENE_FLOWER5   := preload("res://Scenes/Flowers/flower5.tscn")
+const SCENE_SEASHELL1 := preload("res://Scenes/Items/seashell_1.tscn")
+const SCENE_SEASHELL2 := preload("res://Scenes/Items/seashell_2.tscn")
+const SCENE_WOOD      := preload("res://Scenes/StaticStructures/tree.tscn")
+const SCENE_STONE     := preload("res://Scenes/StaticStructures/boulder.tscn")
 
 # ─────────────────────────────────────────────
 #  Node refs
@@ -34,14 +44,17 @@ const TILE_SNOW     := Vector2i(5, 0)
 # ─────────────────────────────────────────────
 #  Dane z pliku save
 # ─────────────────────────────────────────────
-var world_seed:  int    = 0
-var world_name:  String = "Świat"
+var world_seed: int    = 0
+var world_name: String = "Świat"
 
 # ─────────────────────────────────────────────
 #  Szumy
 # ─────────────────────────────────────────────
 var noise_height := FastNoiseLite.new()
 var noise_detail := FastNoiseLite.new()
+var noise_object := FastNoiseLite.new()
+
+var terrain_cells := {}
 
 func _ready() -> void:
 	_load_save()
@@ -72,79 +85,102 @@ func _setup_noise() -> void:
 	noise_detail.seed       = world_seed + 99
 	noise_detail.frequency  = 0.15
 
+	noise_object.noise_type = FastNoiseLite.TYPE_VALUE
+	noise_object.seed       = world_seed + 777
+	noise_object.frequency  = 0.2
+
 # ─────────────────────────────────────────────
 func _generate() -> void:
 	var rng := RandomNumberGenerator.new()
 	rng.seed = world_seed
 
+	for t in [TERRAIN_WATER, TERRAIN_BEACH, TERRAIN_GRASS, TERRAIN_MOUNTAIN]:
+		terrain_cells[t] = []
+
 	for y in range(WORLD_HEIGHT):
 		for x in range(WORLD_WIDTH):
-			var h     := _norm(noise_height.get_noise_2d(x, y))
-			var atlas := _biome_tile(h)
-			tile_map.set_cell(Vector2i(x, y), 0, atlas)
+			var h       := _norm(noise_height.get_noise_2d(x, y))
+			var terrain := _biome_terrain(h)
+			terrain_cells[terrain].append(Vector2i(x, y))
 			_try_object(x, y, h, rng)
 
-		# odświeżaj UI co 10 rzędów
 		if y % 10 == 0:
 			loading_label.text = "Generowanie… %d%%" % int(float(y) / WORLD_HEIGHT * 100)
 			await get_tree().process_frame
 
-	# Ustaw gracza na bezpiecznym miejscu
+	loading_label.text = "Łączenie biomów…"
+	await get_tree().process_frame
+
+	for terrain_id in terrain_cells:
+		if terrain_cells[terrain_id].size() > 0:
+			tile_map.set_cells_terrain_connect(
+				terrain_cells[terrain_id],
+				0,
+				terrain_id,
+				false
+			)
+		await get_tree().process_frame
+
 	player.global_position = _find_spawn(rng)
 	loading_label.visible  = false
 	print("Świat \"%s\" gotowy! Seed: %d" % [world_name, world_seed])
 
 # ─────────────────────────────────────────────
-func _biome_tile(h: float) -> Vector2i:
-	if h < OCEAN_MAX:    return TILE_OCEAN
-	if h < BEACH_MAX:    return TILE_BEACH
-	if h < PLAINS_MAX:   return TILE_PLAINS
-	if h < FOREST_MAX:   return TILE_FOREST
-	if h < MOUNTAIN_MAX: return TILE_MOUNTAIN
-	return TILE_SNOW
+func _biome_terrain(h: float) -> int:
+	if h < OCEAN_MAX:    return TERRAIN_WATER
+	if h < BEACH_MAX:    return TERRAIN_BEACH
+	if h < PLAINS_MAX:   return TERRAIN_GRASS
+	if h < FOREST_MAX:   return TERRAIN_GRASS
+	if h < MOUNTAIN_MAX: return TERRAIN_MOUNTAIN
+	return TERRAIN_MOUNTAIN
 
 # ─────────────────────────────────────────────
-#  Obiekty — na razie proste ColorRect jako placeholder
-#  Zamień na swoje sceny gdy będziesz miał grafiki
+#  Spawning obiektów
 # ─────────────────────────────────────────────
 func _try_object(x: int, y: int, h: float, rng: RandomNumberGenerator) -> void:
-	# Tylko na lądzie
-	if h < BEACH_MAX or h > MOUNTAIN_MAX:
-		return
+	var d := _norm(noise_object.get_noise_2d(x, y))
 
-	var d := _norm(noise_detail.get_noise_2d(x * 2.3, y * 2.3))
+	# ── PLAŻA — muszle ──────────────────────────
+	if h >= OCEAN_MAX and h < BEACH_MAX:
+		if d < 0.10:
+			var scene = SCENE_SEASHELL1 if rng.randi() % 2 == 0 else SCENE_SEASHELL2
+			_spawn_scene(scene, x, y)
 
-	# Las — dużo drzew
-	if h > PLAINS_MAX and h < FOREST_MAX:
+	# ── RÓWNINY — kwiaty, drewno, kamienie ──────
+	elif h >= BEACH_MAX and h < PLAINS_MAX:
 		if d < 0.12:
-			_place_rect(x, y, Color(0.15, 0.35, 0.10), Vector2(6, 10))  # drzewo
-		elif d < 0.16:
-			_place_rect(x, y, Color(0.45, 0.30, 0.15), Vector2(8, 6))   # krzak
+			# Losowy kwiatek spośród 5
+			var flowers = [SCENE_FLOWER1, SCENE_FLOWER2, SCENE_FLOWER3, SCENE_FLOWER4, SCENE_FLOWER5]
+			_spawn_scene(flowers[rng.randi() % flowers.size()], x, y)
+		elif d < 0.15:
+			_spawn_scene(SCENE_WOOD, x, y)
+		elif d < 0.17:
+			_spawn_scene(SCENE_STONE, x, y)
 
-	# Równiny — rzadkie drzewa i skały
-	elif h > BEACH_MAX and h < PLAINS_MAX:
-		if d < 0.04:
-			_place_rect(x, y, Color(0.15, 0.35, 0.10), Vector2(6, 10))  # drzewo
-		elif d < 0.07:
-			_place_rect(x, y, Color(0.55, 0.55, 0.55), Vector2(8, 7))   # skała
-
-	# Góry — dużo skał
-	elif h > FOREST_MAX and h < MOUNTAIN_MAX:
+	# ── LAS — dużo drewna i kwiatów ─────────────
+	elif h >= PLAINS_MAX and h < FOREST_MAX:
 		if d < 0.15:
-			_place_rect(x, y, Color(0.55, 0.55, 0.55), Vector2(10, 8))  # skała
+			_spawn_scene(SCENE_WOOD, x, y)
+		elif d < 0.19:
+			var flowers = [SCENE_FLOWER1, SCENE_FLOWER2, SCENE_FLOWER3, SCENE_FLOWER4, SCENE_FLOWER5]
+			_spawn_scene(flowers[rng.randi() % flowers.size()], x, y)
 
-func _place_rect(tx: int, ty: int, color: Color, size: Vector2) -> void:
-	var r        := ColorRect.new()
-	r.color       = color
-	r.size        = size
-	r.position    = Vector2(tx * TILE_SIZE + (TILE_SIZE - size.x) / 2,
-							ty * TILE_SIZE + TILE_SIZE - size.y)
-	r.z_index     = ty   # sortowanie głębokości
-	objects.add_child(r)
+	# ── GÓRY — kamienie ─────────────────────────
+	elif h >= FOREST_MAX and h < MOUNTAIN_MAX:
+		if d < 0.12:
+			_spawn_scene(SCENE_STONE, x, y)
+
+func _spawn_scene(scene: PackedScene, tx: int, ty: int) -> void:
+	var obj := scene.instantiate()
+	obj.position = Vector2(
+		tx * TILE_SIZE + TILE_SIZE / 2,
+		ty * TILE_SIZE + TILE_SIZE / 2
+	)
+	obj.z_index = ty
+	objects.add_child(obj)
 
 # ─────────────────────────────────────────────
 func _find_spawn(rng: RandomNumberGenerator) -> Vector2:
-	# Szukaj bezpiecznego miejsca na równinach
 	for _i in range(500):
 		var x := rng.randi_range(10, WORLD_WIDTH  - 10)
 		var y := rng.randi_range(10, WORLD_HEIGHT - 10)
@@ -152,7 +188,6 @@ func _find_spawn(rng: RandomNumberGenerator) -> Vector2:
 		if h > BEACH_MAX and h < PLAINS_MAX:
 			return Vector2(x * TILE_SIZE + TILE_SIZE / 2,
 						   y * TILE_SIZE + TILE_SIZE / 2)
-	# Fallback — środek świata
 	return Vector2(WORLD_WIDTH * TILE_SIZE / 2, WORLD_HEIGHT * TILE_SIZE / 2)
 
 # ─────────────────────────────────────────────

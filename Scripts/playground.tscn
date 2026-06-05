@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://hpf3xqyh42ii"]
+[gd_scene format=3 uid="uid://dmct4fd2kdncm"]
 
 [ext_resource type="PackedScene" uid="uid://bngnbg51yitf7" path="res://Tile Maps/Grass01.tscn" id="2_djkbh"]
 [ext_resource type="PackedScene" uid="uid://c75udmyukhfvk" path="res://Tile Maps/Bleak_yellow_grass.tscn" id="3_vj8hk"]
@@ -29,6 +29,7 @@
 [ext_resource type="PackedScene" uid="uid://8cboa8ut7h7y" path="res://Scenes/Flowers/flower3.tscn" id="27_m6jsy"]
 [ext_resource type="PackedScene" uid="uid://cx8c6x4vg4ifg" path="res://Scenes/Flowers/flower4.tscn" id="28_swx2f"]
 [ext_resource type="PackedScene" uid="uid://cdrocg7pqwwbh" path="res://Scenes/Flowers/flower5.tscn" id="29_vnnrc"]
+[ext_resource type="PackedScene" uid="uid://d04fhujxh600i" path="res://Animals/Deer/Deer.tscn" id="30_m6jsy"]
 
 [node name="Playground" type="Node2D" unique_id=571104678]
 scale = Vector2(1.9740651, 1.9740651)
@@ -85,6 +86,9 @@ position = Vector2(636.0417, -154.25049)
 
 [node name="BringerOfDeath" parent="BleakYellowGrass/level" unique_id=2039038124 instance=ExtResource("12_b7mh3")]
 position = Vector2(-529.9583, 605.7495)
+
+[node name="Deer" parent="BleakYellowGrass/level" unique_id=763673926 instance=ExtResource("30_m6jsy")]
+position = Vector2(167.97293, 601.5271)
 
 [node name="HUD" parent="BleakYellowGrass" unique_id=1148326026 instance=ExtResource("14_djkbh")]
 

@@ -131,6 +131,14 @@ func update_held_item():
 
 	held_item.visible = true
 	held_item.texture = item["texture"]
+	held_item.z_index = 10
+	held_item.size = Vector2(10, 10)
+	held_item.custom_minimum_size = Vector2(10, 10)
+	held_item.position = Vector2(-5, -5)
+	held_item.scale = Vector2.ONE
+
+	held_item.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	held_item.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 	
 func attack():
 	state = State.ATTACK

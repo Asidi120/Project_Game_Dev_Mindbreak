@@ -231,6 +231,12 @@ position = Vector2(-0.9999962, 9.536743e-07)
 scale = Vector2(1.2515533, 1.2515533)
 script = ExtResource("1_4ntmi")
 
+[node name="Hand" type="Node" parent="." unique_id=1552484640]
+
+[node name="HeldItem" type="Sprite2D" parent="Hand" unique_id=1389173971]
+position = Vector2(-6, -7)
+scale = Vector2(0.375, 0.375)
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=747600270]
 position = Vector2(-1.9073486e-06, 0.3528738)
 rotation = 1.5710098

@@ -56,10 +56,15 @@ var slow_multiplier = 0.5
 var buff_multiplier = 1.5
 var poison_damage = 2
 
+@onready var held_item = $Hand/HeldItem
+var inventory_system = null
+
+
 func _ready() -> void:
 	await get_tree().process_frame
 	add_to_group("player")
 	add_to_group("Players")
+	inventory_system = get_tree().get_first_node_in_group("inventory_ui")
 
 	# HUD
 	var hud = get_tree().get_first_node_in_group("hud")
@@ -108,6 +113,25 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("attack") and not is_attacking and state != State.STUNNED:
 		attack()
 
+func update_held_item():
+	if inventory_system == null:
+		return
+
+	var index = inventory_system.selected_fasteq_index
+
+	if index < 0 or index >= inventory_system.current_inventory.size():
+		held_item.visible = false
+		return
+
+	var item = inventory_system.current_inventory[index]
+
+	if item == null:
+		held_item.visible = false
+		return
+
+	held_item.visible = true
+	held_item.texture = item["texture"]
+	
 func attack():
 	state = State.ATTACK
 	is_attacking = true
@@ -254,6 +278,7 @@ func update_flip():
 	layer_clothes.flip_h = flipped
 
 func _process(_delta):
+	update_held_item()
 	if Input.is_action_just_pressed("pick_up") and items_in_range.size() > 0:
 		var item = items_in_range[0]
 		var item_picked_up = item.collect()

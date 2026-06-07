@@ -43,6 +43,7 @@ func handle_fasteq_scroll() -> void:
 
 	if Input.is_action_just_pressed("scroll_down"):
 		selected_fasteq_index += 1
+		
 
 	selected_fasteq_index = wrapi(selected_fasteq_index, 0, FASTEQ_SLOTS)
 
@@ -59,6 +60,7 @@ func update_fasteq_selection() -> void:
 	if grid.get_child_count() > selected_fasteq_index:
 		var slot = grid.get_child(selected_fasteq_index)
 		slot.set_selected(true)
+		
 
 func toggle_inventory() -> void:
 	visible = !visible

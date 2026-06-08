@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://cg1mtxnuby17p"]
+[gd_scene format=3 uid="uid://cibhk7ljbna1c"]
 
-[ext_resource type="Script" uid="uid://seh26fe00jav" path="res://word.gd" id="1_kmqk7"]
+[ext_resource type="Script" path="res://word.gd" id="1_kmqk7"]
 [ext_resource type="Texture2D" uid="uid://dj54xe27ee0w4" path="res://Tile Maps/world_tiles.png" id="2_cw7yw"]
 [ext_resource type="PackedScene" uid="uid://c2e0o08q8buid" path="res://Player/player.tscn" id="3_kmqk7"]
 [ext_resource type="PackedScene" uid="uid://b70fk741qrjt7" path="res://hud/HUD.tscn" id="4_cw7yw"]

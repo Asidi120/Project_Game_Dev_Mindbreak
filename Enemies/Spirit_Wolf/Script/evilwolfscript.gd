@@ -30,9 +30,11 @@ var patrol_points: Array = []
 var patrol_index: int = 0
 var patrol_origin: Vector2
 
-@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var sprite: AnimatedSprite2D = $Visual/AnimatedSprite2D
 @onready var hp_bar = $Hp_bar
 @onready var points_container: Node2D = $"../PatrolPoints"
+@onready var attack_area: Area2D = $Attack_Area
+@onready var visual: Node2D = $Visual
 
 
 func _ready():
@@ -163,9 +165,18 @@ func play_anim(name: String):
 
 func update_flip():
 	if velocity.x < 0:
-		sprite.flip_h = false
+		visual.scale.x = 1
+		attack_area.position.x = 0
 	elif velocity.x > 0:
-		sprite.flip_h = true
+		visual.scale.x = -1
+		attack_area.position.x = 35
+	elif velocity.x == 0 and target:
+		if target.global_position.x < global_position.x:
+			visual.scale.x = 1
+			attack_area.position.x = 0
+		else:
+			visual.scale.x = -1
+			attack_area.position.x = 35
 
 # DETECTION
 

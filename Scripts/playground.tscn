@@ -34,6 +34,7 @@
 [ext_resource type="PackedScene" uid="uid://cx8c6x4vg4ifg" path="res://Scenes/Flowers/flower4.tscn" id="28_swx2f"]
 [ext_resource type="PackedScene" uid="uid://cdrocg7pqwwbh" path="res://Scenes/Flowers/flower5.tscn" id="29_vnnrc"]
 [ext_resource type="PackedScene" uid="uid://d04fhujxh600i" path="res://Animals/Deer/Deer.tscn" id="30_m6jsy"]
+[ext_resource type="PackedScene" uid="uid://c37sbr8u6xh8m" path="res://Boss_Area/BossArea.tscn" id="35_4oawc"]
 
 [node name="Playground" type="Node2D" unique_id=571104678]
 scale = Vector2(1.9740651, 1.9740651)
@@ -46,6 +47,12 @@ position = Vector2(-19.041672, -1.7495117)
 
 [node name="level" type="Node2D" parent="BleakYellowGrass" unique_id=633388220]
 y_sort_enabled = true
+
+[node name="BossArea" parent="BleakYellowGrass/level" unique_id=1269416377 instance=ExtResource("35_4oawc")]
+unique_name_in_owner = true
+visible = false
+z_index = -1
+position = Vector2(19.041672, 1.7495117)
 
 [node name="Wood" parent="BleakYellowGrass/level" unique_id=1592250268 instance=ExtResource("5_07tfq")]
 position = Vector2(-207.95833, 86.74951)
@@ -106,6 +113,9 @@ position = Vector2(-261.59747, -337.14508)
 [node name="Boar" parent="BleakYellowGrass/level" unique_id=2082633821 instance=ExtResource("20_i77k7")]
 position = Vector2(-97.975746, -346.26334)
 
+[node name="IceGolem" parent="BleakYellowGrass/level" unique_id=431811086 instance=ExtResource("17_07tfq")]
+position = Vector2(486.60474, 187.66026)
+
 [node name="HUD" parent="BleakYellowGrass" unique_id=1148326026 instance=ExtResource("14_djkbh")]
 
 [node name="IronNode" parent="BleakYellowGrass" unique_id=1153327483 instance=ExtResource("16_dt752")]
@@ -129,9 +139,6 @@ position = Vector2(-49.8517, 189.18001)
 [node name="DayNightOverlay" type="CanvasModulate" parent="." unique_id=1490973845]
 position = Vector2(819, 160)
 script = ExtResource("19_tc4ax")
-
-[node name="IceGolem" parent="." unique_id=431811086 instance=ExtResource("17_07tfq")]
-position = Vector2(467.56305, 185.91077)
 
 [node name="Flower1" parent="." unique_id=1629567358 instance=ExtResource("25_65dde")]
 position = Vector2(-228.96915, 19.756187)

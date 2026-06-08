@@ -28,6 +28,7 @@ Players=""
 Clock=""
 PlayerBar=""
 Enemies=""
+BossArea=""
 
 [input]
 

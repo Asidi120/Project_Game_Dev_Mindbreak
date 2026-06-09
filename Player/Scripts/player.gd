@@ -142,19 +142,28 @@ func update_held_item():
 	
 	#jedzenie trzymanego itema
 	if Input.is_action_just_pressed("eat")and item["item_type"] == "food":
-		eating(item)
+		if eating(item):
+			print("Znikaaaaa")
+			inventory_system.current_inventory[index] = null
+			inventory_system.refresh_all()
 
 
 func eating(item):
 	#jeśli ewkipunek niewidoczny
+	var czy_zjedzone = false
 	if not inventory_system.inventory_visible:
 		if item["hunger_points"] <= max_hunger:
 			if current_hunger == max_hunger:
 				print("Nie można zjeść. Jesteś najedzony!")
+				return
 			elif item["hunger_points"] + current_hunger >= max_hunger:
+				current_hunger = max_hunger
 				print("Najadłeś się")
 			else:
 				print("Zjadłeś")
+				current_hunger += item["hunger_points"]
+		czy_zjedzone = true
+		return czy_zjedzone
 	
 	
 func attack():

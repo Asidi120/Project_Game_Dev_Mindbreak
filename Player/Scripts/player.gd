@@ -140,6 +140,14 @@ func update_held_item():
 	held_item.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	held_item.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 	
+	#jedzenie trzymanego itema
+	if item["item_type"] == "food":
+		print("Jedzenie")
+
+func eating():
+	if Input.is_action_just_pressed("eat"):
+		print()
+	
 func attack():
 	state = State.ATTACK
 	is_attacking = true
@@ -308,7 +316,8 @@ func _process(_delta):
 					inventory[i] = {
 						"item_id": item_picked_up["item_id"],
 						"amount": 1,
-						"texture": item_picked_up["texture"]
+						"texture": item_picked_up["texture"],
+						"item_type": item_picked_up["item_type"]
 					}
 					added = true
 					break

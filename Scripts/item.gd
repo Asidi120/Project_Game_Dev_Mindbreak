@@ -1,9 +1,11 @@
 extends Area2D
+class_name Item
 var player_in_range := false
 
 @export var item_id := ""
 @export var item_name := ""
 #var texture = get_icon()
+@export var item_type := ""
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
 
@@ -43,7 +45,8 @@ func _on_body_exited(body: Node2D) -> void:
 func collect():
 	var item = {
 		"item_id" : item_id,
-		"texture": get_icon()
+		"texture": get_icon(),
+		"item_type": item_type
 	}
 	print("+1 ", item_name)
 	queue_free()

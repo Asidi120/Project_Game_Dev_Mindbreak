@@ -141,12 +141,21 @@ func update_held_item():
 	held_item.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 	
 	#jedzenie trzymanego itema
-	if item["item_type"] == "food":
-		print("Jedzenie")
+	if Input.is_action_just_pressed("eat")and item["item_type"] == "food":
+		eating(item)
 
-func eating():
-	if Input.is_action_just_pressed("eat"):
-		print()
+
+func eating(item):
+	#jeśli ewkipunek niewidoczny
+	if not inventory_system.inventory_visible:
+		if item["hunger_points"] <= max_hunger:
+			if current_hunger == max_hunger:
+				print("Nie można zjeść. Jesteś najedzony!")
+			elif item["hunger_points"] + current_hunger >= max_hunger:
+				print("Najadłeś się")
+			else:
+				print("Zjadłeś")
+	
 	
 func attack():
 	state = State.ATTACK
@@ -313,12 +322,8 @@ func _process(_delta):
 		if not added:
 			for i in range(inventory.size()):
 				if inventory[i] == null:
-					inventory[i] = {
-						"item_id": item_picked_up["item_id"],
-						"amount": 1,
-						"texture": item_picked_up["texture"],
-						"item_type": item_picked_up["item_type"]
-					}
+					item_picked_up["amount"] = 1
+					inventory[i] = item_picked_up
 					added = true
 					break
 		if fasteq_ui:

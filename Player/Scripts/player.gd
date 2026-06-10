@@ -3,6 +3,7 @@ class_name Player extends CharacterBody2D
 var death_panel: Control
 var clock: Control  
 var hp_bar: TextureProgressBar
+var damage_flash: ColorRect
 signal hp_changed(current_hp, max_hp)
 signal stamina_usage(current_stamina, max_stamina)
 signal hunger_changed(current_hunger,max_hunger)
@@ -68,6 +69,7 @@ func _ready() -> void:
 		death_panel = hud.get_node_or_null("DeathPanel")
 		clock       = hud.get_node_or_null("Clock")
 		hp_bar      = hud.get_node_or_null("PlayerBar/hp_bar")
+		damage_flash  = hud.get_node_or_null("ColorRect")
 		if hp_bar:
 			hp_bar.set_target(self)
 
@@ -162,7 +164,19 @@ func take_damage(amount):
 	if current_hp <= 0:
 		die()
 	else:
+		show_damage_flash()
 		sounds.play_sound("hurt")
+
+func show_damage_flash():
+	
+	if damage_flash == null:
+		return
+	damage_flash.visible=true
+	damage_flash.modulate.a = 0
+
+	var tween = create_tween()
+	tween.tween_property(damage_flash, "modulate:a", 0.6, 0.05)
+	tween.tween_property(damage_flash, "modulate:a", 0.0, 0.15)
 
 func heal(amount):
 	current_hp += amount
@@ -265,14 +279,15 @@ func update_flip():
 	
 func update_attack_hitbox():
 	var flipped: bool = velocity.x < 0
-	if velocity.y > 0 or state==State.IDLE:
-		attack_hitbox.position = Vector2(-7, 13)
-	elif velocity.y< 0:
-		attack_hitbox.position = Vector2(-7, -11)
-	elif flipped:
-		attack_hitbox.position = Vector2(-16, 0)
-	else:
-		attack_hitbox.position = Vector2(0, 0)
+	if state!=State.ATTACK:
+		if velocity.y > 0 or state==State.IDLE:
+			attack_hitbox.position = Vector2(-7, 13)
+		elif velocity.y< 0:
+			attack_hitbox.position = Vector2(-7, -11)
+		elif flipped:
+			attack_hitbox.position = Vector2(-16, 0)
+		else:
+			attack_hitbox.position = Vector2(0, 0)
 
 func _process(_delta):
 	if Input.is_action_just_pressed("pick_up") and items_in_range.size() > 0:

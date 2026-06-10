@@ -248,6 +248,7 @@ libraries/ = SubResource("AnimationLibrary_gwnis")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1622828104]
 position = Vector2(0, 6)
 scale = Vector2(-48.14899, -2.746066)
+zoom = Vector2(2.25, 2.25)
 position_smoothing_enabled = true
 
 [node name="AttackHitbox" type="Area2D" parent="." unique_id=990617455]

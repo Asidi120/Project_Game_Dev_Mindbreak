@@ -23,6 +23,15 @@ texture = ExtResource("5_fimwm")
 
 [node name="HUD" type="CanvasLayer" unique_id=1148326026 groups=["hud"]]
 
+[node name="ColorRect" type="ColorRect" parent="." unique_id=505816222]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.47312066, 0, 0.13335153, 0.34800002)
+
 [node name="Clock" parent="." unique_id=385021879 groups=["Clock"] instance=ExtResource("1_vow1y")]
 
 [node name="PlayerBar" parent="." unique_id=160299636 instance=ExtResource("2_ne771")]

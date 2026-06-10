@@ -7,10 +7,35 @@ var hits := 0
 @export var scene: PackedScene #instancja sceny struktury
 @export var scene2: PackedScene
 
+var inventory_system = null
+
+func update_hits():
+	if inventory_system == null:
+		return
+
+	var index = inventory_system.selected_fasteq_index
+
+	if index < 0 or index >= inventory_system.current_inventory.size():
+		hits += 1
+		return
+
+	var item = inventory_system.current_inventory[index]
+
+	if item == null:
+		hits += 1
+		return
+
+	if item["item_type"] == "tool":
+		hits += item["tool_power"]
+	else:
+		hits += 1
+	
+func _ready() -> void:
+	inventory_system = get_tree().get_first_node_in_group("inventory_ui")
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if player_in_range and Input.is_action_just_pressed("attack"): #jesli player w zasiegu i uderzy
-		hits += 1
+		update_hits()
 		print("Uderzenie: ", hits)
 
 		if hits >= hits_needed: #jesli player przekroczy ilosc uderzen

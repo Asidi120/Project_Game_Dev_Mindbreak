@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://dmct4fd2kdncm"]
+[gd_scene format=3 uid="uid://hpf3xqyh42ii"]
 
 [ext_resource type="PackedScene" uid="uid://bngnbg51yitf7" path="res://Tile Maps/Grass01.tscn" id="2_djkbh"]
 [ext_resource type="PackedScene" uid="uid://c75udmyukhfvk" path="res://Tile Maps/Bleak_yellow_grass.tscn" id="3_vj8hk"]
@@ -28,7 +28,9 @@
 [ext_resource type="PackedScene" uid="uid://y4gpdxpa8gcw" path="res://Scenes/StaticStructures/diamond_node.tscn" id="20_af7ae"]
 [ext_resource type="PackedScene" uid="uid://uriqfdjh71ik" path="res://Animals/Boar/Boar.tscn" id="20_i77k7"]
 [ext_resource type="PackedScene" uid="uid://b26q11ema0ac0" path="res://Scenes/StaticStructures/gold_node.tscn" id="21_jbcv3"]
+[ext_resource type="PackedScene" uid="uid://cvdo0rxrv3fmb" path="res://Scenes/Tools/sword_wood.tscn" id="23_i77k7"]
 [ext_resource type="PackedScene" uid="uid://ck0dk8vywervm" path="res://Scenes/StaticStructures/tree_spruce.tscn" id="24_g0rsy"]
+[ext_resource type="PackedScene" uid="uid://hwa5m5w7o7i0" path="res://Scenes/Tools/axe_wood.tscn" id="24_x6xc5"]
 [ext_resource type="PackedScene" uid="uid://cfhqdgk1shpxi" path="res://Scenes/Flowers/flower1.tscn" id="25_65dde"]
 [ext_resource type="PackedScene" uid="uid://cqy2nbccn5in6" path="res://Scenes/Flowers/flower2.tscn" id="26_fkpol"]
 [ext_resource type="PackedScene" uid="uid://8cboa8ut7h7y" path="res://Scenes/Flowers/flower3.tscn" id="27_m6jsy"]
@@ -113,6 +115,16 @@ position = Vector2(-97.975746, -346.26334)
 
 [node name="IceGolem" parent="BleakYellowGrass/level" unique_id=431811086 instance=ExtResource("17_07tfq")]
 position = Vector2(486.60474, 187.66026)
+
+[node name="SwordWood" parent="BleakYellowGrass/level" unique_id=1010033666 instance=ExtResource("23_i77k7")]
+position = Vector2(-80.245834, 19.985992)
+
+[node name="AxeWood" parent="BleakYellowGrass/level" unique_id=2053129066 instance=ExtResource("24_x6xc5")]
+position = Vector2(-45.29258, -5.342453)
+tool_material = "wood"
+item_id = "axe_wood"
+item_name = "AxeWood"
+item_type = "tool"
 
 [node name="HUD" parent="BleakYellowGrass" unique_id=1148326026 instance=ExtResource("14_djkbh")]
 

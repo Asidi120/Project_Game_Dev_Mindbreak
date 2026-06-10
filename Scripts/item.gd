@@ -4,7 +4,6 @@ var player_in_range := false
 
 @export var item_id := ""
 @export var item_name := ""
-#var texture = get_icon()
 @export var item_type := ""
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
@@ -29,9 +28,6 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	#if player_in_range and Input.is_action_just_pressed("pick_up"): #jesli player w zasiegu i nacisniete F item zostaje zebrany
-		#queue_free() #item znika po wejściu w niego
-		#print("+1 ", item_name)
 		pass
 
 func _on_body_entered(body: Node2D) -> void:

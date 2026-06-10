@@ -28,10 +28,10 @@ Players=""
 Clock=""
 PlayerBar=""
 Enemies=""
-BossArea=""
 inventory=""
 fasteq=""
 inventory_ui=""
+BossArea=""
 
 [input]
 

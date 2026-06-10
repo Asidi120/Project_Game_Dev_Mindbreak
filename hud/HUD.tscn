@@ -20,6 +20,7 @@ texture = ExtResource("5_fimwm")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_st07x"]
 texture = ExtResource("5_fimwm")
+[ext_resource type="PackedScene" uid="uid://bpdatfhqafv8t" path="res://Scenes/fast_eq.tscn" id="5_s5l88"]
 
 [node name="HUD" type="CanvasLayer" unique_id=1148326026 groups=["hud"]]
 
@@ -33,8 +34,16 @@ grow_vertical = 2
 color = Color(0.47312066, 0, 0.13335153, 0.34800002)
 
 [node name="Clock" parent="." unique_id=385021879 groups=["Clock"] instance=ExtResource("1_vow1y")]
+offset_left = 501.0
+offset_top = -3.0
+offset_right = 541.0
+offset_bottom = 37.0
 
 [node name="PlayerBar" parent="." unique_id=160299636 instance=ExtResource("2_ne771")]
+offset_left = -17.0
+offset_top = 97.0
+offset_right = 23.0
+offset_bottom = 137.0
 
 [node name="DeathPanel" parent="." unique_id=67905963 instance=ExtResource("3_xxqia")]
 visible = false
@@ -58,3 +67,21 @@ language = "en"
 script = ExtResource("8_8yvdu")
 
 [connection signal="pressed" from="BossButton" to="BossButton" method="_on_pressed"]
+[node name="Inventory" parent="." unique_id=1630870992 groups=["inventory_ui"] instance=ExtResource("4_akegq")]
+offset_left = 300.0
+offset_top = 64.0
+offset_right = 300.0
+offset_bottom = 64.0
+
+[node name="FastEq" parent="." unique_id=73452857 groups=["inventory_ui"] instance=ExtResource("5_s5l88")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = 50.0
+offset_right = -400.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2

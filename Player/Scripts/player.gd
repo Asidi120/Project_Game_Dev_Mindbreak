@@ -59,6 +59,8 @@ var poison_damage = 2
 @onready var held_item = $Hand/HeldItem
 var inventory_system = null
 
+var facing_direction := Vector2.DOWN
+
 
 func _ready() -> void:
 	await get_tree().process_frame
@@ -165,6 +167,7 @@ func eating(item):
 		czy_zjedzone = true
 		return czy_zjedzone
 
+#wyrzucanie przyciskiem Q jesli jest selected w inventory lub scroll na fast eq
 func throw():
 	if Input.is_action_just_pressed("throw"):
 		if inventory_system == null:
@@ -189,7 +192,16 @@ func throw():
 			return
 
 		print(index)
-		print("Wyrzuc")
+		print(inventory_system.current_inventory[index])
+		print(facing_direction)
+		var item_scene = load("res://Scenes/item.tscn")
+		var dropped_item = item_scene.instantiate()
+
+		get_tree().current_scene.add_child(dropped_item)
+		dropped_item.global_position = global_position + facing_direction * 20
+		dropped_item.item_id = item["item_id"]
+		dropped_item.sprite_2d.texture = item["texture"]
+		dropped_item.item_type = item["item_type"]
 	
 	
 func attack():
@@ -319,12 +331,19 @@ func update_animation():
 		play_anim("idle")
 		return
 	if abs(velocity.x) > abs(velocity.y):
+		if velocity.x > 0:
+			facing_direction = Vector2.RIGHT
+		else:
+			facing_direction = Vector2.LEFT
+			
 		play_anim("walk_side")
 		update_flip()
 	else:
 		if velocity.y > 0:
+			facing_direction = Vector2.DOWN
 			play_anim("walk_down")
 		else:
+			facing_direction = Vector2.UP
 			play_anim("walk_up")
 
 func play_anim(anim_name):

@@ -22,6 +22,7 @@ func _ready() -> void:
 func _on_pressed() -> void:
 	if not player:
 		return
+	player.state=player.State.IDLE
 	player.current_hp      = player.max_hp
 	player.current_hunger  = player.max_hunger
 	player.current_stamina = player.max_stamina

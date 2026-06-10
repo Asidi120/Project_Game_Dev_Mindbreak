@@ -3,6 +3,7 @@ class_name Player extends CharacterBody2D
 var death_panel: Control
 var clock: Control  
 var hp_bar: TextureProgressBar
+var damage_flash: ColorRect
 signal hp_changed(current_hp, max_hp)
 signal stamina_usage(current_stamina, max_stamina)
 signal hunger_changed(current_hunger,max_hunger)
@@ -34,6 +35,8 @@ const MAX_SLOT = 24
 
 # Inventory UI — szukane przez grupę żeby działało w każdej scenie
 var inventory_ui = null
+
+@onready var sounds: Node2D = $Sounds
 var fasteq_ui = null
 @onready var anim = $AnimationPlayer
 
@@ -72,6 +75,7 @@ func _ready() -> void:
 		death_panel = hud.get_node_or_null("DeathPanel")
 		clock       = hud.get_node_or_null("Clock")
 		hp_bar      = hud.get_node_or_null("PlayerBar/hp_bar")
+		damage_flash  = hud.get_node_or_null("ColorRect")
 		if hp_bar:
 			hp_bar.set_target(self)
 
@@ -144,6 +148,7 @@ func attack():
 	state = State.ATTACK
 	is_attacking = true
 	attack_hitbox.monitoring = true
+	sounds.play_sound("attack")
 	await get_tree().create_timer(0.2).timeout
 	attack_hitbox.monitoring = false
 	is_attacking = false
@@ -192,6 +197,20 @@ func take_damage(amount):
 	print("Player hp:", current_hp)
 	if current_hp <= 0:
 		die()
+	else:
+		show_damage_flash()
+		sounds.play_sound("hurt")
+
+func show_damage_flash():
+	
+	if damage_flash == null:
+		return
+	damage_flash.visible=true
+	damage_flash.modulate.a = 0
+
+	var tween = create_tween()
+	tween.tween_property(damage_flash, "modulate:a", 0.6, 0.05)
+	tween.tween_property(damage_flash, "modulate:a", 0.0, 0.15)
 
 func heal(amount):
 	current_hp += amount
@@ -202,6 +221,7 @@ func die():
 	if state == State.DEAD:
 		return
 	state = State.DEAD
+	sounds.play_sound("dead")
 	print("player died")
 	if death_panel:
 		death_panel.visible = true
@@ -253,6 +273,11 @@ func move_player(delta):
 	emit_signal("stamina_usage", current_stamina, max_stamina)
 	move_and_slide()
 
+	if velocity.length() > 0 and !is_attacking and !is_stunned:
+			sounds.play_sound("walk")
+	else:
+		sounds.stop_walk()
+
 func stamina_recovery():
 	if recovery_started:
 		return
@@ -263,6 +288,7 @@ func stamina_recovery():
 	recovery_started = false
 
 func update_animation():
+	update_attack_hitbox()
 	if velocity == Vector2.ZERO:
 		play_anim("idle")
 		return
@@ -284,6 +310,18 @@ func update_flip():
 	layer_body.flip_h    = flipped
 	layer_hair.flip_h    = flipped
 	layer_clothes.flip_h = flipped
+	
+func update_attack_hitbox():
+	var flipped: bool = velocity.x < 0
+	if state!=State.ATTACK:
+		if velocity.y > 0 or state==State.IDLE:
+			attack_hitbox.position = Vector2(-7, 13)
+		elif velocity.y< 0:
+			attack_hitbox.position = Vector2(-7, -11)
+		elif flipped:
+			attack_hitbox.position = Vector2(-16, 0)
+		else:
+			attack_hitbox.position = Vector2(0, 0)
 
 func _process(_delta):
 	update_held_item()

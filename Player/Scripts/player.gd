@@ -164,6 +164,32 @@ func eating(item):
 				current_hunger += item["hunger_points"]
 		czy_zjedzone = true
 		return czy_zjedzone
+
+func throw():
+	if Input.is_action_just_pressed("throw"):
+		if inventory_system == null:
+			return
+
+		var index := -1
+
+		if inventory_system.inventory_visible:
+			index = inventory_system.selected_slot_index
+		else:
+			index = inventory_system.selected_fasteq_index
+
+		if index == -1:
+			return
+
+		if index < 0 or index >= inventory_system.current_inventory.size():
+			return
+
+		var item = inventory_system.current_inventory[index]
+
+		if item == null:
+			return
+
+		print(index)
+		print("Wyrzuc")
 	
 	
 func attack():
@@ -313,6 +339,7 @@ func update_flip():
 
 func _process(_delta):
 	update_held_item()
+	throw()
 	if Input.is_action_just_pressed("pick_up") and items_in_range.size() > 0:
 		var item = items_in_range[0]
 		var item_picked_up = item.collect()

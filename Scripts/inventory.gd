@@ -17,6 +17,7 @@ var slot_scene = preload("res://Scenes/item_slot.tscn")
 
 var slot_offset := 0
 static var selected_fasteq_index := 0
+static var selected_slot_index := -1
 
 
 func _ready() -> void:
@@ -171,6 +172,7 @@ func _on_slot_clicked(slot) -> void:
 
 	clear_all_selections()
 	selected_slot = slot
+	selected_slot_index = slot.slot_index #ustawienie indeksu wybranego slota
 	selected_slot.set_selected(true)
 
 
@@ -178,6 +180,7 @@ func clear_selection() -> void:
 	if selected_slot != null:
 		selected_slot.set_selected(false)
 		selected_slot = null
+		selected_slot_index = -1
 
 
 func clear_all_selections() -> void:
@@ -186,3 +189,4 @@ func clear_all_selections() -> void:
 			child.set_selected(false)
 
 	selected_slot = null
+	selected_slot_index = -1

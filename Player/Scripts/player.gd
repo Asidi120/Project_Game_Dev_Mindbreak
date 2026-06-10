@@ -62,6 +62,8 @@ var poison_damage = 2
 @onready var held_item = $Hand/HeldItem
 var inventory_system = null
 
+var facing_direction := Vector2.DOWN
+
 
 func _ready() -> void:
 	await get_tree().process_frame
@@ -143,6 +145,73 @@ func update_held_item():
 
 	held_item.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	held_item.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	
+	#jedzenie trzymanego itema
+	if Input.is_action_just_pressed("eat")and item["item_type"] == "food":
+		if eating(item):
+			print("Znikaaaaa")
+			inventory_system.current_inventory[index] = null
+			inventory_system.refresh_all()
+
+
+func eating(item):
+	#jeśli ewkipunek niewidoczny
+	var czy_zjedzone = false
+	if not inventory_system.inventory_visible:
+		if item["hunger_points"] <= max_hunger:
+			if current_hunger == max_hunger:
+				print("Nie można zjeść. Jesteś najedzony!")
+				return
+			elif item["hunger_points"] + current_hunger >= max_hunger:
+				current_hunger = max_hunger
+				print("Najadłeś się")
+			else:
+				print("Zjadłeś")
+				current_hunger += item["hunger_points"]
+		czy_zjedzone = true
+		return czy_zjedzone
+
+#wyrzucanie przyciskiem Q jesli jest selected w inventory lub scroll na fast eq
+func throw():
+	if Input.is_action_just_pressed("throw"):
+		if inventory_system == null:
+			return
+
+		var index := -1
+
+		if inventory_system.inventory_visible:
+			index = inventory_system.selected_slot_index
+		else:
+			index = inventory_system.selected_fasteq_index
+
+		if index == -1:
+			return
+
+		if index < 0 or index >= inventory_system.current_inventory.size():
+			return
+
+		var item = inventory_system.current_inventory[index]
+
+		if item == null:
+			return
+
+		print(index)
+		print(inventory_system.current_inventory[index])
+		print(facing_direction)
+		var item_scene = load(item["scene_path"])
+		var dropped_item = item_scene.instantiate()
+
+		get_tree().current_scene.add_child(dropped_item)
+		dropped_item.global_position = global_position + facing_direction * 20
+		
+		#usuniecie z ekwipunka 
+		if item["amount"] > 1:
+			item["amount"] -= 1
+		else:
+			inventory_system.current_inventory[index] = null
+
+		inventory_system.refresh_all()
+	
 	
 func attack():
 	state = State.ATTACK
@@ -293,12 +362,19 @@ func update_animation():
 		play_anim("idle")
 		return
 	if abs(velocity.x) > abs(velocity.y):
+		if velocity.x > 0:
+			facing_direction = Vector2.RIGHT
+		else:
+			facing_direction = Vector2.LEFT
+			
 		play_anim("walk_side")
 		update_flip()
 	else:
 		if velocity.y > 0:
+			facing_direction = Vector2.DOWN
 			play_anim("walk_down")
 		else:
+			facing_direction = Vector2.UP
 			play_anim("walk_up")
 
 func play_anim(anim_name):
@@ -325,6 +401,7 @@ func update_attack_hitbox():
 
 func _process(_delta):
 	update_held_item()
+	throw()
 	if Input.is_action_just_pressed("pick_up") and items_in_range.size() > 0:
 		var item = items_in_range[0]
 		var item_picked_up = item.collect()
@@ -343,11 +420,8 @@ func _process(_delta):
 		if not added:
 			for i in range(inventory.size()):
 				if inventory[i] == null:
-					inventory[i] = {
-						"item_id": item_picked_up["item_id"],
-						"amount": 1,
-						"texture": item_picked_up["texture"]
-					}
+					item_picked_up["amount"] = 1
+					inventory[i] = item_picked_up
 					added = true
 					break
 		if fasteq_ui:

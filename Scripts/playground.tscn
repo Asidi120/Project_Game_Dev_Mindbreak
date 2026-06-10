@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://c2e0o08q8buid" path="res://Player/player.tscn" id="4_b7mh3"]
 [ext_resource type="PackedScene" uid="uid://bhk8wb8aud5hg" path="res://Scenes/Items/wood.tscn" id="5_07tfq"]
 [ext_resource type="PackedScene" uid="uid://dre6w3svhd6ko" path="res://Scenes/Items/stone.tscn" id="6_dt752"]
+[ext_resource type="PackedScene" uid="uid://bjgxjuvclurjp" path="res://Scenes/Food/apple.tscn" id="6_m6jsy"]
 [ext_resource type="PackedScene" uid="uid://thfp6dkj2dwq" path="res://Scenes/Items/stick.tscn" id="7_tc4ax"]
 [ext_resource type="PackedScene" uid="uid://cm00qlqub0neu" path="res://Enemies/Spirit_Wolf/EvilWolf.tscn" id="8_l7aru"]
 [ext_resource type="PackedScene" uid="uid://by20bk2bsvhjj" path="res://Scenes/StaticStructures/tree.tscn" id="9_bm257"]
@@ -55,6 +56,10 @@ position = Vector2(-158.95833, 48.74951)
 
 [node name="Stick" parent="BleakYellowGrass/level" unique_id=13035520 instance=ExtResource("7_tc4ax")]
 position = Vector2(-196.95833, 98.74951)
+
+[node name="Apple" parent="BleakYellowGrass/level" unique_id=763311360 instance=ExtResource("6_m6jsy")]
+position = Vector2(-40.22689, -22.059227)
+scale = Vector2(0.6703159, 0.6703159)
 
 [node name="Seashell_1" parent="BleakYellowGrass/level" unique_id=604079078 instance=ExtResource("13_b7mh3")]
 position = Vector2(-103.95834, -13.250481)

@@ -8,6 +8,7 @@
 [ext_resource type="FontFile" uid="uid://c0l8fv5sgwm3v" path="res://Fonts/Star Crush.ttf" id="5_st07x"]
 [ext_resource type="Texture2D" uid="uid://h5kcaeuujfnv" path="res://MenuIcon/Blank_Pressed.png" id="6_st07x"]
 [ext_resource type="Script" uid="uid://bg4c4mepocjlg" path="res://Scripts/boss_button.gd" id="8_8yvdu"]
+[ext_resource type="PackedScene" uid="uid://bpdatfhqafv8t" path="res://Scenes/fast_eq.tscn" id="5_s5l88"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8yvdu"]
 texture = ExtResource("5_fimwm")
@@ -20,7 +21,6 @@ texture = ExtResource("5_fimwm")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_st07x"]
 texture = ExtResource("5_fimwm")
-[ext_resource type="PackedScene" uid="uid://bpdatfhqafv8t" path="res://Scenes/fast_eq.tscn" id="5_s5l88"]
 
 [node name="HUD" type="CanvasLayer" unique_id=1148326026 groups=["hud"]]
 
@@ -50,8 +50,6 @@ visible = false
 self_modulate = Color(0.4840902, 0.0045073065, 8.904189e-07, 1)
 top_level = true
 
-[node name="Inventory" parent="." unique_id=1630870992 instance=ExtResource("4_akegq")]
-
 [node name="BossButton" type="Button" parent="." unique_id=362411859]
 offset_left = 1244.0
 offset_top = 739.0
@@ -66,7 +64,6 @@ text = "FIGHT THE BOSS"
 language = "en"
 script = ExtResource("8_8yvdu")
 
-[connection signal="pressed" from="BossButton" to="BossButton" method="_on_pressed"]
 [node name="Inventory" parent="." unique_id=1630870992 groups=["inventory_ui"] instance=ExtResource("4_akegq")]
 offset_left = 300.0
 offset_top = 64.0
@@ -85,3 +82,5 @@ offset_right = -400.0
 offset_bottom = 50.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[connection signal="pressed" from="BossButton" to="BossButton" method="_on_pressed"]

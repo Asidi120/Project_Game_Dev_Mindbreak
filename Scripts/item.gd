@@ -46,7 +46,8 @@ func collect():
 	var item = {
 		"item_id" : item_id,
 		"texture": get_icon(),
-		"item_type": item_type
+		"item_type": item_type,
+		"scene_path": scene_file_path
 	}
 	print("+1 ", item_name)
 	queue_free()

@@ -194,14 +194,19 @@ func throw():
 		print(index)
 		print(inventory_system.current_inventory[index])
 		print(facing_direction)
-		var item_scene = load("res://Scenes/item.tscn")
+		var item_scene = load(item["scene_path"])
 		var dropped_item = item_scene.instantiate()
 
 		get_tree().current_scene.add_child(dropped_item)
 		dropped_item.global_position = global_position + facing_direction * 20
-		dropped_item.item_id = item["item_id"]
-		dropped_item.sprite_2d.texture = item["texture"]
-		dropped_item.item_type = item["item_type"]
+		
+		#usuniecie z ekwipunka 
+		if item["amount"] > 1:
+			item["amount"] -= 1
+		else:
+			inventory_system.current_inventory[index] = null
+
+		inventory_system.refresh_all()
 	
 	
 func attack():

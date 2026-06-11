@@ -14,6 +14,7 @@ size = Vector2(46, 26)
 script = ExtResource("1_o0rpx")
 hits_needed = 10
 object_id = "boulder"
+object_type = "boulder"
 scene = ExtResource("2_xovyd")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=713581976]

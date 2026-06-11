@@ -32,6 +32,7 @@
 [ext_resource type="PackedScene" uid="uid://ck0dk8vywervm" path="res://Scenes/StaticStructures/tree_spruce.tscn" id="24_g0rsy"]
 [ext_resource type="PackedScene" uid="uid://hwa5m5w7o7i0" path="res://Scenes/Tools/axe_wood.tscn" id="24_x6xc5"]
 [ext_resource type="PackedScene" uid="uid://cfhqdgk1shpxi" path="res://Scenes/Flowers/flower1.tscn" id="25_65dde"]
+[ext_resource type="PackedScene" uid="uid://bqdd1gb1c0fqj" path="res://Scenes/Tools/pickaxe_wood.tscn" id="25_ux27c"]
 [ext_resource type="PackedScene" uid="uid://cqy2nbccn5in6" path="res://Scenes/Flowers/flower2.tscn" id="26_fkpol"]
 [ext_resource type="PackedScene" uid="uid://8cboa8ut7h7y" path="res://Scenes/Flowers/flower3.tscn" id="27_m6jsy"]
 [ext_resource type="PackedScene" uid="uid://cx8c6x4vg4ifg" path="res://Scenes/Flowers/flower4.tscn" id="28_swx2f"]
@@ -121,6 +122,9 @@ position = Vector2(-80.245834, 19.985992)
 
 [node name="AxeWood" parent="BleakYellowGrass/level" unique_id=2053129066 instance=ExtResource("24_x6xc5")]
 position = Vector2(-43.772873, -4.835884)
+
+[node name="PickaxeWood" parent="BleakYellowGrass/level" unique_id=1110323191 instance=ExtResource("25_ux27c")]
+position = Vector2(-39.213753, 23.531975)
 
 [node name="HUD" parent="BleakYellowGrass" unique_id=1148326026 instance=ExtResource("14_djkbh")]
 

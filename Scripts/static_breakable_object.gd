@@ -16,20 +16,27 @@ func update_hits():
 
 	var index = inventory_system.selected_fasteq_index
 
-	if index < 0 or index >= inventory_system.current_inventory.size():
+	if (index < 0 or index >= inventory_system.current_inventory.size()) and object_type == "tree":
 		hits += 1
+		print("casjoias")
+	
+	if index < 0 or index >= inventory_system.current_inventory.size():
 		return
 
 	var item = inventory_system.current_inventory[index]
-
-	if item == null:
+	
+	if item == null and object_type == "tree":
 		hits += 1
+	
+	if item == null:
 		return
 
 	if item["item_type"] == "axe" and object_type == "tree":
 		hits += item["tool_power"]
-	else:
-		hits += 1
+	elif item["item_type"] == "pickaxe" and object_type == "boulder":
+		hits += item["tool_power"]
+	elif object_type == "tree":
+		hits += 1	
 	
 func _ready() -> void:
 	inventory_system = get_tree().get_first_node_in_group("inventory_ui")

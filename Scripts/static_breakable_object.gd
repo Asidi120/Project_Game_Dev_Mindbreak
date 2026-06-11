@@ -2,6 +2,7 @@ extends StaticBody2D
 var player_in_range := false
 @export var hits_needed := 4 #ilosc potrzebnych uderzen
 @export var object_id := ""
+@export var object_type := ""
 var hits := 0
 
 @export var scene: PackedScene #instancja sceny struktury
@@ -25,7 +26,7 @@ func update_hits():
 		hits += 1
 		return
 
-	if item["item_type"] == "tool":
+	if item["item_type"] == "axe" and object_type == "tree":
 		hits += item["tool_power"]
 	else:
 		hits += 1

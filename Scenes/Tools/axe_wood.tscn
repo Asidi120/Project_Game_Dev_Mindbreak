@@ -10,6 +10,9 @@ b = Vector2(-4.4246407, 4.7957325)
 [node name="AxeWood" type="Area2D" unique_id=1592250268]
 script = ExtResource("1_r50kh")
 tool_power = 2
+item_id = "axe_wood"
+item_name = "AxeWood"
+item_type = "axe"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=834627305]
 z_index = -1

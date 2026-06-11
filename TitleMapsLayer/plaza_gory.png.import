@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dqf5wrau2jucl"
-path="res://.godot/imported/Beach_Tile.png-4dcce266afebde76e8e748fe737d36e8.ctex"
+uid="uid://cramspjee52ry"
+path="res://.godot/imported/plaza_gory.png-27ab95893b60ce29b82e15da2e9c3da5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://TitleMapsLayer/Beach_Tile.png"
-dest_files=["res://.godot/imported/Beach_Tile.png-4dcce266afebde76e8e748fe737d36e8.ctex"]
+source_file="res://TitleMapsLayer/plaza_gory.png"
+dest_files=["res://.godot/imported/plaza_gory.png-27ab95893b60ce29b82e15da2e9c3da5.ctex"]
 
 [params]
 

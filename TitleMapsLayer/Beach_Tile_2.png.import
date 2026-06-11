@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bxb157v4h8afu"
-path="res://.godot/imported/Path_Tile.png-fa2b239826acd6584d02a39267028202.ctex"
+uid="uid://b3gmrqfjr3d0t"
+path="res://.godot/imported/Beach_Tile_2.png-bc164069925f9549ed8b6b99d3a9bffb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://TitleMapsLayer/Path_Tile.png"
-dest_files=["res://.godot/imported/Path_Tile.png-fa2b239826acd6584d02a39267028202.ctex"]
+source_file="res://TitleMapsLayer/Beach_Tile_2.png"
+dest_files=["res://.godot/imported/Beach_Tile_2.png-bc164069925f9549ed8b6b99d3a9bffb.ctex"]
 
 [params]
 

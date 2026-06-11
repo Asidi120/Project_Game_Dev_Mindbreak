@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b5ixvlsnpr3yt"
-path="res://.godot/imported/Water_Middle.png-eca38ca11c77b7e5fe073163865e7d9a.ctex"
+uid="uid://dsu4qobdt6546"
+path="res://.godot/imported/laka_las.png-1d9fdc6dd36e467e36ef031689198b79.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://TitleMapsLayer/Water_Middle.png"
-dest_files=["res://.godot/imported/Water_Middle.png-eca38ca11c77b7e5fe073163865e7d9a.ctex"]
+source_file="res://TitleMapsLayer/laka_las.png"
+dest_files=["res://.godot/imported/laka_las.png-1d9fdc6dd36e467e36ef031689198b79.ctex"]
 
 [params]
 

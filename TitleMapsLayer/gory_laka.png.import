@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://gygxo271tw3p"
-path="res://.godot/imported/Cliff_Tile.png-f8b705e0bbda2a581856b370732685d6.ctex"
+uid="uid://ctwn1wtm6dqov"
+path="res://.godot/imported/gory_laka.png-263ec3e4ab99b5511c86d08a04c5e138.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://TitleMapsLayer/Cliff_Tile.png"
-dest_files=["res://.godot/imported/Cliff_Tile.png-f8b705e0bbda2a581856b370732685d6.ctex"]
+source_file="res://TitleMapsLayer/gory_laka.png"
+dest_files=["res://.godot/imported/gory_laka.png-263ec3e4ab99b5511c86d08a04c5e138.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cdt3xc3xs3arq"
-path="res://.godot/imported/FarmLand_Tile.png-924a6293bb4fce4074c902ec35e5de8f.ctex"
+uid="uid://dnd16wa1so88u"
+path="res://.godot/imported/las_morze.png-7ef9c8ca6a5faf6fd0954af58718e9fd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://TitleMapsLayer/FarmLand_Tile.png"
-dest_files=["res://.godot/imported/FarmLand_Tile.png-924a6293bb4fce4074c902ec35e5de8f.ctex"]
+source_file="res://TitleMapsLayer/las_morze.png"
+dest_files=["res://.godot/imported/las_morze.png-7ef9c8ca6a5faf6fd0954af58718e9fd.ctex"]
 
 [params]
 

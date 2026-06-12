@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://5kjqceyoodxx"]
 
 [ext_resource type="Texture2D" uid="uid://cg8yh3couc3ae" path="res://Dungeons/Tiles/Dungeon tileset.png" id="1_yslxt"]
+[ext_resource type="Texture2D" uid="uid://bn00i1og0tkom" path="res://OtherSprites/LightSprite/2d_lights_and_shadows_neutral_point_light.webp" id="2_1htxe"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1htxe"]
 texture = ExtResource("1_yslxt")
@@ -287,3 +288,130 @@ tile_set = SubResource("TileSet_8ep40")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1397039053]
 offset = Vector2(-222, 58)
+
+[node name="PointLight2D4" type="PointLight2D" parent="." unique_id=796246338]
+position = Vector2(-264.99994, 385)
+scale = Vector2(0.41503897, 0.28808588)
+color = Color(0.78463364, 0.37106273, 0.23678702, 1)
+energy = 2.0
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 0.74300003)
+shadow_filter = 1
+shadow_filter_smooth = 4.0
+texture = ExtResource("2_1htxe")
+
+[node name="PointLight2D5" type="PointLight2D" parent="." unique_id=1258044763]
+position = Vector2(-456.99997, 261)
+scale = Vector2(0.41503897, 0.28808588)
+color = Color(0.78463364, 0.37106273, 0.23678702, 1)
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 0.74300003)
+shadow_filter = 1
+shadow_filter_smooth = 4.0
+texture = ExtResource("2_1htxe")
+
+[node name="PointLight2D6" type="PointLight2D" parent="." unique_id=1188729339]
+position = Vector2(-616.99994, 197)
+scale = Vector2(0.41503897, 0.28808588)
+color = Color(0.78463364, 0.37106273, 0.23678702, 1)
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 0.74300003)
+shadow_filter = 1
+shadow_filter_smooth = 4.0
+texture = ExtResource("2_1htxe")
+
+[node name="PointLight2D7" type="PointLight2D" parent="." unique_id=1344471786]
+position = Vector2(-168.99997, 388)
+scale = Vector2(0.41503897, 0.28808588)
+color = Color(0.78463364, 0.37106273, 0.23678702, 1)
+energy = 2.0
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 0.74300003)
+shadow_filter = 1
+shadow_filter_smooth = 4.0
+texture = ExtResource("2_1htxe")
+
+[node name="PointLight2D8" type="PointLight2D" parent="." unique_id=107302217]
+position = Vector2(-648.99994, 134)
+scale = Vector2(0.41503897, 0.28808588)
+color = Color(0.78463364, 0.37106273, 0.23678702, 1)
+energy = 2.0
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 0.74300003)
+shadow_filter = 1
+shadow_filter_smooth = 4.0
+texture = ExtResource("2_1htxe")
+
+[node name="PointLight2D9" type="PointLight2D" parent="." unique_id=550650290]
+position = Vector2(-552.99994, 132)
+scale = Vector2(0.41503897, 0.28808588)
+color = Color(0.78463364, 0.37106273, 0.23678702, 1)
+energy = 2.0
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 0.74300003)
+shadow_filter = 1
+shadow_filter_smooth = 4.0
+texture = ExtResource("2_1htxe")
+
+[node name="PointLight2D10" type="PointLight2D" parent="." unique_id=84673822]
+position = Vector2(-104.99998, 170)
+scale = Vector2(0.41503897, 0.28808588)
+color = Color(0.78463364, 0.37106273, 0.23678702, 1)
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 0.74300003)
+shadow_filter = 1
+shadow_filter_smooth = 4.0
+texture = ExtResource("2_1htxe")
+
+[node name="PointLight2D11" type="PointLight2D" parent="." unique_id=506601983]
+position = Vector2(-119.99997, 25.999998)
+scale = Vector2(0.41503897, 0.28808588)
+color = Color(0.78463364, 0.37106273, 0.23678702, 1)
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 0.74300003)
+shadow_filter = 1
+shadow_filter_smooth = 4.0
+texture = ExtResource("2_1htxe")
+
+[node name="PointLight2D12" type="PointLight2D" parent="." unique_id=839483852]
+position = Vector2(-328.99994, 106)
+scale = Vector2(0.41503897, 0.28808588)
+color = Color(0.78463364, 0.37106273, 0.23678702, 1)
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 0.74300003)
+shadow_filter = 1
+shadow_filter_smooth = 4.0
+texture = ExtResource("2_1htxe")
+
+[node name="PointLight2D13" type="PointLight2D" parent="." unique_id=1378705553]
+position = Vector2(-39.999973, -122.99999)
+scale = Vector2(0.41503897, 0.28808588)
+color = Color(0.78463364, 0.37106273, 0.23678702, 1)
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 0.74300003)
+shadow_filter = 1
+shadow_filter_smooth = 4.0
+texture = ExtResource("2_1htxe")
+
+[node name="PointLight2D14" type="PointLight2D" parent="." unique_id=1116406911]
+position = Vector2(-232.99997, -219)
+scale = Vector2(0.41503897, 0.28808588)
+color = Color(0.78463364, 0.37106273, 0.23678702, 1)
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 0.74300003)
+shadow_filter = 1
+shadow_filter_smooth = 4.0
+texture = ExtResource("2_1htxe")
+
+[node name="PointLight2D15" type="PointLight2D" parent="." unique_id=617497567]
+position = Vector2(-121.00001, -218.99998)
+scale = Vector2(0.41503897, 0.28808588)
+color = Color(0.78463364, 0.37106273, 0.23678702, 1)
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 0.74300003)
+shadow_filter = 1
+shadow_filter_smooth = 4.0
+texture = ExtResource("2_1htxe")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=898588982]
+color = Color(0.23248088, 0.23248091, 0.23248091, 1)

@@ -266,6 +266,7 @@ animation = &"death"
 autoplay = "idle"
 
 [node name="Follow_Area" type="Area2D" parent="EvilWolf" unique_id=2122249004]
+visible = false
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EvilWolf/Follow_Area" unique_id=1514690277]
@@ -274,6 +275,7 @@ shape = SubResource("CircleShape2D_8ppc7")
 debug_color = Color(0.9219775, 0.5182506, 0.51914895, 0.41960785)
 
 [node name="Attack_Area" type="Area2D" parent="EvilWolf" unique_id=1934571482]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EvilWolf/Attack_Area" unique_id=194672428]
 z_index = 1
@@ -293,6 +295,7 @@ tint_under = Color(1, 1, 1, 0.63900006)
 script = ExtResource("4_bjf20")
 
 [node name="Hitbox" type="Area2D" parent="EvilWolf" unique_id=120469296]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EvilWolf/Hitbox" unique_id=1979899241]
 position = Vector2(2.5, -11)

@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://bea64rk1dglpm"]
 
 [ext_resource type="Texture2D" uid="uid://cg8yh3couc3ae" path="res://Dungeons/Tiles/Dungeon tileset.png" id="1_y0n1a"]
+[ext_resource type="Texture2D" uid="uid://bn00i1og0tkom" path="res://OtherSprites/LightSprite/2d_lights_and_shadows_neutral_point_light.webp" id="2_ssfgo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ssfgo"]
 texture = ExtResource("1_y0n1a")
@@ -271,6 +272,8 @@ physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 16
 sources/0 = SubResource("TileSetAtlasSource_ssfgo")
 
+[sub_resource type="ImageTexture" id="ImageTexture_y0n1a"]
+
 [node name="DungeonThird" type="Node2D" unique_id=703151606]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1310926029]
@@ -285,8 +288,209 @@ tile_set = SubResource("TileSet_bkird")
 
 [node name="TileMapLayer3" type="TileMapLayer" parent="." unique_id=1620853313]
 scale = Vector2(-1, 1)
-tile_map_data = PackedByteArray("AAAmAAwAAAALAAUAAQAGAAoAAAALAAUAAAAIAAwAAAAIAAUAAAAeAAkAAAAJAAUAAAAmABQAAAAPAAQAAAAPAAwAAAAPAAQAAAADAAwAAAAPAAQAAAAoAA8AAAAHAAkAAAAcAAsAAAAHAAkAAAANAA0AAAAHAAkAAAAEAA4AAAAHAAkAAAAEAAQAAAAHAAkAAAAKAAMAAAAHAAkAAAAIAP7/AAAPAAQAAAACAPr/AAAMAAUAAAAJAAcAAAAKAAUAAAAEAAUAAAALAAMAAAAEAAYAAAALAAQAAAAFAAUAAAAMAAMAAAAFAAYAAAAMAAQAAAAkAA8AAAAGAAcAAAAkABAAAAAGAAgAAAAjABEAAAAMAAUAAADu/wMAAAALAAUAAQDv/wIAAAAFAAMAAADv/wMAAAAFAAQAAADw/wIAAAAAAAcAAADw/wMAAAAAAAgAAADx/wIAAAABAAcAAADx/wMAAAABAAgAAADy/wIAAAACAAcAAADy/wMAAAACAAgAAADz/wIAAAAFAAMAAADz/wMAAAAFAAQAAAD0/wMAAAALAAUAAQASABUAAAAJAAIAAAAtAAcAAAADAAAAAAAtAAgAAAADAAEAAAAsAAcAAAADAAAAAAAsAAgAAAADAAEAAAArAAcAAAADAAAAAAArAAgAAAADAAEAAAAqAAcAAAADAAAAAAAqAAgAAAADAAEAAAApAAcAAAACAAAAAAAuAAcAAAACAAIAABAuAAgAAAABAAIAAAAYABUAAAARAAAAAAAZABUAAAARAAEAAAAaABUAAAARAAEAAAAdABcAAAARAAAAAAAdABAAAAALAAUAAQAiABgAAAALAAUAAQAoABgAAAALAAUAAQALABMAAAALAAUAAQAPABMAAAALAAUAAQAUAAoAAAALAAUAAQAUAA8AAAALAAMAAAAUABAAAAALAAQAAAAVAA8AAAAMAAMAAAAVABAAAAAMAAQAAAAMAAoAAAALAAMAABALAAoAAAAMAAMAABAMAAsAAAALAAQAABALAAsAAAAMAAQAABAjAAcAAAALAAMAABAiAAcAAAAMAAMAABAjAAgAAAALAAQAABAiAAgAAAAMAAQAABASAAkAAAAUAAAAAAASAAoAAAAUAAEAAAASAAsAAAAUAAIAAAAMAAAAAAAUAAAAAAAMAAEAAAAUAAEAAAAMAAIAAAAUAAIAAAD1//X/AAAUAAAAAAD1//b/AAAUAAEAAAD1//f/AAAUAAIAAADq//b/AAAUAAAAAADq//f/AAAUAAEAAADq//j/AAAUAAIAAADq//3/AAAWAAAAAADq//7/AAAWAAEAAADq////AAAWAAIAAADm//3/AAAWAAAAAADm//7/AAAWAAEAAADm////AAAWAAIAAAD0/wkAAAAWAAAAAAD0/woAAAAWAAEAAAD0/wsAAAAWAAIAAADw/wkAAAAWAAAAAADw/woAAAAWAAEAAADw/wsAAAAWAAIAAADu//b/AAALAAUAAQD8//r/AAALAAUAAQD0/wUAAAAIAAcAAAD0/wYAAAAIAAgAAAD6/w0AAAAHAAkAAADv/w4AAAAHAAkAACDn/wgAAAAHAAkAABDq/wAAAAAHAAkAABDq//n/AAAHAAkAABD3//v/AAAHAAkAABAFAPr/AAAHAAkAAAD3//n/AAALAAMAAAD3//r/AAALAAQAAAD4//n/AAAMAAMAAAD4//r/AAAMAAQAAAA=")
+tile_map_data = PackedByteArray("AAAmAAwAAAALAAUAAQAGAAoAAAALAAUAAAAIAAwAAAAIAAUAAAAeAAkAAAAJAAUAAAAmABQAAAAPAAQAAAAPAAwAAAAPAAQAAAADAAwAAAAPAAQAAAAoAA8AAAAHAAkAAAAcAAsAAAAHAAkAAAANAA0AAAAHAAkAAAAEAA4AAAAHAAkAAAAEAAQAAAAHAAkAAAAKAAMAAAAHAAkAAAAIAP7/AAAPAAQAAAACAPr/AAAMAAUAAAAJAAcAAAAKAAUAAAAEAAUAAAALAAMAAAAEAAYAAAALAAQAAAAFAAUAAAAMAAMAAAAFAAYAAAAMAAQAAAAkAA8AAAAGAAcAAAAkABAAAAAGAAgAAAAjABEAAAAMAAUAAADu/wMAAAALAAUAAQDv/wIAAAAFAAMAAADv/wMAAAAFAAQAAADw/wIAAAAAAAcAAADw/wMAAAAAAAgAAADx/wIAAAABAAcAAADx/wMAAAABAAgAAADy/wIAAAACAAcAAADy/wMAAAACAAgAAADz/wIAAAAFAAMAAADz/wMAAAAFAAQAAAD0/wMAAAALAAUAAQASABUAAAAJAAIAAAAtAAcAAAADAAAAAAAtAAgAAAADAAEAAAAsAAcAAAADAAAAAAAsAAgAAAADAAEAAAArAAcAAAADAAAAAAArAAgAAAADAAEAAAAqAAcAAAADAAAAAAAqAAgAAAADAAEAAAApAAcAAAACAAAAAAAuAAcAAAACAAIAABAuAAgAAAABAAIAAAAYABUAAAARAAAAAAAZABUAAAARAAEAAAAaABUAAAARAAEAAAAdABcAAAARAAAAAAAdABAAAAALAAUAAQAiABgAAAALAAUAAQAoABgAAAALAAUAAQALABMAAAALAAUAAQAPABMAAAALAAUAAQAUAAoAAAALAAUAAQAUAA8AAAALAAMAAAAUABAAAAALAAQAAAAVAA8AAAAMAAMAAAAVABAAAAAMAAQAAAAMAAoAAAALAAMAABALAAoAAAAMAAMAABAMAAsAAAALAAQAABALAAsAAAAMAAQAABAjAAcAAAALAAMAABAiAAcAAAAMAAMAABAjAAgAAAALAAQAABAiAAgAAAAMAAQAABASAAkAAAAUAAAAAAASAAoAAAAUAAEAAAASAAsAAAAUAAIAAAAMAAAAAAAUAAAAAAAMAAEAAAAUAAEAAAAMAAIAAAAUAAIAAAD1//X/AAAUAAAAAAD1//b/AAAUAAEAAAD1//f/AAAUAAIAAADq//b/AAAUAAAAAADq//f/AAAUAAEAAADq//j/AAAUAAIAAADq//3/AAAWAAAAAADq//7/AAAWAAEAAADq////AAAWAAIAAADm//3/AAAWAAAAAADm//7/AAAWAAEAAADm////AAAWAAIAAAD0/wkAAAAWAAAAAAD0/woAAAAWAAEAAAD0/wsAAAAWAAIAAADw/wkAAAAWAAAAAADw/woAAAAWAAEAAADw/wsAAAAWAAIAAADu//b/AAALAAUAAQD8//r/AAALAAUAAQD0/wUAAAAIAAcAAAD0/wYAAAAIAAgAAAD6/w0AAAAHAAkAAADv/w4AAAAHAAkAACDn/wgAAAAHAAkAABDq/wAAAAAHAAkAABDq//n/AAAHAAkAABD3//v/AAAHAAkAABAFAPr/AAAHAAkAAAD3//n/AAALAAMAAAD3//r/AAALAAQAAAD4//n/AAAMAAMAAAD4//r/AAAMAAQAAADr//3/AAALAAUAAADk//3/AAALAAUAAAAnAAIAAAALAAUAAQA=")
 tile_set = SubResource("TileSet_bkird")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1581160164]
 offset = Vector2(-222, 58)
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1640726942]
+texture = SubResource("ImageTexture_y0n1a")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1017193322]
+color = Color(0.23248088, 0.23248091, 0.23248091, 1)
+
+[node name="PointLight2D7" type="PointLight2D" parent="." unique_id=197441627]
+position = Vector2(-552, 390)
+rotation = 3.1415927
+scale = Vector2(0.41503897, -0.28808588)
+color = Color(0.78463364, 0.37106273, 0.23678702, 1)
+energy = 2.0
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 0.74300003)
+shadow_filter = 1
+shadow_filter_smooth = 4.0
+texture = ExtResource("2_ssfgo")
+
+[node name="PointLight2D8" type="PointLight2D" parent="." unique_id=117979992]
+position = Vector2(-648, 389)
+scale = Vector2(0.41503897, 0.28808588)
+color = Color(0.78463364, 0.37106273, 0.23678702, 1)
+energy = 2.0
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 0.74300003)
+shadow_filter = 1
+shadow_filter_smooth = 4.0
+texture = ExtResource("2_ssfgo")
+
+[node name="PointLight2D9" type="PointLight2D" parent="." unique_id=221923720]
+position = Vector2(-249, 309)
+scale = Vector2(0.41503897, 0.28808588)
+color = Color(0.78463364, 0.37106273, 0.23678702, 1)
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 0.74300003)
+shadow_filter = 1
+shadow_filter_smooth = 4.0
+texture = ExtResource("2_ssfgo")
+
+[node name="PointLight2D10" type="PointLight2D" parent="." unique_id=432140545]
+position = Vector2(-184.00002, 309.99997)
+scale = Vector2(0.41503897, 0.28808588)
+color = Color(0.78463364, 0.37106273, 0.23678702, 1)
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 0.74300003)
+shadow_filter = 1
+shadow_filter_smooth = 4.0
+texture = ExtResource("2_ssfgo")
+
+[node name="PointLight2D11" type="PointLight2D" parent="." unique_id=31284543]
+position = Vector2(-472.99994, 260.99997)
+scale = Vector2(0.41503897, 0.28808588)
+color = Color(0.78463364, 0.37106273, 0.23678702, 1)
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 0.74300003)
+shadow_filter = 1
+shadow_filter_smooth = 4.0
+texture = ExtResource("2_ssfgo")
+
+[node name="PointLight2D12" type="PointLight2D" parent="." unique_id=1622507314]
+position = Vector2(-617, 196.99995)
+scale = Vector2(0.41503897, 0.28808588)
+color = Color(0.78463364, 0.37106273, 0.23678702, 1)
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 0.74300003)
+shadow_filter = 1
+shadow_filter_smooth = 4.0
+texture = ExtResource("2_ssfgo")
+
+[node name="PointLight2D13" type="PointLight2D" parent="." unique_id=2051798669]
+position = Vector2(-329, 164.99997)
+scale = Vector2(0.41503897, 0.28808588)
+color = Color(0.78463364, 0.37106273, 0.23678702, 1)
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 0.74300003)
+shadow_filter = 1
+shadow_filter_smooth = 4.0
+texture = ExtResource("2_ssfgo")
+
+[node name="PointLight2D14" type="PointLight2D" parent="." unique_id=411420863]
+position = Vector2(-104, 169.99997)
+scale = Vector2(0.41503897, 0.28808588)
+color = Color(0.78463364, 0.37106273, 0.23678702, 1)
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 0.74300003)
+shadow_filter = 1
+shadow_filter_smooth = 4.0
+texture = ExtResource("2_ssfgo")
+
+[node name="PointLight2D15" type="PointLight2D" parent="." unique_id=1320618211]
+position = Vector2(-120, 25.999968)
+scale = Vector2(0.41503897, 0.28808588)
+color = Color(0.78463364, 0.37106273, 0.23678702, 1)
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 0.74300003)
+shadow_filter = 1
+shadow_filter_smooth = 4.0
+texture = ExtResource("2_ssfgo")
+
+[node name="PointLight2D16" type="PointLight2D" parent="." unique_id=491740275]
+position = Vector2(87.999985, 164.99995)
+scale = Vector2(0.41503897, 0.28808588)
+color = Color(0.78463364, 0.37106273, 0.23678702, 1)
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 0.74300003)
+shadow_filter = 1
+shadow_filter_smooth = 4.0
+texture = ExtResource("2_ssfgo")
+
+[node name="PointLight2D17" type="PointLight2D" parent="." unique_id=525825623]
+position = Vector2(167.99997, 164.99997)
+scale = Vector2(0.41503897, 0.28808588)
+color = Color(0.78463364, 0.37106273, 0.23678702, 1)
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 0.74300003)
+shadow_filter = 1
+shadow_filter_smooth = 4.0
+texture = ExtResource("2_ssfgo")
+
+[node name="PointLight2D18" type="PointLight2D" parent="." unique_id=751738183]
+position = Vector2(-40.00001, -122.99999)
+scale = Vector2(0.41503897, 0.28808588)
+color = Color(0.78463364, 0.37106273, 0.23678702, 1)
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 0.74300003)
+shadow_filter = 1
+shadow_filter_smooth = 4.0
+texture = ExtResource("2_ssfgo")
+
+[node name="PointLight2D19" type="PointLight2D" parent="." unique_id=2055258858]
+position = Vector2(55.999985, -91.00002)
+scale = Vector2(0.41503897, 0.28808588)
+color = Color(0.78463364, 0.37106273, 0.23678702, 1)
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 0.74300003)
+shadow_filter = 1
+shadow_filter_smooth = 4.0
+texture = ExtResource("2_ssfgo")
+
+[node name="PointLight2D20" type="PointLight2D" parent="." unique_id=1706626074]
+position = Vector2(182.99998, 52.999966)
+scale = Vector2(0.41503897, 0.28808588)
+color = Color(0.78463364, 0.37106273, 0.23678702, 1)
+energy = 2.0
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 0.74300003)
+shadow_filter = 1
+shadow_filter_smooth = 4.0
+texture = ExtResource("2_ssfgo")
+
+[node name="PointLight2D21" type="PointLight2D" parent="." unique_id=1178602265]
+position = Vector2(-633.00006, 36.999966)
+scale = Vector2(0.41503897, 0.28808588)
+color = Color(0.78463364, 0.37106273, 0.23678702, 1)
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 0.74300003)
+shadow_filter = 1
+shadow_filter_smooth = 4.0
+texture = ExtResource("2_ssfgo")
+
+[node name="PointLight2D22" type="PointLight2D" parent="." unique_id=1408240520]
+position = Vector2(280.00003, -154)
+scale = Vector2(0.41503897, 0.28808588)
+color = Color(0.78463364, 0.37106273, 0.23678702, 1)
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 0.74300003)
+shadow_filter = 1
+shadow_filter_smooth = 4.0
+texture = ExtResource("2_ssfgo")
+
+[node name="PointLight2D23" type="PointLight2D" parent="." unique_id=1419183567]
+position = Vector2(326.99994, -38.00003)
+scale = Vector2(0.41503897, 0.28808588)
+color = Color(0.78463364, 0.37106273, 0.23678702, 1)
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 0.74300003)
+shadow_filter = 1
+shadow_filter_smooth = 4.0
+texture = ExtResource("2_ssfgo")
+
+[node name="PointLight2D24" type="PointLight2D" parent="." unique_id=260430485]
+position = Vector2(439.99994, -38.00003)
+scale = Vector2(0.41503897, 0.28808588)
+color = Color(0.78463364, 0.37106273, 0.23678702, 1)
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 0.74300003)
+shadow_filter = 1
+shadow_filter_smooth = 4.0
+texture = ExtResource("2_ssfgo")
+
+[node name="PointLight2D25" type="PointLight2D" parent="." unique_id=244996090]
+position = Vector2(279.99997, 52.99997)
+scale = Vector2(0.41503897, 0.28808588)
+color = Color(0.78463364, 0.37106273, 0.23678702, 1)
+energy = 2.0
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 0.74300003)
+shadow_filter = 1
+shadow_filter_smooth = 4.0
+texture = ExtResource("2_ssfgo")

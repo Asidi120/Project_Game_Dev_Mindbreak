@@ -1,7 +1,7 @@
 extends Item
 class_name Tool
 
-@export var tool_power := 1
+@export var tool_power := 1.0
 
 func collect():
 	var item = super.collect()

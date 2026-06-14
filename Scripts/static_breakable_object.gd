@@ -1,9 +1,9 @@
 extends StaticBody2D
 var player_in_range := false
-@export var hits_needed := 4 #ilosc potrzebnych uderzen
+@export var hits_needed := 4.0 #ilosc potrzebnych uderzen
 @export var object_id := ""
 @export var object_type := ""
-var hits := 0
+var hits := 0.0
 
 @export var scene: PackedScene #instancja sceny struktury
 @export var scene2: PackedScene
@@ -15,10 +15,6 @@ func update_hits():
 		return
 
 	var index = inventory_system.selected_fasteq_index
-
-	if (index < 0 or index >= inventory_system.current_inventory.size()) and object_type == "tree":
-		hits += 1
-		print("casjoias")
 	
 	if index < 0 or index >= inventory_system.current_inventory.size():
 		return

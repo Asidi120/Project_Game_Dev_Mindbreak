@@ -1,27 +1,27 @@
-[gd_scene format=3 uid="uid://bqdd1gb1c0fqj"]
+[gd_scene format=3 uid="uid://ks5bv2umdwbt"]
 
-[ext_resource type="Script" uid="uid://da3bkf34py10e" path="res://Scripts/tool_breaking.gd" id="1_8p2ne"]
-[ext_resource type="Texture2D" uid="uid://i5uud04jfce" path="res://OtherSprites/Items/Full Sheet.png" id="2_85i20"]
+[ext_resource type="Script" uid="uid://da3bkf34py10e" path="res://Scripts/tool_breaking.gd" id="1_3kw3y"]
+[ext_resource type="Texture2D" uid="uid://i5uud04jfce" path="res://OtherSprites/Items/Full Sheet.png" id="2_23ig7"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_3ouv3"]
 a = Vector2(3.1553116, -2.3749857)
 b = Vector2(-4.4246407, 4.7957325)
 
-[node name="PickaxeWood" type="Area2D" unique_id=1592250268]
+[node name="PickaxeCopper" type="Area2D" unique_id=1592250268]
 scale = Vector2(1.2, 1.2)
-script = ExtResource("1_8p2ne")
-tool_power = 1.7
-item_id = "pickaxe_wood"
-item_name = "PickaxeWood"
+script = ExtResource("1_3kw3y")
+tool_power = 3.4
+item_id = "pickaxe_copper"
+item_name = "PickaxeCopper"
 item_type = "pickaxe"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=834627305]
 z_index = -1
 position = Vector2(4, 4)
 scale = Vector2(1, 1.013)
-texture = ExtResource("2_85i20")
+texture = ExtResource("2_23ig7")
 region_enabled = true
-region_rect = Rect2(0.10575867, 0.55287933, 15.440784, 15.081696)
+region_rect = Rect2(79.84091, 16.37622, 16.250175, 15.453594)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=730860820]
 position = Vector2(5, 2)

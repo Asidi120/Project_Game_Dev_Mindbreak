@@ -1,119 +1,119 @@
-[gd_scene format=3 uid="uid://cm00qlqub0neu"]
+[gd_scene format=3 uid="uid://oqqk8s0uvmvp"]
 
-[ext_resource type="Script" uid="uid://htik4r6mo1j0" path="res://Enemies/Spirit_Wolf/Script/evilwolfscript.gd" id="1_8ppc7"]
-[ext_resource type="Texture2D" uid="uid://m0j7dbrgrkkg" path="res://Enemies/Spirit_Wolf/Sprite/Massacre Sprite Sheet.png" id="1_qvnen"]
-[ext_resource type="Texture2D" uid="uid://d34crl0llr6ot" path="res://Player/Sprite/hp_bar/HealthBar DARK.png" id="3_5qibe"]
-[ext_resource type="Script" uid="uid://dfgdasket7d4t" path="res://Scripts/healthbar.gd" id="4_bjf20"]
+[ext_resource type="Script" uid="uid://bi533a807gpuf" path="res://Enemies/Spirit_Wolf/Script/evilwolfdungeonscript.gd" id="1_1un64"]
+[ext_resource type="Texture2D" uid="uid://m0j7dbrgrkkg" path="res://Enemies/Spirit_Wolf/Sprite/Massacre Sprite Sheet.png" id="2_v6svh"]
+[ext_resource type="Texture2D" uid="uid://d34crl0llr6ot" path="res://Player/Sprite/hp_bar/HealthBar DARK.png" id="3_qtvyh"]
+[ext_resource type="Script" uid="uid://dfgdasket7d4t" path="res://Scripts/healthbar.gd" id="4_x0co2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8ppc7"]
-atlas = ExtResource("1_qvnen")
+atlas = ExtResource("2_v6svh")
 region = Rect2(0, 64, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5qibe"]
-atlas = ExtResource("1_qvnen")
+atlas = ExtResource("2_v6svh")
 region = Rect2(64, 64, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bjf20"]
-atlas = ExtResource("1_qvnen")
+atlas = ExtResource("2_v6svh")
 region = Rect2(128, 64, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_inhxp"]
-atlas = ExtResource("1_qvnen")
+atlas = ExtResource("2_v6svh")
 region = Rect2(192, 64, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l1emy"]
-atlas = ExtResource("1_qvnen")
+atlas = ExtResource("2_v6svh")
 region = Rect2(256, 64, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7f3m2"]
-atlas = ExtResource("1_qvnen")
+atlas = ExtResource("2_v6svh")
 region = Rect2(0, 192, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sdsmp"]
-atlas = ExtResource("1_qvnen")
+atlas = ExtResource("2_v6svh")
 region = Rect2(64, 192, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pjlx3"]
-atlas = ExtResource("1_qvnen")
+atlas = ExtResource("2_v6svh")
 region = Rect2(128, 192, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vahnk"]
-atlas = ExtResource("1_qvnen")
+atlas = ExtResource("2_v6svh")
 region = Rect2(192, 192, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hpjra"]
-atlas = ExtResource("1_qvnen")
+atlas = ExtResource("2_v6svh")
 region = Rect2(256, 192, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qqnho"]
-atlas = ExtResource("1_qvnen")
+atlas = ExtResource("2_v6svh")
 region = Rect2(320, 192, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cnyin"]
-atlas = ExtResource("1_qvnen")
+atlas = ExtResource("2_v6svh")
 region = Rect2(384, 192, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p8jbe"]
-atlas = ExtResource("1_qvnen")
+atlas = ExtResource("2_v6svh")
 region = Rect2(0, 128, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_80v30"]
-atlas = ExtResource("1_qvnen")
+atlas = ExtResource("2_v6svh")
 region = Rect2(64, 128, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pwfyu"]
-atlas = ExtResource("1_qvnen")
+atlas = ExtResource("2_v6svh")
 region = Rect2(128, 128, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u3em4"]
-atlas = ExtResource("1_qvnen")
+atlas = ExtResource("2_v6svh")
 region = Rect2(192, 128, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tomoe"]
-atlas = ExtResource("1_qvnen")
+atlas = ExtResource("2_v6svh")
 region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_26iow"]
-atlas = ExtResource("1_qvnen")
+atlas = ExtResource("2_v6svh")
 region = Rect2(64, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p6sf5"]
-atlas = ExtResource("1_qvnen")
+atlas = ExtResource("2_v6svh")
 region = Rect2(128, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kkjd0"]
-atlas = ExtResource("1_qvnen")
+atlas = ExtResource("2_v6svh")
 region = Rect2(192, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1f3kp"]
-atlas = ExtResource("1_qvnen")
+atlas = ExtResource("2_v6svh")
 region = Rect2(256, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_piotj"]
-atlas = ExtResource("1_qvnen")
+atlas = ExtResource("2_v6svh")
 region = Rect2(320, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uuja3"]
-atlas = ExtResource("1_qvnen")
+atlas = ExtResource("2_v6svh")
 region = Rect2(0, 64, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mvjmo"]
-atlas = ExtResource("1_qvnen")
+atlas = ExtResource("2_v6svh")
 region = Rect2(64, 64, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ql3an"]
-atlas = ExtResource("1_qvnen")
+atlas = ExtResource("2_v6svh")
 region = Rect2(128, 64, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_svul5"]
-atlas = ExtResource("1_qvnen")
+atlas = ExtResource("2_v6svh")
 region = Rect2(192, 64, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r2nhq"]
-atlas = ExtResource("1_qvnen")
+atlas = ExtResource("2_v6svh")
 region = Rect2(256, 64, 64, 64)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_m8kn1"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_536mr"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -222,86 +222,88 @@ animations = [{
 "speed": 7.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_8ppc7"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_p6uru"]
 radius = 135.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_qvnen"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_x88eu"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4e41t"]
-atlas = ExtResource("3_5qibe")
+[sub_resource type="AtlasTexture" id="AtlasTexture_cmrsy"]
+atlas = ExtResource("3_qtvyh")
 region = Rect2(17, 133, 61, 9)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jgmik"]
-atlas = ExtResource("3_5qibe")
+[sub_resource type="AtlasTexture" id="AtlasTexture_blqa8"]
+atlas = ExtResource("3_qtvyh")
 region = Rect2(18, 152, 59, 6)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_bjf20"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hhrqp"]
 size = Vector2(57, 24)
 
-[node name="EvilWolfWithPoints" type="Node2D" unique_id=697092607 groups=["Enemies"]]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1un64"]
+size = Vector2(21.640888, 4.202202)
 
-[node name="PatrolPoints" type="Node2D" parent="." unique_id=1648978633]
+[node name="EvilWolfDungeon" type="Node2D" unique_id=2115354962]
+scale = Vector2(0.6007147, 0.62457037)
 
-[node name="Point1" type="Marker2D" parent="PatrolPoints" unique_id=1642810365 groups=["PatrolPoints"]]
-position = Vector2(81, -43)
+[node name="PatrolPoints" type="Node2D" parent="." unique_id=1152543324]
 
-[node name="Point2" type="Marker2D" parent="PatrolPoints" unique_id=1406160144 groups=["PatrolPoints"]]
-position = Vector2(-77, -25)
+[node name="Point1" type="Marker2D" parent="PatrolPoints" unique_id=977284056 groups=["PatrolPoints"]]
+position = Vector2(0, -1)
 
-[node name="Point3" type="Marker2D" parent="PatrolPoints" unique_id=1051555249 groups=["PatrolPoints"]]
-position = Vector2(-18, 42)
+[node name="EvilWolf" type="CharacterBody2D" parent="." unique_id=282144570]
+collision_layer = 2
+collision_mask = 16
+script = ExtResource("1_1un64")
 
-[node name="Point4" type="Marker2D" parent="PatrolPoints" unique_id=1214234633 groups=["PatrolPoints"]]
-position = Vector2(85, 44)
+[node name="Visual" type="Node2D" parent="EvilWolf" unique_id=380381747]
 
-[node name="EvilWolf" type="CharacterBody2D" parent="." unique_id=246727369]
-script = ExtResource("1_8ppc7")
-
-[node name="Visual" type="Node2D" parent="EvilWolf" unique_id=438623042]
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="EvilWolf/Visual" unique_id=1938056192]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="EvilWolf/Visual" unique_id=782795789]
 position = Vector2(0, -31)
-sprite_frames = SubResource("SpriteFrames_m8kn1")
+sprite_frames = SubResource("SpriteFrames_536mr")
 animation = &"death"
 autoplay = "idle"
 
-[node name="Follow_Area" type="Area2D" parent="EvilWolf" unique_id=2122249004]
-visible = false
+[node name="Follow_Area" type="Area2D" parent="EvilWolf" unique_id=1625768443]
 monitorable = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EvilWolf/Follow_Area" unique_id=1514690277]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EvilWolf/Follow_Area" unique_id=1280701120]
 position = Vector2(0, 1)
-shape = SubResource("CircleShape2D_8ppc7")
+shape = SubResource("CircleShape2D_p6uru")
 debug_color = Color(0.9219775, 0.5182506, 0.51914895, 0.41960785)
 
-[node name="Attack_Area" type="Area2D" parent="EvilWolf" unique_id=1934571482]
-visible = false
+[node name="Attack_Area" type="Area2D" parent="EvilWolf" unique_id=654279401]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EvilWolf/Attack_Area" unique_id=194672428]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EvilWolf/Attack_Area" unique_id=1783984433]
 z_index = 1
 position = Vector2(-16, -13)
-shape = SubResource("CircleShape2D_qvnen")
+shape = SubResource("CircleShape2D_x88eu")
 
-[node name="Hp_bar" type="TextureProgressBar" parent="EvilWolf" unique_id=1245866357]
-visible = false
+[node name="Hp_bar" type="TextureProgressBar" parent="EvilWolf" unique_id=912496235]
 offset_left = -20.0
 offset_top = -42.0
 offset_right = 22.0
 offset_bottom = -36.0
 value = 100.0
 nine_patch_stretch = true
-texture_over = SubResource("AtlasTexture_4e41t")
-texture_progress = SubResource("AtlasTexture_jgmik")
+texture_over = SubResource("AtlasTexture_cmrsy")
+texture_progress = SubResource("AtlasTexture_blqa8")
 tint_under = Color(1, 1, 1, 0.63900006)
-script = ExtResource("4_bjf20")
+script = ExtResource("4_x0co2")
 metadata/_edit_use_anchors_ = true
 
-[node name="Hitbox" type="Area2D" parent="EvilWolf" unique_id=120469296]
-collision_mask = 16
+[node name="Hitbox" type="Area2D" parent="EvilWolf" unique_id=1237944187]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EvilWolf/Hitbox" unique_id=1979899241]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EvilWolf/Hitbox" unique_id=473256149]
 position = Vector2(2.5, -11)
-shape = SubResource("RectangleShape2D_bjf20")
+shape = SubResource("RectangleShape2D_hhrqp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EvilWolf" unique_id=1372353573]
+position = Vector2(0.8323418, -1.1011012)
+shape = SubResource("RectangleShape2D_1un64")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="EvilWolf" unique_id=1185641220]
+simplify_path = true
+avoidance_enabled = true
+radius = 20.0
 
 [connection signal="animation_finished" from="EvilWolf/Visual/AnimatedSprite2D" to="EvilWolf" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="EvilWolf/Follow_Area" to="EvilWolf" method="_on_follow_area_body_entered"]

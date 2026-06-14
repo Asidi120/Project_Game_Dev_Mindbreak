@@ -378,10 +378,15 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_18wwt"]
+size = Vector2(50, 10)
+
 [node name="IceGolemDungeon" type="Node2D" unique_id=431811086]
 scale = Vector2(0.5, 0.5)
 
 [node name="IceGolem" type="CharacterBody2D" parent="." unique_id=560651506]
+collision_layer = 2
+collision_mask = 16
 script = ExtResource("1_18wwt")
 
 [node name="Hp_bar" type="TextureProgressBar" parent="IceGolem" unique_id=2009711514]
@@ -431,11 +436,16 @@ frame = 7
 frame_progress = 0.88836914
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="IceGolem" unique_id=888096068]
+avoidance_enabled = true
+radius = 25.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="IceGolem" unique_id=1097782127]
+position = Vector2(-1, -5)
+shape = SubResource("RectangleShape2D_18wwt")
 
 [node name="PatrolPionts" type="Node2D" parent="." unique_id=2031730038]
 
 [node name="Point1" type="Marker2D" parent="PatrolPionts" unique_id=1419768991 groups=["PatrolPoints"]]
-position = Vector2(0, -24)
 
 [connection signal="body_entered" from="IceGolem/Hitbox" to="IceGolem" method="_on_hitbox_body_entered"]
 [connection signal="body_exited" from="IceGolem/Hitbox" to="IceGolem" method="_on_hitbox_body_exited"]

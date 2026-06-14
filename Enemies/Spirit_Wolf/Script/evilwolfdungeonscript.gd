@@ -209,7 +209,8 @@ func update_flip():
 		facing_right = false
 	elif target:
 		facing_right = target.global_position.x > global_position.x
-
+	else:
+		facing_right = start_facing_right
 	if facing_right:
 		visual.scale.x = -1
 		attack_area.position.x = 35

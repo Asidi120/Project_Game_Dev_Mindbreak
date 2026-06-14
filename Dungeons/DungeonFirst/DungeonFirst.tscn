@@ -457,7 +457,7 @@ start_facing_right = true
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=1321680858]
 navigation_polygon = SubResource("NavigationPolygon_t35pb")
 
-[node name="BossDoor" type="Node2D" parent="." unique_id=433135446]
+[node name="BossDoor" type="Area2D" parent="." unique_id=1818527441]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BossDoor" unique_id=1738836541]
 position = Vector2(600.5, 131)
@@ -482,6 +482,7 @@ theme_override_fonts/font = ExtResource("5_llydp")
 theme_override_font_sizes/font_size = 16
 text = "You need to have a key
  to open the door!"
+horizontal_alignment = 1
 
 [editable path="EvilWolfDungeon"]
 [editable path="EvilWolfDungeon2"]

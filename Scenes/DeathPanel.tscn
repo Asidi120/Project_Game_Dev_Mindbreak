@@ -1,10 +1,48 @@
 [gd_scene format=3 uid="uid://fhgceyryjqfs"]
 
 [ext_resource type="Script" uid="uid://di6j880ch50ca" path="res://Scripts/DeathPannel.gd" id="1_dl673"]
+[ext_resource type="FontFile" uid="uid://b0nphpwk324ms" path="res://Fonts/PixelPurl.ttf" id="2_bl5rj"]
+[ext_resource type="Texture2D" uid="uid://deu87legra8yk" path="res://MenuIcon/Blank_Not-Pressed.png" id="2_mealb"]
 [ext_resource type="Script" uid="uid://d18ex2bbrxhyb" path="res://Scripts/revivebutton.gd" id="2_xvxsw"]
+[ext_resource type="Texture2D" uid="uid://h5kcaeuujfnv" path="res://MenuIcon/Blank_Pressed.png" id="3_bl5rj"]
 [ext_resource type="Script" uid="uid://bh1c3giusevi5" path="res://Scripts/comebackbutton.gd" id="3_rbm6n"]
 [ext_resource type="Script" uid="uid://64clfe2vliyf" path="res://Scripts/quitbutton.gd" id="4_vbh1h"]
 [ext_resource type="FontFile" uid="uid://c0l8fv5sgwm3v" path="res://Fonts/Star Crush.ttf" id="5_rbm6n"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t82et"]
+texture = ExtResource("2_mealb")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qkg1f"]
+texture = ExtResource("3_bl5rj")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4l8n8"]
+texture = ExtResource("2_mealb")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_m5ukf"]
+texture = ExtResource("2_mealb")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ycaaa"]
+texture = ExtResource("3_bl5rj")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_icv7h"]
+texture = ExtResource("2_mealb")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cvlh3"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_m6s3n"]
+texture = ExtResource("2_mealb")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gcpkh"]
+texture = ExtResource("2_mealb")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1by13"]
+texture = ExtResource("3_bl5rj")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3pqnq"]
+texture = ExtResource("2_mealb")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pgcyn"]
+texture = ExtResource("2_mealb")
 
 [sub_resource type="LabelSettings" id="LabelSettings_vbh1h"]
 font = ExtResource("5_rbm6n")
@@ -37,12 +75,17 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -29.5
-offset_top = -100.0
-offset_right = 29.5
-offset_bottom = -69.0
+offset_left = -142.5
+offset_top = -89.5
+offset_right = 142.5
+offset_bottom = -16.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_bl5rj")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxTexture_t82et")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_qkg1f")
+theme_override_styles/hover = SubResource("StyleBoxTexture_4l8n8")
 text = "Revive"
 script = ExtResource("2_xvxsw")
 
@@ -53,12 +96,19 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -96.5
-offset_top = -15.5
-offset_right = 96.5
-offset_bottom = 15.5
+offset_left = -142.5
+offset_top = 36.0
+offset_right = 142.5
+offset_bottom = 109.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_bl5rj")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxTexture_m5ukf")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ycaaa")
+theme_override_styles/hover = SubResource("StyleBoxTexture_icv7h")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_cvlh3")
+theme_override_styles/focus = SubResource("StyleBoxTexture_m6s3n")
 text = "Come back to the menu"
 script = ExtResource("3_rbm6n")
 
@@ -70,12 +120,18 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -21.0
-offset_top = 75.0
-offset_right = 21.0
-offset_bottom = 106.0
+offset_left = -142.5
+offset_top = 151.5
+offset_right = 142.5
+offset_bottom = 224.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_bl5rj")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxTexture_gcpkh")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_1by13")
+theme_override_styles/hover = SubResource("StyleBoxTexture_3pqnq")
+theme_override_styles/focus = SubResource("StyleBoxTexture_pgcyn")
 text = "Quit"
 script = ExtResource("4_vbh1h")
 

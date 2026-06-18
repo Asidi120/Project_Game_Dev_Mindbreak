@@ -42,7 +42,6 @@ var patrol_origin: Vector2
 @onready var normal_attack_area: Area2D = $Normal_attack_Area
 @onready var points_container: Node2D = $"../PatrolPionts"
 @onready var follow_area: Area2D = $Follow_Area
-@export var spell_scene: PackedScene = preload("uid://cc6mqodld7i5h")
 
 func _ready():
 	current_hp = max_hp

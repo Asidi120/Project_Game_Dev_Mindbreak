@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://bpdatfhqafv8t"]
+
+[ext_resource type="Script" uid="uid://lbtnkb22ldyi" path="res://Scripts/inventory.gd" id="1_hy4ax"]
+[ext_resource type="Texture2D" uid="uid://bikv22mtxq1af" path="res://OtherSprites/Quick-Access-Inventory.png" id="2_hy4ax"]
+
+[node name="FastEq" type="Control" unique_id=1630870992 groups=["fasteq"]]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_hy4ax")
+
+[node name="Panel" type="TextureRect" parent="." unique_id=45228536]
+custom_minimum_size = Vector2(600, 400)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 163.0
+offset_top = 119.0
+offset_right = 723.0
+offset_bottom = 479.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.95195025, 0.95195025)
+texture = ExtResource("2_hy4ax")
+stretch_mode = 5
+
+[node name="GridContainer" type="GridContainer" parent="Panel" unique_id=1911285255]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 169.0
+offset_right = 76.75
+offset_bottom = 231.0
+theme_override_constants/h_separation = 37
+theme_override_constants/v_separation = 33
+columns = 6

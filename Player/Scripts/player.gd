@@ -3,6 +3,7 @@ class_name Player extends CharacterBody2D
 var death_panel: Control
 var clock: Control  
 var hp_bar: TextureProgressBar
+var damage_flash: ColorRect
 signal hp_changed(current_hp, max_hp)
 signal stamina_usage(current_stamina, max_stamina)
 signal hunger_changed(current_hunger,max_hunger)
@@ -30,11 +31,13 @@ var already_hit = []
 
 var inventory = []
 const MAX_STACK = 2
-const MAX_SLOT = 18
+const MAX_SLOT = 24
 
 # Inventory UI — szukane przez grupę żeby działało w każdej scenie
 var inventory_ui = null
 
+@onready var sounds: Node2D = $Sounds
+var fasteq_ui = null
 @onready var anim = $AnimationPlayer
 
 # Warstwy sprite'a
@@ -56,10 +59,17 @@ var slow_multiplier = 0.5
 var buff_multiplier = 1.5
 var poison_damage = 2
 
+@onready var held_item = $Hand/HeldItem
+var inventory_system = null
+
+var facing_direction := Vector2.DOWN
+
+
 func _ready() -> void:
 	await get_tree().process_frame
 	add_to_group("player")
 	add_to_group("Players")
+	inventory_system = get_tree().get_first_node_in_group("inventory_ui")
 
 	# HUD
 	var hud = get_tree().get_first_node_in_group("hud")
@@ -67,12 +77,14 @@ func _ready() -> void:
 		death_panel = hud.get_node_or_null("DeathPanel")
 		clock       = hud.get_node_or_null("Clock")
 		hp_bar      = hud.get_node_or_null("PlayerBar/hp_bar")
+		damage_flash  = hud.get_node_or_null("ColorRect")
 		if hp_bar:
 			hp_bar.set_target(self)
 
 	# Inventory UI
 	inventory_ui = get_tree().get_first_node_in_group("inventory")
-
+	fasteq_ui = get_tree().get_first_node_in_group("fasteq")
+	
 	attack_hitbox.monitoring = false
 	spawn_point = global_position
 
@@ -107,10 +119,105 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("attack") and not is_attacking and state != State.STUNNED:
 		attack()
 
+func update_held_item():
+	if inventory_system == null:
+		return
+
+	var index = inventory_system.selected_fasteq_index
+
+	if index < 0 or index >= inventory_system.current_inventory.size():
+		held_item.visible = false
+		return
+
+	var item = inventory_system.current_inventory[index]
+
+	if item == null:
+		held_item.visible = false
+		return
+
+	held_item.visible = true
+	held_item.texture = item["texture"]
+	held_item.z_index = 10
+	held_item.size = Vector2(10, 10)
+	held_item.custom_minimum_size = Vector2(10, 10)
+	held_item.position = Vector2(-5, -5)
+	held_item.scale = Vector2.ONE
+
+	held_item.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	held_item.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	
+	#jedzenie trzymanego itema
+	if Input.is_action_just_pressed("eat")and item["item_type"] == "food":
+		if eating(item):
+			print("Znikaaaaa")
+			inventory_system.current_inventory[index] = null
+			inventory_system.refresh_all()
+
+
+func eating(item):
+	#jeśli ewkipunek niewidoczny
+	var czy_zjedzone = false
+	if not inventory_system.inventory_visible:
+		if item["hunger_points"] <= max_hunger:
+			if current_hunger == max_hunger:
+				print("Nie można zjeść. Jesteś najedzony!")
+				return
+			elif item["hunger_points"] + current_hunger >= max_hunger:
+				current_hunger = max_hunger
+				print("Najadłeś się")
+			else:
+				print("Zjadłeś")
+				current_hunger += item["hunger_points"]
+		czy_zjedzone = true
+		return czy_zjedzone
+
+#wyrzucanie przyciskiem Q jesli jest selected w inventory lub scroll na fast eq
+func throw():
+	if Input.is_action_just_pressed("throw"):
+		if inventory_system == null:
+			return
+
+		var index := -1
+
+		if inventory_system.inventory_visible:
+			index = inventory_system.selected_slot_index
+		else:
+			index = inventory_system.selected_fasteq_index
+
+		if index == -1:
+			return
+
+		if index < 0 or index >= inventory_system.current_inventory.size():
+			return
+
+		var item = inventory_system.current_inventory[index]
+
+		if item == null:
+			return
+
+		print(index)
+		print(inventory_system.current_inventory[index])
+		print(facing_direction)
+		var item_scene = load(item["scene_path"])
+		var dropped_item = item_scene.instantiate()
+
+		get_tree().current_scene.add_child(dropped_item)
+		dropped_item.global_position = global_position + facing_direction * 20
+		
+		#usuniecie z ekwipunka 
+		if item["amount"] > 1:
+			item["amount"] -= 1
+		else:
+			inventory_system.current_inventory[index] = null
+
+		inventory_system.refresh_all()
+	
+	
 func attack():
 	state = State.ATTACK
 	is_attacking = true
 	attack_hitbox.monitoring = true
+	sounds.play_sound("attack")
 	await get_tree().create_timer(0.2).timeout
 	attack_hitbox.monitoring = false
 	is_attacking = false
@@ -159,6 +266,20 @@ func take_damage(amount):
 	print("Player hp:", current_hp)
 	if current_hp <= 0:
 		die()
+	else:
+		show_damage_flash()
+		sounds.play_sound("hurt")
+
+func show_damage_flash():
+	
+	if damage_flash == null:
+		return
+	damage_flash.visible=true
+	damage_flash.modulate.a = 0
+
+	var tween = create_tween()
+	tween.tween_property(damage_flash, "modulate:a", 0.6, 0.05)
+	tween.tween_property(damage_flash, "modulate:a", 0.0, 0.15)
 
 func heal(amount):
 	current_hp += amount
@@ -169,6 +290,7 @@ func die():
 	if state == State.DEAD:
 		return
 	state = State.DEAD
+	sounds.play_sound("dead")
 	print("player died")
 	if death_panel:
 		death_panel.visible = true
@@ -220,6 +342,11 @@ func move_player(delta):
 	emit_signal("stamina_usage", current_stamina, max_stamina)
 	move_and_slide()
 
+	if velocity.length() > 0 and !is_attacking and !is_stunned:
+			sounds.play_sound("walk")
+	else:
+		sounds.stop_walk()
+
 func stamina_recovery():
 	if recovery_started:
 		return
@@ -230,16 +357,24 @@ func stamina_recovery():
 	recovery_started = false
 
 func update_animation():
+	update_attack_hitbox()
 	if velocity == Vector2.ZERO:
 		play_anim("idle")
 		return
 	if abs(velocity.x) > abs(velocity.y):
+		if velocity.x > 0:
+			facing_direction = Vector2.RIGHT
+		else:
+			facing_direction = Vector2.LEFT
+			
 		play_anim("walk_side")
 		update_flip()
 	else:
 		if velocity.y > 0:
+			facing_direction = Vector2.DOWN
 			play_anim("walk_down")
 		else:
+			facing_direction = Vector2.UP
 			play_anim("walk_up")
 
 func play_anim(anim_name):
@@ -251,8 +386,22 @@ func update_flip():
 	layer_body.flip_h    = flipped
 	layer_hair.flip_h    = flipped
 	layer_clothes.flip_h = flipped
+	
+func update_attack_hitbox():
+	var flipped: bool = velocity.x < 0
+	if state!=State.ATTACK:
+		if velocity.y > 0 or state==State.IDLE:
+			attack_hitbox.position = Vector2(-7, 13)
+		elif velocity.y< 0:
+			attack_hitbox.position = Vector2(-7, -11)
+		elif flipped:
+			attack_hitbox.position = Vector2(-16, 0)
+		else:
+			attack_hitbox.position = Vector2(0, 0)
 
 func _process(_delta):
+	update_held_item()
+	throw()
 	if Input.is_action_just_pressed("pick_up") and items_in_range.size() > 0:
 		var item = items_in_range[0]
 		var item_picked_up = item.collect()
@@ -271,16 +420,15 @@ func _process(_delta):
 		if not added:
 			for i in range(inventory.size()):
 				if inventory[i] == null:
-					inventory[i] = {
-						"item_id": item_picked_up["item_id"],
-						"amount": 1,
-						"texture": item_picked_up["texture"]
-					}
+					item_picked_up["amount"] = 1
+					inventory[i] = item_picked_up
 					added = true
 					break
-
+		if fasteq_ui:
+			fasteq_ui.refresh(inventory)		
+			
 		if inventory_ui:
-			inventory_ui.refresh(inventory)
+				inventory_ui.refresh(inventory)
 		print(inventory)
 
 func add_item(item):

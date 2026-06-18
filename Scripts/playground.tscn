@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://c2e0o08q8buid" path="res://Player/player.tscn" id="4_b7mh3"]
 [ext_resource type="PackedScene" uid="uid://bhk8wb8aud5hg" path="res://Scenes/Items/wood.tscn" id="5_07tfq"]
 [ext_resource type="PackedScene" uid="uid://dre6w3svhd6ko" path="res://Scenes/Items/stone.tscn" id="6_dt752"]
+[ext_resource type="PackedScene" uid="uid://bjgxjuvclurjp" path="res://Scenes/Food/apple.tscn" id="6_m6jsy"]
 [ext_resource type="PackedScene" uid="uid://thfp6dkj2dwq" path="res://Scenes/Items/stick.tscn" id="7_tc4ax"]
 [ext_resource type="PackedScene" uid="uid://cm00qlqub0neu" path="res://Enemies/Spirit_Wolf/EvilWolf.tscn" id="8_l7aru"]
 [ext_resource type="PackedScene" uid="uid://by20bk2bsvhjj" path="res://Scenes/StaticStructures/tree.tscn" id="9_bm257"]
@@ -17,18 +18,23 @@
 [ext_resource type="PackedScene" path="res://Scenes/StaticStructures/iron_node.tscn" id="16_dt752"]
 [ext_resource type="PackedScene" uid="uid://bnvix2ex2pbsw" path="res://Enemies/IceGolem/IceColem.tscn" id="17_07tfq"]
 [ext_resource type="PackedScene" uid="uid://c3w7if2mv8ywo" path="res://Scenes/Items/iron_ore.tscn" id="17_42c27"]
+[ext_resource type="PackedScene" uid="uid://cwkv7ehlwljk5" path="res://Animals/Hare/Hare.tscn" id="17_swx2f"]
 [ext_resource type="PackedScene" uid="uid://dg26t4k8uw43m" path="res://Scenes/Items/gold_ore.tscn" id="18_g0rsy"]
-[ext_resource type="PackedScene" path="res://Scenes/StaticStructures/copper_node.tscn" id="19_65dde"]
+[ext_resource type="PackedScene" uid="uid://cyhxxmfaghpwn" path="res://Animals/Fox/Fox.tscn" id="18_okydv"]
+[ext_resource type="PackedScene" uid="uid://bitqdj822mpp0" path="res://Animals/Grouse/Grouse.tscn" id="19_4oawc"]
+[ext_resource type="PackedScene" uid="uid://bau48p344pmtq" path="res://Scenes/StaticStructures/copper_node.tscn" id="19_65dde"]
 [ext_resource type="PackedScene" uid="uid://dwr75oy600gxk" path="res://Scenes/StaticStructures/bed.tscn" id="19_l7aru"]
 [ext_resource type="Script" uid="uid://bs3h32b6gxe2i" path="res://Scripts/day_night_overlay.gd" id="19_tc4ax"]
-[ext_resource type="PackedScene" path="res://Scenes/StaticStructures/diamond_node.tscn" id="20_af7ae"]
-[ext_resource type="PackedScene" path="res://Scenes/StaticStructures/gold_node.tscn" id="21_jbcv3"]
-[ext_resource type="PackedScene" path="res://Scenes/StaticStructures/tree_spruce.tscn" id="24_g0rsy"]
+[ext_resource type="PackedScene" uid="uid://y4gpdxpa8gcw" path="res://Scenes/StaticStructures/diamond_node.tscn" id="20_af7ae"]
+[ext_resource type="PackedScene" uid="uid://uriqfdjh71ik" path="res://Animals/Boar/Boar.tscn" id="20_i77k7"]
+[ext_resource type="PackedScene" uid="uid://b26q11ema0ac0" path="res://Scenes/StaticStructures/gold_node.tscn" id="21_jbcv3"]
+[ext_resource type="PackedScene" uid="uid://ck0dk8vywervm" path="res://Scenes/StaticStructures/tree_spruce.tscn" id="24_g0rsy"]
 [ext_resource type="PackedScene" uid="uid://cfhqdgk1shpxi" path="res://Scenes/Flowers/flower1.tscn" id="25_65dde"]
 [ext_resource type="PackedScene" uid="uid://cqy2nbccn5in6" path="res://Scenes/Flowers/flower2.tscn" id="26_fkpol"]
 [ext_resource type="PackedScene" uid="uid://8cboa8ut7h7y" path="res://Scenes/Flowers/flower3.tscn" id="27_m6jsy"]
 [ext_resource type="PackedScene" uid="uid://cx8c6x4vg4ifg" path="res://Scenes/Flowers/flower4.tscn" id="28_swx2f"]
 [ext_resource type="PackedScene" uid="uid://cdrocg7pqwwbh" path="res://Scenes/Flowers/flower5.tscn" id="29_vnnrc"]
+[ext_resource type="PackedScene" uid="uid://d04fhujxh600i" path="res://Animals/Deer/Deer.tscn" id="30_m6jsy"]
 
 [node name="Playground" type="Node2D" unique_id=571104678]
 scale = Vector2(1.9740651, 1.9740651)
@@ -50,6 +56,10 @@ position = Vector2(-158.95833, 48.74951)
 
 [node name="Stick" parent="BleakYellowGrass/level" unique_id=13035520 instance=ExtResource("7_tc4ax")]
 position = Vector2(-196.95833, 98.74951)
+
+[node name="Apple" parent="BleakYellowGrass/level" unique_id=763311360 instance=ExtResource("6_m6jsy")]
+position = Vector2(-40.22689, -22.059227)
+scale = Vector2(0.6703159, 0.6703159)
 
 [node name="Seashell_1" parent="BleakYellowGrass/level" unique_id=604079078 instance=ExtResource("13_b7mh3")]
 position = Vector2(-103.95834, -13.250481)
@@ -86,6 +96,24 @@ position = Vector2(636.0417, -154.25049)
 [node name="BringerOfDeath" parent="BleakYellowGrass/level" unique_id=2039038124 instance=ExtResource("12_b7mh3")]
 position = Vector2(-529.9583, 605.7495)
 
+[node name="Deer" parent="BleakYellowGrass/level" unique_id=763673926 instance=ExtResource("30_m6jsy")]
+position = Vector2(167.97293, 601.5271)
+
+[node name="Hare" parent="BleakYellowGrass/level" unique_id=1071708136 instance=ExtResource("17_swx2f")]
+position = Vector2(-695.22046, -11.42128)
+
+[node name="Fox" parent="BleakYellowGrass/level" unique_id=1904369127 instance=ExtResource("18_okydv")]
+position = Vector2(-440.41632, -298.64584)
+
+[node name="Grouse" parent="BleakYellowGrass/level" unique_id=413200121 instance=ExtResource("19_4oawc")]
+position = Vector2(-261.59747, -337.14508)
+
+[node name="Boar" parent="BleakYellowGrass/level" unique_id=2082633821 instance=ExtResource("20_i77k7")]
+position = Vector2(-97.975746, -346.26334)
+
+[node name="IceGolem" parent="BleakYellowGrass/level" unique_id=431811086 instance=ExtResource("17_07tfq")]
+position = Vector2(486.60474, 187.66026)
+
 [node name="HUD" parent="BleakYellowGrass" unique_id=1148326026 instance=ExtResource("14_djkbh")]
 
 [node name="IronNode" parent="BleakYellowGrass" unique_id=1153327483 instance=ExtResource("16_dt752")]
@@ -109,9 +137,6 @@ position = Vector2(-49.8517, 189.18001)
 [node name="DayNightOverlay" type="CanvasModulate" parent="." unique_id=1490973845]
 position = Vector2(819, 160)
 script = ExtResource("19_tc4ax")
-
-[node name="IceGolem" parent="." unique_id=431811086 instance=ExtResource("17_07tfq")]
-position = Vector2(467.56305, 185.91077)
 
 [node name="Flower1" parent="." unique_id=1629567358 instance=ExtResource("25_65dde")]
 position = Vector2(-228.96915, 19.756187)

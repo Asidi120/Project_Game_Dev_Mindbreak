@@ -5,7 +5,6 @@
 [ext_resource type="FontFile" uid="uid://b0nphpwk324ms" path="res://Fonts/PixelPurl.ttf" id="3_bkird"]
 [ext_resource type="PackedScene" uid="uid://c2e0o08q8buid" path="res://Player/player.tscn" id="4_00qu0"]
 [ext_resource type="PackedScene" uid="uid://bpurye8jvwkrf" path="res://Enemies/BringerOfDeath/BringerOfDeathDungeon.tscn" id="5_r1q6n"]
-[ext_resource type="PackedScene" uid="uid://dfcwot3lswxk5" path="res://Enemies/BringerOfDeath/spelldungeon.tscn" id="6_qoa23"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ssfgo"]
 texture = ExtResource("1_y0n1a")
@@ -543,11 +542,63 @@ position = Vector2(-396.5, 320.5)
 [node name="BringerOfDeath2" parent="." unique_id=2138510260 instance=ExtResource("5_r1q6n")]
 position = Vector2(-644, 219.5)
 
-[node name="BringerOfDeath" parent="BringerOfDeath2" index="0" unique_id=485098827]
-max_hp = 100
-speed = 80.0
-attack_range = 100.0
-attack_cooldown = 1.2
-spell_scene = ExtResource("6_qoa23")
+[node name="BringerOfDeath3" parent="." unique_id=140445462 instance=ExtResource("5_r1q6n")]
+position = Vector2(-557, 64.5)
+
+[node name="BringerOfDeath4" parent="." unique_id=1201284269 instance=ExtResource("5_r1q6n")]
+position = Vector2(-185, 351)
+
+[node name="BringerOfDeath5" parent="." unique_id=814480488 instance=ExtResource("5_r1q6n")]
+position = Vector2(-45, 198)
+
+[node name="BringerOfDeath6" parent="." unique_id=381677564 instance=ExtResource("5_r1q6n")]
+position = Vector2(-10.5, 127)
+
+[node name="BringerOfDeath7" parent="." unique_id=1245670349 instance=ExtResource("5_r1q6n")]
+position = Vector2(-261.5, 46.5)
+
+[node name="BringerOfDeath" parent="BringerOfDeath7" index="0" unique_id=485098827]
+start_facing_left = false
+
+[node name="BringerOfDeath8" parent="." unique_id=1639677043 instance=ExtResource("5_r1q6n")]
+position = Vector2(277.5, 222)
+
+[node name="BringerOfDeath9" parent="." unique_id=2127444349 instance=ExtResource("5_r1q6n")]
+position = Vector2(436.5, 155.5)
+
+[node name="BringerOfDeath10" parent="." unique_id=1449624491 instance=ExtResource("5_r1q6n")]
+position = Vector2(319, 26)
+
+[node name="BringerOfDeath" parent="BringerOfDeath10" index="0" unique_id=485098827]
+start_facing_left = false
+
+[node name="BringerOfDeath11" parent="." unique_id=986181539 instance=ExtResource("5_r1q6n")]
+position = Vector2(396, -116)
+
+[node name="BringerOfDeath12" parent="." unique_id=1095264775 instance=ExtResource("5_r1q6n")]
+position = Vector2(128.5, -118.5)
+
+[node name="BringerOfDeath" parent="BringerOfDeath12" index="0" unique_id=485098827]
+start_facing_left = false
+
+[node name="BringerOfDeath13" parent="." unique_id=1910075112 instance=ExtResource("5_r1q6n")]
+position = Vector2(-129, -99)
+
+[node name="BringerOfDeath" parent="BringerOfDeath13" index="0" unique_id=485098827]
+start_facing_left = false
+
+[node name="BringerOfDeath14" parent="." unique_id=503384224 instance=ExtResource("5_r1q6n")]
+position = Vector2(64, 184)
+
+[node name="BringerOfDeath" parent="BringerOfDeath14" index="0" unique_id=485098827]
+start_facing_left = false
+
+[node name="BringerOfDeath15" parent="." unique_id=591766587 instance=ExtResource("5_r1q6n")]
+position = Vector2(-288, 194)
 
 [editable path="BringerOfDeath2"]
+[editable path="BringerOfDeath7"]
+[editable path="BringerOfDeath10"]
+[editable path="BringerOfDeath12"]
+[editable path="BringerOfDeath13"]
+[editable path="BringerOfDeath14"]

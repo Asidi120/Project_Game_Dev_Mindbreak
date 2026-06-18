@@ -408,7 +408,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7kqxg"]
-radius = 166.04819
+radius = 142.14429
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u65e8"]
 size = Vector2(24, 8)
@@ -418,6 +418,7 @@ scale = Vector2(0.5, 0.5)
 
 [node name="BringerOfDeath" type="CharacterBody2D" parent="." unique_id=485098827]
 script = ExtResource("1_u65e8")
+attack_cooldown = 0.5
 
 [node name="Hp_bar" type="TextureProgressBar" parent="BringerOfDeath" unique_id=798663430]
 offset_left = -21.0
@@ -432,12 +433,14 @@ tint_under = Color(1, 1, 1, 0.63900006)
 script = ExtResource("3_8a1lq")
 
 [node name="Hitbox" type="Area2D" parent="BringerOfDeath" unique_id=1195055354]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BringerOfDeath/Hitbox" unique_id=1504650938]
 position = Vector2(0, -6)
 shape = SubResource("CapsuleShape2D_h3nuv")
 
 [node name="Normal_attack_Area" type="Area2D" parent="BringerOfDeath" unique_id=1199999402]
+visible = false
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BringerOfDeath/Normal_attack_Area" unique_id=1299873102]
@@ -447,6 +450,7 @@ rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_7kqxg")
 
 [node name="Follow_Area" type="Area2D" parent="BringerOfDeath" unique_id=1349730396]
+visible = false
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BringerOfDeath/Follow_Area" unique_id=2117800191]
@@ -464,6 +468,7 @@ frame = 9
 frame_progress = 1.0
 
 [node name="Spell_Range" type="Area2D" parent="BringerOfDeath" unique_id=849328103]
+visible = false
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BringerOfDeath/Spell_Range" unique_id=721911686]

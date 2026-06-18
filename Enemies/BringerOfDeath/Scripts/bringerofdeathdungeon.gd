@@ -166,7 +166,7 @@ func cast_spell():
 	if state == State.RANGED_ATTACK:
 		state = State.CHASE
 		
-	await get_tree().create_timer(3).timeout # Cooldown dla czaru
+	await get_tree().create_timer(0.5).timeout # Cooldown dla czaru
 	can_attack = true
 
 # DAMAGE SYSTEM

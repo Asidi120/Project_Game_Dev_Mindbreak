@@ -33,22 +33,22 @@ const HAIR_TEXTURES := [
 ]
 
 const CLOTHES_TEXTURES := [
-	"res://MenuPlayer/Clothes/char_a_pONE2_1",
+	"res://MenuPlayer/Clothes/char_a_pONE2_1.png",
 	"res://MenuPlayer/Clothes/char_a_pONE2_1out_pfpn_v05.png",
 	"res://MenuPlayer/Clothes/char_a_pONE2_1out_undi_v01.png",
 ]
 
-@onready var world_name_edit:   LineEdit    = $VBox/WorldNameEdit
-@onready var player_name_edit:  LineEdit    = $VBox/PlayerNameEdit
-@onready var preview_skin:      Sprite2D   = $PreviewPanel/PreviewContainer/LayerSkin
+@onready var world_name_edit:   LineEdit = $VBox/WorldNameEdit
+@onready var player_name_edit:  LineEdit = $VBox/PlayerNameEdit
+@onready var preview_skin:      Sprite2D = $PreviewPanel/PreviewContainer/LayerSkin
 @onready var preview_hair:      Sprite2D = $PreviewPanel/PreviewContainer/LayerHair
 @onready var preview_clothes:   Sprite2D = $PreviewPanel/PreviewContainer/LayerClothes
-@onready var skin_label:        Label       = $VBox/SkinRow/SkinLabel
-@onready var hair_style_label:  Label       = $VBox/HairStyleRow/HairStyleLabel
-@onready var hair_color_label:  Label       = $VBox/HairColorRow/HairColorLabel
-@onready var clothes_label:     Label       = $VBox/ClothesRow/ClothesLabel
-@onready var error_label:       Label       = $ErrorLabel
-@onready var create_btn:        Button      = $CreateButton
+@onready var skin_label:        Label    = $VBox/SkinRow/SkinLabel
+@onready var hair_style_label:  Label    = $VBox/HairStyleRow/HairStyleLabel
+@onready var hair_color_label:  Label    = $VBox/HairColorRow/HairColorLabel
+@onready var clothes_label:     Label    = $VBox/ClothesRow/ClothesLabel
+@onready var error_label:       Label    = $ErrorLabel
+@onready var create_btn:        Button   = $CreateButton
 
 func _ready() -> void:
 	error_label.text = ""
@@ -89,18 +89,18 @@ func _on_clothes_next_pressed() -> void:
 func _refresh_preview() -> void:
 	# Skóra
 	preview_skin.modulate = SKIN_COLORS[player_data.skin_index]
-	skin_label.text    = "Skin %d / %d" % [player_data.skin_index + 1, SKIN_COLORS.size()]
+	skin_label.text = "Skin %d / %d" % [player_data.skin_index + 1, SKIN_COLORS.size()]
 
-	# Włosy — styl
+	# Styl włosów
 	var hair_path: String = HAIR_TEXTURES[player_data.hair_index]
 	if ResourceLoader.exists(hair_path):
 		preview_hair.texture = load(hair_path)
-	preview_hair.modulate = HAIR_COLORS[player_data.hair_color]
 	hair_style_label.text = "Style %d / %d" % [player_data.hair_index + 1, HAIR_TEXTURES.size()]
 
-	# Kolor włosów
-	hair_color_label.modulate = HAIR_COLORS[player_data.hair_color]
-	hair_color_label.text     = "Color %d / %d" % [player_data.hair_color + 1, HAIR_COLORS.size()]
+	# Kolor włosów — tylko na preview_hair, nie na labelu
+	preview_hair.modulate = HAIR_COLORS[player_data.hair_color]
+	hair_color_label.modulate = Color.WHITE
+	hair_color_label.text = "Color %d / %d" % [player_data.hair_color + 1, HAIR_COLORS.size()]
 
 	# Ubranie
 	var clothes_path: String = CLOTHES_TEXTURES[player_data.clothes_index]
@@ -108,12 +108,10 @@ func _refresh_preview() -> void:
 		preview_clothes.texture = load(clothes_path)
 	clothes_label.text = "Outfit %d / %d" % [player_data.clothes_index + 1, CLOTHES_TEXTURES.size()]
 
-	
 func _on_create_button_pressed() -> void:
 	error_label.text = ""
 
-	# Walidacja
-	var world_name: String  = world_name_edit.text.strip_edges()
+	var world_name:  String = world_name_edit.text.strip_edges()
 	var player_name: String = player_name_edit.text.strip_edges()
 
 	if world_name.is_empty():
@@ -129,27 +127,20 @@ func _on_create_button_pressed() -> void:
 		error_label.text = "⚠ Nazwa gracza max 20 znaków."
 		return
 
-	# Zapisz dane
 	player_data.world_name  = world_name
 	player_data.player_name = player_name
-	player_data.world_seed  = randi()   # losowy seed świata
+	player_data.world_seed  = randi()
 
 	_save_player_data()
-
-	# Przejście do sceny gry / generatora świata
 	get_tree().change_scene_to_file("res://Player/word.tscn")
 
-# ─────────────────────────────────────────────
-#  Zapis do pliku
-# ─────────────────────────────────────────────
 func _save_player_data() -> void:
 	var save_file := FileAccess.open("user://player_data.json", FileAccess.WRITE)
 	if save_file:
 		save_file.store_string(JSON.stringify(player_data))
 		save_file.close()
+	else:
+		error_label.text = "⚠ Nie udało się zapisać danych!"
 
-# ─────────────────────────────────────────────
-#  Przycisk "Wstecz"
-# ─────────────────────────────────────────────
 func _on_back_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://Menu/control.tscn")

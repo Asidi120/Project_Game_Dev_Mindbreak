@@ -289,9 +289,6 @@ func add_item(item):
 func remove_item(item):
 	items_in_range.erase(item)
 
-# ─────────────────────────────────────────────
-#  Wygląd postaci z pliku save
-# ─────────────────────────────────────────────
 func apply_appearance() -> void:
 	if not FileAccess.file_exists("user://player_data.json"):
 		return
@@ -317,9 +314,28 @@ func apply_appearance() -> void:
 		Color(0.50, 0.10, 0.70),
 		Color(0.10, 0.40, 0.85),
 	]
+	var clothes_textures := [
+		"res://MenuPlayer/Clothes/char_a_pONE2_1.png",
+		"res://MenuPlayer/Clothes/char_a_pONE2_1out_pfpn_v05.png",
+		"res://MenuPlayer/Clothes/char_a_pONE2_1out_undi_v01.png",
+	]
 
+	# Skóra
 	var si: int = clampi(data.get("skin_index", 0), 0, skin_colors.size() - 1)
-	var hi: int = clampi(data.get("hair_color",  0), 0, hair_colors.size() - 1)
-
 	layer_body.modulate = skin_colors[si]
-	layer_hair.modulate = hair_colors[hi]
+
+	# Kolor włosów
+	var hc: int = clampi(data.get("hair_color", 0), 0, hair_colors.size() - 1)
+	layer_hair.modulate = hair_colors[hc]
+
+	# Tekstura włosów
+	var hi: int = clampi(data.get("hair_index", 0), 0, 2)
+	var hair_path := "res://MenuPlayer/Hair/hair_%d.png" % hi
+	if ResourceLoader.exists(hair_path):
+		layer_hair.texture = load(hair_path)
+
+	# Ubranie
+	var ci: int = clampi(data.get("clothes_index", 0), 0, clothes_textures.size() - 1)
+	var clothes_path: String = clothes_textures[ci]
+	if ResourceLoader.exists(clothes_path):
+		layer_clothes.texture = load(clothes_path)

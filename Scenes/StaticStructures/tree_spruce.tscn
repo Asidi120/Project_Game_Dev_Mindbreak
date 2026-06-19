@@ -11,9 +11,12 @@ size = Vector2(10, 10.5)
 size = Vector2(11.275581, 10.845661)
 
 [node name="SpruceTree" type="StaticBody2D" unique_id=669837160]
+position = Vector2(-1.9999999, 0)
 scale = Vector2(1.2373664, 1.2373664)
 script = ExtResource("1_fp1x5")
+hits_needed = 8.0
 object_id = "tree_spruce"
+object_type = "tree"
 scene = ExtResource("2_13l6l")
 
 [node name="Sprite2D2" type="Sprite2D" parent="." unique_id=685670152]

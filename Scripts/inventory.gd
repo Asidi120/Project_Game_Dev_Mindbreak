@@ -36,7 +36,28 @@ func _process(_delta: float) -> void:
 			
 	if self.name == "FastEq":
 		handle_fasteq_scroll()
+		handle_fasteq_keys()
 
+func handle_fasteq_keys() -> void:
+	
+	if Input.is_action_just_pressed("1"):
+		selected_fasteq_index = 0
+		
+	if Input.is_action_just_pressed("2"):
+		selected_fasteq_index = 1
+		
+	if Input.is_action_just_pressed("3"):
+		selected_fasteq_index = 2
+		
+	if Input.is_action_just_pressed("4"):
+		selected_fasteq_index = 3
+		
+	if Input.is_action_just_pressed("5"):
+		selected_fasteq_index = 4
+		
+	if Input.is_action_just_pressed("6"):
+		selected_fasteq_index = 5
+		
 #zmiana wybranego slota scrollem
 func handle_fasteq_scroll() -> void:
 	if Input.is_action_just_pressed("scroll_up"):

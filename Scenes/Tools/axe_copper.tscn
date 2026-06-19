@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://cy3aet13utqh7"]
+
+[ext_resource type="Script" uid="uid://da3bkf34py10e" path="res://Scripts/tool_breaking.gd" id="1_gs02a"]
+[ext_resource type="Texture2D" uid="uid://i5uud04jfce" path="res://OtherSprites/Items/Full Sheet.png" id="2_oi53i"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_3ouv3"]
+a = Vector2(3.9516487, -4.604694)
+b = Vector2(-4.4246407, 4.7957325)
+
+[node name="AxeCopper" type="Area2D" unique_id=1592250268]
+scale = Vector2(1.2, 1.26)
+script = ExtResource("1_gs02a")
+tool_power = 4.0
+item_id = "axe_copper"
+item_name = "AxeCopper"
+item_type = "axe"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=834627305]
+z_index = -1
+scale = Vector2(1, 1.05)
+texture = ExtResource("2_oi53i")
+region_enabled = true
+region_rect = Rect2(127.47623, 16.59675, 17.046738, 15.612913)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=730860820]
+scale = Vector2(1.4761771, 1.3788552)
+shape = SubResource("SegmentShape2D_3ouv3")

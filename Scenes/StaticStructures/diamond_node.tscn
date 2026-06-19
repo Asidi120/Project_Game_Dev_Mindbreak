@@ -12,8 +12,10 @@ size = Vector2(43.96569, 23.267914)
 
 [node name="DiamondNode" type="StaticBody2D" unique_id=2132276029]
 script = ExtResource("1_ttswq")
-hits_needed = 5
+hits_needed = 18.0
 object_id = "diamondnode"
+object_type = "diamond"
+position_of_power_needed = 4
 scene = ExtResource("2_ttswq")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=807240751]

@@ -2,6 +2,7 @@ extends Node
 
 @onready var player: Player = $".."
 
+# wartosc zadawaego damage wrogom
 func dealt_damage():
 	var damage = 10
 	if player.inventory_system == null:

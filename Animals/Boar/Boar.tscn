@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c5qk1aa2hwjk1" path="res://Animals/Boar/Scripts/Boar.gd" id="1_w3f6v"]
 [ext_resource type="Texture2D" uid="uid://d34crl0llr6ot" path="res://Player/Sprite/hp_bar/HealthBar DARK.png" id="2_ksf5g"]
+[ext_resource type="PackedScene" uid="uid://yuiv02y0p5vm" path="res://Scenes/Food/meat_raw_1.tscn" id="2_tnnlm"]
 [ext_resource type="Script" uid="uid://dfgdasket7d4t" path="res://Scripts/healthbar.gd" id="3_tnnlm"]
 [ext_resource type="Texture2D" uid="uid://rpisry05s37y" path="res://Animals/Boar/Sprite/Boar_Death.png" id="4_kjjvk"]
 [ext_resource type="Texture2D" uid="uid://fc17wx5tubb0" path="res://Animals/Boar/Sprite/Boar_Hurt.png" id="5_xdoxd"]
@@ -643,6 +644,7 @@ size = Vector2(39, 35)
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1307423306 groups=["Enemies"]]
 position = Vector2(0, -27)
 script = ExtResource("1_w3f6v")
+scene = ExtResource("2_tnnlm")
 
 [node name="Hp_bar" type="TextureProgressBar" parent="CharacterBody2D" unique_id=1582616612]
 visible = false

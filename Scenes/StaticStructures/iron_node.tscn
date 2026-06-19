@@ -12,8 +12,9 @@ size = Vector2(43.96569, 23.267914)
 
 [node name="IronNode" type="StaticBody2D" unique_id=2132276029]
 script = ExtResource("1_b3gx0")
-hits_needed = 5
 object_id = "ironnode"
+object_type = "iron"
+position_of_power_needed = 1
 scene = ExtResource("2_b3gx0")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=807240751]

@@ -3,6 +3,7 @@ var player_in_range := false
 @export var hits_needed := 4.0 #ilosc potrzebnych uderzen
 @export var object_id := ""
 @export var object_type := ""
+@export var position_of_power_needed := 0
 var hits := 0.0
 
 @export var scene: PackedScene #instancja sceny struktury
@@ -33,6 +34,14 @@ func update_hits():
 		hits += item["tool_power"]
 	elif object_type == "tree":
 		hits += 1	
+	
+	var list_of_nodes = ["iron", "copper", "gold", "diamond"]
+	var list_of_tool_ids = ["pickaxe_stone", "pickaxe_iron", "pickaxe_cooper", "pickaxe_gold"]
+	
+	if object_type in list_of_nodes and item["item_type"] == "pickaxe":
+		if item["position_of_power"] >= position_of_power_needed:
+			hits += item["tool_power"]
+		
 	
 func _ready() -> void:
 	inventory_system = get_tree().get_first_node_in_group("inventory_ui")

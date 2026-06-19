@@ -11,6 +11,7 @@ b = Vector2(-4.4246407, 4.7957325)
 scale = Vector2(1.2, 1.2)
 script = ExtResource("1_g55vx")
 tool_power = 2.0
+position_of_power = 1
 item_id = "pickaxe_stone"
 item_name = "PickaxeStone"
 item_type = "pickaxe"

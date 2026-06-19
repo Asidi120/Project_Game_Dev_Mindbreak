@@ -11,6 +11,7 @@ b = Vector2(-4.4246407, 4.7957325)
 scale = Vector2(1.2, 1.2)
 script = ExtResource("1_3kw3y")
 tool_power = 3.4
+position_of_power = 3
 item_id = "pickaxe_copper"
 item_name = "PickaxeCopper"
 item_type = "pickaxe"

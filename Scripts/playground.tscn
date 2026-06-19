@@ -140,7 +140,6 @@ position = Vector2(-52.384544, 20.492563)
 
 [node name="IronNode" parent="BleakYellowGrass" unique_id=1153327483 instance=ExtResource("16_dt752")]
 position = Vector2(-160.7903, 193.73914)
-hits_needed = 4.0
 
 [node name="IronOre" parent="BleakYellowGrass" unique_id=218306114 instance=ExtResource("17_42c27")]
 position = Vector2(-203.34209, 128.89832)
@@ -150,15 +149,13 @@ position = Vector2(-180.54648, 123.83262)
 
 [node name="CopperNode" parent="BleakYellowGrass" unique_id=1372399059 instance=ExtResource("19_65dde")]
 position = Vector2(-248.42671, 191.71286)
-hits_needed = 4.0
+object_type = "copper"
 
 [node name="DiamondNode" parent="BleakYellowGrass" unique_id=402616874 instance=ExtResource("20_af7ae")]
 position = Vector2(-106.58742, 190.19315)
-hits_needed = 4.0
 
 [node name="GoldNode" parent="BleakYellowGrass" unique_id=1936754934 instance=ExtResource("21_jbcv3")]
 position = Vector2(-49.8517, 189.18001)
-hits_needed = 4.0
 
 [node name="DayNightOverlay" type="CanvasModulate" parent="." unique_id=1490973845]
 position = Vector2(819, 160)
@@ -205,9 +202,12 @@ position = Vector2(-6.0788264, 23.30217)
 
 [node name="Boulder" parent="." unique_id=864284279 instance=ExtResource("10_08ji3")]
 position = Vector2(-276.5866, 92.70211)
+hits_needed = 4.0
 
 [node name="Boulder2" parent="." unique_id=259039204 instance=ExtResource("10_08ji3")]
 position = Vector2(-134.24075, 120.5634)
+hits_needed = 4.0
 
 [node name="Boulder3" parent="." unique_id=1093089895 instance=ExtResource("10_08ji3")]
 position = Vector2(-142.85243, 62.307976)
+hits_needed = 4.0

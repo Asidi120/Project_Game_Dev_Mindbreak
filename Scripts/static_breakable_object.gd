@@ -22,21 +22,25 @@ func update_hits():
 
 	var item = inventory_system.current_inventory[index]
 	
-	if item == null and object_type == "tree":
+	#jesli nie ma nic w raczce mozna niszczyc tree i bush
+	if item == null and (object_type == "tree" or object_type == "bush"):
 		hits += 1
 	
 	if item == null:
 		return
 
+	# niszczenie tree majac axe
 	if item["item_type"] == "axe" and object_type == "tree":
 		hits += item["tool_power"]
+	# niszczenie boulder majac pickaxe
 	elif item["item_type"] == "pickaxe" and object_type == "boulder":
 		hits += item["tool_power"]
-	elif object_type == "tree":
+	# niszczenie tree i bush majac jakikolwiek inny przedmiot
+	elif object_type == "tree" or object_type == "bush":
 		hits += 1	
 	
+	#nodes
 	var list_of_nodes = ["iron", "copper", "gold", "diamond"]
-	var list_of_tool_ids = ["pickaxe_stone", "pickaxe_iron", "pickaxe_cooper", "pickaxe_gold"]
 	
 	if object_type in list_of_nodes and item["item_type"] == "pickaxe":
 		if item["position_of_power"] >= position_of_power_needed:

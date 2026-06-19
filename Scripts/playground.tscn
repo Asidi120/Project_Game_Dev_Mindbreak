@@ -103,9 +103,6 @@ hits_needed = 4.0
 [node name="Bed" parent="BleakYellowGrass/level" unique_id=1754547488 instance=ExtResource("19_l7aru")]
 position = Vector2(152.04167, 254.74951)
 
-[node name="EvilWolfWithPoints" parent="BleakYellowGrass/level" unique_id=697092607 instance=ExtResource("8_l7aru")]
-position = Vector2(636.0417, -154.25049)
-
 [node name="BringerOfDeath" parent="BleakYellowGrass/level" unique_id=2039038124 instance=ExtResource("12_b7mh3")]
 position = Vector2(-529.9583, 605.7495)
 
@@ -136,78 +133,84 @@ position = Vector2(-43.772873, -4.835884)
 [node name="PickaxeWood" parent="BleakYellowGrass/level" unique_id=1110323191 instance=ExtResource("25_ux27c")]
 position = Vector2(-52.384544, 20.492563)
 
-[node name="HUD" parent="BleakYellowGrass" unique_id=1148326026 instance=ExtResource("14_djkbh")]
+[node name="Flower1" parent="BleakYellowGrass/level" unique_id=1629567358 instance=ExtResource("25_65dde")]
+position = Vector2(-209.92747, 21.5057)
 
-[node name="IronNode" parent="BleakYellowGrass" unique_id=1153327483 instance=ExtResource("16_dt752")]
-position = Vector2(-160.7903, 193.73914)
+[node name="Flower2" parent="BleakYellowGrass/level" unique_id=1461700609 instance=ExtResource("26_fkpol")]
+position = Vector2(-193.71727, 22.518837)
 
-[node name="IronOre" parent="BleakYellowGrass" unique_id=218306114 instance=ExtResource("17_42c27")]
-position = Vector2(-203.34209, 128.89832)
+[node name="Flower3" parent="BleakYellowGrass/level" unique_id=1647036115 instance=ExtResource("27_m6jsy")]
+position = Vector2(-171.93478, 20.99913)
 
-[node name="GoldOre" parent="BleakYellowGrass" unique_id=2120493795 instance=ExtResource("18_g0rsy")]
+[node name="Flower4" parent="BleakYellowGrass/level" unique_id=2082807197 instance=ExtResource("28_swx2f")]
+position = Vector2(-154.2049, 22.518837)
+
+[node name="Flower5" parent="BleakYellowGrass/level" unique_id=1776031276 instance=ExtResource("29_vnnrc")]
+position = Vector2(-134.44872, 20.99913)
+
+[node name="AxeStone" parent="BleakYellowGrass/level" unique_id=1146610572 instance=ExtResource("39_05gq1")]
+position = Vector2(-26.54953, -2.8096085)
+scale = Vector2(1.2, 1.2599999)
+
+[node name="AxeIron" parent="BleakYellowGrass/level" unique_id=1329188761 instance=ExtResource("40_uvroh")]
+position = Vector2(-7.8064804, -1.7964706)
+scale = Vector2(1.2, 1.2599999)
+
+[node name="AxeGold" parent="BleakYellowGrass/level" unique_id=564074609 instance=ExtResource("42_tkps2")]
+position = Vector2(8.910294, 0.229805)
+scale = Vector2(1.2, 1.2599999)
+
+[node name="AxeCopper" parent="BleakYellowGrass/level" unique_id=1181289018 instance=ExtResource("41_476fj")]
+position = Vector2(27.146774, 1.7495117)
+scale = Vector2(1.2, 1.2599999)
+
+[node name="PickaxeStone" parent="BleakYellowGrass/level" unique_id=2070992587 instance=ExtResource("43_f6ka7")]
+position = Vector2(-29.082375, 22.012268)
+
+[node name="PickaxeIron" parent="BleakYellowGrass/level" unique_id=675021698 instance=ExtResource("44_tqxmo")]
+position = Vector2(-4.260498, 24.038544)
+
+[node name="PickaxeGold" parent="BleakYellowGrass/level" unique_id=1017432340 instance=ExtResource("45_vb6b8")]
+position = Vector2(31.705894, 27.077957)
+
+[node name="PickaxeCopper" parent="BleakYellowGrass/level" unique_id=532848526 instance=ExtResource("46_htdfw")]
+position = Vector2(12.962845, 25.051682)
+
+[node name="Boulder2" parent="BleakYellowGrass/level" unique_id=864284279 instance=ExtResource("10_08ji3")]
+position = Vector2(-257.54492, 94.45162)
+hits_needed = 4.0
+
+[node name="Boulder3" parent="BleakYellowGrass/level" unique_id=259039204 instance=ExtResource("10_08ji3")]
+position = Vector2(-115.199066, 122.31291)
+hits_needed = 4.0
+
+[node name="Boulder4" parent="BleakYellowGrass/level" unique_id=1093089895 instance=ExtResource("10_08ji3")]
+position = Vector2(-123.81076, 64.05749)
+hits_needed = 4.0
+
+[node name="EvilWolfWithPoints" parent="BleakYellowGrass/level" unique_id=697092607 instance=ExtResource("8_l7aru")]
+position = Vector2(636.0417, -154.25047)
+
+[node name="IronNode" parent="BleakYellowGrass/level" unique_id=1153327483 instance=ExtResource("16_dt752")]
+position = Vector2(-160.79031, 193.73915)
+
+[node name="IronOre" parent="BleakYellowGrass/level" unique_id=218306114 instance=ExtResource("17_42c27")]
+position = Vector2(-203.3421, 128.89832)
+
+[node name="GoldOre" parent="BleakYellowGrass/level" unique_id=2120493795 instance=ExtResource("18_g0rsy")]
 position = Vector2(-180.54648, 123.83262)
 
-[node name="CopperNode" parent="BleakYellowGrass" unique_id=1372399059 instance=ExtResource("19_65dde")]
-position = Vector2(-248.42671, 191.71286)
-object_type = "copper"
+[node name="CopperNode" parent="BleakYellowGrass/level" unique_id=1372399059 instance=ExtResource("19_65dde")]
+position = Vector2(-248.42671, 191.71288)
 
-[node name="DiamondNode" parent="BleakYellowGrass" unique_id=402616874 instance=ExtResource("20_af7ae")]
+[node name="DiamondNode" parent="BleakYellowGrass/level" unique_id=402616874 instance=ExtResource("20_af7ae")]
 position = Vector2(-106.58742, 190.19315)
 
-[node name="GoldNode" parent="BleakYellowGrass" unique_id=1936754934 instance=ExtResource("21_jbcv3")]
+[node name="GoldNode" parent="BleakYellowGrass/level" unique_id=1936754934 instance=ExtResource("21_jbcv3")]
 position = Vector2(-49.8517, 189.18001)
+
+[node name="HUD" parent="BleakYellowGrass" unique_id=1148326026 instance=ExtResource("14_djkbh")]
 
 [node name="DayNightOverlay" type="CanvasModulate" parent="." unique_id=1490973845]
 position = Vector2(819, 160)
 script = ExtResource("19_tc4ax")
-
-[node name="Flower1" parent="." unique_id=1629567358 instance=ExtResource("25_65dde")]
-position = Vector2(-228.96915, 19.756187)
-
-[node name="Flower2" parent="." unique_id=1461700609 instance=ExtResource("26_fkpol")]
-position = Vector2(-212.75894, 20.769325)
-
-[node name="Flower3" parent="." unique_id=1647036115 instance=ExtResource("27_m6jsy")]
-position = Vector2(-190.97647, 19.249619)
-
-[node name="Flower4" parent="." unique_id=2082807197 instance=ExtResource("28_swx2f")]
-position = Vector2(-173.24657, 20.769325)
-
-[node name="Flower5" parent="." unique_id=1776031276 instance=ExtResource("29_vnnrc")]
-position = Vector2(-153.49039, 19.249619)
-
-[node name="AxeStone" parent="." unique_id=1146610572 instance=ExtResource("39_05gq1")]
-position = Vector2(-45.5912, -4.55912)
-
-[node name="AxeIron" parent="." unique_id=1329188761 instance=ExtResource("40_uvroh")]
-position = Vector2(-26.848152, -3.5459824)
-
-[node name="AxeGold" parent="." unique_id=564074609 instance=ExtResource("42_tkps2")]
-position = Vector2(-10.131378, -1.5197067)
-
-[node name="AxeCopper" parent="." unique_id=1181289018 instance=ExtResource("41_476fj")]
-position = Vector2(8.105103, 0)
-
-[node name="PickaxeStone" parent="." unique_id=2070992587 instance=ExtResource("43_f6ka7")]
-position = Vector2(-48.124046, 20.262756)
-
-[node name="PickaxeIron" parent="." unique_id=675021698 instance=ExtResource("44_tqxmo")]
-position = Vector2(-23.30217, 22.289032)
-
-[node name="PickaxeGold" parent="." unique_id=1017432340 instance=ExtResource("45_vb6b8")]
-position = Vector2(12.664223, 25.328445)
-
-[node name="PickaxeCopper" parent="." unique_id=532848526 instance=ExtResource("46_htdfw")]
-position = Vector2(-6.0788264, 23.30217)
-
-[node name="Boulder" parent="." unique_id=864284279 instance=ExtResource("10_08ji3")]
-position = Vector2(-276.5866, 92.70211)
-hits_needed = 4.0
-
-[node name="Boulder2" parent="." unique_id=259039204 instance=ExtResource("10_08ji3")]
-position = Vector2(-134.24075, 120.5634)
-hits_needed = 4.0
-
-[node name="Boulder3" parent="." unique_id=1093089895 instance=ExtResource("10_08ji3")]
-position = Vector2(-142.85243, 62.307976)
-hits_needed = 4.0

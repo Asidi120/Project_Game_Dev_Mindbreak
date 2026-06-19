@@ -12,6 +12,7 @@ size = Vector2(43.96569, 23.267914)
 
 [node name="GoldNode" type="StaticBody2D" unique_id=2132276029]
 script = ExtResource("1_3t51k")
+hits_needed = 16.0
 object_id = "goldnode"
 object_type = "gold"
 position_of_power_needed = 3

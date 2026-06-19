@@ -12,6 +12,7 @@ size = Vector2(43.96569, 23.267914)
 
 [node name="CopperNode" type="StaticBody2D" unique_id=2132276029]
 script = ExtResource("1_dmpex")
+hits_needed = 14.0
 object_id = "coppernode"
 object_type = "copper"
 position_of_power_needed = 2

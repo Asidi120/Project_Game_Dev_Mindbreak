@@ -21,7 +21,6 @@ func set_target(t):
 func update_bar(current_hp, max_hp):
 	max_value = max_hp
 	target_hp = current_hp
-	emit_signal("hp_changed")
 	if hp_label:
 		hp_label.text = str(int(target_hp)) + "/" + str(int(max_hp))
 

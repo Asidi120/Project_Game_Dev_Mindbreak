@@ -10,7 +10,7 @@ signal hunger_changed(current_hunger,max_hunger)
 @onready var attack_hitbox: Area2D = $AttackHitbox
 var is_attacking = false
 
-var move_speed = 100
+@export var move_speed = 100
 var direction = Vector2.ZERO
 var items_in_range = []
 var current_hp = 200
@@ -328,7 +328,7 @@ func move_player(delta):
 		if current_stamina < 10 or current_hunger <= 1:
 			velocity = direction * final_speed
 		else:
-			velocity = direction * (final_speed + 100)
+			velocity = direction * (final_speed * 2)
 			was_sprinting = true
 	else:
 		velocity = direction * final_speed

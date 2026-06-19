@@ -1,4 +1,4 @@
-class_name IceGolemDungeonBoss extends CharacterBody2D
+class_name IceGolemDungeon extends CharacterBody2D
 
 signal hp_changed(current_hp, max_hp)
 signal died
@@ -13,6 +13,7 @@ var player_in_hitbox = false # atak playera w zasiegu hiboxa
 var attack_interrupted = false # czy atak przerwany
 var can_be_interrupted = false # czy atak moze byc przerwany - wczesna faza
 var attack_id = 0
+var regen_buffer := 0.0
 
 @export var start_facing_left := false
 var facing_left := false
@@ -109,15 +110,21 @@ func patrol():
 	var next_pos = nav_agent.get_next_path_position()
 	velocity = (next_pos - global_position).normalized() * speed
 
+func regenerate_hp(delta):
+	if state == State.DEAD:
+		return
+	regen_buffer += 5.0 * delta
+	if regen_buffer >= 1.0:
+		var heal := int(regen_buffer)
+		current_hp = min(current_hp + heal, max_hp)
+		regen_buffer -= heal
+		emit_signal("hp_changed", current_hp, max_hp)
+
 func chase():
 	if target == null:
 		state = State.PATROL
 		return
-
-	# POPRAWKA: Jeśli gracz zniknął za ścianą, przestań gonić na oślep (opcjonalne, zależnie od wizji)
 	if not can_see_target() and not player_in_attack_range:
-		# Tutaj możesz zmienić na stan SEARCH, jeśli go zaimplementujesz u Golema. 
-		# Na razie, jeśli go nie widzi, pozwalamy nav_agentowi dokończyć bieg do ostatniej pozycji.
 		pass
 
 	if player_in_attack_range:

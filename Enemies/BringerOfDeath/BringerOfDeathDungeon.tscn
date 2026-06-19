@@ -417,6 +417,8 @@ size = Vector2(24, 8)
 scale = Vector2(0.5, 0.5)
 
 [node name="BringerOfDeath" type="CharacterBody2D" parent="." unique_id=485098827]
+collision_layer = 2
+collision_mask = 16
 script = ExtResource("1_u65e8")
 attack_cooldown = 0.5
 

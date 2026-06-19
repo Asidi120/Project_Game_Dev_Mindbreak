@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cwkv7ehlwljk5"]
 
 [ext_resource type="Script" uid="uid://5uc0hkchso6j" path="res://Animals/Hare/Scripts/Hare.gd" id="1_qts2b"]
+[ext_resource type="PackedScene" uid="uid://hwpi48hrlmyu" path="res://Scenes/Food/meat_raw_4.tscn" id="2_f6xl2"]
 [ext_resource type="Texture2D" uid="uid://d34crl0llr6ot" path="res://Player/Sprite/hp_bar/HealthBar DARK.png" id="2_yhoce"]
 [ext_resource type="Script" uid="uid://dfgdasket7d4t" path="res://Scripts/healthbar.gd" id="3_brnnp"]
 [ext_resource type="Texture2D" uid="uid://dcu05uduhqgel" path="res://Animals/Hare/Sprite/Hare_Death.png" id="4_8yh5m"]
@@ -643,7 +644,9 @@ y_sort_enabled = true
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1609431814 groups=["Enemies"]]
 position = Vector2(0, -27)
+scale = Vector2(0.4, 0.4)
 script = ExtResource("1_qts2b")
+scene = ExtResource("2_f6xl2")
 
 [node name="Hp_bar" type="TextureProgressBar" parent="CharacterBody2D" unique_id=1730628956]
 visible = false

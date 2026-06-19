@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ppdd2qkxlv3j" path="res://Animals/Fox/Scripts/Fox.gd" id="1_dqyxx"]
 [ext_resource type="Texture2D" uid="uid://d34crl0llr6ot" path="res://Player/Sprite/hp_bar/HealthBar DARK.png" id="2_dd7d3"]
+[ext_resource type="PackedScene" uid="uid://bbo2ol4laayeu" path="res://Scenes/Food/meat_raw_5.tscn" id="2_y735m"]
 [ext_resource type="Script" uid="uid://dfgdasket7d4t" path="res://Scripts/healthbar.gd" id="3_y735m"]
 [ext_resource type="Texture2D" uid="uid://dlf27h6e5n3k3" path="res://Animals/Fox/Sprite/Fox_Death.png" id="4_dqyxx"]
 [ext_resource type="Texture2D" uid="uid://bgyf6h2o5sk0o" path="res://Animals/Fox/Sprite/Fox_Hurt.png" id="5_dd7d3"]
@@ -663,7 +664,9 @@ size = Vector2(35, 44)
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1351811641 groups=["Enemies"]]
 position = Vector2(0, -27)
+scale = Vector2(0.5, 0.5)
 script = ExtResource("1_dqyxx")
+scene = ExtResource("2_y735m")
 
 [node name="Hp_bar" type="TextureProgressBar" parent="CharacterBody2D" unique_id=594770374]
 visible = false

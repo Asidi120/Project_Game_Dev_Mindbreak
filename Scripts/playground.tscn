@@ -51,6 +51,9 @@
 [ext_resource type="PackedScene" uid="uid://c0i8ciebv1msb" path="res://Scenes/Tools/sword_gold.tscn" id="48_8t74i"]
 [ext_resource type="PackedScene" uid="uid://di13gwl5w5a4k" path="res://Enemies/IceGolem/IceGolemDungeon.tscn" id="48_yy2jd"]
 [ext_resource type="PackedScene" uid="uid://yuiv02y0p5vm" path="res://Scenes/Food/meat_raw_1.tscn" id="49_sdjit"]
+[ext_resource type="PackedScene" uid="uid://x74wiik2apat" path="res://Scenes/Food/meat_raw_2.tscn" id="50_qrpf8"]
+[ext_resource type="PackedScene" uid="uid://bxah3ngnftgeo" path="res://Scenes/Food/meat_raw_3.tscn" id="51_kkea6"]
+[ext_resource type="PackedScene" uid="uid://hwpi48hrlmyu" path="res://Scenes/Food/meat_raw_4.tscn" id="52_hlkfb"]
 
 [node name="Playground" type="Node2D" unique_id=571104678]
 scale = Vector2(1.9740651, 1.9740651)
@@ -112,16 +115,16 @@ position = Vector2(152.04167, 254.74951)
 position = Vector2(-529.9583, 605.7495)
 
 [node name="Deer" parent="BleakYellowGrass/level" unique_id=763673926 instance=ExtResource("30_m6jsy")]
-position = Vector2(167.97293, 601.5271)
+position = Vector2(-90.37722, 24.038544)
 
 [node name="Hare" parent="BleakYellowGrass/level" unique_id=1071708136 instance=ExtResource("17_swx2f")]
-position = Vector2(-695.22046, -11.42128)
+position = Vector2(-168.89545, -1.2898941)
 
 [node name="Fox" parent="BleakYellowGrass/level" unique_id=1904369127 instance=ExtResource("18_okydv")]
-position = Vector2(-440.41632, -298.64584)
+position = Vector2(-97.46918, -22.059235)
 
 [node name="Grouse" parent="BleakYellowGrass/level" unique_id=413200121 instance=ExtResource("19_4oawc")]
-position = Vector2(-261.59747, -337.14508)
+position = Vector2(-172.44138, -27.631493)
 
 [node name="Boar" parent="BleakYellowGrass/level" unique_id=2082633821 instance=ExtResource("20_i77k7")]
 position = Vector2(-127.35674, -22.059235)
@@ -228,6 +231,16 @@ position = Vector2(93.5073, -31.177467)
 
 [node name="IceGolemDungeon" parent="BleakYellowGrass/level" unique_id=431811086 instance=ExtResource("48_yy2jd")]
 position = Vector2(153.789, 13.907166)
+
+[node name="MeatRaw2" parent="BleakYellowGrass/level" unique_id=21344802 instance=ExtResource("50_qrpf8")]
+position = Vector2(115.79633, -31.177467)
+
+[node name="MeatRaw3" parent="BleakYellowGrass/level" unique_id=1717173265 instance=ExtResource("51_kkea6")]
+position = Vector2(134.53938, -34.21688)
+
+[node name="MeatRaw4" parent="BleakYellowGrass/level" unique_id=622548460 instance=ExtResource("52_hlkfb")]
+position = Vector2(120.86203, -100.57741)
+scale = Vector2(0.14504164, 0.64299804)
 
 [node name="HUD" parent="BleakYellowGrass" unique_id=1148326026 instance=ExtResource("14_djkbh")]
 

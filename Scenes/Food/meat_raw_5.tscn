@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://bbo2ol4laayeu"]
+
+[ext_resource type="Script" uid="uid://ck0rx7f1ghuxu" path="res://Scripts/food.gd" id="1_c6agn"]
+[ext_resource type="Texture2D" uid="uid://cndwfmy332g28" path="res://OtherSprites/Items/ChatGPT_Image_20_cze_2026_00_22_40-removebg-preview.png" id="2_k0t6c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tfydv"]
+size = Vector2(43.94344, 45.591896)
+
+[node name="MeatRaw5" type="Area2D" unique_id=1592250268]
+scale = Vector2(0.2, 0.2)
+script = ExtResource("1_c6agn")
+hunger_points = 20
+item_id = "meat_raw_5"
+item_name = "MeatRaw5"
+item_type = "food"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=834627305]
+z_index = -1
+position = Vector2(4, 4)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_k0t6c")
+region_enabled = true
+region_rect = Rect2(19.697205, 18.041748, 113.541016, 109.51474)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=730860820]
+position = Vector2(5.0000005, 3)
+scale = Vector2(0.2730783, 0.26320463)
+shape = SubResource("RectangleShape2D_tfydv")

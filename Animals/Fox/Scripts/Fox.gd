@@ -33,6 +33,10 @@ var target: CharacterBody2D = null
 @onready var visual: Node2D = $Visual
 @onready var flee_area: Area2D = $Flee_Area
 
+@export var scene: PackedScene #instancja sceny struktury
+@export var scene2: PackedScene
+
+
 func _ready():
 	current_hp = max_hp
 	add_to_group("Enemies")
@@ -124,6 +128,7 @@ func die():
 	sprite.play("death" + facing)
 	await sprite.animation_finished
 	queue_free()
+	drop_item()
 
 # ANIMATIONS
 func update_animation():
@@ -193,3 +198,14 @@ func _on_hitbox_body_entered(body: Node2D) -> void:
 func _on_hitbox_body_exited(body: Node2D) -> void:
 	if body.is_in_group("Players"):
 		player_in_hitbox = false
+		
+func drop_item():
+	if scene:
+		var item = scene.instantiate()
+		get_parent().add_child(item)
+		item.global_position = global_position + Vector2(0, 20)
+		
+	if scene2:
+		var item2 = scene2.instantiate()
+		get_parent().add_child(item2)
+		item2.global_position = global_position + Vector2(10, 35)

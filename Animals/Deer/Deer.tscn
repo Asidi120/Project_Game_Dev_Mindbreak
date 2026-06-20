@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://d34crl0llr6ot" path="res://Player/Sprite/hp_bar/HealthBar DARK.png" id="1_bu1ti"]
 [ext_resource type="Script" uid="uid://deka0jila8qwt" path="res://Animals/Deer/Scripts/Deer.gd" id="1_ivny1"]
+[ext_resource type="PackedScene" uid="uid://x74wiik2apat" path="res://Scenes/Food/meat_raw_2.tscn" id="2_5snfx"]
 [ext_resource type="Script" uid="uid://dfgdasket7d4t" path="res://Scripts/healthbar.gd" id="2_ivny1"]
 [ext_resource type="Texture2D" uid="uid://byabvebeapfbi" path="res://Animals/Deer/Sprite/Deer_Death.png" id="3_5snfx"]
 [ext_resource type="Texture2D" uid="uid://bo31wbr5jlwyl" path="res://Animals/Deer/Sprite/Deer_Hurt.png" id="4_rx000"]
@@ -685,7 +686,9 @@ y_sort_enabled = true
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=186104570 groups=["Enemies"]]
 position = Vector2(0, -27)
+scale = Vector2(0.76, 0.76)
 script = ExtResource("1_ivny1")
+scene = ExtResource("2_5snfx")
 
 [node name="Hp_bar" type="TextureProgressBar" parent="CharacterBody2D" unique_id=497055748]
 visible = false

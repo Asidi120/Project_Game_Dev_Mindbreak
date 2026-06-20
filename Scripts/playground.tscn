@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://hpf3xqyh42ii"]
+[gd_scene format=3 uid="uid://dmct4fd2kdncm"]
 
 [ext_resource type="PackedScene" uid="uid://bngnbg51yitf7" path="res://Tile Maps/Grass01.tscn" id="2_djkbh"]
 [ext_resource type="PackedScene" uid="uid://c75udmyukhfvk" path="res://Tile Maps/Bleak_yellow_grass.tscn" id="3_vj8hk"]
@@ -50,10 +50,11 @@
 [ext_resource type="PackedScene" uid="uid://dh6i6au7y31gq" path="res://Scenes/Tools/sword_copper.tscn" id="47_fmwoh"]
 [ext_resource type="PackedScene" uid="uid://c0i8ciebv1msb" path="res://Scenes/Tools/sword_gold.tscn" id="48_8t74i"]
 [ext_resource type="PackedScene" uid="uid://di13gwl5w5a4k" path="res://Enemies/IceGolem/IceGolemDungeon.tscn" id="48_yy2jd"]
-[ext_resource type="PackedScene" uid="uid://yuiv02y0p5vm" path="res://Scenes/Food/meat_raw_1.tscn" id="49_sdjit"]
-[ext_resource type="PackedScene" uid="uid://x74wiik2apat" path="res://Scenes/Food/meat_raw_2.tscn" id="50_qrpf8"]
-[ext_resource type="PackedScene" uid="uid://bxah3ngnftgeo" path="res://Scenes/Food/meat_raw_3.tscn" id="51_kkea6"]
-[ext_resource type="PackedScene" uid="uid://hwpi48hrlmyu" path="res://Scenes/Food/meat_raw_4.tscn" id="52_hlkfb"]
+[ext_resource type="PackedScene" path="res://Scenes/Food/meat_raw_1.tscn" id="49_sdjit"]
+[ext_resource type="PackedScene" path="res://Scenes/Food/meat_raw_2.tscn" id="50_qrpf8"]
+[ext_resource type="PackedScene" path="res://Scenes/Food/meat_raw_3.tscn" id="51_kkea6"]
+[ext_resource type="PackedScene" path="res://Scenes/Food/meat_raw_4.tscn" id="52_hlkfb"]
+[ext_resource type="PackedScene" uid="uid://bjb88osnfjlic" path="res://Scenes/StaticStructures/bonfire.tscn" id="55_kkea6"]
 
 [node name="Playground" type="Node2D" unique_id=571104678]
 scale = Vector2(1.9740651, 1.9740651)
@@ -247,3 +248,6 @@ scale = Vector2(0.14504164, 0.64299804)
 [node name="DayNightOverlay" type="CanvasModulate" parent="." unique_id=1490973845]
 position = Vector2(819, 160)
 script = ExtResource("19_tc4ax")
+
+[node name="Bonfire" parent="." unique_id=304277629 instance=ExtResource("55_kkea6")]
+position = Vector2(22.7956, 178.81882)

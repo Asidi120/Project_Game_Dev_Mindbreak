@@ -12,7 +12,7 @@ script = ExtResource("1_fpabn")
 hunger_points = 20
 item_id = "meat_raw_1"
 item_name = "MeatRaw1"
-item_type = "food"
+item_type = "meat_raw"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=834627305]
 z_index = -1

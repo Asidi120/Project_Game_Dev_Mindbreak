@@ -5,7 +5,7 @@ static var selected_slot = null
 const MAX_SLOT = 18
 const INVENTORY_SLOTS = 18
 const FASTEQ_SLOTS = 6
-const MAX_STACK = 3
+const MAX_STACK = 12
 
 static var current_inventory: Array = []
 static var inventory_visible = false

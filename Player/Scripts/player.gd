@@ -30,7 +30,7 @@ var spawn_point=Vector2.ZERO
 var already_hit = []
 
 var inventory = []
-const MAX_STACK = 2
+const MAX_STACK = 12
 const MAX_SLOT = 24
 
 # Inventory UI — szukane przez grupę żeby działało w każdej scenie

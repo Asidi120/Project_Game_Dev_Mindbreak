@@ -31,7 +31,7 @@ var already_hit = []
 
 var inventory = []
 const MAX_STACK = 12
-const MAX_SLOT = 24
+const MAX_SLOT = 18
 
 # Inventory UI — szukane przez grupę żeby działało w każdej scenie
 var inventory_ui = null
@@ -90,6 +90,12 @@ func _ready() -> void:
 
 	for i in range(MAX_SLOT):
 		inventory.append(null)
+
+	if inventory_ui:
+		inventory_ui.refresh(inventory)
+
+	if fasteq_ui:
+		fasteq_ui.refresh(inventory)
 
 	apply_appearance()
 

@@ -7,7 +7,9 @@ var paths:= []
 func _ready() -> void:
 	super._ready()
 
-	paths = ["res://Scenes/Items/diamond_ore.tscn", "res://Scenes/Items/iron_ore.tscn"]
+	paths = ["res://Scenes/Items/diamond_ore.tscn", "res://Scenes/Items/iron_ore.tscn",
+	"res://Scenes/Items/copper_ore.tscn", "res://Scenes/Items/gold_ore.tscn", 
+	"res://Scenes/Items/stick.tscn", "res://Scenes/Food/apple.tscn", "res://Scenes/Food/meat_cooked_1.tscn"]
 	generate_random_items()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -235,28 +235,14 @@ func get_held_item():
 	return item
 	
 func attack():
-	state = State.ATTACK
-	is_attacking = true
-	attack_hitbox.monitoring = true
-	
-	await get_tree().create_timer(0.2).timeout
-	attack_hitbox.monitoring = false
-	is_attacking = false
-	already_hit = []
-	state = State.IDLE
-	current_stamina-=15
-	stamina_recovery()
-	#dzwiek uderzania mieczem
-	if get_held_item() != null:
-		var item = get_held_item()
-		if item["item_type"] == "sword" and inventory_system.inventory_visible == false:
-			sounds.play_sound("attack")
-
 	if current_stamina>=15:
 		state = State.ATTACK
 		is_attacking = true
 		attack_hitbox.monitoring = true
-		sounds.play_sound("attack")
+		if get_held_item() != null:
+			var item = get_held_item()
+			if item["item_type"] == "sword" and inventory_system.inventory_visible == false:
+				sounds.play_sound("attack")
 		await get_tree().create_timer(0.2).timeout
 		attack_hitbox.monitoring = false
 		is_attacking = false

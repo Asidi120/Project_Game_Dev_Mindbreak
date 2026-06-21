@@ -1,4 +1,4 @@
-class_name IceGolemDungeon extends CharacterBody2D
+class_name IceGolemDungeonBoss extends CharacterBody2D
 
 signal hp_changed(current_hp, max_hp)
 signal died
@@ -19,7 +19,7 @@ var regen_buffer := 0.0
 var facing_left := false
 
 # --- STATS ---
-@export var max_hp: int = 100
+@export var max_hp: int = 500
 var current_hp: int
 
 @export var speed: float = 80

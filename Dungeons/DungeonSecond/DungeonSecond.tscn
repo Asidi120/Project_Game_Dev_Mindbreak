@@ -1,10 +1,12 @@
 [gd_scene format=4 uid="uid://5kjqceyoodxx"]
 
+[ext_resource type="Script" uid="uid://cxoh1baaaokql" path="res://Dungeons/dungeonbossdoor.gd" id="1_h7x86"]
 [ext_resource type="Texture2D" uid="uid://cg8yh3couc3ae" path="res://Dungeons/Tiles/Dungeon tileset.png" id="1_yslxt"]
 [ext_resource type="Texture2D" uid="uid://bn00i1og0tkom" path="res://OtherSprites/LightSprite/2d_lights_and_shadows_neutral_point_light.webp" id="2_1htxe"]
 [ext_resource type="PackedScene" uid="uid://c2e0o08q8buid" path="res://Player/player.tscn" id="3_8ep40"]
 [ext_resource type="PackedScene" uid="uid://di13gwl5w5a4k" path="res://Enemies/IceGolem/IceGolemDungeon.tscn" id="4_j0pf3"]
 [ext_resource type="FontFile" uid="uid://b0nphpwk324ms" path="res://Fonts/PixelPurl.ttf" id="5_4wjeb"]
+[ext_resource type="PackedScene" uid="uid://b70fk741qrjt7" path="res://hud/HUD.tscn" id="5_kt61v"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1htxe"]
 texture = ExtResource("1_yslxt")
@@ -277,8 +279,276 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-176.5, 368.5, -176, 25
 [sub_resource type="CircleShape2D" id="CircleShape2D_kt61v"]
 radius = 34.59046
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h7x86"]
+texture = ExtResource("1_yslxt")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:0/0 = 0
+4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:0/0 = 0
+5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+6:0/0 = 0
+7:0/0 = 0
+8:0/0 = 0
+8:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+9:0/0 = 0
+10:0/0 = 0
+11:0/0 = 0
+12:0/0 = 0
+13:0/0 = 0
+17:0/0 = 0
+18:0/0 = 0
+20:0/0 = 0
+21:0/0 = 0
+22:0/0 = 0
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:1/0 = 0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:1/0 = 0
+4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:1/0 = 0
+5:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+6:1/0 = 0
+6:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+7:1/0 = 0
+8:1/0 = 0
+8:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+9:1/0 = 0
+11:1/0 = 0
+12:1/0 = 0
+13:1/0 = 0
+17:1/0 = 0
+20:1/0 = 0
+21:1/0 = 0
+22:1/0 = 0
+23:1/0 = 0
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:2/0 = 0
+3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:2/0 = 0
+4:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:2/0 = 0
+6:2/next_alternative_id = 2
+6:2/0 = 0
+6:2/1 = 1
+7:2/0 = 0
+7:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+8:2/0 = 0
+9:2/0 = 0
+12:2/0 = 0
+13:2/0 = 0
+14:2/0 = 0
+15:2/0 = 0
+20:2/0 = 0
+21:2/0 = 0
+22:2/0 = 0
+23:2/0 = 0
+0:3/0 = 0
+0:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:3/0 = 0
+1:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:3/0 = 0
+2:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:3/0 = 0
+3:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:3/0 = 0
+4:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:3/0 = 0
+5:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+6:3/0 = 0
+6:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+7:3/0 = 0
+7:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+8:3/0 = 0
+8:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+9:3/0 = 0
+9:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+10:3/0 = 0
+10:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+11:3/0 = 0
+12:3/0 = 0
+12:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(9, 5, 5, 8, -8, 8, -9, 0)
+0:4/0 = 0
+0:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:4/0 = 0
+1:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:4/0 = 0
+2:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:4/0 = 0
+3:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:4/0 = 0
+4:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:4/0 = 0
+5:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+6:4/0 = 0
+6:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+7:4/0 = 0
+7:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+8:4/0 = 0
+8:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+9:4/0 = 0
+9:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+10:4/0 = 0
+10:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+11:4/0 = 0
+11:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, -5, 8, -5, 8, 8, 0, 8)
+12:4/0 = 0
+12:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+15:4/0 = 0
+0:5/0 = 0
+0:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:5/0 = 0
+1:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:5/0 = 0
+2:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:5/0 = 0
+3:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:5/0 = 0
+4:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:5/0 = 0
+5:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+6:5/0 = 0
+0:6/0 = 0
+0:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:6/0 = 0
+1:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:6/0 = 0
+2:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:6/0 = 0
+3:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:6/0 = 0
+4:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:6/0 = 0
+5:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:7/0 = 0
+0:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:7/0 = 0
+1:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:7/0 = 0
+2:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:7/0 = 0
+3:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:7/0 = 0
+4:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:7/0 = 0
+5:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+6:7/0 = 0
+6:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 0, -8, 0, 8, -8, 8)
+8:7/0 = 0
+8:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, -5, 8, -5, 8, 8, 0, 8)
+0:8/0 = 0
+0:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:8/0 = 0
+1:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:8/0 = 0
+2:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:8/0 = 0
+3:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:8/0 = 0
+4:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:8/0 = 0
+5:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+6:8/0 = 0
+6:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 0, -8, 0, 8, -8, 8)
+7:8/0 = 0
+8:8/0 = 0
+8:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, -8, 8, -8, 8, 8, 0, 8)
+9:8/0 = 0
+10:8/0 = 0
+11:8/0 = 0
+12:8/0 = 0
+0:9/0 = 0
+1:9/0 = 0
+2:9/0 = 0
+4:9/0 = 0
+5:9/0 = 0
+6:9/0 = 0
+7:9/0 = 0
+8:9/0 = 0
+9:9/0 = 0
+10:9/0 = 0
+11:9/0 = 0
+12:9/0 = 0
+0:10/0 = 0
+1:10/0 = 0
+2:10/0 = 0
+3:10/0 = 0
+4:10/0 = 0
+5:10/0 = 0
+6:10/0 = 0
+7:10/0 = 0
+8:10/0 = 0
+9:10/0 = 0
+10:10/0 = 0
+11:10/0 = 0
+12:10/0 = 0
+13:10/0 = 0
+14:10/0 = 0
+0:11/0 = 0
+1:11/0 = 0
+2:11/0 = 0
+4:11/0 = 0
+5:11/0 = 0
+6:11/0 = 0
+7:11/0 = 0
+8:11/0 = 0
+9:11/0 = 0
+10:11/0 = 0
+11:11/0 = 0
+12:11/0 = 0
+13:11/0 = 0
+14:11/0 = 0
+7:5/size_in_atlas = Vector2i(1, 2)
+7:5/0 = 0
+7:5/0/texture_origin = Vector2i(0, 5)
+7:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+8:5/size_in_atlas = Vector2i(1, 2)
+8:5/0 = 0
+8:5/0/texture_origin = Vector2i(0, 5)
+8:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+9:5/size_in_atlas = Vector2i(1, 2)
+9:5/0 = 0
+9:5/0/texture_origin = Vector2i(0, 5)
+10:5/size_in_atlas = Vector2i(1, 2)
+10:5/0 = 0
+10:5/0/texture_origin = Vector2i(0, -3)
+11:5/size_in_atlas = Vector2i(1, 2)
+11:5/next_alternative_id = 2
+11:5/0 = 0
+11:5/1 = 1
+11:5/1/texture_origin = Vector2i(0, 5)
+12:5/size_in_atlas = Vector2i(2, 2)
+12:5/0 = 0
+12:5/0/texture_origin = Vector2i(0, 5)
+12:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_ndstq"]
+physics_layer_0/collision_layer = 16
+physics_layer_0/collision_mask = 3
+sources/0 = SubResource("TileSetAtlasSource_h7x86")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h7x86"]
+radius = 36.496574
+
 [node name="DungeonSecond" type="Node2D" unique_id=398841407]
 scale = Vector2(2, 2)
+script = ExtResource("1_h7x86")
+numberofmonsters = 10
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1095562503]
 scale = Vector2(-1, 1)
@@ -420,7 +690,6 @@ shadow_filter_smooth = 4.0
 texture = ExtResource("2_1htxe")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=898588982]
-visible = false
 color = Color(0.23248088, 0.23248091, 0.23248091, 1)
 
 [node name="Player" parent="." unique_id=257810088 instance=ExtResource("3_8ep40")]
@@ -467,32 +736,72 @@ start_facing_left = true
 [node name="IceGolemDungeon10" parent="." unique_id=566159725 instance=ExtResource("4_j0pf3")]
 position = Vector2(-439, 58.5)
 
-[node name="BossDoor" type="Area2D" parent="." unique_id=737550416]
+[node name="HUD" parent="." unique_id=1148326026 instance=ExtResource("5_kt61v")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BossDoor" unique_id=149714397]
-position = Vector2(-600.5, 132)
-shape = SubResource("CircleShape2D_kt61v")
+[node name="Labels" type="CanvasLayer" parent="." unique_id=2002578863]
 
-[node name="ClickToOpenLabel" type="Label" parent="." unique_id=806540842]
+[node name="CantOpenLabel" type="Label" parent="Labels" unique_id=2135860054]
 visible = false
-offset_left = -666.0
-offset_top = 87.0
-offset_right = -530.0
-offset_bottom = 101.0
+offset_left = 936.0
+offset_top = 89.0
+offset_right = 1468.0
+offset_bottom = 202.0
 theme_override_fonts/font = ExtResource("5_4wjeb")
-text = "Click 'E' to open the door"
-
-[node name="CantOpenLabel" type="Label" parent="." unique_id=401140408]
-visible = false
-offset_left = -663.5
-offset_top = 78.0
-offset_right = -536.5
-offset_bottom = 109.0
-theme_override_fonts/font = ExtResource("5_4wjeb")
-theme_override_font_sizes/font_size = 16
-text = "You need to have a key
+theme_override_font_sizes/font_size = 64
+text = "You need to kill all mobs
  to open the door!"
 horizontal_alignment = 1
+
+[node name="ClickToOpenLabel" type="Label" parent="Labels" unique_id=886227434]
+visible = false
+offset_left = 929.0
+offset_top = 113.0
+offset_right = 1473.0
+offset_bottom = 168.0
+theme_override_fonts/font = ExtResource("5_4wjeb")
+theme_override_font_sizes/font_size = 64
+text = "Click 'E' to open the door"
+
+[node name="Notification" type="Label" parent="Labels" unique_id=598354531]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = -70.5
+offset_right = 320.0
+offset_bottom = -15.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("5_4wjeb")
+theme_override_font_sizes/font_size = 64
+text = "The door opened somewhere! "
+
+[node name="BossDoor" type="Area2D" parent="." unique_id=358477367]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BossDoor" unique_id=844102876]
+position = Vector2(-600.5, 134.5)
+shape = SubResource("CircleShape2D_kt61v")
+
+[node name="openDoor" type="TileMapLayer" parent="BossDoor" unique_id=2041624792]
+visible = false
+position = Vector2(-608.5, 128)
+tile_map_data = PackedByteArray("AAAAAP//AAAEAAcAAAAAAAAAAAAEAAgAAAABAP//AAAFAAcAAAABAAAAAAAFAAgAAAD/////AAADAAcAAAD//wAAAAADAAgAAAA=")
+tile_set = SubResource("TileSet_ndstq")
+
+[node name="Exit" type="Area2D" parent="." unique_id=917217482 groups=["Dungeon"]]
+position = Vector2(383, -1.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Exit" unique_id=1191040795]
+position = Vector2(-600, 379.5)
+shape = SubResource("CircleShape2D_h7x86")
+
+[connection signal="body_entered" from="BossDoor" to="." method="_on_boss_door_body_entered"]
+[connection signal="body_exited" from="BossDoor" to="." method="_on_boss_door_body_exited"]
+[connection signal="body_entered" from="Exit" to="." method="_on_exit_body_entered"]
+[connection signal="body_exited" from="Exit" to="." method="_on_exit_body_exited"]
 
 [editable path="IceGolemDungeon"]
 [editable path="IceGolemDungeon9"]

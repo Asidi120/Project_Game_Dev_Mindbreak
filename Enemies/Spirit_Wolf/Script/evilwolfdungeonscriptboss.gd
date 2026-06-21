@@ -1,4 +1,4 @@
-class_name EvilWolfDungeon extends CharacterBody2D
+class_name EvilWolfDungeonBoss extends CharacterBody2D
 
 signal hp_changed(current_hp, max_hp)
 signal died
@@ -125,7 +125,6 @@ func chase():
 	if target == null:
 		state = State.PATROL
 		return
-	print("Can see:", can_see_target())
 	if can_see_target():
 		last_seen_position = target.global_position
 		

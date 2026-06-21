@@ -249,7 +249,7 @@ scale = Vector2(2, 2.08)
 [node name="Point1" type="Marker2D" parent="PatrolPoints" unique_id=977284056 groups=["PatrolPoints"]]
 position = Vector2(0, -1)
 
-[node name="EvilWolf" type="CharacterBody2D" parent="." unique_id=282144570]
+[node name="EvilWolf" type="CharacterBody2D" parent="." unique_id=282144570 groups=["Boss"]]
 collision_layer = 2
 collision_mask = 16
 script = ExtResource("1_r8q4v")

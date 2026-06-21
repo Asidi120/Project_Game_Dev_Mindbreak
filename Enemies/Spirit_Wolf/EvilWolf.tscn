@@ -238,6 +238,9 @@ region = Rect2(18, 152, 59, 6)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bjf20"]
 size = Vector2(57, 24)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_inhxp"]
+size = Vector2(35, 6)
+
 [node name="EvilWolfWithPoints" type="Node2D" unique_id=697092607 groups=["Enemies"]]
 
 [node name="PatrolPoints" type="Node2D" parent="." unique_id=1648978633]
@@ -255,6 +258,8 @@ position = Vector2(-18, 42)
 position = Vector2(85, 44)
 
 [node name="EvilWolf" type="CharacterBody2D" parent="." unique_id=246727369]
+collision_layer = 2
+collision_mask = 16
 script = ExtResource("1_8ppc7")
 
 [node name="Visual" type="Node2D" parent="EvilWolf" unique_id=438623042]
@@ -302,6 +307,10 @@ collision_mask = 16
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EvilWolf/Hitbox" unique_id=1979899241]
 position = Vector2(2.5, -11)
 shape = SubResource("RectangleShape2D_bjf20")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EvilWolf" unique_id=2068494459]
+position = Vector2(0.5, -2)
+shape = SubResource("RectangleShape2D_inhxp")
 
 [connection signal="animation_finished" from="EvilWolf/Visual/AnimatedSprite2D" to="EvilWolf" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="EvilWolf/Follow_Area" to="EvilWolf" method="_on_follow_area_body_entered"]

@@ -54,7 +54,9 @@
 [ext_resource type="PackedScene" uid="uid://x74wiik2apat" path="res://Scenes/Food/meat_raw_2.tscn" id="50_qrpf8"]
 [ext_resource type="PackedScene" uid="uid://bxah3ngnftgeo" path="res://Scenes/Food/meat_raw_3.tscn" id="51_kkea6"]
 [ext_resource type="PackedScene" uid="uid://hwpi48hrlmyu" path="res://Scenes/Food/meat_raw_4.tscn" id="52_hlkfb"]
+[ext_resource type="PackedScene" uid="uid://daw6rsfw5vdjg" path="res://Scenes/Runes/rune_1.tscn" id="55_7l3q8"]
 [ext_resource type="PackedScene" uid="uid://bjb88osnfjlic" path="res://Scenes/StaticStructures/bonfire.tscn" id="55_kkea6"]
+[ext_resource type="PackedScene" uid="uid://wuwot8hv4p00" path="res://Scenes/StaticStructures/chest.tscn" id="56_hlkfb"]
 
 [node name="Playground" type="Node2D" unique_id=571104678]
 scale = Vector2(1.9740651, 1.9740651)
@@ -254,6 +256,15 @@ position = Vector2(13.975983, -41.308846)
 
 [node name="MeatRaw7" parent="BleakYellowGrass/level" unique_id=2060621501 instance=ExtResource("52_hlkfb")]
 position = Vector2(48.929237, -42.828552)
+
+[node name="Chest" parent="BleakYellowGrass/level" unique_id=1564093039 instance=ExtResource("56_hlkfb")]
+position = Vector2(-68.59475, 85.33338)
+
+[node name="Chest2" parent="BleakYellowGrass/level" unique_id=683998514 instance=ExtResource("56_hlkfb")]
+position = Vector2(-2.2342224, 90.90564)
+
+[node name="Rune1" parent="BleakYellowGrass/level" unique_id=862821300 instance=ExtResource("55_7l3q8")]
+position = Vector2(-84.298386, 39.74218)
 
 [node name="HUD" parent="BleakYellowGrass" unique_id=1148326026 instance=ExtResource("14_djkbh")]
 

@@ -14,15 +14,15 @@ var boss_data = {
 	},
 	"DungeonSecond": {
 		"boss": preload("uid://cv7444xo418vm"),
-		"totem": preload("uid://blxaed8jswxyw"),
-		"name_totembar_light": "RuneLight2",
-		"name_totembar":"Rune2"
-	},
-	"DungeonThird": {
-		"boss": preload("uid://y8rspm1g8yk5"),
 		"totem": preload("uid://cwruc27pbbcdh"),
 		"name_totembar_light": "RuneLight3",
 		"name_totembar":"Rune3"
+	},
+	"DungeonThird": {
+		"boss": preload("uid://y8rspm1g8yk5"),
+		"totem": preload("uid://blxaed8jswxyw"),
+		"name_totembar_light": "RuneLight2",
+		"name_totembar":"Rune2"
 	}
 }
 

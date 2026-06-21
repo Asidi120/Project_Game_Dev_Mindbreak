@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://fhgceyryjqfs" path="res://Scenes/DeathPanel.tscn" id="3_xxqia"]
 [ext_resource type="PackedScene" uid="uid://x166r6kvfqjc" path="res://Scenes/inventory.tscn" id="4_akegq"]
 [ext_resource type="PackedScene" uid="uid://bpdatfhqafv8t" path="res://Scenes/fast_eq.tscn" id="5_s5l88"]
+[ext_resource type="PackedScene" uid="uid://cdrmdeiqjit5u" path="res://TotemBank/totems.tscn" id="6_fimwm"]
 
 [node name="HUD" type="CanvasLayer" unique_id=1148326026 groups=["hud"]]
 
@@ -18,10 +19,6 @@ grow_vertical = 2
 color = Color(0.47312066, 0, 0.13335153, 0.34800002)
 
 [node name="Clock" parent="." unique_id=385021879 groups=["Clock"] instance=ExtResource("1_vow1y")]
-offset_left = 501.0
-offset_top = -3.0
-offset_right = 541.0
-offset_bottom = 37.0
 
 [node name="PlayerBar" parent="." unique_id=160299636 instance=ExtResource("2_ne771")]
 offset_left = -17.0
@@ -52,3 +49,9 @@ grow_vertical = 2
 visible = false
 self_modulate = Color(0.4840902, 0.0045073065, 8.904189e-07, 1)
 top_level = true
+
+[node name="TotemBank" parent="." unique_id=277440264 instance=ExtResource("6_fimwm")]
+offset_left = 1235.0
+offset_top = 199.0
+offset_right = 1275.0
+offset_bottom = 239.0

@@ -15,8 +15,9 @@ func spawn_boss():
 
 func boss_died():
 	boss_alive=false
+	print("boss died")
 	totem_dungeon_tp()
 
 func totem_dungeon_tp():
-	if Input.is_action_just_pressed("action (open door, sleep etc.)"):
-			get_tree().change_scene_to_file("res://Scenes/TotemDungeon.tscn")
+	print("totemdungeontp")
+	get_tree().change_scene_to_file("res://Scenes/TotemDungeon.tscn")

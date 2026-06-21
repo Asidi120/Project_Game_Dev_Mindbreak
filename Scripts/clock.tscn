@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://2ur8j7c1v2un"]
 
 [ext_resource type="Script" uid="uid://dmrjabrt0njvq" path="res://Scripts/day_counter.gd" id="1_756xr"]
+[ext_resource type="FontFile" uid="uid://b0nphpwk324ms" path="res://Fonts/PixelPurl.ttf" id="1_slr35"]
 [ext_resource type="Texture2D" uid="uid://8qn3jb53vo6c" path="res://Sprites/clock4.png" id="2_slr35"]
 [ext_resource type="Texture2D" uid="uid://c1w1adrgxc7pf" path="res://Sprites/clock0.png" id="3_rdka5"]
 
@@ -20,6 +21,8 @@ offset_top = 123.0
 offset_right = 802.0
 offset_bottom = 146.0
 grow_horizontal = 0
+theme_override_fonts/font = ExtResource("1_slr35")
+theme_override_font_sizes/font_size = 20
 script = ExtResource("1_756xr")
 
 [node name="clock_overlay" type="TextureRect" parent="." unique_id=1483333510]
@@ -41,8 +44,8 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = 740.0
-offset_right = 860.0
+offset_left = 1240.0
+offset_right = 1360.0
 offset_bottom = 120.0
 grow_horizontal = 0
 texture = ExtResource("3_rdka5")

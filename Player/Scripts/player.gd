@@ -505,20 +505,25 @@ func apply_appearance() -> void:
 		Color(0.67, 0.45, 0.28),
 		Color(0.45, 0.28, 0.14),
 		Color(0.25, 0.15, 0.07),
+		Color(0.092, 0.054, 0.001, 1.0),
 	]
 	var hair_colors := [
 		Color(0.10, 0.07, 0.04),
 		Color(0.35, 0.20, 0.08),
 		Color(0.72, 0.52, 0.18),
-		Color(0.75, 0.20, 0.08),
+		Color(0.845, 0.726, 0.116, 1.0),
 		Color(0.85, 0.85, 0.85),
-		Color(0.50, 0.10, 0.70),
-		Color(0.10, 0.40, 0.85),
+		Color(0.651, 0.097, 0.167, 1.0),
+		Color(0.601, 0.174, 0.79, 1.0),
+		Color(0.321, 0.371, 0.809, 1.0),
+		Color(0.286, 0.671, 0.192, 1.0),
 	]
 	var clothes_textures := [
-		"res://MenuPlayer/Clothes/char_a_pONE2_1.png",
+		"res://MenuPlayer/Clothes/char_a_pONE2_1out_fstr_v01.png",
 		"res://MenuPlayer/Clothes/char_a_pONE2_1out_pfpn_v05.png",
 		"res://MenuPlayer/Clothes/char_a_pONE2_1out_undi_v01.png",
+		"res://MenuPlayer/Clothes/char_a_pONE2_1out_fstr_v04.png",
+		"res://MenuPlayer/Clothes/char_a_pONE2_1out_pfpn_v01.png",
 	]
 
 	var si: int = clampi(data.get("skin_index", 0), 0, skin_colors.size() - 1)

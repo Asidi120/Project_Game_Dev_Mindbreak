@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bshwruyag7sh3"]
 
 [ext_resource type="Script" uid="uid://b68rro1qy2ne7" path="res://MenuPlayer/create_player_menu.gd" id="1_3ekly"]
+[ext_resource type="Texture2D" uid="uid://cmcfyejpub84y" path="res://11.png" id="2_1a572"]
 [ext_resource type="Texture2D" uid="uid://ddfjdpsknu8yg" path="res://Player/char_a_pONE2_0bas_humn_v04.png" id="2_8xe12"]
 [ext_resource type="Texture2D" uid="uid://d3exok7y2tikl" path="res://Player/char_a_pONE2_4har_dap1_v08.png" id="3_64s2d"]
 [ext_resource type="Texture2D" uid="uid://bb63vlq5w24ph" path="res://Player/char_a_pONE2_1out_pfpn_v01.png" id="4_ksb78"]
@@ -10,13 +11,72 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -1.0
-offset_top = 1.0
-offset_right = -1.0
-offset_bottom = 1.0
+offset_left = -4.0
+offset_top = 6.0
+offset_right = -4.0
+offset_bottom = 5.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_3ekly")
+
+[node name="Sprite2D6" type="Sprite2D" parent="." unique_id=296502236]
+position = Vector2(515.5, 219)
+scale = Vector2(3.9206347, 1.3965517)
+texture = ExtResource("2_1a572")
+region_enabled = true
+region_rect = Rect2(80.04388, 81.3746, 63.741997, 29.0652)
+
+[node name="Sprite2D7" type="Sprite2D" parent="." unique_id=1490395659]
+position = Vector2(516, 260)
+scale = Vector2(3.9365082, 1.3965517)
+texture = ExtResource("2_1a572")
+region_enabled = true
+region_rect = Rect2(80.04388, 81.3746, 63.741997, 29.0652)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=319037775]
+position = Vector2(565.5, 349)
+scale = Vector2(6.7142863, 2.0000002)
+texture = ExtResource("2_1a572")
+region_enabled = true
+region_rect = Rect2(175.22673, 3.4538174, 49.6176, 22.79194)
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1863989385]
+position = Vector2(566, 304)
+scale = Vector2(6.734695, 2.0000002)
+texture = ExtResource("2_1a572")
+region_enabled = true
+region_rect = Rect2(175.22673, 3.4538174, 49.6176, 22.79194)
+
+[node name="Sprite2D3" type="Sprite2D" parent="." unique_id=151159415]
+position = Vector2(565.5, 391)
+scale = Vector2(6.714285, 1.9090911)
+texture = ExtResource("2_1a572")
+region_enabled = true
+region_rect = Rect2(175.22673, 3.4538174, 49.6176, 22.79194)
+
+[node name="Sprite2D4" type="Sprite2D" parent="." unique_id=1961206115]
+position = Vector2(565.625, 435.00003)
+scale = Vector2(6.7193894, 1.9090911)
+texture = ExtResource("2_1a572")
+region_enabled = true
+region_rect = Rect2(175.22673, 3.4538174, 49.6176, 22.79194)
+
+[node name="Sprite2D5" type="Sprite2D" parent="." unique_id=1615353456]
+position = Vector2(946, 319)
+scale = Vector2(7.2500024, 6.355053)
+texture = ExtResource("2_1a572")
+region_enabled = true
+region_rect = Rect2(82.16642, 2.4103365, 43.741676, 47.194958)
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1341635158]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.004
+anchor_bottom = 0.004
+offset_left = -82.0
+offset_top = -18.196
+offset_right = 95.0
+offset_bottom = 21.804
 
 [node name="TitleLabel" type="Label" parent="." unique_id=22580414]
 layout_mode = 0
@@ -28,22 +88,22 @@ theme_override_font_sizes/font_size = 24
 text = "Create your character"
 horizontal_alignment = 1
 
-[node name="PreviewPanel" type="Panel" parent="." unique_id=194724299]
-layout_mode = 0
-offset_left = 737.0
-offset_top = 202.0
-offset_right = 1021.0
-offset_bottom = 546.0
+[node name="PreviewPanel" type="Control" parent="." unique_id=1947828965]
+anchors_preset = 0
+offset_left = 795.0
+offset_top = 178.0
+offset_right = 1079.0
+offset_bottom = 522.0
 
 [node name="PreviewContainer" type="Control" parent="PreviewPanel" unique_id=1042638967]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -207.0
-offset_top = 21.0
-offset_right = -13.0
-offset_bottom = 136.0
+offset_left = -202.0
+offset_top = 14.0
+offset_right = -384.0
+offset_bottom = 90.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -62,8 +122,8 @@ hframes = 8
 vframes = 8
 
 [node name="LayerClothes" type="Sprite2D" parent="PreviewPanel/PreviewContainer" unique_id=308575428]
-position = Vector2(348, 155)
-scale = Vector2(3.6308594, 4.15625)
+position = Vector2(350.05075, 154.1875)
+scale = Vector2(3.3734138, 3.9316406)
 texture = ExtResource("4_ksb78")
 hframes = 8
 vframes = 8
@@ -71,21 +131,26 @@ frame = 1
 
 [node name="VBox" type="VBoxContainer" parent="." unique_id=295271326]
 layout_mode = 0
-offset_left = 406.0
+offset_left = 405.0
 offset_top = 203.0
 offset_right = 725.0
 offset_bottom = 545.0
 theme_override_constants/separation = 12
 
 [node name="WorldNameEdit" type="LineEdit" parent="VBox" unique_id=2012452275]
+self_modulate = Color(0.031019174, 0.009833118, 0.0004015887, 1)
 layout_mode = 2
 placeholder_text = "Word Name"
-max_length = 24
+max_length = 16
+flat = true
 
 [node name="PlayerNameEdit" type="LineEdit" parent="VBox" unique_id=550490735]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
 placeholder_text = "Nick Player"
 max_length = 20
+flat = true
 
 [node name="SkinRow" type="HBoxContainer" parent="VBox" unique_id=476467166]
 layout_mode = 2
@@ -93,6 +158,7 @@ layout_mode = 2
 [node name="SkinPrev" type="Button" parent="VBox/SkinRow" unique_id=2133076706]
 layout_mode = 2
 text = "◀"
+flat = true
 
 [node name="SkinLabel" type="Label" parent="VBox/SkinRow" unique_id=1726470671]
 layout_mode = 2
@@ -103,6 +169,7 @@ horizontal_alignment = 1
 [node name="SkinNext" type="Button" parent="VBox/SkinRow" unique_id=1204603338]
 layout_mode = 2
 text = "▶"
+flat = true
 
 [node name="HairStyleRow" type="HBoxContainer" parent="VBox" unique_id=1064099507]
 layout_mode = 2
@@ -110,6 +177,7 @@ layout_mode = 2
 [node name="HairStylePrev" type="Button" parent="VBox/HairStyleRow" unique_id=1808186938]
 layout_mode = 2
 text = "◀"
+flat = true
 
 [node name="HairStyleLabel" type="Label" parent="VBox/HairStyleRow" unique_id=1511521773]
 layout_mode = 2
@@ -120,6 +188,7 @@ horizontal_alignment = 1
 [node name="HairStyleNext" type="Button" parent="VBox/HairStyleRow" unique_id=1867129581]
 layout_mode = 2
 text = "▶"
+flat = true
 
 [node name="HairColorRow" type="HBoxContainer" parent="VBox" unique_id=1801990251]
 layout_mode = 2
@@ -127,6 +196,7 @@ layout_mode = 2
 [node name="HairColorPrev" type="Button" parent="VBox/HairColorRow" unique_id=194384976]
 layout_mode = 2
 text = "◀"
+flat = true
 
 [node name="HairColorLabel" type="Label" parent="VBox/HairColorRow" unique_id=1893097113]
 layout_mode = 2
@@ -137,6 +207,7 @@ horizontal_alignment = 1
 [node name="HairColorNext" type="Button" parent="VBox/HairColorRow" unique_id=1205692106]
 layout_mode = 2
 text = "▶"
+flat = true
 
 [node name="ClothesRow" type="HBoxContainer" parent="VBox" unique_id=857140993]
 layout_mode = 2
@@ -144,6 +215,7 @@ layout_mode = 2
 [node name="ClothesPrev" type="Button" parent="VBox/ClothesRow" unique_id=624557760]
 layout_mode = 2
 text = "◀"
+flat = true
 
 [node name="ClothesLabel" type="Label" parent="VBox/ClothesRow" unique_id=702970873]
 layout_mode = 2
@@ -154,6 +226,7 @@ horizontal_alignment = 1
 [node name="ClothesNext" type="Button" parent="VBox/ClothesRow" unique_id=1928256855]
 layout_mode = 2
 text = "▶"
+flat = true
 
 [node name="ErrorLabel" type="Label" parent="." unique_id=634922692]
 modulate = Color(1, 0.3, 0.3, 1)
@@ -165,10 +238,10 @@ offset_bottom = 564.0
 
 [node name="CreateButton" type="Button" parent="." unique_id=941430382]
 layout_mode = 0
-offset_left = 822.0
-offset_top = 555.0
-offset_right = 1022.0
-offset_bottom = 587.0
+offset_left = 897.0
+offset_top = 546.0
+offset_right = 1097.0
+offset_bottom = 578.0
 text = "Create Word"
 
 [node name="BackButton" type="Button" parent="." unique_id=1843814108]

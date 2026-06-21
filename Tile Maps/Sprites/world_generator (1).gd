@@ -4,7 +4,7 @@ const WORLD_WIDTH  := 500
 const WORLD_HEIGHT := 500
 const TILE_SIZE    := 16
 
-const OCEAN_MAX := 0.15
+const OCEAN_MAX := 0.20
 const BEACH_MAX := 0.28
 const GRASS_MAX := 0.39   
 
@@ -30,7 +30,6 @@ const SCENE_SEASHELL2 := preload("res://Scenes/Items/seashell_2.tscn")
 const SCENE_TREE      := preload("res://Scenes/StaticStructures/tree.tscn")
 const SCENE_BOULDER   := preload("res://Scenes/StaticStructures/boulder.tscn")
 
-# ← Ustaw ścieżkę do swojej sceny jaskini
 @export var cave_scene_path: String = "res://cave.tscn"
 
 @onready var tile_map:      TileMapLayer = $TileMapLayer
@@ -52,7 +51,6 @@ var noise_scatter := FastNoiseLite.new()
 var biome_points:  Array = []
 var terrain_cells := {}
 
-# Kafelki gór zebrane podczas generacji
 var mountain_tiles: Array[Vector2i] = []
 var cave_world_pos: Vector2 = Vector2.ZERO
 
@@ -222,7 +220,6 @@ func _generate() -> void:
 			tile_map.set_cells_terrain_connect(terrain_cells[t], 0, t, false)
 		await get_tree().process_frame
 
-	# Spawn jaskini na losowym kafelku gór
 	_spawn_cave(rng)
 
 	player.global_position = _find_spawn(rng)
@@ -240,7 +237,6 @@ func _spawn_cave(rng: RandomNumberGenerator) -> void:
 		push_warning("Brak sceny jaskini: %s" % cave_scene_path)
 		return
 
-	# Losuj kafelek z gór deterministycznie (ten sam seed = ta sama pozycja)
 	var idx:  int      = rng.randi_range(0, mountain_tiles.size() - 1)
 	var tile: Vector2i = mountain_tiles[idx]
 

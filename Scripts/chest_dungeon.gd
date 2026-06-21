@@ -45,12 +45,13 @@ func create_item_data_from_scene(scene_path: String) -> Dictionary:
 	item_instance.free()
 
 	return item_data
-	
+
+#generuje losowe itemy, ilosc itemow, losowe pozycje
 func generate_random_items():
 	var number_of_items = randi_range(1, 5) #od 1 do 5 rzeczy w skrzynkach
 	for i in range(number_of_items):
 		var random_item_path_index = randi_range(0, paths.size()-1)
-		#print(paths[random_item_path_index])
+		var random_chest_placement = randi_range(0, chest_size-1)
 		var random_item = create_item_data_from_scene(paths[random_item_path_index])
 		print(random_item)
-		chest_inventory.append(random_item)
+		chest_inventory[random_chest_placement] = random_item

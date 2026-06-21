@@ -11,9 +11,12 @@ size = Vector2(36, 22.5)
 size = Vector2(46, 26)
 
 [node name="Boulder" type="StaticBody2D" unique_id=2132276029]
+collision_layer = 16
+collision_mask = 3
 script = ExtResource("1_o0rpx")
-hits_needed = 5
+hits_needed = 10
 object_id = "boulder"
+object_type = "boulder"
 scene = ExtResource("2_xovyd")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=713581976]

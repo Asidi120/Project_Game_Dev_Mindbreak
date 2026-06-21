@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bitqdj822mpp0"]
 
 [ext_resource type="Script" uid="uid://nfdjvoh07rqb" path="res://Animals/Grouse/Scripts/Grouse.gd" id="1_ovctp"]
+[ext_resource type="PackedScene" uid="uid://bxah3ngnftgeo" path="res://Scenes/Food/meat_raw_3.tscn" id="2_anktm"]
 [ext_resource type="Texture2D" uid="uid://d34crl0llr6ot" path="res://Player/Sprite/hp_bar/HealthBar DARK.png" id="2_twh85"]
 [ext_resource type="Script" uid="uid://dfgdasket7d4t" path="res://Scripts/healthbar.gd" id="3_anktm"]
 [ext_resource type="Texture2D" uid="uid://dsdxgnj0cj7af" path="res://Animals/Grouse/Sprite/Black_grouse_Death.png" id="4_ovctp"]
@@ -657,7 +658,9 @@ size = Vector2(39, 38)
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=480284438 groups=["Enemies"]]
 position = Vector2(0, -27)
+scale = Vector2(0.5, 0.5)
 script = ExtResource("1_ovctp")
+scene = ExtResource("2_anktm")
 
 [node name="Hp_bar" type="TextureProgressBar" parent="CharacterBody2D" unique_id=521207445]
 visible = false

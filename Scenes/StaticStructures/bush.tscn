@@ -12,9 +12,12 @@ size = Vector2(42, 25)
 size = Vector2(30.5, 4.75)
 
 [node name="Bush" type="StaticBody2D" unique_id=194477259]
+collision_layer = 16
+collision_mask = 3
 script = ExtResource("1_c0a6k")
-hits_needed = 3
+hits_needed = 3.0
 object_id = "bush"
+object_type = "bush"
 scene = ExtResource("2_5jp6s")
 scene2 = ExtResource("3_d1ube")
 

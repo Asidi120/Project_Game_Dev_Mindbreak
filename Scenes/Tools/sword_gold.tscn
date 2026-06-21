@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://c0i8ciebv1msb"]
+
+[ext_resource type="Script" uid="uid://b3b8lfehbksly" path="res://Scripts/sword.gd" id="1_c71hy"]
+[ext_resource type="Texture2D" uid="uid://i5uud04jfce" path="res://OtherSprites/Items/Full Sheet.png" id="2_ghqvw"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_3ouv3"]
+a = Vector2(3.5653393, -3.4066238)
+b = Vector2(-4.7909245, 4.335703)
+
+[node name="SwordGold" type="Area2D" unique_id=1592250268]
+scale = Vector2(1.2, 1.2)
+script = ExtResource("1_c71hy")
+power = 25.0
+item_id = "sword_gold"
+item_name = "SwordGold"
+item_type = "sword"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=834627305]
+z_index = -1
+position = Vector2(4, 4)
+texture = ExtResource("2_ghqvw")
+region_enabled = true
+region_rect = Rect2(16.806015, 32.065025, 14.478626, 14.388699)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=730860820]
+position = Vector2(5.4999995, 3.0000002)
+scale = Vector2(1.4958837, 1.6145017)
+shape = SubResource("SegmentShape2D_3ouv3")

@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://cdrmdeiqjit5u"]
+
+[ext_resource type="Texture2D" uid="uid://p1v4rjrmgsnf" path="res://TotemBank/Sprite/32x32-Tilesheet.png" id="1_srm3c"]
+[ext_resource type="FontFile" uid="uid://b0nphpwk324ms" path="res://Fonts/PixelPurl.ttf" id="2_l0hxa"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l0hxa"]
+atlas = ExtResource("1_srm3c")
+region = Rect2(210, 18, 60, 60)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_w88ad"]
+texture = SubResource("AtlasTexture_l0hxa")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mwiip"]
+atlas = ExtResource("1_srm3c")
+region = Rect2(226, 101, 28, 27)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ila8a"]
+texture = SubResource("AtlasTexture_mwiip")
+
+[node name="Totems" type="Control" unique_id=277440264]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TotemBar" type="Panel" parent="." unique_id=196423569]
+layout_mode = 0
+offset_left = 7.0
+offset_right = 140.0
+offset_bottom = 331.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_w88ad")
+
+[node name="TotemSlot1" type="Panel" parent="TotemBar" unique_id=464001670]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 33.0
+offset_right = 107.0
+offset_bottom = 113.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_ila8a")
+
+[node name="TotemSlot2" type="Panel" parent="TotemBar" unique_id=2097996459]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 127.0
+offset_right = 107.0
+offset_bottom = 207.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_ila8a")
+
+[node name="TotemSlot3" type="Panel" parent="TotemBar" unique_id=1021867738]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 218.0
+offset_right = 107.0
+offset_bottom = 298.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_ila8a")
+
+[node name="Label" type="Label" parent="." unique_id=1207267139]
+layout_mode = 0
+offset_left = 7.0
+offset_top = -26.0
+offset_right = 141.0
+offset_bottom = 2.0
+theme_override_fonts/font = ExtResource("2_l0hxa")
+theme_override_font_sizes/font_size = 32
+text = "Runes"
+horizontal_alignment = 1

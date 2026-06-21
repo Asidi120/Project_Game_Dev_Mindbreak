@@ -1,16 +1,58 @@
 extends StaticBody2D
 var player_in_range := false
-@export var hits_needed := 4 #ilosc potrzebnych uderzen
+@export var hits_needed := 4.0 #ilosc potrzebnych uderzen
 @export var object_id := ""
-var hits := 0
+@export var object_type := ""
+@export var position_of_power_needed := 0
+var hits := 0.0
 
 @export var scene: PackedScene #instancja sceny struktury
 @export var scene2: PackedScene
 
+var inventory_system = null
+
+func update_hits():
+	if inventory_system == null:
+		return
+
+	var index = inventory_system.selected_fasteq_index
+	
+	if index < 0 or index >= inventory_system.current_inventory.size():
+		return
+
+	var item = inventory_system.current_inventory[index]
+	
+	#jesli nie ma nic w raczce mozna niszczyc tree i bush
+	if item == null and (object_type == "tree" or object_type == "bush"):
+		hits += 1
+	
+	if item == null:
+		return
+
+	# niszczenie tree majac axe
+	if item["item_type"] == "axe" and object_type == "tree":
+		hits += item["tool_power"]
+	# niszczenie boulder majac pickaxe
+	elif item["item_type"] == "pickaxe" and object_type == "boulder":
+		hits += item["tool_power"]
+	# niszczenie tree i bush majac jakikolwiek inny przedmiot
+	elif object_type == "tree" or object_type == "bush":
+		hits += 1	
+	
+	#nodes
+	var list_of_nodes = ["iron", "copper", "gold", "diamond"]
+	
+	if object_type in list_of_nodes and item["item_type"] == "pickaxe":
+		if item["position_of_power"] >= position_of_power_needed:
+			hits += item["tool_power"]
+		
+	
+func _ready() -> void:
+	inventory_system = get_tree().get_first_node_in_group("inventory_ui")
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if player_in_range and Input.is_action_just_pressed("attack"): #jesli player w zasiegu i uderzy
-		hits += 1
+		update_hits()
 		print("Uderzenie: ", hits)
 
 		if hits >= hits_needed: #jesli player przekroczy ilosc uderzen

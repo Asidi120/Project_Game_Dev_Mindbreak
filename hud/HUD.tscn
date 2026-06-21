@@ -4,23 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://317bak6hdgps" path="res://Scripts/player_bar.tscn" id="2_ne771"]
 [ext_resource type="PackedScene" uid="uid://fhgceyryjqfs" path="res://Scenes/DeathPanel.tscn" id="3_xxqia"]
 [ext_resource type="PackedScene" uid="uid://x166r6kvfqjc" path="res://Scenes/inventory.tscn" id="4_akegq"]
-[ext_resource type="Texture2D" uid="uid://deu87legra8yk" path="res://MenuIcon/Blank_Not-Pressed.png" id="5_fimwm"]
-[ext_resource type="FontFile" uid="uid://c0l8fv5sgwm3v" path="res://Fonts/Star Crush.ttf" id="5_st07x"]
-[ext_resource type="Texture2D" uid="uid://h5kcaeuujfnv" path="res://MenuIcon/Blank_Pressed.png" id="6_st07x"]
-[ext_resource type="Script" uid="uid://bg4c4mepocjlg" path="res://Scripts/boss_button.gd" id="8_8yvdu"]
 [ext_resource type="PackedScene" uid="uid://bpdatfhqafv8t" path="res://Scenes/fast_eq.tscn" id="5_s5l88"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8yvdu"]
-texture = ExtResource("5_fimwm")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lmyhm"]
-texture = ExtResource("6_st07x")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r0cji"]
-texture = ExtResource("5_fimwm")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_st07x"]
-texture = ExtResource("5_fimwm")
+[ext_resource type="PackedScene" uid="uid://cdrmdeiqjit5u" path="res://TotemBank/totems.tscn" id="6_fimwm"]
 
 [node name="HUD" type="CanvasLayer" unique_id=1148326026 groups=["hud"]]
 
@@ -34,35 +19,12 @@ grow_vertical = 2
 color = Color(0.47312066, 0, 0.13335153, 0.34800002)
 
 [node name="Clock" parent="." unique_id=385021879 groups=["Clock"] instance=ExtResource("1_vow1y")]
-offset_left = 501.0
-offset_top = -3.0
-offset_right = 541.0
-offset_bottom = 37.0
 
 [node name="PlayerBar" parent="." unique_id=160299636 instance=ExtResource("2_ne771")]
 offset_left = -17.0
 offset_top = 97.0
 offset_right = 23.0
 offset_bottom = 137.0
-
-[node name="DeathPanel" parent="." unique_id=67905963 instance=ExtResource("3_xxqia")]
-visible = false
-self_modulate = Color(0.4840902, 0.0045073065, 8.904189e-07, 1)
-top_level = true
-
-[node name="BossButton" type="Button" parent="." unique_id=362411859]
-offset_left = 1244.0
-offset_top = 739.0
-offset_right = 1390.0
-offset_bottom = 790.0
-theme_override_fonts/font = ExtResource("5_st07x")
-theme_override_styles/normal = SubResource("StyleBoxTexture_8yvdu")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_lmyhm")
-theme_override_styles/hover = SubResource("StyleBoxTexture_r0cji")
-theme_override_styles/focus = SubResource("StyleBoxTexture_st07x")
-text = "FIGHT THE BOSS"
-language = "en"
-script = ExtResource("8_8yvdu")
 
 [node name="Inventory" parent="." unique_id=1630870992 groups=["inventory_ui"] instance=ExtResource("4_akegq")]
 offset_left = 300.0
@@ -83,4 +45,13 @@ offset_bottom = 50.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[connection signal="pressed" from="BossButton" to="BossButton" method="_on_pressed"]
+[node name="DeathPanel" parent="." unique_id=67905963 instance=ExtResource("3_xxqia")]
+visible = false
+self_modulate = Color(0.4840902, 0.0045073065, 8.904189e-07, 1)
+top_level = true
+
+[node name="TotemBank" parent="." unique_id=277440264 instance=ExtResource("6_fimwm")]
+offset_left = 1235.0
+offset_top = 199.0
+offset_right = 1275.0
+offset_bottom = 239.0

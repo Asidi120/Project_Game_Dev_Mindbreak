@@ -7,6 +7,7 @@
 size = Vector2(36.61953, 34.193924)
 
 [node name="Wood" type="Area2D" unique_id=1592250268]
+scale = Vector2(0.77396375, 0.77396375)
 script = ExtResource("1_tfydv")
 item_id = "wood"
 item_name = "Wood"

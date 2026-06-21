@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://blxaed8jswxyw"]
+
+[ext_resource type="Script" uid="uid://cvtmhh1hpljyx" path="res://Scripts/item.gd" id="1_s3hps"]
+[ext_resource type="Texture2D" uid="uid://cspo05d1mbjsv" path="res://OtherSprites/Runes/rune2.png" id="2_s3hps"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d43ed"]
+size = Vector2(17.710262, 32.68274)
+
+[node name="Rune2" type="Area2D" unique_id=13035520]
+z_index = -1
+script = ExtResource("1_s3hps")
+item_id = "rune_2"
+item_name = "Rune2"
+item_type = "rune"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1622709971]
+position = Vector2(0.8064519, 0)
+scale = Vector2(0.51599216, 0.51599216)
+texture = ExtResource("2_s3hps")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1266554538]
+position = Vector2(0.80840963, -0.0039617806)
+rotation = -1.5756979
+scale = Vector2(1.0017768, -0.2959774)
+shape = SubResource("RectangleShape2D_d43ed")

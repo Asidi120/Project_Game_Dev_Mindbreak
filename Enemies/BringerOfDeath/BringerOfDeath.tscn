@@ -410,9 +410,14 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_7kqxg"]
 radius = 166.04819
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7kqxg"]
+size = Vector2(30, 5)
+
 [node name="BringerOfDeath" type="Node2D" unique_id=2039038124]
 
 [node name="BringerOfDeath" type="CharacterBody2D" parent="." unique_id=485098827]
+collision_layer = 2
+collision_mask = 16
 script = ExtResource("1_7kqxg")
 
 [node name="Hp_bar" type="TextureProgressBar" parent="BringerOfDeath" unique_id=798663430]
@@ -465,6 +470,10 @@ monitorable = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BringerOfDeath/Spell_Range" unique_id=721911686]
 position = Vector2(1, 0)
 shape = SubResource("CircleShape2D_7kqxg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BringerOfDeath" unique_id=1753909541]
+position = Vector2(-1, 20.5)
+shape = SubResource("RectangleShape2D_7kqxg")
 
 [node name="PatrolPionts" type="Node2D" parent="." unique_id=1696371687]
 

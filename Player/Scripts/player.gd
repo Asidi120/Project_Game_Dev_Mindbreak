@@ -10,7 +10,7 @@ signal hunger_changed(current_hunger,max_hunger)
 @onready var attack_hitbox: Area2D = $AttackHitbox
 var is_attacking = false
 
-var move_speed = 100
+@export var move_speed = 100
 var direction = Vector2.ZERO
 var items_in_range = []
 var current_hp = 200
@@ -30,7 +30,7 @@ var spawn_point=Vector2.ZERO
 var already_hit = []
 
 var inventory = []
-const MAX_STACK = 2
+const MAX_STACK = 12
 const MAX_SLOT = 24
 
 var inventory_ui = null
@@ -176,15 +176,16 @@ func update_held_item():
 
 	held_item.visible = true
 	held_item.texture = item["texture"]
-	held_item.size = Vector2(10, 10)
+	held_item.z_index = 10
+	held_item.size = Vector2(15, 15)
 	held_item.custom_minimum_size = Vector2(10, 10)
+	held_item.position = Vector2(-10, -10)
 	held_item.scale = Vector2.ONE
 	held_item.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	held_item.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-
-	update_held_position()
-
-	if Input.is_action_just_pressed("eat") and item["item_type"] == "food":
+	
+	#jedzenie trzymanego itema
+	if Input.is_action_just_pressed("eat") and (item["item_type"] == "food" or item["item_type"] == "meat_raw" or item["item_type"] == "meat_cooked"):
 		if eating(item):
 			print("Znikaaaaa")
 			inventory_system.current_inventory[index] = null
@@ -383,7 +384,7 @@ func move_player(delta):
 		if current_stamina < 10 or current_hunger <= 1:
 			velocity = direction * final_speed
 		else:
-			velocity = direction * (final_speed + 100)
+			velocity = direction * (final_speed * 2)
 			was_sprinting = true
 	else:
 		velocity = direction * final_speed

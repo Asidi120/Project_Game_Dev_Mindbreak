@@ -162,6 +162,7 @@ func enter_hit_state():
 	await sprite.animation_finished
 	await get_tree().create_timer(0.1).timeout
 	state = State.CHASE
+	can_attack=true
 
 # DEATH
 

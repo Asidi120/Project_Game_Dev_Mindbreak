@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://cplvkbow014ta"]
+
+[ext_resource type="Script" uid="uid://b01hfte5jgl0m" path="res://Crafting/Scripts/crafting_ui.gd" id="1_otb4k"]
+[ext_resource type="Texture2D" uid="uid://bs6rdw18rar7q" path="res://Crafting/Sprites/Inventory_1.png" id="2_nc4d8"]
+[ext_resource type="PackedScene" uid="uid://cjnnf2157ukfd" path="res://Crafting/Scenes/crafting_slot.tscn" id="3_0nn0x"]
+
+[node name="CraftingUI" type="Control" unique_id=597152013]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 600.0
+offset_bottom = 400.0
+script = ExtResource("1_otb4k")
+
+[node name="Background" type="TextureRect" parent="." unique_id=686562746]
+custom_minimum_size = Vector2(600, 400)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_nc4d8")
+
+[node name="RecipesContainer" type="VBoxContainer" parent="Background" unique_id=2043229018]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CraftingSlot2" parent="Background/RecipesContainer" unique_id=502178006 instance=ExtResource("3_0nn0x")]
+layout_mode = 2
+
+[node name="CraftingSlot" parent="Background/RecipesContainer" unique_id=519494759 instance=ExtResource("3_0nn0x")]
+layout_mode = 2

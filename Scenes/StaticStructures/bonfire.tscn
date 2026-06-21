@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://bjb88osnfjlic"]
 
-[ext_resource type="Script" uid="uid://xihm3wugii01" path="res://Scripts/static_breakable_object.gd" id="1_17bc3"]
-[ext_resource type="PackedScene" uid="uid://dre6w3svhd6ko" path="res://Scenes/Items/stone.tscn" id="2_tp1om"]
+[ext_resource type="Script" uid="uid://cm2xa22vdalj0" path="res://Scripts/bonfire.gd" id="1_tp1om"]
 [ext_resource type="Texture2D" uid="uid://bltnftcyd54do" path="res://OtherSprites/Bonfire/Bonfire_05-Sheet.png" id="3_lup3b"]
 [ext_resource type="Texture2D" uid="uid://c2mm2me56wagt" path="res://OtherSprites/Bonfire/Fire_02-Sheet.png" id="4_lkxcx"]
 [ext_resource type="Texture2D" uid="uid://bev2aifpunbcg" path="res://OtherSprites/Bonfire/Smoke-Sheet.png" id="5_n3tei"]
@@ -115,17 +114,15 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_blcey"]
-size = Vector2(36, 22.5)
+size = Vector2(30.99815, 14.624926)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_oedoi"]
-size = Vector2(46, 26)
+[sub_resource type="CircleShape2D" id="CircleShape2D_lup3b"]
 
 [node name="Bonfire" type="StaticBody2D" unique_id=2132276029]
-script = ExtResource("1_17bc3")
-hits_needed = 10
-object_id = "boulder"
-object_type = "boulder"
-scene = ExtResource("2_tp1om")
+scale = Vector2(1.4400003, 1.4400003)
+collision_layer = 16
+collision_mask = 3
+script = ExtResource("1_tp1om")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=686851260]
 sprite_frames = SubResource("SpriteFrames_ibgyt")
@@ -145,16 +142,16 @@ autoplay = "default"
 frame_progress = 0.31440562
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=520123235]
-visible = false
-position = Vector2(1, -0.25)
+position = Vector2(-0.6062259, 1.8889557)
+scale = Vector2(0.487169, 0.40558472)
 shape = SubResource("RectangleShape2D_blcey")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1064712434]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1298316451]
-position = Vector2(0, -3)
-shape = SubResource("RectangleShape2D_oedoi")
+position = Vector2(-0.6944443, -0.6944444)
+scale = Vector2(1.3611106, 1.3611106)
+shape = SubResource("CircleShape2D_lup3b")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

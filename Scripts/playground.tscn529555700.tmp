@@ -243,20 +243,11 @@ position = Vector2(134.53938, -34.21688)
 position = Vector2(120.86203, -100.57741)
 scale = Vector2(0.14504164, 0.64299804)
 
-[node name="Bonfire" parent="BleakYellowGrass/level" unique_id=304277629 instance=ExtResource("55_kkea6")]
-position = Vector2(41.837273, 180.56831)
-
-[node name="MeatRaw5" parent="BleakYellowGrass/level" unique_id=126890699 instance=ExtResource("49_sdjit")]
-position = Vector2(-12.365601, -42.321983)
-
-[node name="MeatRaw6" parent="BleakYellowGrass/level" unique_id=1716296956 instance=ExtResource("49_sdjit")]
-position = Vector2(13.975983, -41.308846)
-
-[node name="MeatRaw7" parent="BleakYellowGrass/level" unique_id=2060621501 instance=ExtResource("52_hlkfb")]
-position = Vector2(48.929237, -42.828552)
-
 [node name="HUD" parent="BleakYellowGrass" unique_id=1148326026 instance=ExtResource("14_djkbh")]
 
 [node name="DayNightOverlay" type="CanvasModulate" parent="." unique_id=1490973845]
 position = Vector2(819, 160)
 script = ExtResource("19_tc4ax")
+
+[node name="Bonfire" parent="." unique_id=304277629 instance=ExtResource("55_kkea6")]
+position = Vector2(22.7956, 178.81882)

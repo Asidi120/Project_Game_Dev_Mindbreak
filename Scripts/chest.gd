@@ -10,6 +10,8 @@ var chest_inventory: Array = []
 var chest_in_range = null
 var is_open := false
 
+var player_in_range = null
+
 func _ready() -> void:
 	chest_inventory.resize(chest_size)
 	chest_inventory.fill(null)
@@ -28,6 +30,9 @@ func open_chest():
 	is_open = true
 	animated_sprite.play("open_chest")
 	
+	if player_in_range != null:
+		player_in_range.state = player_in_range.State.STUNNED
+	
 	var inventory_ui = get_inventory_ui()
 	if inventory_ui != null:
 		inventory_ui.open_chest_ui(self)
@@ -37,6 +42,9 @@ func close_chest():
 	is_open = false
 	animated_sprite.play("close_chest")
 	
+	if player_in_range != null:
+		player_in_range.state = player_in_range.State.IDLE
+		
 	var inventory_ui = get_inventory_ui()
 	if inventory_ui != null:
 		inventory_ui.close_chest_ui()
@@ -51,8 +59,10 @@ func get_inventory_ui():
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
 		chest_in_range = self
+		player_in_range = body
 
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body.name == "Player":
 		chest_in_range = null
+		player_in_range = null

@@ -2,13 +2,14 @@
 
 [ext_resource type="Texture2D" uid="uid://p1v4rjrmgsnf" path="res://TotemBank/Sprite/32x32-Tilesheet.png" id="1_srm3c"]
 [ext_resource type="FontFile" uid="uid://b0nphpwk324ms" path="res://Fonts/PixelPurl.ttf" id="2_l0hxa"]
+[ext_resource type="Texture2D" uid="uid://cj2acuml1meqp" path="res://OtherSprites/Runes/rune1.png" id="3_ila8a"]
+[ext_resource type="Texture2D" uid="uid://bn00i1og0tkom" path="res://OtherSprites/LightSprite/2d_lights_and_shadows_neutral_point_light.webp" id="3_llxnb"]
+[ext_resource type="Texture2D" uid="uid://cspo05d1mbjsv" path="res://OtherSprites/Runes/rune2.png" id="4_llxnb"]
+[ext_resource type="Texture2D" uid="uid://cwsyeof3vjdb0" path="res://OtherSprites/Runes/rune3.png" id="5_yq0vd"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_l0hxa"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_llxnb"]
 atlas = ExtResource("1_srm3c")
 region = Rect2(210, 18, 60, 60)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_w88ad"]
-texture = SubResource("AtlasTexture_l0hxa")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mwiip"]
 atlas = ExtResource("1_srm3c")
@@ -17,48 +18,108 @@ region = Rect2(226, 101, 28, 27)
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ila8a"]
 texture = SubResource("AtlasTexture_mwiip")
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_yq0vd"]
+blend_mode = 1
+
 [node name="Totems" type="Control" unique_id=277440264]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="TotemBar" type="Panel" parent="." unique_id=196423569]
+[node name="TotemBar" type="NinePatchRect" parent="." unique_id=1620557855 groups=["TotemBar"]]
 layout_mode = 0
-offset_left = 7.0
-offset_right = 140.0
-offset_bottom = 331.0
-theme_override_styles/panel = SubResource("StyleBoxTexture_w88ad")
+offset_left = 1.0
+offset_right = 134.0
+offset_bottom = 313.0
+texture = SubResource("AtlasTexture_llxnb")
+patch_margin_left = 14
+patch_margin_top = 14
+patch_margin_right = 14
+patch_margin_bottom = 14
 
 [node name="TotemSlot1" type="Panel" parent="TotemBar" unique_id=464001670]
 layout_mode = 0
-offset_left = 27.0
-offset_top = 33.0
-offset_right = 107.0
-offset_bottom = 113.0
+offset_left = 28.0
+offset_top = 24.0
+offset_right = 108.0
+offset_bottom = 104.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_ila8a")
 
-[node name="TotemSlot2" type="Panel" parent="TotemBar" unique_id=2097996459]
+[node name="RuneLight" type="TextureRect" parent="TotemBar/TotemSlot1" unique_id=1056918813]
+visible = false
+self_modulate = Color(0.3944329, 0.66142035, 1, 1)
+material = SubResource("CanvasItemMaterial_yq0vd")
 layout_mode = 0
-offset_left = 27.0
-offset_top = 127.0
-offset_right = 107.0
-offset_bottom = 207.0
-theme_override_styles/panel = SubResource("StyleBoxTexture_ila8a")
+offset_left = -1.0
+offset_top = 4.0
+offset_right = 79.0
+offset_bottom = 79.0
+texture = ExtResource("3_llxnb")
+expand_mode = 1
+
+[node name="Rune1" type="Sprite2D" parent="TotemBar/TotemSlot1" unique_id=1943037853]
+visible = false
+position = Vector2(38, 40)
+scale = Vector2(1.875, 1.781)
+texture = ExtResource("3_ila8a")
 
 [node name="TotemSlot3" type="Panel" parent="TotemBar" unique_id=1021867738]
 layout_mode = 0
-offset_left = 27.0
-offset_top = 218.0
-offset_right = 107.0
-offset_bottom = 298.0
+offset_left = 28.0
+offset_top = 210.0
+offset_right = 108.0
+offset_bottom = 290.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_ila8a")
+
+[node name="RuneLight2" type="TextureRect" parent="TotemBar/TotemSlot3" unique_id=1388847613]
+visible = false
+self_modulate = Color(0.8411834, 0.19641912, 0.09320182, 1)
+material = SubResource("CanvasItemMaterial_yq0vd")
+layout_mode = 0
+offset_top = 1.0
+offset_right = 76.0
+offset_bottom = 78.0
+texture = ExtResource("3_llxnb")
+expand_mode = 1
+
+[node name="Rune2" type="Sprite2D" parent="TotemBar/TotemSlot3" unique_id=725274711]
+visible = false
+position = Vector2(38, 41)
+scale = Vector2(1.875, 1.781)
+texture = ExtResource("4_llxnb")
+
+[node name="TotemSlot2" type="Panel" parent="TotemBar" unique_id=2097996459]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 118.0
+offset_right = 108.0
+offset_bottom = 198.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_ila8a")
+
+[node name="RuneLight3" type="TextureRect" parent="TotemBar/TotemSlot2" unique_id=1395644044]
+visible = false
+self_modulate = Color(0.4753304, 0.74140024, 0.21619976, 1)
+material = SubResource("CanvasItemMaterial_yq0vd")
+layout_mode = 0
+offset_left = -2.0
+offset_top = 2.0
+offset_right = 79.0
+offset_bottom = 82.0
+texture = ExtResource("3_llxnb")
+expand_mode = 1
+
+[node name="Rune3" type="Sprite2D" parent="TotemBar/TotemSlot2" unique_id=1757859640]
+visible = false
+position = Vector2(37.999992, 41)
+scale = Vector2(1.875, 1.78125)
+texture = ExtResource("5_yq0vd")
 
 [node name="Label" type="Label" parent="." unique_id=1207267139]
 layout_mode = 0
-offset_left = 7.0
+offset_left = 1.0
 offset_top = -26.0
-offset_right = 141.0
+offset_right = 135.0
 offset_bottom = 2.0
 theme_override_fonts/font = ExtResource("2_l0hxa")
 theme_override_font_sizes/font_size = 32

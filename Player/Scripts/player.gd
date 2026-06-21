@@ -245,7 +245,8 @@ func attack():
 	is_attacking = false
 	already_hit = []
 	state = State.IDLE
-	
+	current_stamina-=15
+	stamina_recovery()
 	#dzwiek uderzania mieczem
 	if get_held_item() != null:
 		var item = get_held_item()

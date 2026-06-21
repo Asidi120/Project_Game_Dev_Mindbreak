@@ -36,15 +36,16 @@ theme_override_constants/v_separation = 33
 columns = 6
 
 [node name="ChestPanel" type="TextureRect" parent="." unique_id=360355759]
+self_modulate = Color(0.5636453, 0.3063297, 0.07420703, 1)
 custom_minimum_size = Vector2(600, 400)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 143.0
-offset_top = -313.0
-offset_right = 703.0
-offset_bottom = 47.0
+offset_left = 144.0
+offset_top = -289.0
+offset_right = 704.0
+offset_bottom = 71.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_wdn4f")

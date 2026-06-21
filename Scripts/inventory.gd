@@ -25,11 +25,15 @@ var slot_offset := 0
 static var selected_fasteq_index := 0
 static var selected_slot_index := -1
 
+var inventory_default_position: Vector2
+var inventory_chest_position : Vector2
+
 
 func _ready() -> void:
 	if self.name == "Inventory":
 		visible = false
-		
+		inventory_default_position = position
+		inventory_chest_position = Vector2(position.x, 305)
 		if chest_panel != null:
 			chest_panel.visible = false
 
@@ -112,6 +116,8 @@ func open_chest_ui(chest) -> void:
 	opened_chest = chest
 	visible = true
 	inventory_visible = true
+	
+	position = inventory_chest_position
 
 	var fasteq = get_fasteq_ui()
 	if fasteq != null:
@@ -130,6 +136,8 @@ func close_chest_ui() -> void:
 
 	opened_chest = null
 	inventory_visible = false
+	
+	position = inventory_default_position
 
 	if chest_panel != null:
 		chest_panel.visible = false

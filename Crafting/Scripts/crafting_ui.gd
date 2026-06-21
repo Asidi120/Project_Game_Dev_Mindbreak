@@ -11,6 +11,24 @@ var texture_cache := {}
 
 
 var recipes := [
+	#Stick
+	{
+		"result_scene": "res://Scenes/Items/stick.tscn",
+		"result_id": "stick",
+		"result_amount": 1,
+		"requirements": [
+			{
+				"item_id": "wood",
+				"needed_amount": 1,
+				"scene_path": "res://Scenes/Items/wood.tscn"
+			},
+			{
+				"item_id": "wood",
+				"needed_amount": 1,
+				"scene_path": "res://Scenes/Items/wood.tscn"
+			}
+		]
+	},
 	#AXES
 	{
 		"result_scene": "res://Scenes/Tools/axe_wood.tscn",
@@ -19,12 +37,12 @@ var recipes := [
 		"requirements": [
 			{
 				"item_id": "stick",
-				"needed_amount": 4,
+				"needed_amount": 1,
 				"scene_path": "res://Scenes/Items/stick.tscn"
 			},
 			{
 				"item_id": "wood",
-				"needed_amount": 3,
+				"needed_amount": 1,
 				"scene_path": "res://Scenes/Items/wood.tscn"
 			}
 		]
@@ -57,9 +75,78 @@ var recipes := [
 				"scene_path": "res://Scenes/Items/stick.tscn"
 			},
 			{
-				"item_id": "iron_ore",
+				"item_id": "iron_bar",
 				"needed_amount": 3,
-				"scene_path": "res://Scenes/Items/iron_ore.tscn"
+				"scene_path": "res://Scenes/Items/iron_bar.tscn"
+			}
+		]
+	},
+	{
+		"result_scene": "res://Scenes/Tools/axe_copper.tscn",
+		"result_id": "axe_copper",
+		"result_amount": 1,
+		"requirements": [
+			{
+				"item_id": "stick",
+				"needed_amount": 4,
+				"scene_path": "res://Scenes/Items/stick.tscn"
+			},
+			{
+				"item_id": "copper_bar",
+				"needed_amount": 3,
+				"scene_path": "res://Scenes/Items/copper_bar.tscn"
+			}
+		]
+	},
+	{
+		"result_scene": "res://Scenes/Tools/axe_gold.tscn",
+		"result_id": "axe_gold",
+		"result_amount": 1,
+		"requirements": [
+			{
+				"item_id": "stick",
+				"needed_amount": 4,
+				"scene_path": "res://Scenes/Items/stick.tscn"
+			},
+			{
+				"item_id": "gold_bar",
+				"needed_amount": 3,
+				"scene_path": "res://Scenes/Items/gold_bar.tscn"
+			}
+		]
+	},
+	#Pickaxes
+	{
+		"result_scene": "res://Scenes/Tools/pickaxe_wood.tscn",
+		"result_id": "pickaxe_wood",
+		"result_amount": 1,
+		"requirements": [
+			{
+				"item_id": "stick",
+				"needed_amount": 4,
+				"scene_path": "res://Scenes/Items/stick.tscn"
+			},
+			{
+				"item_id": "wood",
+				"needed_amount": 4,
+				"scene_path": "res://Scenes/Items/wood.tscn"
+			}
+		]
+	},
+	{
+		"result_scene": "res://Scenes/Tools/pickaxe_stone.tscn",
+		"result_id": "pickaxe_stone",
+		"result_amount": 1,
+		"requirements": [
+			{
+				"item_id": "stick",
+				"needed_amount": 4,
+				"scene_path": "res://Scenes/Items/stick.tscn"
+			},
+			{
+				"item_id": "stone",
+				"needed_amount": 4,
+				"scene_path": "res://Scenes/Items/stone.tscn"
 			}
 		]
 	},
@@ -75,10 +162,21 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("crafting"):
 		toggle_crafting()
+		
+	
+	
 
 
 func toggle_crafting() -> void:
 	visible = !visible
+	var fasteq = inventory_system.get_fasteq_ui()
+	if fasteq != null:
+		if visible:
+			fasteq.visible = false
+		else:
+			fasteq.visible = true
+	
+		
 
 	if visible:
 		inventory_system = get_inventory_ui()
@@ -281,6 +379,10 @@ func create_item_data_from_scene(scene_path: String, amount: int = 1) -> Diction
 
 	if item_instance is Food:
 		item_data["hunger_points"] = item_instance.hunger_points
+	
+	if item_instance is Tool:
+		item_data["tool_power"] = item_instance.tool_power
+		item_data["position_of_power"] = item_instance.position_of_power
 
 	item_instance.queue_free()
 

@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://yankmdvwmg33"]
+
+[ext_resource type="Script" uid="uid://cvtmhh1hpljyx" path="res://Scripts/item.gd" id="1_xshhr"]
+[ext_resource type="Texture2D" uid="uid://dabpir212mc2l" path="res://OtherSprites/Stones_ores_bars/silver_bar.png" id="2_xshhr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qgar0"]
+radius = 10.380673
+
+[node name="IronBar" type="Area2D" unique_id=1292270059]
+z_index = -1
+scale = Vector2(1.1600013, 1.1600013)
+script = ExtResource("1_xshhr")
+item_id = "iron_bar"
+item_name = "IronBar"
+item_type = "bar"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=485898290]
+position = Vector2(0, -0.862068)
+scale = Vector2(1.1724125, 1.1724125)
+texture = ExtResource("2_xshhr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=79536984]
+shape = SubResource("CircleShape2D_qgar0")

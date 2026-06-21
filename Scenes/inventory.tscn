@@ -34,3 +34,29 @@ offset_bottom = 130.0
 theme_override_constants/h_separation = 28
 theme_override_constants/v_separation = 33
 columns = 6
+
+[node name="ChestPanel" type="TextureRect" parent="." unique_id=360355759]
+self_modulate = Color(0.71970516, 0.4359248, 0.16677243, 1)
+custom_minimum_size = Vector2(600, 400)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 144.0
+offset_top = -289.0
+offset_right = 704.0
+offset_bottom = 71.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_wdn4f")
+stretch_mode = 5
+
+[node name="GridContainer" type="GridContainer" parent="ChestPanel" unique_id=2025652785]
+layout_mode = 0
+offset_left = 37.25
+offset_top = 68.0
+offset_right = 100.0
+offset_bottom = 130.0
+theme_override_constants/h_separation = 28
+theme_override_constants/v_separation = 33
+columns = 6

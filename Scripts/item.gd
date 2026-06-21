@@ -1,12 +1,9 @@
 extends Area2D
 class_name Item
 var player_in_range := false
-
 @export var item_id := ""
 @export var item_name := ""
-#var texture = get_icon()
 @export var item_type := ""
-
 @onready var sprite_2d: Sprite2D = $Sprite2D
 
 func get_icon() -> Texture2D:
@@ -18,30 +15,22 @@ func get_icon() -> Texture2D:
 	else:
 		return sprite_2d.texture
 
-
-
-
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	body_entered.connect(_on_body_entered) #automatycznie dla każdego itema będzie wykrywać bez konieczności podpinania
+	body_entered.connect(_on_body_entered)
 	body_exited.connect(_on_body_exited)
+	add_to_group("world_item")
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	#if player_in_range and Input.is_action_just_pressed("pick_up"): #jesli player w zasiegu i nacisniete F item zostaje zebrany
-		#queue_free() #item znika po wejściu w niego
-		#print("+1 ", item_name)
-		pass
+func _process(_delta: float) -> void:
+	pass
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
-		body.add_item(self) #wywołuje add item z playera
+		body.add_item(self)
 
 func _on_body_exited(body: Node2D) -> void:
 	if body.name == "Player":
-		body.remove_item(self) #wywołuje remove item z playera
-		
+		body.remove_item(self)
+
 func collect():
 	var item = {
 		"item_id" : item_id,
@@ -50,5 +39,7 @@ func collect():
 		"scene_path": scene_file_path
 	}
 	print("+1 ", item_name)
+	WorldStateManager.mark_removed(get_tree().current_scene.scene_file_path, global_position)
+	WorldStateManager.remove_dropped_item(get_tree().current_scene.scene_file_path, global_position)
 	queue_free()
 	return item

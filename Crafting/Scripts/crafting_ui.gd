@@ -2,7 +2,7 @@ extends Control
 
 const MAX_STACK := 12
 
-@onready var recipes_container: VBoxContainer = $Background/RecipesContainer
+@onready var recipes_container: GridContainer = $Background/ScrollContainer/RecipesContainer
 
 var crafting_slot_scene = preload("res://Crafting/Scenes/crafting_slot.tscn")
 
@@ -11,23 +11,58 @@ var texture_cache := {}
 
 
 var recipes := [
+	#AXES
+	{
+		"result_scene": "res://Scenes/Tools/axe_wood.tscn",
+		"result_id": "axe_wood",
+		"result_amount": 1,
+		"requirements": [
+			{
+				"item_id": "stick",
+				"needed_amount": 4,
+				"scene_path": "res://Scenes/Items/stick.tscn"
+			},
+			{
+				"item_id": "wood",
+				"needed_amount": 3,
+				"scene_path": "res://Scenes/Items/wood.tscn"
+			}
+		]
+	},
 	{
 		"result_scene": "res://Scenes/Tools/axe_stone.tscn",
 		"result_id": "axe_stone",
 		"result_amount": 1,
 		"requirements": [
 			{
-				"item_id": "wood",
-				"needed_amount": 3,
-				"scene_path": "res://Scenes/Items/wood.tscn"
+				"item_id": "stick",
+				"needed_amount": 4,
+				"scene_path": "res://Scenes/Items/stick.tscn"
 			},
 			{
 				"item_id": "stone",
-				"needed_amount": 2,
+				"needed_amount": 3,
 				"scene_path": "res://Scenes/Items/stone.tscn"
 			}
 		]
-	}
+	},
+	{
+		"result_scene": "res://Scenes/Tools/axe_iron.tscn",
+		"result_id": "axe_iron",
+		"result_amount": 1,
+		"requirements": [
+			{
+				"item_id": "stick",
+				"needed_amount": 4,
+				"scene_path": "res://Scenes/Items/stick.tscn"
+			},
+			{
+				"item_id": "iron_ore",
+				"needed_amount": 3,
+				"scene_path": "res://Scenes/Items/iron_ore.tscn"
+			}
+		]
+	},
 ]
 
 
@@ -74,6 +109,8 @@ func refresh_recipes() -> void:
 
 		var crafting_slot = crafting_slot_scene.instantiate()
 		recipes_container.add_child(crafting_slot)
+
+		crafting_slot.custom_minimum_size = Vector2(260, 100)
 
 		var can_make = can_craft(recipe)
 

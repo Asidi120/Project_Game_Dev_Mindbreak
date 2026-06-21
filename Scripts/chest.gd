@@ -2,11 +2,17 @@ extends StaticBody2D
 
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+
+@export var chest_size := 18
+
+var chest_inventory: Array = []
+
 var chest_in_range = null
 var is_open := false
 
 func _ready() -> void:
-	pass # Replace with function body.
+	chest_inventory.resize(chest_size)
+	chest_inventory.fill(null)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -21,11 +27,26 @@ func open_chest():
 	print("skrzynka otwarta")
 	is_open = true
 	animated_sprite.play("open_chest")
+	
+	var inventory_ui = get_inventory_ui()
+	if inventory_ui != null:
+		inventory_ui.open_chest_ui(self)
 
 func close_chest():
 	print("skrzynka zamknieta")
 	is_open = false
 	animated_sprite.play("close_chest")
+	
+	var inventory_ui = get_inventory_ui()
+	if inventory_ui != null:
+		inventory_ui.close_chest_ui()
+	
+func get_inventory_ui():
+	for ui in get_tree().get_nodes_in_group("inventory_ui"):
+		if ui.name == "Inventory":
+			return ui
+
+	return null
 			
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.name == "Player":

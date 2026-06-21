@@ -48,7 +48,7 @@ func set_recipe(new_recipe: Dictionary, new_can_make: bool) -> void:
 	if can_make:
 		modulate = Color(1, 1, 1)
 	else:
-		modulate = Color(1, 0.45, 0.45)
+		modulate = Color(0.521, 0.521, 0.521, 1.0)
 
 
 func _gui_input(event: InputEvent) -> void:

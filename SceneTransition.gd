@@ -34,10 +34,8 @@ func _place_player() -> void:
 	if current == null:
 		return
 
-	# Przywróć stan sceny (usunięte obiekty + itemy na ziemi)
-	#WorldStateManager.restore_scene(current.scene_file_path)
 
-	# Usuń duplikaty gracza
+
 	for existing in get_tree().get_nodes_in_group("player"):
 		if existing != player_node and is_instance_valid(existing):
 			existing.get_parent().remove_child(existing)

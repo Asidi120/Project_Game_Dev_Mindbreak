@@ -1,13 +1,5 @@
 extends Node
 
-## CaveItemManager.gd — AUTOLOAD
-## Dodaj w: Projekt > Ustawienia projektu > Globalne > Autoładowanie
-## Nazwa: CaveItemManager
-##
-## Zapisuje itemy leżące na ziemi w scenie jaskini i przywraca je przy powrocie.
-
-# Słownik: scene_path -> Array[Dictionary]
-# Każdy słownik: { scene_path, item_id, item_type, position }
 var saved_items: Dictionary = {}
 
 

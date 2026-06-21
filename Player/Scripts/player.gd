@@ -212,17 +212,39 @@ func throw():
 
 		inventory_system.refresh_all()
 	
+func get_held_item():
+	if inventory_system == null:
+		return
+
+	var index = inventory_system.selected_fasteq_index
+
+	if index < 0 or index >= inventory_system.current_inventory.size():
+		return
+
+	var item = inventory_system.current_inventory[index]
+
+	if item == null:
+		return
+	
+	return item
+	
 	
 func attack():
 	state = State.ATTACK
 	is_attacking = true
 	attack_hitbox.monitoring = true
-	sounds.play_sound("attack")
+	
 	await get_tree().create_timer(0.2).timeout
 	attack_hitbox.monitoring = false
 	is_attacking = false
 	already_hit = []
 	state = State.IDLE
+	
+	#dzwiek uderzania mieczem
+	if get_held_item() != null:
+		var item = get_held_item()
+		if item["item_type"] == "sword" and inventory_system.inventory_visible == false:
+			sounds.play_sound("attack")
 
 func apply_stun(duration: float):
 	if state == State.DEAD:

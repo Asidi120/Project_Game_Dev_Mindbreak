@@ -4,7 +4,7 @@ var inventory_system = null
 
 const MAX_STACK = 12
 
-var meat_id := ""
+var meat_ids_list := []
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -15,9 +15,11 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	inventory_system = get_tree().get_first_node_in_group("inventory_ui")
 	if put_meat_into_bonfire():
-		await get_tree().create_timer(2.0).timeout
+		var cooked_meat_id = meat_ids_list.pop_front()
+		var path = "res://Scenes/Food/meat_cooked_" + cooked_meat_id + ".tscn"
+		await get_tree().create_timer(4.0).timeout
 		print("meat putttttttttttttttt")
-		get_cooked_meat()
+		get_cooked_meat(path)
 
 func has_raw_meat_in_hand() -> bool:
 	var raw_meat_held := false
@@ -48,8 +50,9 @@ func put_meat_into_bonfire() -> bool:
 		var index = inventory_system.selected_fasteq_index
 		var item = inventory_system.current_inventory[index]
 		
-		meat_id = item["item_id"].split("_")[-1]
-		print(meat_id)
+		var meat_id = item["item_id"].split("_")[-1]
+		meat_ids_list.append(meat_id)
+		print(meat_ids_list)
 		
 		#usuniecie z ekwipunka 
 		if item["amount"] > 1:
@@ -94,9 +97,9 @@ func create_item_data_from_scene(scene_path: String) -> Dictionary:
 
 	return item_data
 	
-func get_cooked_meat():
+func get_cooked_meat(path):
 	
-	var cooked_meat = create_item_data_from_scene("res://Scenes/Food/meat_raw_2.tscn")
+	var cooked_meat = create_item_data_from_scene(path)
 	var added = false
 	var inventory = inventory_system.current_inventory
 

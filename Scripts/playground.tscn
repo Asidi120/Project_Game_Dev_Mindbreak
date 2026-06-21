@@ -56,8 +56,11 @@
 [ext_resource type="PackedScene" uid="uid://hwpi48hrlmyu" path="res://Scenes/Food/meat_raw_4.tscn" id="52_hlkfb"]
 [ext_resource type="PackedScene" uid="uid://daw6rsfw5vdjg" path="res://Scenes/Runes/rune_1.tscn" id="55_7l3q8"]
 [ext_resource type="PackedScene" uid="uid://bjb88osnfjlic" path="res://Scenes/StaticStructures/bonfire.tscn" id="55_kkea6"]
-[ext_resource type="PackedScene" uid="uid://wuwot8hv4p00" path="res://Scenes/StaticStructures/chest.tscn" id="56_hlkfb"]
+[ext_resource type="PackedScene" path="res://Scenes/StaticStructures/chest.tscn" id="56_hlkfb"]
+[ext_resource type="PackedScene" uid="uid://dwfu6w7p8yqvm" path="res://Dungeons/DungeonSecond/Dungeon2Entrance.tscn" id="58_1grgn"]
 [ext_resource type="PackedScene" uid="uid://bu47s3h11vmi5" path="res://Scenes/StaticStructures/chest_dungeon.tscn" id="58_61y65"]
+[ext_resource type="PackedScene" uid="uid://djjvgfq14orgc" path="res://Dungeons/DungeonThird/Dungeon3Entrance.tscn" id="59_28vq4"]
+[ext_resource type="PackedScene" uid="uid://ekykjh8h0tui" path="res://Dungeons/DungeonFirst/Dungeon1Entrance.tscn" id="59_v7jvq"]
 
 [node name="Playground" type="Node2D" unique_id=571104678]
 scale = Vector2(1.9740651, 1.9740651)
@@ -272,6 +275,15 @@ position = Vector2(-42.253166, 127.88517)
 
 [node name="ChestDungeon2" parent="BleakYellowGrass/level" unique_id=1261636958 instance=ExtResource("58_61y65")]
 position = Vector2(2.8314667, 130.41801)
+
+[node name="Dungeon1Entrance" parent="BleakYellowGrass/level" unique_id=2060744612 instance=ExtResource("59_v7jvq")]
+position = Vector2(230.78748, -255.19336)
+
+[node name="Dungeon1Entrance2" parent="BleakYellowGrass/level" unique_id=723689509 instance=ExtResource("58_1grgn")]
+position = Vector2(343.75232, -283.05466)
+
+[node name="Dungeon1Entrance3" parent="BleakYellowGrass/level" unique_id=369519732 instance=ExtResource("59_28vq4")]
+position = Vector2(460.26318, -253.05466)
 
 [node name="HUD" parent="BleakYellowGrass" unique_id=1148326026 instance=ExtResource("14_djkbh")]
 

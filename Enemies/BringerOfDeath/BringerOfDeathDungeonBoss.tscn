@@ -417,11 +417,10 @@ size = Vector2(24, 8)
 [node name="BringerOfDeath" type="Node2D" unique_id=2039038124]
 scale = Vector2(2, 2)
 
-[node name="BringerOfDeath" type="CharacterBody2D" parent="." unique_id=485098827]
+[node name="BringerOfDeath" type="CharacterBody2D" parent="." unique_id=485098827 groups=["Boss"]]
 collision_layer = 2
 collision_mask = 16
 script = ExtResource("1_cogwi")
-max_hp = 500
 speed = 50.0
 attack_cooldown = 0.5
 spell_scene = ExtResource("2_um5xy")

@@ -1,4 +1,4 @@
-class_name IceGolemDungeonBoss extends CharacterBody2D
+class_name IceGolemDungeon extends CharacterBody2D
 
 signal hp_changed(current_hp, max_hp)
 signal died

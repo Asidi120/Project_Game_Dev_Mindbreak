@@ -18,10 +18,10 @@ script = ExtResource("2_wvxlg")
 
 [node name="Ingredient1" type="Control" parent="." unique_id=729213273]
 anchors_preset = 0
-offset_left = 59.0
-offset_top = 66.0
-offset_right = 158.0
-offset_bottom = 161.0
+offset_left = 20.0
+offset_top = 23.0
+offset_right = 67.0
+offset_bottom = 67.0
 
 [node name="Icon" type="TextureRect" parent="Ingredient1" unique_id=176537625]
 layout_mode = 1
@@ -30,25 +30,29 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
 
-[node name="AmountLabel" type="Label" parent="Ingredient1" unique_id=1259505609]
+[node name="AmountLabel" type="Label" parent="Ingredient1" unique_id=416680806]
+custom_minimum_size = Vector2(10, 10)
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -25.0
-offset_top = -25.0
+offset_left = -16.0
+offset_top = -16.0
 grow_horizontal = 0
 grow_vertical = 0
+theme_override_font_sizes/font_size = 10
 
 [node name="Ingredient2" type="Control" parent="." unique_id=1753145252]
 anchors_preset = 0
-offset_left = 255.0
-offset_top = 67.0
-offset_right = 353.0
-offset_bottom = 161.0
+offset_left = 114.0
+offset_top = 23.0
+offset_right = 161.0
+offset_bottom = 67.0
 
 [node name="Icon" type="TextureRect" parent="Ingredient2" unique_id=2106355701]
 layout_mode = 1
@@ -57,25 +61,29 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
 
 [node name="AmountLabel" type="Label" parent="Ingredient2" unique_id=1122755121]
+custom_minimum_size = Vector2(16, 16)
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -25.0
-offset_top = -25.0
+offset_left = -16.0
+offset_top = -16.0
 grow_horizontal = 0
 grow_vertical = 0
+theme_override_font_sizes/font_size = 10
 
 [node name="Result" type="Control" parent="." unique_id=799111200]
 anchors_preset = 0
-offset_left = 444.0
-offset_top = 67.0
-offset_right = 543.0
-offset_bottom = 160.0
+offset_left = 206.0
+offset_top = 23.0
+offset_right = 252.0
+offset_bottom = 67.0
 
 [node name="Icon" type="TextureRect" parent="Result" unique_id=1827108602]
 layout_mode = 1
@@ -84,3 +92,5 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5

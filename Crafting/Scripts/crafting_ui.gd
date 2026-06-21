@@ -110,7 +110,7 @@ func refresh_recipes() -> void:
 		var crafting_slot = crafting_slot_scene.instantiate()
 		recipes_container.add_child(crafting_slot)
 
-		crafting_slot.custom_minimum_size = Vector2(260, 100)
+		crafting_slot.custom_minimum_size = Vector2(272, 90)
 
 		var can_make = can_craft(recipe)
 

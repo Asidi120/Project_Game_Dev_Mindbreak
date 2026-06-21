@@ -57,6 +57,7 @@
 [ext_resource type="PackedScene" uid="uid://daw6rsfw5vdjg" path="res://Scenes/Runes/rune_1.tscn" id="55_7l3q8"]
 [ext_resource type="PackedScene" uid="uid://bjb88osnfjlic" path="res://Scenes/StaticStructures/bonfire.tscn" id="55_kkea6"]
 [ext_resource type="PackedScene" uid="uid://wuwot8hv4p00" path="res://Scenes/StaticStructures/chest.tscn" id="56_hlkfb"]
+[ext_resource type="PackedScene" uid="uid://bu47s3h11vmi5" path="res://Scenes/StaticStructures/chest_dungeon.tscn" id="58_61y65"]
 
 [node name="Playground" type="Node2D" unique_id=571104678]
 scale = Vector2(1.9740651, 1.9740651)
@@ -265,6 +266,12 @@ position = Vector2(-2.2342224, 90.90564)
 
 [node name="Rune1" parent="BleakYellowGrass/level" unique_id=862821300 instance=ExtResource("55_7l3q8")]
 position = Vector2(-84.298386, 39.74218)
+
+[node name="ChestDungeon" parent="BleakYellowGrass/level" unique_id=1552211032 instance=ExtResource("58_61y65")]
+position = Vector2(-42.253166, 127.88517)
+
+[node name="ChestDungeon2" parent="BleakYellowGrass/level" unique_id=1261636958 instance=ExtResource("58_61y65")]
+position = Vector2(2.8314667, 130.41801)
 
 [node name="HUD" parent="BleakYellowGrass" unique_id=1148326026 instance=ExtResource("14_djkbh")]
 

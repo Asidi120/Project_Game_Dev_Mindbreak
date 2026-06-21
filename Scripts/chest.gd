@@ -1,5 +1,5 @@
 extends StaticBody2D
-
+class_name Chest
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
@@ -12,9 +12,14 @@ var is_open := false
 
 var player_in_range = null
 
+@onready var area_2d: Area2D = $Area2D
+
 func _ready() -> void:
 	chest_inventory.resize(chest_size)
 	chest_inventory.fill(null)
+	
+	area_2d.body_entered.connect(_on_area_2d_body_entered)
+	area_2d.body_exited.connect(_on_area_2d_body_exited)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

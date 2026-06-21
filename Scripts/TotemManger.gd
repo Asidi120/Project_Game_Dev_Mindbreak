@@ -9,5 +9,4 @@ func spawn_totem():
 
 	var totem = BossManager.current_totem.instantiate()
 	add_child(totem)
-	print("totem sie zespawnil",totem)
 	totem.global_position = Vector2(0,-142) # pozycja totemu

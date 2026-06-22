@@ -214,9 +214,13 @@ func update_held_item():
 	if Input.is_action_just_pressed("eat") and (item["item_type"] == "food" or item["item_type"] == "meat_raw" or item["item_type"] == "meat_cooked" or item["item_type"] == "potion"):
 		if eating(item):
 			print("Znikaaaaa")
-			inventory_system.current_inventory[index] = null
+			
+			if item.has("amount") and item["amount"] > 1:
+				item["amount"] -= 1
+			else:
+				inventory_system.current_inventory[index] = null
+			
 			inventory_system.refresh_all()
-
 
 func update_held_position():
 	if facing_direction == Vector2.UP:
@@ -234,8 +238,6 @@ func update_held_position():
 
 
 func eating(item):
-	var czy_zjedzone = false
-	
 	if inventory_system.inventory_visible:
 		return false
 	
@@ -243,17 +245,17 @@ func eating(item):
 		return false
 	
 	if item["item_id"] == "potion_health":
-		if current_hp == 200:
+		if current_hp == max_hp:
 			return false
 		
-		current_hp = 200
+		current_hp = max_hp
 		emit_signal("hp_changed", current_hp, max_hp)
-		czy_zjedzone = true
+		return true
 	
 	elif item["item_id"] == "potion_stamina":
 		drank_stamina_potion = true
 		stamina_bar.modulate = Color(0.0, 0.853, 0.0, 1.0)
-		czy_zjedzone = true
+		return true
 	
 	elif item.has("hunger_points"):
 		if current_hunger == max_hunger:
@@ -269,9 +271,9 @@ func eating(item):
 			print("Zjadłeś")
 		
 		emit_signal("hunger_changed", current_hunger, max_hunger)
-		czy_zjedzone = true
+		return true
 	
-	return czy_zjedzone
+	return false
 
 
 func throw():

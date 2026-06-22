@@ -153,7 +153,7 @@ func update_held_item():
 	held_item.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 	
 	#jedzenie trzymanego itema
-	if Input.is_action_just_pressed("eat") and (item["item_type"] == "food" or item["item_type"] == "meat_raw" or item["item_type"] == "meat_cooked"):
+	if Input.is_action_just_pressed("eat") and (item["item_type"] == "food" or item["item_type"] == "meat_raw" or item["item_type"] == "meat_cooked" or item["item_type"] == "potion"):
 		if eating(item):
 			print("Znikaaaaa")
 			inventory_system.current_inventory[index] = null

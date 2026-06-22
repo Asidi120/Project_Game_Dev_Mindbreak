@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://cplvkbow014ta"]
+
+[ext_resource type="Script" uid="uid://b01hfte5jgl0m" path="res://Crafting/Scripts/crafting_ui.gd" id="1_otb4k"]
+[ext_resource type="Texture2D" uid="uid://bs6rdw18rar7q" path="res://Crafting/Sprites/Inventory_1.png" id="2_nc4d8"]
+
+[node name="CraftingUI" type="Control" unique_id=597152013 groups=["crafting_ui"]]
+custom_minimum_size = Vector2(600, 400)
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1.0
+offset_top = -1.0
+offset_right = 601.0
+offset_bottom = 399.0
+scale = Vector2(1.5, 1.5)
+script = ExtResource("1_otb4k")
+
+[node name="Background" type="TextureRect" parent="." unique_id=686562746]
+custom_minimum_size = Vector2(600, 400)
+layout_mode = 0
+offset_right = 600.0
+offset_bottom = 400.0
+texture = ExtResource("2_nc4d8")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Background" unique_id=466335314]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 22.0
+offset_top = 27.0
+offset_right = -22.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RecipesContainer" type="GridContainer" parent="Background/ScrollContainer" unique_id=1206645940]
+layout_mode = 2
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 2

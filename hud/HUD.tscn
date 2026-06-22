@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://x166r6kvfqjc" path="res://Scenes/inventory.tscn" id="4_akegq"]
 [ext_resource type="PackedScene" uid="uid://bpdatfhqafv8t" path="res://Scenes/fast_eq.tscn" id="5_s5l88"]
 [ext_resource type="PackedScene" uid="uid://cdrmdeiqjit5u" path="res://TotemBank/totems.tscn" id="6_fimwm"]
+[ext_resource type="PackedScene" uid="uid://cplvkbow014ta" path="res://Crafting/Scenes/crafting_ui.tscn" id="7_st07x"]
 
 [node name="HUD" type="CanvasLayer" unique_id=1148326026 groups=["hud"]]
 

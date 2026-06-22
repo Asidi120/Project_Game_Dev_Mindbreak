@@ -43,3 +43,11 @@ func collect():
 	WorldStateManager.remove_dropped_item(get_tree().current_scene.scene_file_path, global_position)
 	queue_free()
 	return item
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	pass # Replace with function body.
+
+
+func _on_area_2d_body_exited(body: Node2D) -> void:
+	pass # Replace with function body.

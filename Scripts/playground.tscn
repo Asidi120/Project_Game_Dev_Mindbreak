@@ -58,6 +58,12 @@
 [ext_resource type="PackedScene" uid="uid://bjb88osnfjlic" path="res://Scenes/StaticStructures/bonfire.tscn" id="55_kkea6"]
 [ext_resource type="PackedScene" uid="uid://wuwot8hv4p00" path="res://Scenes/StaticStructures/chest.tscn" id="56_hlkfb"]
 [ext_resource type="PackedScene" uid="uid://b7lbh1xjq0hxw" path="res://house.tscn" id="58_61y65"]
+[ext_resource type="PackedScene" uid="uid://cuwbw76t8spcd" path="res://Scenes/Potions/potion_hunger.tscn" id="57_oo2fk"]
+[ext_resource type="PackedScene" uid="uid://bu47s3h11vmi5" path="res://Scenes/StaticStructures/chest_dungeon.tscn" id="58_61y65"]
+[ext_resource type="PackedScene" uid="uid://p4mxbst4j585" path="res://Scenes/Items/gold_bar.tscn" id="59_v7jvq"]
+[ext_resource type="PackedScene" uid="uid://cgucfj6me8w55" path="res://Scenes/Potions/potion_health.tscn" id="61_1grgn"]
+[ext_resource type="PackedScene" uid="uid://vebg06r8ojnf" path="res://Scenes/Potions/potion_stamina.tscn" id="62_28vq4"]
+[ext_resource type="PackedScene" uid="uid://iqmeit2sjngx" path="res://Scenes/Items/diamond_ore.tscn" id="63_d2ds1"]
 
 [node name="Playground" type="Node2D" unique_id=571104678]
 scale = Vector2(1.9740651, 1.9740651)
@@ -274,8 +280,59 @@ position = Vector2(-2.2342224, 90.90564)
 [node name="Rune1" parent="BleakYellowGrass/level" unique_id=862821300 instance=ExtResource("55_7l3q8")]
 position = Vector2(-84.298386, 39.74218)
 
+[node name="ChestDungeon" parent="BleakYellowGrass/level" unique_id=1552211032 instance=ExtResource("58_61y65")]
+position = Vector2(-42.253166, 127.88517)
+
+[node name="ChestDungeon2" parent="BleakYellowGrass/level" unique_id=1261636958 instance=ExtResource("58_61y65")]
+position = Vector2(2.8314667, 130.41801)
+
+[node name="PotionHunger" parent="BleakYellowGrass/level" unique_id=1662720649 instance=ExtResource("57_oo2fk")]
+position = Vector2(-162.31, 150.17418)
+
 [node name="HUD" parent="BleakYellowGrass" unique_id=1148326026 instance=ExtResource("14_djkbh")]
 
 [node name="DayNightOverlay" type="CanvasModulate" parent="." unique_id=1490973845]
 position = Vector2(819, 160)
 script = ExtResource("19_tc4ax")
+
+[node name="Stick" parent="." unique_id=1089780086 instance=ExtResource("7_tc4ax")]
+position = Vector2(-196.54874, -6.078827)
+
+[node name="Stick2" parent="." unique_id=1203021692 instance=ExtResource("7_tc4ax")]
+position = Vector2(-176.79254, -6.585396)
+
+[node name="Stick3" parent="." unique_id=617346940 instance=ExtResource("7_tc4ax")]
+position = Vector2(-154.50351, -7.0919647)
+
+[node name="GoldBar" parent="." unique_id=42613941 instance=ExtResource("59_v7jvq")]
+position = Vector2(-214.27866, -23.808739)
+
+[node name="GoldBar2" parent="." unique_id=1137438177 instance=ExtResource("59_v7jvq")]
+position = Vector2(-188.9502, -21.782463)
+
+[node name="GoldBar3" parent="." unique_id=699516385 instance=ExtResource("59_v7jvq")]
+position = Vector2(-162.60861, -29.380997)
+
+[node name="GoldBar4" parent="." unique_id=1784517248 instance=ExtResource("59_v7jvq")]
+position = Vector2(-140.82616, -23.808739)
+
+[node name="PotionHealth" parent="." unique_id=477890217 instance=ExtResource("61_1grgn")]
+position = Vector2(-222.38376, 58.761993)
+
+[node name="PotionStamina" parent="." unique_id=859926476 instance=ExtResource("62_28vq4")]
+position = Vector2(-182.3648, 82.57073)
+
+[node name="Flower2" parent="." unique_id=16545761 instance=ExtResource("26_fkpol")]
+position = Vector2(-214.27866, 41.03208)
+
+[node name="DiamondOre" parent="." unique_id=929618777 instance=ExtResource("63_d2ds1")]
+position = Vector2(-157.03636, 35.459824)
+
+[node name="DiamondOre2" parent="." unique_id=1605806849 instance=ExtResource("63_d2ds1")]
+position = Vector2(-138.79988, 26.848152)
+
+[node name="DiamondOre3" parent="." unique_id=118556032 instance=ExtResource("63_d2ds1")]
+position = Vector2(-135.76047, 37.4861)
+
+[node name="Flower3" parent="." unique_id=2042122844 instance=ExtResource("26_fkpol")]
+position = Vector2(-198.57501, 40.525513)

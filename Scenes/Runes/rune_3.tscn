@@ -1,25 +1,41 @@
 [gd_scene format=3 uid="uid://cwruc27pbbcdh"]
 
-[ext_resource type="Script" uid="uid://cvtmhh1hpljyx" path="res://Scripts/item.gd" id="1_jy734"]
+[ext_resource type="Script" uid="uid://4jqp0gnxyoet" path="res://Scenes/Runes/runes.gd" id="1_ilnum"]
 [ext_resource type="Texture2D" uid="uid://cwsyeof3vjdb0" path="res://OtherSprites/Runes/rune3.png" id="2_jy734"]
+[ext_resource type="FontFile" uid="uid://b0nphpwk324ms" path="res://Fonts/PixelPurl.ttf" id="3_cddlx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d43ed"]
-size = Vector2(17.710262, 32.68274)
+size = Vector2(17.710262, 63.078163)
 
 [node name="Rune3" type="Area2D" unique_id=13035520]
-z_index = -1
-script = ExtResource("1_jy734")
-item_id = "rune_3"
-item_name = "Rune3"
-item_type = "rune"
+scale = Vector2(1.5, 1.5)
+script = ExtResource("1_ilnum")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1622709971]
 position = Vector2(0.8064519, 0)
 scale = Vector2(0.51599216, 0.51599216)
 texture = ExtResource("2_jy734")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1266554538]
-position = Vector2(0.80840963, -0.0039617806)
+[node name="Area2D" type="Area2D" parent="." unique_id=276750703]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1266554538]
+position = Vector2(0.6682851, -0.0032749414)
 rotation = -1.5756979
-scale = Vector2(1.0017768, -0.2959774)
+scale = Vector2(1.0017768, -0.29597738)
 shape = SubResource("RectangleShape2D_d43ed")
+
+[node name="ClickToOpenLabel" type="Label" parent="." unique_id=698510416]
+visible = false
+z_index = 3
+offset_left = -272.0
+offset_top = -75.33334
+offset_right = 272.0
+offset_bottom = -16.333344
+theme_override_fonts/font = ExtResource("3_cddlx")
+theme_override_font_sizes/font_size = 32
+text = "Click 'E' to collect rune
+and escape dungeon!"
+horizontal_alignment = 1
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_body_exited"]

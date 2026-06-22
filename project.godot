@@ -21,6 +21,7 @@ SceneTransition="*uid://blkywgueipie3"
 CaveItemManager="*uid://d2vpd5jtsj1am"
 WorldStateManager="*uid://dv41yvoht82cq"
 BossManager="*uid://ld0s6b38bht6"
+TotemManger="uid://d08xowmhti55k"
 
 [display]
 
@@ -41,6 +42,8 @@ inventory_ui=""
 BossArea=""
 Dungeon=""
 Boss=""
+crafting_ui=""
+TotemBar=""
 
 [input]
 

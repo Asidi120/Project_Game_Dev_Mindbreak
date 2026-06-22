@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://x166r6kvfqjc" path="res://Scenes/inventory.tscn" id="4_akegq"]
 [ext_resource type="PackedScene" uid="uid://bpdatfhqafv8t" path="res://Scenes/fast_eq.tscn" id="5_s5l88"]
 [ext_resource type="PackedScene" uid="uid://cdrmdeiqjit5u" path="res://TotemBank/totems.tscn" id="6_fimwm"]
+[ext_resource type="PackedScene" uid="uid://cplvkbow014ta" path="res://Crafting/Scenes/crafting_ui.tscn" id="7_st07x"]
 
 [node name="HUD" type="CanvasLayer" unique_id=1148326026 groups=["hud"]]
 
@@ -51,7 +52,13 @@ self_modulate = Color(0.4840902, 0.0045073065, 8.904189e-07, 1)
 top_level = true
 
 [node name="TotemBank" parent="." unique_id=277440264 instance=ExtResource("6_fimwm")]
-offset_left = 1235.0
-offset_top = 199.0
-offset_right = 1275.0
-offset_bottom = 239.0
+offset_left = 1261.0
+offset_top = 249.0
+offset_right = 1301.0
+offset_bottom = 289.0
+
+[node name="CraftingUI" parent="." unique_id=597152013 instance=ExtResource("7_st07x")]
+offset_left = 279.0
+offset_top = 73.0
+offset_right = 879.0
+offset_bottom = 473.0

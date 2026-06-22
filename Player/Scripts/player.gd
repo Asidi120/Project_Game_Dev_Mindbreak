@@ -31,7 +31,7 @@ var already_hit = []
 
 var inventory = []
 const MAX_STACK = 12
-const MAX_SLOT = 24
+const MAX_SLOT = 18
 
 var inventory_ui = null
 
@@ -61,6 +61,8 @@ var inventory_system = null
 
 var facing_direction := Vector2.DOWN
 
+var drank_stamina_potion := false
+var stamina_bar = null
 
 func _ready() -> void:
 	await get_tree().process_frame
@@ -85,6 +87,12 @@ func _ready() -> void:
 
 	for i in range(MAX_SLOT):
 		inventory.append(null)
+
+	if inventory_ui:
+		inventory_ui.refresh(inventory)
+
+	if fasteq_ui:
+		fasteq_ui.refresh(inventory)
 
 	apply_appearance()
 
@@ -173,11 +181,15 @@ func update_held_item():
 	if item == null:
 		held_item.visible = false
 		return
-
+	
+	var size:= Vector2(13, 13)
 	held_item.visible = true
 	held_item.texture = item["texture"]
 	held_item.z_index = 10
-	held_item.size = Vector2(15, 15)
+	
+	if item["item_type"] == "axe" or item["item_type"] == "pickaxe" or item["item_type"] == "sword":
+		size = Vector2(15,15)
+	held_item.size = size
 	held_item.custom_minimum_size = Vector2(10, 10)
 	held_item.position = Vector2(-10, -10)
 	held_item.scale = Vector2.ONE
@@ -185,7 +197,7 @@ func update_held_item():
 	held_item.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 	
 	#jedzenie trzymanego itema
-	if Input.is_action_just_pressed("eat") and (item["item_type"] == "food" or item["item_type"] == "meat_raw" or item["item_type"] == "meat_cooked"):
+	if Input.is_action_just_pressed("eat") and (item["item_type"] == "food" or item["item_type"] == "meat_raw" or item["item_type"] == "meat_cooked" or item["item_type"] == "potion"):
 		if eating(item):
 			print("Znikaaaaa")
 			inventory_system.current_inventory[index] = null
@@ -210,16 +222,28 @@ func update_held_position():
 func eating(item):
 	var czy_zjedzone = false
 	if not inventory_system.inventory_visible:
-		if item["hunger_points"] <= max_hunger:
-			if current_hunger == max_hunger:
-				print("Nie można zjeść. Jesteś najedzony!")
+		if item["item_id"] == "potion_health": #health potka
+			if current_hp == 200:
 				return
-			elif item["hunger_points"] + current_hunger >= max_hunger:
-				current_hunger = max_hunger
-				print("Najadłeś się")
 			else:
-				print("Zjadłeś")
-				current_hunger += item["hunger_points"]
+				current_hp = 200
+				emit_signal("hp_changed", current_hp, max_hp)
+		if item["item_id"] == "potion_stamina": #wypicie stamina potion
+			drank_stamina_potion = true
+			stamina_bar.modulate = Color(0.0, 0.853, 0.0, 1.0)
+			
+			print("heath potka")
+		elif item is Food:
+			if item["hunger_points"] <= max_hunger:
+				if current_hunger == max_hunger:
+					print("Nie można zjeść. Jesteś najedzony!")
+					return
+				elif item["hunger_points"] + current_hunger >= max_hunger:
+					current_hunger = max_hunger
+					print("Najadłeś się")
+				else:
+					print("Zjadłeś")
+					current_hunger += item["hunger_points"]
 		czy_zjedzone = true
 		return czy_zjedzone
 
@@ -268,18 +292,39 @@ func throw():
 			inventory_system.current_inventory[index] = null
 
 		inventory_system.refresh_all()
+	
+func get_held_item():
+	if inventory_system == null:
+		return
 
+	var index = inventory_system.selected_fasteq_index
 
+	if index < 0 or index >= inventory_system.current_inventory.size():
+		return
+
+	var item = inventory_system.current_inventory[index]
+
+	if item == null:
+		return
+	
+	return item
+	
 func attack():
-	state = State.ATTACK
-	is_attacking = true
-	attack_hitbox.monitoring = true
-	sounds.play_sound("attack")
-	await get_tree().create_timer(0.2).timeout
-	attack_hitbox.monitoring = false
-	is_attacking = false
-	already_hit = []
-	state = State.IDLE
+	if current_stamina>=15:
+		state = State.ATTACK
+		is_attacking = true
+		attack_hitbox.monitoring = true
+		if get_held_item() != null:
+			var item = get_held_item()
+			if item["item_type"] == "sword" and inventory_system.inventory_visible == false:
+				sounds.play_sound("attack")
+		await get_tree().create_timer(0.2).timeout
+		attack_hitbox.monitoring = false
+		is_attacking = false
+		already_hit = []
+		state = State.IDLE
+		current_stamina-=15
+		stamina_recovery()
 
 func apply_stun(duration: float):
 	if state == State.DEAD:
@@ -371,7 +416,15 @@ func get_input():
 	direction.x = Input.get_action_strength("right") - Input.get_action_strength("left")
 	direction.y = Input.get_action_strength("down") - Input.get_action_strength("up")
 	direction = direction.normalized()
-
+	
+func stamina_potion_timer(): #czas dzialania stamina potion
+	stamina_bar = get_tree().get_first_node_in_group("stamina_bar")
+	if drank_stamina_potion:
+		current_stamina=100
+		emit_signal("stamina_usage", current_stamina, max_stamina)
+		await get_tree().create_timer(10.0).timeout
+		stamina_bar.modulate = Color(1.0, 1.0, 1.0, 1.0)
+		drank_stamina_potion = false
 func move_player(delta):
 	var final_speed = move_speed
 	if is_slowed:
@@ -380,7 +433,9 @@ func move_player(delta):
 		final_speed *= buff_multiplier
 
 	if Input.get_action_strength("sprint") > 0:
-		current_stamina -= 15 * delta
+		stamina_potion_timer()
+		if !drank_stamina_potion:
+			current_stamina -= 15 * delta #tuuuuuuuuuuu jesli nie ma potk
 		if current_stamina < 10 or current_hunger <= 1:
 			velocity = direction * final_speed
 		else:

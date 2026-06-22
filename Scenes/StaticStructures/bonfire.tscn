@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://bjb88osnfjlic"]
 
-[ext_resource type="Script" uid="uid://cm2xa22vdalj0" path="res://Scripts/bonfire.gd" id="1_tp1om"]
+[ext_resource type="Script" path="res://Scripts/bonfire.gd" id="1_tp1om"]
 [ext_resource type="Texture2D" uid="uid://bltnftcyd54do" path="res://OtherSprites/Bonfire/Bonfire_05-Sheet.png" id="3_lup3b"]
 [ext_resource type="Texture2D" uid="uid://c2mm2me56wagt" path="res://OtherSprites/Bonfire/Fire_02-Sheet.png" id="4_lkxcx"]
+[ext_resource type="Texture2D" uid="uid://bn00i1og0tkom" path="res://OtherSprites/LightSprite/2d_lights_and_shadows_neutral_point_light.webp" id="5_lup3b"]
 [ext_resource type="Texture2D" uid="uid://bev2aifpunbcg" path="res://OtherSprites/Bonfire/Smoke-Sheet.png" id="5_n3tei"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sih5k"]
@@ -152,6 +153,13 @@ shape = SubResource("RectangleShape2D_blcey")
 position = Vector2(-0.6944443, -0.6944444)
 scale = Vector2(1.3611106, 1.3611106)
 shape = SubResource("CircleShape2D_lup3b")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1069918313]
+position = Vector2(-1.9073486e-06, -3.8146973e-06)
+scale = Vector2(0.5208332, 0.45572904)
+color = Color(0.77793896, 0.4570015, 0, 1)
+energy = 2.0
+texture = ExtResource("5_lup3b")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

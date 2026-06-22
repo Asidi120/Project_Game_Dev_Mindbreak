@@ -223,6 +223,7 @@ func die():
 	target = null
 	velocity = Vector2.ZERO
 	emit_signal("died")
+	print("Boss 2 died")
 	sprite.play("death")
 	await sprite.animation_finished
 	queue_free()

@@ -545,7 +545,7 @@ sources/0 = SubResource("TileSetAtlasSource_h7x86")
 [sub_resource type="CircleShape2D" id="CircleShape2D_h7x86"]
 radius = 36.496574
 
-[node name="DungeonSecond" type="Node2D" unique_id=398841407]
+[node name="DungeonSecond" type="Node2D" unique_id=398841407 groups=["Dungeon"]]
 scale = Vector2(2, 2)
 script = ExtResource("1_h7x86")
 numberofmonsters = 10
@@ -791,7 +791,7 @@ position = Vector2(-608.5, 128)
 tile_map_data = PackedByteArray("AAAAAP//AAAEAAcAAAAAAAAAAAAEAAgAAAABAP//AAAFAAcAAAABAAAAAAAFAAgAAAD/////AAADAAcAAAD//wAAAAADAAgAAAA=")
 tile_set = SubResource("TileSet_ndstq")
 
-[node name="Exit" type="Area2D" parent="." unique_id=917217482 groups=["Dungeon"]]
+[node name="Exit" type="Area2D" parent="." unique_id=917217482]
 position = Vector2(383, -1.5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Exit" unique_id=1191040795]

@@ -550,7 +550,7 @@ radius = 34.59046
 [sub_resource type="CircleShape2D" id="CircleShape2D_urry7"]
 radius = 36.496574
 
-[node name="DungeonThird" type="Node2D" unique_id=703151606]
+[node name="DungeonThird" type="Node2D" unique_id=703151606 groups=["Dungeon"]]
 scale = Vector2(2, 2)
 script = ExtResource("1_qoa23")
 numberofmonsters = 15
@@ -916,7 +916,7 @@ shape = SubResource("CircleShape2D_00qu0")
 
 [node name="Exit" type="Area2D" parent="." unique_id=195562470]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Exit" unique_id=41967674 groups=["Dungeon"]]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Exit" unique_id=41967674]
 position = Vector2(-600, 379.5)
 shape = SubResource("CircleShape2D_urry7")
 

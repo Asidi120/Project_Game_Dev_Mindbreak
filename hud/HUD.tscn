@@ -52,20 +52,7 @@ self_modulate = Color(0.4840902, 0.0045073065, 8.904189e-07, 1)
 top_level = true
 
 [node name="TotemBank" parent="." unique_id=277440264 instance=ExtResource("6_fimwm")]
-offset_left = 1235.0
-offset_top = 199.0
-offset_right = 1275.0
-offset_bottom = 239.0
-
-[node name="CraftingUI" parent="." unique_id=597152013 instance=ExtResource("7_st07x")]
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -1142.0
-offset_top = -736.0
-offset_right = -541.99994
-offset_bottom = -336.0
-grow_horizontal = 0
-grow_vertical = 0
+offset_left = 1261.0
+offset_top = 249.0
+offset_right = 1301.0
+offset_bottom = 289.0

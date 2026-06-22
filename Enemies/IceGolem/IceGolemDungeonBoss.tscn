@@ -384,11 +384,10 @@ size = Vector2(50, 10)
 [node name="IceGolemDungeon" type="Node2D" unique_id=431811086]
 scale = Vector2(2, 2)
 
-[node name="IceGolem" type="CharacterBody2D" parent="." unique_id=560651506]
+[node name="IceGolem" type="CharacterBody2D" parent="." unique_id=560651506 groups=["Boss"]]
 collision_layer = 2
 collision_mask = 16
 script = ExtResource("1_2xydb")
-max_hp = 500
 speed = 50.0
 
 [node name="Hp_bar" type="TextureProgressBar" parent="IceGolem" unique_id=2009711514]

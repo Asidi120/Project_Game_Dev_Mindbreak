@@ -1,16 +1,16 @@
 extends Node2D
 
-#Ustawienia świata (teren itd)
+
 const WORLD_WIDTH  := 500
 const WORLD_HEIGHT := 500
 const TILE_SIZE    := 16
 
-# Progi wysokości — woda → plaża → łąka → losowe biomy
+
 const OCEAN_MAX := 0.15
 const BEACH_MAX := 0.28
 const GRASS_MAX := 0.39   
 
-# ID terenów
+
 const TERRAIN_WATER    := 0
 const TERRAIN_BEACH    := 1
 const TERRAIN_GRASS    := 2
@@ -23,7 +23,7 @@ const BIOME_COUNTS := {
 	TERRAIN_GRASS:    18,
 }
 
-#obiekty
+
 const SCENE_FLOWER1   := preload("res://Scenes/Flowers/flower1.tscn")
 const SCENE_FLOWER2   := preload("res://Scenes/Flowers/flower2.tscn")
 const SCENE_FLOWER3   := preload("res://Scenes/Flowers/flower3.tscn")

@@ -32,12 +32,16 @@ func update_hits():
 	# niszczenie tree majac axe
 	if item["item_type"] == "axe" and object_type == "tree":
 		hits += item["tool_power"]
+		item["item_durability"] -= 50
 	# niszczenie boulder majac pickaxe
 	elif item["item_type"] == "pickaxe" and object_type == "boulder":
 		hits += item["tool_power"]
+		item["item_durability"] -= 1
 	# niszczenie tree i bush majac jakikolwiek inny przedmiot
 	elif object_type == "tree" or object_type == "bush":
 		hits += 1	
+		
+	
 	
 	#nodes
 	var list_of_nodes = ["iron", "copper", "gold", "diamond"]
@@ -45,6 +49,12 @@ func update_hits():
 	if object_type in list_of_nodes and item["item_type"] == "pickaxe":
 		if item["position_of_power"] >= position_of_power_needed:
 			hits += item["tool_power"]
+			item["item_durability"] -= 1
+			
+	if item["item_durability"] <= 0:
+		inventory_system.current_inventory[index] = null
+		inventory_system.refresh_all()
+		return
 		
 	
 func _ready() -> void:

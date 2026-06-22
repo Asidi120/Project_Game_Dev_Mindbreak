@@ -287,6 +287,10 @@ func throw():
 
 		var item_scene = load(item["scene_path"])
 		var dropped_item = item_scene.instantiate()
+		
+		#tutaj zapamietuje durability wyrzuconych przedmiotow
+		if dropped_item is Tool or dropped_item is Sword:
+			dropped_item.item_durability = item.get("item_durability", dropped_item.item_durability)
 
 		get_tree().current_scene.add_child(dropped_item)
 		dropped_item.global_position = global_position + facing_direction * 20
@@ -328,15 +332,23 @@ func attack():
 		state = State.ATTACK
 		is_attacking = true
 		attack_hitbox.monitoring = true
-		sounds.play_sound("attack")
-		current_stamina-=15
-		stamina_recovery()
+		if get_held_item() != null:
+			var item = get_held_item()
+			if item["item_type"] == "sword" and inventory_system.inventory_visible == false:
+				sounds.play_sound("attack")
+			#update durability narzedzi
+			#if item["item_type"] == "sword" or item["item_type"] == "axe" or item["item_type"] == "pickaxe":
+				#update_item_durability(item)
 		await get_tree().create_timer(0.2).timeout
 		attack_hitbox.monitoring = false
 		is_attacking = false
 		already_hit = []
 		state = State.IDLE
-
+		current_stamina-=15
+		stamina_recovery()
+		
+		
+	
 func apply_stun(duration: float):
 	if state == State.DEAD:
 		return
@@ -533,7 +545,7 @@ func _process(_delta):
 		for i in range(inventory.size() - 1, -1, -1):
 			if inventory[i] != null:
 				var item_data = inventory[i]
-				if item_data["item_id"] == item_picked_up["item_id"] and item_data["amount"] < MAX_STACK:
+				if inventory_system.can_stack_items(item_data, item_picked_up) and item_data["amount"] < MAX_STACK:
 					item_data["amount"] += 1
 					added = true
 					break

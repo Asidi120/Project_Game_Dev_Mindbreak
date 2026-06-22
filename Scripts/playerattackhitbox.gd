@@ -23,6 +23,33 @@ func dealt_damage():
 		damage += item["power"]
 		
 	return damage
+	
+func update_durability():
+	if player.inventory_system == null:
+		return 
+	
+	var index = player.inventory_system.selected_fasteq_index
+	var inventory = player.inventory_system.current_inventory
+	
+	if index < 0 or index >= inventory.size():
+		return 
+	
+	var item = inventory[index]
+	
+	if item == null:
+		return 
+
+		#tutaj update durability miecza
+	item["item_durability"] -= 50
+	print(item["item_durability"])
+	
+	#usuwanie przedmiotu jesli durability ponizej zera
+	if item["item_durability"] <= 0:
+		inventory[index] = null
+		player.inventory_system.refresh_all()
+		return
+		
+	return 
 		
 func _on_area_entered(area: Area2D) -> void:
 	var damage = dealt_damage()
@@ -32,5 +59,6 @@ func _on_area_entered(area: Area2D) -> void:
 
 	if enemy.is_in_group("Enemies") and enemy.has_method("take_damage"):
 		player.already_hit.append(enemy)
+		update_durability()
 		print("taking dmg", damage)
-		enemy.take_damage(damage) #tuuuuuuuuuuuu
+		enemy.take_damage(damage) 

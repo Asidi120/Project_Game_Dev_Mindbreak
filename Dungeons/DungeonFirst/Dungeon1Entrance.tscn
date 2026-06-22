@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://n6cg63wwkytk" path="res://Dungeons/Tiles/Objects_animated.png" id="1_lyj60"]
 [ext_resource type="Script" uid="uid://c0xt7ghhxdjyn" path="res://Dungeons/DungeonEntrance.gd" id="1_xxqrf"]
 [ext_resource type="FontFile" uid="uid://b0nphpwk324ms" path="res://Fonts/PixelPurl.ttf" id="2_ku4bh"]
+[ext_resource type="Texture2D" uid="uid://bn00i1og0tkom" path="res://OtherSprites/LightSprite/2d_lights_and_shadows_neutral_point_light.webp" id="4_ncw11"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ku4bh"]
 atlas = ExtResource("1_lyj60")
@@ -72,7 +73,7 @@ collision_mask = 3
 position = Vector2(0, -19)
 sprite_frames = SubResource("SpriteFrames_w4lsj")
 autoplay = "default"
-frame_progress = 0.48627162
+frame_progress = 0.6648309
 
 [node name="Area2D" type="Area2D" parent="StaticBody2D" unique_id=1341611932]
 
@@ -95,6 +96,13 @@ theme_override_fonts/font = ExtResource("2_ku4bh")
 theme_override_font_sizes/font_size = 32
 text = "Click 'E' to enter!"
 horizontal_alignment = 1
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1037004322]
+position = Vector2(0, -23)
+scale = Vector2(0.43359378, 0.4355469)
+color = Color(0.2566794, 0.6998722, 0.8293748, 1)
+energy = 2.0
+texture = ExtResource("4_ncw11")
 
 [connection signal="body_entered" from="StaticBody2D/Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="StaticBody2D/Area2D" to="." method="_on_area_2d_body_exited"]

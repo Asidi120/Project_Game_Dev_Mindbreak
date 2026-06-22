@@ -234,7 +234,7 @@ load_path = "res://.godot/imported/char_a_pONE2_0bas_humn_v04.png-7fe56d198b5035
 [node name="Player" type="CharacterBody2D" unique_id=257810088 groups=["Players", "player"]]
 position = Vector2(-0.9999962, 9.536743e-07)
 scale = Vector2(1.2515533, 1.2515533)
-collision_mask = 16
+collision_mask = 17
 script = ExtResource("1_4ntmi")
 
 [node name="Hand" type="Node2D" parent="." unique_id=462186334]
@@ -242,15 +242,10 @@ position = Vector2(-3.99504, -5.593051)
 
 [node name="HeldItem" type="TextureRect" parent="Hand" unique_id=108708875]
 custom_minimum_size = Vector2(5, 5)
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
 offset_left = -2.3970194
 offset_top = -2.397021
 offset_right = 2.6029806
 offset_bottom = 2.602979
-grow_horizontal = 2
-grow_vertical = 2
 stretch_mode = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=747600270]

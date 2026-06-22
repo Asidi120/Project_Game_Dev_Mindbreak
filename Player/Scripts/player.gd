@@ -357,6 +357,8 @@ func get_input():
 	
 func stamina_potion_timer(): #czas dzialania stamina potion
 	if drank_stamina_potion:
+		current_stamina=100
+		emit_signal("stamina_usage", current_stamina, max_stamina)
 		await get_tree().create_timer(10.0).timeout
 		drank_stamina_potion = false
 func move_player(delta):

@@ -289,7 +289,58 @@ var recipes := [
 			}
 		]
 	},
-	
+	#Potions
+	{
+		"result_scene": "res://Scenes/Potions/potion_hunger.tscn",
+		"result_id": "potion_hunger",
+		"result_amount": 1,
+		"requirements": [
+			{
+				"item_id": "flower5",
+				"needed_amount": 3,
+				"scene_path": "res://Scenes/Flowers/flower5.tscn"
+			},
+			{
+				"item_id": "diamond_ore",
+				"needed_amount": 2,
+				"scene_path": "res://Scenes/Items/diamond_ore.tscn"
+			}
+		]
+	},
+	{
+		"result_scene": "res://Scenes/Potions/potion_health.tscn",
+		"result_id": "potion_health",
+		"result_amount": 1,
+		"requirements": [
+			{
+				"item_id": "flower1",
+				"needed_amount": 3,
+				"scene_path": "res://Scenes/Flowers/flower1.tscn"
+			},
+			{
+				"item_id": "diamond_ore",
+				"needed_amount": 2,
+				"scene_path": "res://Scenes/Items/diamond_ore.tscn"
+			}
+		]
+	},
+	{
+		"result_scene": "res://Scenes/Potions/potion_stamina.tscn",
+		"result_id": "potion_stamina",
+		"result_amount": 1,
+		"requirements": [
+			{
+				"item_id": "flower2",
+				"needed_amount": 3,
+				"scene_path": "res://Scenes/Flowers/flower2.tscn"
+			},
+			{
+				"item_id": "diamond_ore",
+				"needed_amount": 2,
+				"scene_path": "res://Scenes/Items/diamond_ore.tscn"
+			}
+		]
+	},
 	
 	
 ]

@@ -53,7 +53,7 @@ func _process(_delta: float) -> void:
 		if Input.is_action_just_pressed("inventory"):
 			toggle_inventory()
 			
-	if self.name == "FastEq" and fasteq.visible:
+	if self.name == "FastEq" and fasteq.visible: #scroll i obsluga klawiszy tylko jak jest widczony
 		handle_fasteq_scroll()
 		handle_fasteq_keys()
 

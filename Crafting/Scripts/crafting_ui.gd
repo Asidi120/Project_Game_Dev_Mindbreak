@@ -29,7 +29,7 @@ var recipes := [
 			}
 		]
 	},
-	#AXES
+	#WOOD
 	{
 		"result_scene": "res://Scenes/Tools/axe_wood.tscn",
 		"result_id": "axe_wood",
@@ -48,75 +48,6 @@ var recipes := [
 		]
 	},
 	{
-		"result_scene": "res://Scenes/Tools/axe_stone.tscn",
-		"result_id": "axe_stone",
-		"result_amount": 1,
-		"requirements": [
-			{
-				"item_id": "stick",
-				"needed_amount": 4,
-				"scene_path": "res://Scenes/Items/stick.tscn"
-			},
-			{
-				"item_id": "stone",
-				"needed_amount": 3,
-				"scene_path": "res://Scenes/Items/stone.tscn"
-			}
-		]
-	},
-	{
-		"result_scene": "res://Scenes/Tools/axe_iron.tscn",
-		"result_id": "axe_iron",
-		"result_amount": 1,
-		"requirements": [
-			{
-				"item_id": "stick",
-				"needed_amount": 4,
-				"scene_path": "res://Scenes/Items/stick.tscn"
-			},
-			{
-				"item_id": "iron_bar",
-				"needed_amount": 3,
-				"scene_path": "res://Scenes/Items/iron_bar.tscn"
-			}
-		]
-	},
-	{
-		"result_scene": "res://Scenes/Tools/axe_copper.tscn",
-		"result_id": "axe_copper",
-		"result_amount": 1,
-		"requirements": [
-			{
-				"item_id": "stick",
-				"needed_amount": 4,
-				"scene_path": "res://Scenes/Items/stick.tscn"
-			},
-			{
-				"item_id": "copper_bar",
-				"needed_amount": 3,
-				"scene_path": "res://Scenes/Items/copper_bar.tscn"
-			}
-		]
-	},
-	{
-		"result_scene": "res://Scenes/Tools/axe_gold.tscn",
-		"result_id": "axe_gold",
-		"result_amount": 1,
-		"requirements": [
-			{
-				"item_id": "stick",
-				"needed_amount": 4,
-				"scene_path": "res://Scenes/Items/stick.tscn"
-			},
-			{
-				"item_id": "gold_bar",
-				"needed_amount": 3,
-				"scene_path": "res://Scenes/Items/gold_bar.tscn"
-			}
-		]
-	},
-	#Pickaxes
-	{
 		"result_scene": "res://Scenes/Tools/pickaxe_wood.tscn",
 		"result_id": "pickaxe_wood",
 		"result_amount": 1,
@@ -130,6 +61,41 @@ var recipes := [
 				"item_id": "wood",
 				"needed_amount": 4,
 				"scene_path": "res://Scenes/Items/wood.tscn"
+			}
+		]
+	},
+	{
+		"result_scene": "res://Scenes/Tools/sword_wood.tscn",
+		"result_id": "sword_wood",
+		"result_amount": 1,
+		"requirements": [
+			{
+				"item_id": "stick",
+				"needed_amount": 3,
+				"scene_path": "res://Scenes/Items/stick.tscn"
+			},
+			{
+				"item_id": "wood",
+				"needed_amount": 3,
+				"scene_path": "res://Scenes/Items/wood.tscn"
+			}
+		]
+	},
+	#Stone
+	{
+		"result_scene": "res://Scenes/Tools/axe_stone.tscn",
+		"result_id": "axe_stone",
+		"result_amount": 1,
+		"requirements": [
+			{
+				"item_id": "stick",
+				"needed_amount": 4,
+				"scene_path": "res://Scenes/Items/stick.tscn"
+			},
+			{
+				"item_id": "stone",
+				"needed_amount": 3,
+				"scene_path": "res://Scenes/Items/stone.tscn"
 			}
 		]
 	},
@@ -150,6 +116,182 @@ var recipes := [
 			}
 		]
 	},
+	{
+		"result_scene": "res://Scenes/Tools/sword_stone.tscn",
+		"result_id": "sword_stone",
+		"result_amount": 1,
+		"requirements": [
+			{
+				"item_id": "stick",
+				"needed_amount": 3,
+				"scene_path": "res://Scenes/Items/stick.tscn"
+			},
+			{
+				"item_id": "stone",
+				"needed_amount": 3,
+				"scene_path": "res://Scenes/Items/stone.tscn"
+			}
+		]
+	},
+	#Iron
+	{
+		"result_scene": "res://Scenes/Tools/axe_iron.tscn",
+		"result_id": "axe_iron",
+		"result_amount": 1,
+		"requirements": [
+			{
+				"item_id": "stick",
+				"needed_amount": 4,
+				"scene_path": "res://Scenes/Items/stick.tscn"
+			},
+			{
+				"item_id": "iron_bar",
+				"needed_amount": 3,
+				"scene_path": "res://Scenes/Items/iron_bar.tscn"
+			}
+		]
+	},
+	{
+		"result_scene": "res://Scenes/Tools/pickaxe_iron.tscn",
+		"result_id": "pickaxe_iron",
+		"result_amount": 1,
+		"requirements": [
+			{
+				"item_id": "stick",
+				"needed_amount": 4,
+				"scene_path": "res://Scenes/Items/stick.tscn"
+			},
+			{
+				"item_id": "iron_bar",
+				"needed_amount": 4,
+				"scene_path": "res://Scenes/Items/iron_bar.tscn"
+			}
+		]
+	},
+	{
+		"result_scene": "res://Scenes/Tools/sword_iron.tscn",
+		"result_id": "sword_iron",
+		"result_amount": 1,
+		"requirements": [
+			{
+				"item_id": "stick",
+				"needed_amount": 3,
+				"scene_path": "res://Scenes/Items/stick.tscn"
+			},
+			{
+				"item_id": "iron_bar",
+				"needed_amount": 3,
+				"scene_path": "res://Scenes/Items/iron_bar.tscn"
+			}
+		]
+	},
+	#Copper
+	{
+		"result_scene": "res://Scenes/Tools/axe_copper.tscn",
+		"result_id": "axe_copper",
+		"result_amount": 1,
+		"requirements": [
+			{
+				"item_id": "stick",
+				"needed_amount": 4,
+				"scene_path": "res://Scenes/Items/stick.tscn"
+			},
+			{
+				"item_id": "copper_bar",
+				"needed_amount": 3,
+				"scene_path": "res://Scenes/Items/copper_bar.tscn"
+			}
+		]
+	},
+	{
+		"result_scene": "res://Scenes/Tools/pickaxe_copper.tscn",
+		"result_id": "pickaxe_copper",
+		"result_amount": 1,
+		"requirements": [
+			{
+				"item_id": "stick",
+				"needed_amount": 4,
+				"scene_path": "res://Scenes/Items/stick.tscn"
+			},
+			{
+				"item_id": "copper_bar",
+				"needed_amount": 4,
+				"scene_path": "res://Scenes/Items/copper_bar.tscn"
+			}
+		]
+	},
+	{
+		"result_scene": "res://Scenes/Tools/sword_copper.tscn",
+		"result_id": "axe_copper",
+		"result_amount": 1,
+		"requirements": [
+			{
+				"item_id": "stick",
+				"needed_amount": 3,
+				"scene_path": "res://Scenes/Items/stick.tscn"
+			},
+			{
+				"item_id": "copper_bar",
+				"needed_amount": 3,
+				"scene_path": "res://Scenes/Items/copper_bar.tscn"
+			}
+		]
+	},
+	#Gold
+	{
+		"result_scene": "res://Scenes/Tools/axe_gold.tscn",
+		"result_id": "axe_gold",
+		"result_amount": 1,
+		"requirements": [
+			{
+				"item_id": "stick",
+				"needed_amount": 4,
+				"scene_path": "res://Scenes/Items/stick.tscn"
+			},
+			{
+				"item_id": "gold_bar",
+				"needed_amount": 3,
+				"scene_path": "res://Scenes/Items/gold_bar.tscn"
+			}
+		]
+	},
+	{
+		"result_scene": "res://Scenes/Tools/pickaxe_gold.tscn",
+		"result_id": "pickaxe_gold",
+		"result_amount": 1,
+		"requirements": [
+			{
+				"item_id": "stick",
+				"needed_amount": 4,
+				"scene_path": "res://Scenes/Items/stick.tscn"
+			},
+			{
+				"item_id": "gold_bar",
+				"needed_amount": 4,
+				"scene_path": "res://Scenes/Items/gold_bar.tscn"
+			}
+		]
+	},
+	{
+		"result_scene": "res://Scenes/Tools/sword_gold.tscn",
+		"result_id": "sword_gold",
+		"result_amount": 1,
+		"requirements": [
+			{
+				"item_id": "stick",
+				"needed_amount": 3,
+				"scene_path": "res://Scenes/Items/stick.tscn"
+			},
+			{
+				"item_id": "gold_bar",
+				"needed_amount": 3,
+				"scene_path": "res://Scenes/Items/gold_bar.tscn"
+			}
+		]
+	},
+	
+	
+	
 ]
 
 
@@ -402,6 +544,9 @@ func create_item_data_from_scene(scene_path: String, amount: int = 1) -> Diction
 	if item_instance is Tool:
 		item_data["tool_power"] = item_instance.tool_power
 		item_data["position_of_power"] = item_instance.position_of_power
+		
+	if item_instance is Sword:
+		item_data["power"] = item_instance.power
 
 	item_instance.queue_free()
 

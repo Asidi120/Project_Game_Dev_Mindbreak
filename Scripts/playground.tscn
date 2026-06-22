@@ -58,6 +58,7 @@
 [ext_resource type="PackedScene" uid="uid://bjb88osnfjlic" path="res://Scenes/StaticStructures/bonfire.tscn" id="55_kkea6"]
 [ext_resource type="PackedScene" uid="uid://wuwot8hv4p00" path="res://Scenes/StaticStructures/chest.tscn" id="56_hlkfb"]
 [ext_resource type="PackedScene" uid="uid://bu47s3h11vmi5" path="res://Scenes/StaticStructures/chest_dungeon.tscn" id="58_61y65"]
+[ext_resource type="PackedScene" uid="uid://p4mxbst4j585" path="res://Scenes/Items/gold_bar.tscn" id="59_v7jvq"]
 
 [node name="Playground" type="Node2D" unique_id=571104678]
 scale = Vector2(1.9740651, 1.9740651)
@@ -278,3 +279,24 @@ position = Vector2(2.8314667, 130.41801)
 [node name="DayNightOverlay" type="CanvasModulate" parent="." unique_id=1490973845]
 position = Vector2(819, 160)
 script = ExtResource("19_tc4ax")
+
+[node name="Stick" parent="." unique_id=1089780086 instance=ExtResource("7_tc4ax")]
+position = Vector2(-196.54874, -6.078827)
+
+[node name="Stick2" parent="." unique_id=1203021692 instance=ExtResource("7_tc4ax")]
+position = Vector2(-176.79254, -6.585396)
+
+[node name="Stick3" parent="." unique_id=617346940 instance=ExtResource("7_tc4ax")]
+position = Vector2(-154.50351, -7.0919647)
+
+[node name="GoldBar" parent="." unique_id=42613941 instance=ExtResource("59_v7jvq")]
+position = Vector2(-214.27866, -23.808739)
+
+[node name="GoldBar2" parent="." unique_id=1137438177 instance=ExtResource("59_v7jvq")]
+position = Vector2(-188.9502, -21.782463)
+
+[node name="GoldBar3" parent="." unique_id=699516385 instance=ExtResource("59_v7jvq")]
+position = Vector2(-162.60861, -29.380997)
+
+[node name="GoldBar4" parent="." unique_id=1784517248 instance=ExtResource("59_v7jvq")]
+position = Vector2(-140.82616, -23.808739)

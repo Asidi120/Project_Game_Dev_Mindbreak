@@ -8,7 +8,6 @@ radius = 10.380673
 
 [node name="IronBar" type="Area2D" unique_id=1292270059]
 z_index = -1
-scale = Vector2(1.1600013, 1.1600013)
 script = ExtResource("1_xshhr")
 item_id = "iron_bar"
 item_name = "IronBar"
@@ -16,7 +15,6 @@ item_type = "bar"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=485898290]
 position = Vector2(0, -0.862068)
-scale = Vector2(1.1724125, 1.1724125)
 texture = ExtResource("2_xshhr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=79536984]

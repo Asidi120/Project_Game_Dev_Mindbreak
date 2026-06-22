@@ -145,7 +145,7 @@ max_length = 16
 flat = true
 
 [node name="PlayerNameEdit" type="LineEdit" parent="VBox" unique_id=550490735]
-modulate = Color(1, 1, 1, 0)
+modulate = Color(0, 0, 0, 0.972549)
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
 placeholder_text = "Nick Player"

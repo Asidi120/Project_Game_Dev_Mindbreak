@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://cx1ymh0ptu0sj" path="res://caveentry.gd" id="3_xtwoi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dnhvd"]
-size = Vector2(30.967752, 25.322588)
+size = Vector2(21.774225, 33.629044)
 
 [node name="cave" type="Area2D" unique_id=13035520]
 z_index = 10

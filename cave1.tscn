@@ -648,7 +648,7 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_1suad")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oxkd8"]
-size = Vector2(34, 32)
+size = Vector2(21, 27)
 
 [node name="cave" type="Node2D" unique_id=709366677]
 script = ExtResource("1_xb3wo")

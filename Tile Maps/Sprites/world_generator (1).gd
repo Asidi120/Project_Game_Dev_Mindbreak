@@ -31,11 +31,13 @@ const SCENE_TREE      := preload("res://Scenes/StaticStructures/tree.tscn")
 const SCENE_BOULDER   := preload("res://Scenes/StaticStructures/boulder.tscn")
 
 @export var cave_scene_path: String = "res://cave.tscn"
+@export var house_scene_path: String = "res://house.tscn"
 
 @onready var tile_map:      TileMapLayer = $TileMapLayer
 @onready var objects:       Node2D       = $Objects
 @onready var player:        Node2D       = $Player
 @onready var loading_label: Label        = $UI/LoadingLabel
+
 
 var world_seed: int    = 0
 var world_name: String = "Świat"
@@ -223,6 +225,7 @@ func _generate() -> void:
 	_spawn_cave(rng)
 
 	player.global_position = _find_spawn(rng)
+	_spawn_house(player.global_position)
 	loading_label.visible  = false
 	WorldStateManager.restore_scene(get_tree().current_scene.scene_file_path)
 	print("Świat \"%s\" gotowy! Seed: %d" % [world_name, world_seed])
@@ -249,6 +252,17 @@ func _spawn_cave(rng: RandomNumberGenerator) -> void:
 	objects.add_child(cave)
 	cave_world_pos = cave.position
 	print("Jaskinia: kafelek %s, pozycja %s" % [tile, cave.position])
+
+func _spawn_house(spawn_pos: Vector2) -> void:
+	if not ResourceLoader.exists(house_scene_path):
+		push_warning("Brak sceny domku: %s" % house_scene_path)
+		return
+	var house_scene := load(house_scene_path)
+	var house: Node2D = house_scene.instantiate()
+	house.position = spawn_pos + Vector2(TILE_SIZE * 4, 0)
+	objects.add_child(house)
+	print("Domek: pozycja %s" % house.position)
+	
 
 
 func _try_object(x: int, y: int, terrain: int, rng: RandomNumberGenerator) -> void:
@@ -292,7 +306,7 @@ func _spawn_scene(scene: PackedScene, tx: int, ty: int) -> void:
 	objects.add_child(obj)
 
 
-func _find_spawn1(rng: RandomNumberGenerator) -> Vector2:
+func _find_spawn(rng: RandomNumberGenerator) -> Vector2:
 	for _i in range(1000):
 		var x := rng.randi_range(60, WORLD_WIDTH  - 60)
 		var y := rng.randi_range(60, WORLD_HEIGHT - 60)
@@ -302,7 +316,7 @@ func _find_spawn1(rng: RandomNumberGenerator) -> Vector2:
 						   y * TILE_SIZE + TILE_SIZE / 2)
 	return Vector2(WORLD_WIDTH * TILE_SIZE / 2, WORLD_HEIGHT * TILE_SIZE / 2)
 	
-func _find_spawn(rng: RandomNumberGenerator) -> Vector2:
+func _find_spawn_cave(rng: RandomNumberGenerator) -> Vector2:
 	if cave_world_pos != Vector2.ZERO:
 		return cave_world_pos + Vector2(0, 32)
 	return Vector2(WORLD_WIDTH * TILE_SIZE / 2, WORLD_HEIGHT * TILE_SIZE / 2)

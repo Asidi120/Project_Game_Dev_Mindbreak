@@ -57,8 +57,10 @@
 [ext_resource type="PackedScene" uid="uid://daw6rsfw5vdjg" path="res://Scenes/Runes/rune_1.tscn" id="55_7l3q8"]
 [ext_resource type="PackedScene" uid="uid://bjb88osnfjlic" path="res://Scenes/StaticStructures/bonfire.tscn" id="55_kkea6"]
 [ext_resource type="PackedScene" uid="uid://wuwot8hv4p00" path="res://Scenes/StaticStructures/chest.tscn" id="56_hlkfb"]
+[ext_resource type="PackedScene" uid="uid://cuwbw76t8spcd" path="res://Scenes/Potions/potion_hunger.tscn" id="57_oo2fk"]
 [ext_resource type="PackedScene" uid="uid://bu47s3h11vmi5" path="res://Scenes/StaticStructures/chest_dungeon.tscn" id="58_61y65"]
 [ext_resource type="PackedScene" uid="uid://p4mxbst4j585" path="res://Scenes/Items/gold_bar.tscn" id="59_v7jvq"]
+[ext_resource type="PackedScene" uid="uid://cgucfj6me8w55" path="res://Scenes/Potions/potion_health.tscn" id="61_1grgn"]
 
 [node name="Playground" type="Node2D" unique_id=571104678]
 scale = Vector2(1.9740651, 1.9740651)
@@ -274,6 +276,9 @@ position = Vector2(-42.253166, 127.88517)
 [node name="ChestDungeon2" parent="BleakYellowGrass/level" unique_id=1261636958 instance=ExtResource("58_61y65")]
 position = Vector2(2.8314667, 130.41801)
 
+[node name="PotionHunger" parent="BleakYellowGrass/level" unique_id=1662720649 instance=ExtResource("57_oo2fk")]
+position = Vector2(-162.31, 150.17418)
+
 [node name="HUD" parent="BleakYellowGrass" unique_id=1148326026 instance=ExtResource("14_djkbh")]
 
 [node name="DayNightOverlay" type="CanvasModulate" parent="." unique_id=1490973845]
@@ -300,3 +305,6 @@ position = Vector2(-162.60861, -29.380997)
 
 [node name="GoldBar4" parent="." unique_id=1784517248 instance=ExtResource("59_v7jvq")]
 position = Vector2(-140.82616, -23.808739)
+
+[node name="PotionHealth" parent="." unique_id=477890217 instance=ExtResource("61_1grgn")]
+position = Vector2(-222.38376, 58.761993)

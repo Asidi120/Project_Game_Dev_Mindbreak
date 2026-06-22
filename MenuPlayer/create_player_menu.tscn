@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b68rro1qy2ne7" path="res://MenuPlayer/create_player_menu.gd" id="1_3ekly"]
 [ext_resource type="Texture2D" uid="uid://cmcfyejpub84y" path="res://11.png" id="2_1a572"]
+[ext_resource type="Texture2D" uid="uid://c7g7a1td7hidb" path="res://MenuIcon/4.jpg" id="2_3v1mh"]
 [ext_resource type="Texture2D" uid="uid://ddfjdpsknu8yg" path="res://Player/char_a_pONE2_0bas_humn_v04.png" id="2_8xe12"]
 [ext_resource type="Texture2D" uid="uid://d3exok7y2tikl" path="res://Player/char_a_pONE2_4har_dap1_v08.png" id="3_64s2d"]
 [ext_resource type="Texture2D" uid="uid://bb63vlq5w24ph" path="res://Player/char_a_pONE2_1out_pfpn_v01.png" id="4_ksb78"]
@@ -11,27 +12,66 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -4.0
-offset_top = 6.0
-offset_right = -4.0
-offset_bottom = 5.0
+offset_left = -52.0
+offset_top = 66.0
+offset_right = 9.0
+offset_bottom = 6.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_3ekly")
 
-[node name="Sprite2D6" type="Sprite2D" parent="." unique_id=296502236]
-position = Vector2(515.5, 219)
-scale = Vector2(3.9206347, 1.3965517)
-texture = ExtResource("2_1a572")
-region_enabled = true
-region_rect = Rect2(80.04388, 81.3746, 63.741997, 29.0652)
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=1739410404]
+layout_mode = 0
+offset_top = -84.0
+offset_right = 1534.0
+offset_bottom = 818.0
+texture = ExtResource("2_3v1mh")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1341635158]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.004
+anchor_bottom = 0.004
+offset_left = -13.0
+offset_top = -26.24
+offset_right = 1498.0
+offset_bottom = 819.716
 
 [node name="Sprite2D7" type="Sprite2D" parent="." unique_id=1490395659]
-position = Vector2(516, 260)
-scale = Vector2(3.9365082, 1.3965517)
+position = Vector2(565.5, 262)
+scale = Vector2(6.591836, 1.8823524)
 texture = ExtResource("2_1a572")
 region_enabled = true
-region_rect = Rect2(80.04388, 81.3746, 63.741997, 29.0652)
+region_rect = Rect2(15.010622, 85.10877, 49.862778, 17.810455)
+
+[node name="Sprite2D9" type="Sprite2D" parent="." unique_id=59839721]
+position = Vector2(711, 110.99999)
+scale = Vector2(6.064516, 4.229911)
+texture = ExtResource("2_1a572")
+region_enabled = true
+region_rect = Rect2(256.58643, 160.96773, 62.503204, 32.731476)
+
+[node name="Sprite2D10" type="Sprite2D" parent="." unique_id=1896886711]
+position = Vector2(1043.6532, 565)
+scale = Vector2(5.3076468, 1.909093)
+texture = ExtResource("2_1a572")
+region_enabled = true
+region_rect = Rect2(290.20938, 33.223946, 27.452576, 22.4169)
+
+[node name="Sprite2D11" type="Sprite2D" parent="." unique_id=312502902]
+position = Vector2(436, 570)
+rotation = -3.1415927
+scale = Vector2(6.1117315, 3.0142848)
+texture = ExtResource("2_1a572")
+region_enabled = true
+region_rect = Rect2(269.08984, 48.00148, 19.22287, 16.794281)
+
+[node name="Sprite2D8" type="Sprite2D" parent="." unique_id=412380726]
+position = Vector2(566, 219.50002)
+scale = Vector2(6.612245, 1.9411769)
+texture = ExtResource("2_1a572")
+region_enabled = true
+region_rect = Rect2(15.149414, 85.14942, 49.623894, 17.715355)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=319037775]
 position = Vector2(565.5, 349)
@@ -68,22 +108,12 @@ texture = ExtResource("2_1a572")
 region_enabled = true
 region_rect = Rect2(82.16642, 2.4103365, 43.741676, 47.194958)
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=1341635158]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.004
-anchor_bottom = 0.004
-offset_left = -82.0
-offset_top = -18.196
-offset_right = 95.0
-offset_bottom = 21.804
-
 [node name="TitleLabel" type="Label" parent="." unique_id=22580414]
 layout_mode = 0
-offset_left = 534.0
-offset_top = 109.0
-offset_right = 894.0
-offset_bottom = 143.0
+offset_left = 528.0
+offset_top = 94.0
+offset_right = 888.0
+offset_bottom = 128.0
 theme_override_font_sizes/font_size = 24
 text = "Create your character"
 horizontal_alignment = 1
@@ -140,7 +170,7 @@ theme_override_constants/separation = 12
 [node name="WorldNameEdit" type="LineEdit" parent="VBox" unique_id=2012452275]
 self_modulate = Color(0.031019174, 0.009833118, 0.0004015887, 1)
 layout_mode = 2
-placeholder_text = "Word Name"
+placeholder_text = "  Word Name"
 max_length = 16
 flat = true
 
@@ -148,7 +178,7 @@ flat = true
 modulate = Color(0, 0, 0, 0.972549)
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
-placeholder_text = "Nick Player"
+placeholder_text = "  Nick Player"
 max_length = 20
 flat = true
 
@@ -238,19 +268,21 @@ offset_bottom = 564.0
 
 [node name="CreateButton" type="Button" parent="." unique_id=941430382]
 layout_mode = 0
-offset_left = 897.0
-offset_top = 546.0
-offset_right = 1097.0
-offset_bottom = 578.0
+offset_left = 942.0
+offset_top = 549.0
+offset_right = 1142.0
+offset_bottom = 581.0
 text = "Create Word"
+flat = true
 
 [node name="BackButton" type="Button" parent="." unique_id=1843814108]
 layout_mode = 0
-offset_left = 407.0
-offset_top = 555.0
-offset_right = 597.0
-offset_bottom = 587.0
+offset_left = 349.0
+offset_top = 553.0
+offset_right = 539.0
+offset_bottom = 585.0
 text = "◀ Back"
+flat = true
 
 [connection signal="pressed" from="VBox/SkinRow/SkinPrev" to="." method="_on_skin_prev_pressed"]
 [connection signal="pressed" from="VBox/SkinRow/SkinNext" to="." method="_on_skin_next_pressed"]

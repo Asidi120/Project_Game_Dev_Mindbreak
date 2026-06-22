@@ -467,7 +467,7 @@ func _process(_delta):
 		for i in range(inventory.size() - 1, -1, -1):
 			if inventory[i] != null:
 				var item_data = inventory[i]
-				if item_data["item_id"] == item_picked_up["item_id"] and item_data["amount"] < MAX_STACK:
+				if inventory_system.can_stack_items(item_data, item_picked_up) and item_data["amount"] < MAX_STACK:
 					item_data["amount"] += 1
 					added = true
 					break

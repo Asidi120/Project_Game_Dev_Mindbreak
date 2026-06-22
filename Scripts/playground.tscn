@@ -328,3 +328,6 @@ position = Vector2(-135.76047, 37.4861)
 
 [node name="Flower3" parent="." unique_id=2042122844 instance=ExtResource("26_fkpol")]
 position = Vector2(-198.57501, 40.525513)
+
+[node name="SwordIron" parent="." unique_id=1349906632 instance=ExtResource("46_sdjit")]
+position = Vector2(-32.92698, 45.084633)

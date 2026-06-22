@@ -6,6 +6,7 @@ var player_in_range := false
 @export var item_name := ""
 @export var item_type := ""
 
+
 @onready var sprite_2d: Sprite2D = $Sprite2D
 
 func get_icon() -> Texture2D:

@@ -224,6 +224,10 @@ func throw():
 		print(facing_direction)
 		var item_scene = load(item["scene_path"])
 		var dropped_item = item_scene.instantiate()
+		
+		#tutaj zapamietuje durability wyrzuconych przedmiotow
+		if dropped_item is Tool or dropped_item is Sword:
+			dropped_item.item_durability = item.get("item_durability", dropped_item.item_durability)
 
 		get_tree().current_scene.add_child(dropped_item)
 		dropped_item.global_position = global_position + facing_direction * 20
@@ -261,6 +265,9 @@ func attack():
 			var item = get_held_item()
 			if item["item_type"] == "sword" and inventory_system.inventory_visible == false:
 				sounds.play_sound("attack")
+			#update durability narzedzi
+			#if item["item_type"] == "sword" or item["item_type"] == "axe" or item["item_type"] == "pickaxe":
+				#update_item_durability(item)
 		await get_tree().create_timer(0.2).timeout
 		attack_hitbox.monitoring = false
 		is_attacking = false
@@ -268,7 +275,9 @@ func attack():
 		state = State.IDLE
 		current_stamina-=15
 		stamina_recovery()
-
+		
+		
+	
 func apply_stun(duration: float):
 	if state == State.DEAD:
 		return

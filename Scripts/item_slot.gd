@@ -9,15 +9,34 @@ var slot_index = -1
 @onready var icon: TextureRect = $TextureRect
 @onready var amount_label: Label = $Label
 
+func _process(_delta: float) -> void:
+	if item_data != null:
+		update_label()
+
 func _ready() -> void:
 	mouse_filter = Control.MOUSE_FILTER_STOP
+	#inventory_system = get_tree().get_first_node_in_group("inventory_ui")
 
 func set_item(data: Dictionary) -> void:
 	item_data = data
 	icon.texture = data["texture"]
-	amount_label.text = str(data["amount"])
+	#pokazuj amount tylko jesli nie sa narzedziami
+	update_label()
 	icon.position = Vector2(7, 7)
 
+func update_label() -> void:
+	if item_data == null:
+		amount_label.text = ""
+		return
+
+	if item_data["item_type"] == "sword" or item_data["item_type"] == "axe" or item_data["item_type"] == "pickaxe":
+		amount_label.text = str(item_data.get("item_durability", 100)) + "%"
+	else:
+		if item_data.get("amount", 1) > 1:
+			amount_label.text = str(item_data["amount"])
+		else:
+			amount_label.text = ""
+			
 func clear_item():
 	item_data = null
 	icon.texture = null

@@ -142,11 +142,15 @@ func update_held_item():
 	if item == null:
 		held_item.visible = false
 		return
-
+	
+	var size:= Vector2(13, 13)
 	held_item.visible = true
 	held_item.texture = item["texture"]
 	held_item.z_index = 10
-	held_item.size = Vector2(15, 15)
+	
+	if item["item_type"] == "axe" or item["item_type"] == "pickaxe" or item["item_type"] == "sword":
+		size = Vector2(15,15)
+	held_item.size = size
 	held_item.custom_minimum_size = Vector2(10, 10)
 	held_item.position = Vector2(-10, -10)
 	held_item.scale = Vector2.ONE

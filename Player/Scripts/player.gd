@@ -65,6 +65,7 @@ var inventory_system = null
 var facing_direction := Vector2.DOWN
 
 var drank_stamina_potion := false
+var stamina_bar = null
 
 func _ready() -> void:
 	await get_tree().process_frame
@@ -173,6 +174,7 @@ func eating(item):
 				emit_signal("hp_changed", current_hp, max_hp)
 		if item["item_id"] == "potion_stamina": #wypicie stamina potion
 			drank_stamina_potion = true
+			stamina_bar.modulate = Color(0.0, 0.853, 0.0, 1.0)
 			
 			print("heath potka")
 		elif item is Food:
@@ -356,10 +358,12 @@ func get_input():
 	direction = direction.normalized()
 	
 func stamina_potion_timer(): #czas dzialania stamina potion
+	stamina_bar = get_tree().get_first_node_in_group("stamina_bar")
 	if drank_stamina_potion:
 		current_stamina=100
 		emit_signal("stamina_usage", current_stamina, max_stamina)
 		await get_tree().create_timer(10.0).timeout
+		stamina_bar.modulate = Color(1.0, 1.0, 1.0, 1.0)
 		drank_stamina_potion = false
 func move_player(delta):
 	var final_speed = move_speed

@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://d2rimyyc5milm"]
+
+[ext_resource type="Texture2D" uid="uid://jln4m7eoniw7" path="res://Tile Maps/Sprites/pixil-frame-0.png" id="2_23xot"]
+[ext_resource type="Script" uid="uid://cx1ymh0ptu0sj" path="res://caveentry.gd" id="3_xtwoi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dnhvd"]
+size = Vector2(21.774225, 33.629044)
+
+[node name="cave" type="Area2D" unique_id=13035520]
+z_index = 10
+scale = Vector2(1.2399994, 1.2399994)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1622709971]
+position = Vector2(41.12905, -13.709684)
+scale = Vector2(0.2956305, 0.39106065)
+texture = ExtResource("2_23xot")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1764081812]
+position = Vector2(0, 0.806452)
+script = ExtResource("3_xtwoi")
+
+[node name="entry" type="CollisionShape2D" parent="Area2D" unique_id=21223600]
+position = Vector2(36.9355, -4.274198)
+shape = SubResource("RectangleShape2D_dnhvd")
+
+[node name="entry2" type="Label" parent="Area2D" unique_id=1766930304]
+offset_left = 20.161299
+offset_top = -8.870972
+offset_right = 62.1613
+offset_bottom = -0.8709717
+theme_override_font_sizes/font_size = 4
+text = "Press \"E\" to entry"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1830448251]
+collision_mask = 17
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=1740325023]
+polygon = PackedVector2Array(50.000023, -41.9355, 64.51616, -28.225819, 72.58068, -20.161299, 79.032295, -12.09678, 85.48391, -5.645164, 85.48391, 9.6774235, 67.74197, 13.709683, 56.451637, 12.903232, 52.41938, 11.290328, 50.806473, 2.4193559, 50.000023, -5.645164, 49.19357, -10.483875, 42.741955, -16.935492, 39.516148, -19.354847, 33.870983, -15.322588, 26.612915, -12.09678, 20.96775, -7.2580676, 20.161299, -0.806452, 20.161299, 4.8387117, 18.548395, 10.483875, 13.709683, 12.903232, 4.8387117, 12.903232, -3.225808, 10.483875, -4.03226, -3.225808, -0.806452, -4.03226, 4.03226, -8.06452, 6.451616, -8.870972, 9.6774235, -14.516135, 12.09678, -22.580656, 15.322588, -26.612915, 20.161299, -29.03227, 24.19356, -32.25808, 27.419367, -35.483887, 31.451628, -37.09679, 36.29034, -38.709694, 38.709694, -41.12905, 43.54841, -42.741955)

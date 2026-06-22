@@ -25,11 +25,13 @@ func update_bar(current_hp, max_hp):
 		hp_label.text = str(int(target_hp)) + "/" + str(int(max_hp))
 
 func _process(delta):
+	if target == null or not is_instance_valid(target):
+		return
 	value = lerp(value, target_hp, 16 * delta)
 	if abs(value - target_hp) < 0.5:
 		value = target_hp
 	if !target.is_in_group('Players'):
-		if value<max_value:
-			visible=true
+		if value < max_value:
+			visible = true
 		else:
-			visible=false
+			visible = false

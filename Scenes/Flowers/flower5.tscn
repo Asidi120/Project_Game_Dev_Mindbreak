@@ -4,14 +4,15 @@
 [ext_resource type="Texture2D" uid="uid://cptk67nengjd5" path="res://OtherSprites/Flowers/DaffodilOUTLINED.png" id="2_wu37v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d43ed"]
-size = Vector2(15.295227, 20)
+size = Vector2(11.664753, 296.94937)
 
 [node name="Flower5" type="Area2D" unique_id=13035520]
-z_index = -1
+z_index = 12
 scale = Vector2(1.2399994, 1.2399994)
 script = ExtResource("1_wu37v")
 item_id = "flower5"
 item_name = "Flower5"
+item_type = null
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1622709971]
 scale = Vector2(0.51599216, 0.51599216)

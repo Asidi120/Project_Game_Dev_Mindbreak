@@ -57,6 +57,7 @@
 [ext_resource type="PackedScene" uid="uid://daw6rsfw5vdjg" path="res://Scenes/Runes/rune_1.tscn" id="55_7l3q8"]
 [ext_resource type="PackedScene" uid="uid://bjb88osnfjlic" path="res://Scenes/StaticStructures/bonfire.tscn" id="55_kkea6"]
 [ext_resource type="PackedScene" uid="uid://wuwot8hv4p00" path="res://Scenes/StaticStructures/chest.tscn" id="56_hlkfb"]
+[ext_resource type="PackedScene" uid="uid://b7lbh1xjq0hxw" path="res://house.tscn" id="58_61y65"]
 [ext_resource type="PackedScene" uid="uid://cuwbw76t8spcd" path="res://Scenes/Potions/potion_hunger.tscn" id="57_oo2fk"]
 [ext_resource type="PackedScene" uid="uid://bu47s3h11vmi5" path="res://Scenes/StaticStructures/chest_dungeon.tscn" id="58_61y65"]
 [ext_resource type="PackedScene" uid="uid://p4mxbst4j585" path="res://Scenes/Items/gold_bar.tscn" id="59_v7jvq"]
@@ -107,6 +108,7 @@ position = Vector2(-35.161194, -65.117584)
 
 [node name="Player" parent="BleakYellowGrass/level" unique_id=257810088 instance=ExtResource("4_b7mh3")]
 unique_name_in_owner = true
+z_index = 3
 position = Vector2(-66.56847, -17.5001)
 
 [node name="Boulder" parent="BleakYellowGrass/level" unique_id=2132276029 instance=ExtResource("10_08ji3")]
@@ -210,6 +212,12 @@ position = Vector2(-160.79031, 193.73915)
 
 [node name="IronOre" parent="BleakYellowGrass/level" unique_id=218306114 instance=ExtResource("17_42c27")]
 position = Vector2(-203.3421, 128.89832)
+
+[node name="house" parent="BleakYellowGrass/level" unique_id=1748543629 instance=ExtResource("58_61y65")]
+z_index = 0
+position = Vector2(156.32185, 137.51)
+collision_layer = 16
+collision_mask = 3
 
 [node name="GoldOre" parent="BleakYellowGrass/level" unique_id=2120493795 instance=ExtResource("18_g0rsy")]
 position = Vector2(-180.54648, 123.83262)

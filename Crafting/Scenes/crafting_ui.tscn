@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://b01hfte5jgl0m" path="res://Crafting/Scripts/crafting_ui.gd" id="1_otb4k"]
 [ext_resource type="Texture2D" uid="uid://bs6rdw18rar7q" path="res://Crafting/Sprites/Inventory_1.png" id="2_nc4d8"]
 
-[node name="CraftingUI" type="Control" unique_id=597152013]
+[node name="CraftingUI" type="Control" unique_id=597152013 groups=["crafting_ui"]]
 custom_minimum_size = Vector2(600, 400)
 layout_mode = 3
 anchors_preset = 0
@@ -11,6 +11,7 @@ offset_left = 1.0
 offset_top = -1.0
 offset_right = 601.0
 offset_bottom = 399.0
+scale = Vector2(1.5, 1.5)
 script = ExtResource("1_otb4k")
 
 [node name="Background" type="TextureRect" parent="." unique_id=686562746]

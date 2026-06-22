@@ -166,14 +166,30 @@ func _process(_delta: float) -> void:
 	
 	
 
-
 func toggle_crafting() -> void:
+	if inventory_system == null:
+		inventory_system = get_inventory_ui()
+
 	visible = !visible
-	var fasteq = inventory_system.get_fasteq_ui()
-	if fasteq != null:
-		if visible:
+
+	var fasteq = null
+	if inventory_system != null:
+		fasteq = inventory_system.get_fasteq_ui()
+
+	if visible:
+		# otwierasz crafting
+		if inventory_system != null:
+			inventory_system.visible = false
+			inventory_system.inventory_visible = false
+			inventory_system.clear_all_selections()
+
+		if fasteq != null:
 			fasteq.visible = false
-		else:
+
+		refresh_recipes()
+	else:
+		# zamykasz crafting
+		if fasteq != null:
 			fasteq.visible = true
 	
 		

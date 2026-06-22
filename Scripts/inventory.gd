@@ -28,6 +28,8 @@ static var selected_slot_index := -1
 var inventory_default_position: Vector2
 var inventory_chest_position : Vector2
 
+var crafting_ui = null
+
 
 func _ready() -> void:
 	if self.name == "Inventory":
@@ -36,6 +38,8 @@ func _ready() -> void:
 		inventory_chest_position = Vector2(position.x, 305)
 		if chest_panel != null:
 			chest_panel.visible = false
+	
+	crafting_ui = get_crafting_ui()
 
 	if self.name == "FastEq":
 		visible = true
@@ -96,15 +100,24 @@ func update_fasteq_selection() -> void:
 		var slot = grid.get_child(selected_fasteq_index)
 		slot.set_selected(true)
 		
-
+#nie mozna otworzyc przy wlaczonym chescie, po wlaczeniu craftingu sie przelacza
 func toggle_inventory() -> void:
+	if opened_chest != null:
+		return
+
 	visible = !visible
 	inventory_visible = visible
+
+	position = inventory_default_position
 
 	var fasteq = get_fasteq_ui()
 
 	if fasteq != null:
 		fasteq.visible = !visible
+
+	var crafting_ui = get_crafting_ui()
+	if crafting_ui != null:
+		crafting_ui.visible = false
 
 	if not visible:
 		clear_selection()
@@ -246,6 +259,9 @@ func get_fasteq_ui():
 			return ui
 
 	return null
+
+func get_crafting_ui():
+	return get_tree().get_first_node_in_group("crafting_ui")
 
 
 func refresh_all() -> void:

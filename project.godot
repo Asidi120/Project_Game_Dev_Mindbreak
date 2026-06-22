@@ -38,6 +38,7 @@ inventory_ui=""
 BossArea=""
 Dungeon=""
 Boss=""
+crafting_ui=""
 
 [input]
 

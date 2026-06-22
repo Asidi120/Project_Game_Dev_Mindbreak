@@ -1,13 +1,12 @@
 [gd_scene format=3 uid="uid://cuwbw76t8spcd"]
 
 [ext_resource type="Script" uid="uid://ck0rx7f1ghuxu" path="res://Scripts/food.gd" id="1_fesjq"]
-[ext_resource type="Texture2D" uid="uid://cas67xwqegnri" path="res://OtherSprites/Items/poçĂo amarela.png" id="2_fesjq"]
+[ext_resource type="Texture2D" uid="uid://hu2yro4cnhto" path="res://OtherSprites/Items/potions-Sheet.png" id="2_fesjq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tfydv"]
-size = Vector2(43.94344, 41.792572)
+size = Vector2(43.94346, 47.49156)
 
 [node name="PotionHunger" type="Area2D" unique_id=1592250268]
-scale = Vector2(0.2, 0.2)
 script = ExtResource("1_fesjq")
 hunger_points = 100
 item_id = "potion_hunger"
@@ -20,9 +19,9 @@ position = Vector2(4, 4)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("2_fesjq")
 region_enabled = true
-region_rect = Rect2(15.678841, 31.503567, 16.095837, 16.330242)
+region_rect = Rect2(0.0036358833, 79.8613, 15.94997, 15.885391)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=730860820]
-position = Vector2(5.0000005, 4.999999)
-scale = Vector2(0.27307823, 0.26320457)
+position = Vector2(3.9999998, 4.249997)
+scale = Vector2(0.2730782, 0.26320454)
 shape = SubResource("RectangleShape2D_tfydv")

@@ -64,6 +64,7 @@ var inventory_system = null
 
 var facing_direction := Vector2.DOWN
 
+var drank_stamina_potion := false
 
 func _ready() -> void:
 	await get_tree().process_frame
@@ -164,12 +165,14 @@ func eating(item):
 	#jeśli ewkipunek niewidoczny
 	var czy_zjedzone = false
 	if not inventory_system.inventory_visible:
-		if item["item_id"] == "potion_health":
+		if item["item_id"] == "potion_health": #health potka
 			if current_hp == 200:
 				return
 			else:
 				current_hp = 200
 				emit_signal("hp_changed", current_hp, max_hp)
+		if item["item_id"] == "potion_stamina": #wypicie stamina potion
+			drank_stamina_potion = true
 			
 			print("heath potka")
 		elif item is Food:
@@ -351,7 +354,11 @@ func get_input():
 	direction.x = Input.get_action_strength("right") - Input.get_action_strength("left")
 	direction.y = Input.get_action_strength("down") - Input.get_action_strength("up")
 	direction = direction.normalized()
-
+	
+func stamina_potion_timer(): #czas dzialania stamina potion
+	if drank_stamina_potion:
+		await get_tree().create_timer(10.0).timeout
+		drank_stamina_potion = false
 func move_player(delta):
 	var final_speed = move_speed
 	if is_slowed:
@@ -360,7 +367,9 @@ func move_player(delta):
 		final_speed *= buff_multiplier
 
 	if Input.get_action_strength("sprint") > 0:
-		current_stamina -= 15 * delta
+		stamina_potion_timer()
+		if !drank_stamina_potion:
+			current_stamina -= 15 * delta #tuuuuuuuuuuu jesli nie ma potk
 		if current_stamina < 10 or current_hunger <= 1:
 			velocity = direction * final_speed
 		else:

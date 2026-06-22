@@ -61,6 +61,7 @@
 [ext_resource type="PackedScene" uid="uid://bu47s3h11vmi5" path="res://Scenes/StaticStructures/chest_dungeon.tscn" id="58_61y65"]
 [ext_resource type="PackedScene" uid="uid://p4mxbst4j585" path="res://Scenes/Items/gold_bar.tscn" id="59_v7jvq"]
 [ext_resource type="PackedScene" uid="uid://cgucfj6me8w55" path="res://Scenes/Potions/potion_health.tscn" id="61_1grgn"]
+[ext_resource type="PackedScene" uid="uid://vebg06r8ojnf" path="res://Scenes/Potions/potion_stamina.tscn" id="62_28vq4"]
 
 [node name="Playground" type="Node2D" unique_id=571104678]
 scale = Vector2(1.9740651, 1.9740651)
@@ -308,3 +309,6 @@ position = Vector2(-140.82616, -23.808739)
 
 [node name="PotionHealth" parent="." unique_id=477890217 instance=ExtResource("61_1grgn")]
 position = Vector2(-222.38376, 58.761993)
+
+[node name="PotionStamina" parent="." unique_id=859926476 instance=ExtResource("62_28vq4")]
+position = Vector2(-182.3648, 82.57073)

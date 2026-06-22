@@ -167,6 +167,9 @@ func _process(_delta: float) -> void:
 	
 
 func toggle_crafting() -> void:
+	if inventory_system.opened_chest != null:
+		return
+		
 	if inventory_system == null:
 		inventory_system = get_inventory_ui()
 

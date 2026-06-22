@@ -29,6 +29,7 @@ var inventory_default_position: Vector2
 var inventory_chest_position : Vector2
 
 var crafting_ui = null
+var fasteq = null
 
 
 func _ready() -> void:
@@ -40,6 +41,7 @@ func _ready() -> void:
 			chest_panel.visible = false
 	
 	crafting_ui = get_crafting_ui()
+	fasteq = get_fasteq_ui()
 
 	if self.name == "FastEq":
 		visible = true
@@ -51,7 +53,7 @@ func _process(_delta: float) -> void:
 		if Input.is_action_just_pressed("inventory"):
 			toggle_inventory()
 			
-	if self.name == "FastEq":
+	if self.name == "FastEq" and fasteq.visible:
 		handle_fasteq_scroll()
 		handle_fasteq_keys()
 
@@ -110,7 +112,6 @@ func toggle_inventory() -> void:
 
 	position = inventory_default_position
 
-	var fasteq = get_fasteq_ui()
 
 	if fasteq != null:
 		fasteq.visible = !visible

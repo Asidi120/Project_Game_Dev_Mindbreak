@@ -161,9 +161,23 @@ func _physics_process(delta):
 			return
 
 	update_animation()
+	if get_held_item() != null:
+		var item = get_held_item()
+		if Input.is_action_just_pressed("attack") \
+		and not is_attacking \
+		and state != State.STUNNED \
+		and can_player_attack() \
+		and item["item_type"] == "sword":
+			attack()
 
-	if Input.is_action_just_pressed("attack") and not is_attacking and state != State.STUNNED:
-		attack()
+func can_player_attack() -> bool:
+	if inventory_system and inventory_system.inventory_visible:
+		return false
+
+	if get_viewport().gui_get_hovered_control():
+		return false
+
+	return true
 
 
 func update_held_item():
@@ -314,17 +328,14 @@ func attack():
 		state = State.ATTACK
 		is_attacking = true
 		attack_hitbox.monitoring = true
-		if get_held_item() != null:
-			var item = get_held_item()
-			if item["item_type"] == "sword" and inventory_system.inventory_visible == false:
-				sounds.play_sound("attack")
+		sounds.play_sound("attack")
+		current_stamina-=15
+		stamina_recovery()
 		await get_tree().create_timer(0.2).timeout
 		attack_hitbox.monitoring = false
 		is_attacking = false
 		already_hit = []
 		state = State.IDLE
-		current_stamina-=15
-		stamina_recovery()
 
 func apply_stun(duration: float):
 	if state == State.DEAD:

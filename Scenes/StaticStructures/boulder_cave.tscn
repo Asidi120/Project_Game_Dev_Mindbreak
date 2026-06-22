@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://cdla8w7bau77o"]
+
+[ext_resource type="Script" uid="uid://xihm3wugii01" path="res://Scripts/static_breakable_object.gd" id="1_rrn8l"]
+[ext_resource type="PackedScene" uid="uid://dre6w3svhd6ko" path="res://Scenes/Items/stone.tscn" id="2_wsp77"]
+[ext_resource type="Texture2D" uid="uid://ewclvb7o1os" path="res://OtherSprites/512x1024.png" id="3_oojqs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_blcey"]
+size = Vector2(36, 22.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oedoi"]
+size = Vector2(46, 26)
+
+[node name="BoulderCave" type="StaticBody2D" unique_id=2132276029]
+collision_layer = 16
+collision_mask = 3
+script = ExtResource("1_rrn8l")
+hits_needed = 10
+object_id = "boulder_cave"
+object_type = "boulder"
+scene = ExtResource("2_wsp77")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=713581976]
+modulate = Color(0.99999994, 0.69069076, 0.39507294, 1)
+self_modulate = Color(0.9803043, 0.6097699, 0.39119428, 1)
+position = Vector2(0, -9.536743e-07)
+scale = Vector2(0.42069888, 0.42069882)
+texture = ExtResource("3_oojqs")
+region_enabled = true
+region_rect = Rect2(131.24261, 545.09814, 126.00806, 93.211426)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=520123235]
+visible = false
+position = Vector2(1, -0.25)
+shape = SubResource("RectangleShape2D_blcey")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1064712434]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1298316451]
+visible = false
+position = Vector2(0, -3)
+shape = SubResource("RectangleShape2D_oedoi")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

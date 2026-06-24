@@ -619,6 +619,9 @@ func create_item_data_from_scene(scene_path: String, amount: int = 1) -> Diction
 	if item_instance is Sword:
 		item_data["power"] = item_instance.power
 		item_data["item_durability"] = item_instance.item_durability
+		
+	if item_instance is PlaceableItem:
+		item_data["place_scene_path"] = item_instance.place_scene_path
 
 	item_instance.queue_free()
 

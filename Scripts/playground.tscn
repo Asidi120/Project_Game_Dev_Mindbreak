@@ -68,6 +68,7 @@
 [ext_resource type="PackedScene" uid="uid://b06s010oyn8y1" path="res://Scenes/Items/bonfire_item.tscn" id="66_3glsb"]
 [ext_resource type="PackedScene" uid="uid://dy01bojqvq48k" path="res://Scenes/Items/egg.tscn" id="67_pauvb"]
 [ext_resource type="PackedScene" uid="uid://siqgssdbabnj" path="res://Scenes/Food/fried_egg.tscn" id="68_tbk65"]
+[ext_resource type="PackedScene" uid="uid://cdla8w7bau77o" path="res://Scenes/StaticStructures/boulder_cave.tscn" id="69_tbk65"]
 
 [node name="Playground" type="Node2D" unique_id=571104678]
 scale = Vector2(1.9740651, 1.9740651)
@@ -363,3 +364,12 @@ position = Vector2(-126.64223, -61.294838)
 
 [node name="Egg3" parent="." unique_id=325934229 instance=ExtResource("67_pauvb")]
 position = Vector2(-114.99114, -55.72258)
+
+[node name="BoulderCave" parent="." unique_id=582371490 instance=ExtResource("69_tbk65")]
+position = Vector2(-276.5866, -63.321114)
+
+[node name="BoulderCave2" parent="." unique_id=348915637 instance=ExtResource("69_tbk65")]
+position = Vector2(-287.22458, -118.030556)
+
+[node name="BoulderCave3" parent="." unique_id=259577790 instance=ExtResource("69_tbk65")]
+position = Vector2(-264.42896, -31.407272)

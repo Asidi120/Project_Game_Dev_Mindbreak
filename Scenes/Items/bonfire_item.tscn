@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://b06s010oyn8y1"]
+
+[ext_resource type="Script" uid="uid://c03xp6xar3nq1" path="res://Scripts/placeable_items.gd" id="1_iqhrp"]
+[ext_resource type="Texture2D" uid="uid://bltnftcyd54do" path="res://OtherSprites/Bonfire/Bonfire_05-Sheet.png" id="2_iqhrp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tfydv"]
+size = Vector2(85.165695, 52.964027)
+
+[node name="BonfireItem" type="Area2D" unique_id=1592250268]
+scale = Vector2(0.77396375, 0.77396375)
+script = ExtResource("1_iqhrp")
+place_scene_path = "res://Scenes/StaticStructures/bonfire.tscn"
+item_id = "bonfire_item"
+item_name = "BonfireItem"
+item_type = "placeable"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=834627305]
+z_index = -1
+position = Vector2(4, 4)
+texture = ExtResource("2_iqhrp")
+region_enabled = true
+region_rect = Rect2(37.476727, 8.853189, 20.660454, 13.931471)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=730860820]
+position = Vector2(3.8761506, 5.1682005)
+scale = Vector2(0.2730783, 0.2632046)
+shape = SubResource("RectangleShape2D_tfydv")

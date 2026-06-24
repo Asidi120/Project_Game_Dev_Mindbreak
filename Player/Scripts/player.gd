@@ -238,7 +238,48 @@ func update_held_position():
 		held_item.position = Vector2(2, -2)
 		held_item.z_index = 10
 
+func place_held_item():
+	if inventory_system == null:
+		return
 
+	if inventory_system.inventory_visible:
+		return
+
+	var index = inventory_system.selected_fasteq_index
+
+	if index < 0 or index >= inventory_system.current_inventory.size():
+		return
+
+	var item = inventory_system.current_inventory[index]
+
+	if item == null:
+		return
+
+	if item.get("item_type", "") != "placeable":
+		return
+
+	if not item.has("place_scene_path"):
+		return
+
+	if Input.is_action_just_pressed("place"):
+		var scene = load(item["place_scene_path"])
+
+		if scene == null:
+			push_error("Nie udało się wczytać sceny: " + item["place_scene_path"])
+			return
+
+		var placed_object = scene.instantiate()
+		get_tree().current_scene.add_child(placed_object)
+
+		placed_object.global_position = global_position + facing_direction * 32
+
+		if item["amount"] > 1:
+			item["amount"] -= 1
+		else:
+			inventory_system.current_inventory[index] = null
+
+		inventory_system.refresh_all()
+		
 func eating(item):
 	if inventory_system.inventory_visible:
 		return false
@@ -551,6 +592,7 @@ func update_attack_hitbox():
 func _process(_delta):
 	update_held_item()
 	throw()
+	place_held_item()
 	if Input.is_action_just_pressed("pick_up") and items_in_range.size() > 0:
 		var item = items_in_range[0]
 		var item_picked_up = item.collect()

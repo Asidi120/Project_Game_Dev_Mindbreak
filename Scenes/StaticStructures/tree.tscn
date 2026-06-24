@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://cgc3sk5yjh5sm" path="res://OtherSprites/Premium_Trees_Black_Outline.png" id="1_0vwjc"]
 [ext_resource type="Script" uid="uid://xihm3wugii01" path="res://Scripts/static_breakable_object.gd" id="1_l7sa7"]
 [ext_resource type="PackedScene" uid="uid://bhk8wb8aud5hg" path="res://Scenes/Items/wood.tscn" id="2_l7sa7"]
+[ext_resource type="PackedScene" uid="uid://bjgxjuvclurjp" path="res://Scenes/Food/apple.tscn" id="3_x1s3l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rsuno"]
 size = Vector2(10, 10.5)
@@ -18,6 +19,7 @@ hits_needed = 8.0
 object_id = "tree"
 object_type = "tree"
 scene = ExtResource("2_l7sa7")
+scene2 = ExtResource("3_x1s3l")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=621871514]
 position = Vector2(29, 51)

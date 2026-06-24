@@ -369,12 +369,12 @@ var recipes := [
 	"requirements": [
 		{
 			"item_id": "wood",
-			"needed_amount": 1,
+			"needed_amount": 8,
 			"scene_path": "res://Scenes/Items/wood.tscn"
 		},
 		{
 			"item_id": "stick",
-			"needed_amount": 1,
+			"needed_amount": 2,
 			"scene_path": "res://Scenes/Items/stick.tscn"
 		}
 	]

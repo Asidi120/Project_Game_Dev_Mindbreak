@@ -5,7 +5,7 @@ var player_in_range := false
 @export var object_type := ""
 @export var position_of_power_needed := 0
 var hits := 0.0
-
+@onready var tree_hit: AudioStreamPlayer2D = $TreeHit
 @export var scene: PackedScene #instancja sceny struktury
 @export var scene2: PackedScene
 
@@ -32,6 +32,8 @@ func update_hits():
 	# niszczenie tree majac axe
 	if item["item_type"] == "axe" and object_type == "tree":
 		hits += item["tool_power"]
+		if tree_hit:
+			tree_hit.play()
 		item["item_durability"] -= 1
 	# niszczenie boulder majac pickaxe
 	elif item["item_type"] == "pickaxe" and object_type == "boulder":

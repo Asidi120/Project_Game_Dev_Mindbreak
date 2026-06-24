@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://c2e0o08q8buid" path="res://Player/player.tscn" id="4_00qu0"]
 [ext_resource type="PackedScene" uid="uid://bpurye8jvwkrf" path="res://Enemies/BringerOfDeath/BringerOfDeathDungeon.tscn" id="5_r1q6n"]
 [ext_resource type="PackedScene" uid="uid://b70fk741qrjt7" path="res://hud/HUD.tscn" id="7_urry7"]
+[ext_resource type="PackedScene" uid="uid://bu47s3h11vmi5" path="res://Scenes/StaticStructures/chest_dungeon.tscn" id="8_n4p36"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ssfgo"]
 texture = ExtResource("1_y0n1a")
@@ -569,6 +570,69 @@ tile_set = SubResource("TileSet_bkird")
 scale = Vector2(-1, 1)
 tile_map_data = PackedByteArray("AAAmAAwAAAALAAUAAQAGAAoAAAALAAUAAAAIAAwAAAAIAAUAAAAeAAkAAAAJAAUAAAAmABQAAAAPAAQAAAAPAAwAAAAPAAQAAAADAAwAAAAPAAQAAAAoAA8AAAAHAAkAAAAcAAsAAAAHAAkAAAANAA0AAAAHAAkAAAAEAA4AAAAHAAkAAAAEAAQAAAAHAAkAAAAKAAMAAAAHAAkAAAAIAP7/AAAPAAQAAAACAPr/AAAMAAUAAAAJAAcAAAAKAAUAAAAEAAUAAAALAAMAAAAEAAYAAAALAAQAAAAFAAUAAAAMAAMAAAAFAAYAAAAMAAQAAAAkAA8AAAAGAAcAAAAkABAAAAAGAAgAAAAjABEAAAAMAAUAAADu/wMAAAALAAUAAQDv/wIAAAAFAAMAAADv/wMAAAAFAAQAAADw/wIAAAAAAAcAAADw/wMAAAAAAAgAAADx/wIAAAABAAcAAADx/wMAAAABAAgAAADy/wIAAAACAAcAAADy/wMAAAACAAgAAADz/wIAAAAFAAMAAADz/wMAAAAFAAQAAAD0/wMAAAALAAUAAQASABUAAAAJAAIAAAAtAAcAAAADAAAAAAAtAAgAAAADAAEAAAAsAAcAAAADAAAAAAAsAAgAAAADAAEAAAArAAcAAAADAAAAAAArAAgAAAADAAEAAAAqAAcAAAADAAAAAAAqAAgAAAADAAEAAAApAAcAAAACAAAAAAAuAAcAAAACAAIAABAuAAgAAAABAAIAAAAYABUAAAARAAAAAAAZABUAAAARAAEAAAAaABUAAAARAAEAAAAdABcAAAARAAAAAAAdABAAAAALAAUAAQAiABgAAAALAAUAAQAoABgAAAALAAUAAQALABMAAAALAAUAAQAPABMAAAALAAUAAQAUAAoAAAALAAUAAQAUAA8AAAALAAMAAAAUABAAAAALAAQAAAAVAA8AAAAMAAMAAAAVABAAAAAMAAQAAAAMAAoAAAALAAMAABALAAoAAAAMAAMAABAMAAsAAAALAAQAABALAAsAAAAMAAQAABAjAAcAAAALAAMAABAiAAcAAAAMAAMAABAjAAgAAAALAAQAABAiAAgAAAAMAAQAABASAAkAAAAUAAAAAAASAAoAAAAUAAEAAAASAAsAAAAUAAIAAAAMAAAAAAAUAAAAAAAMAAEAAAAUAAEAAAAMAAIAAAAUAAIAAAD1//X/AAAUAAAAAAD1//b/AAAUAAEAAAD1//f/AAAUAAIAAADq//b/AAAUAAAAAADq//f/AAAUAAEAAADq//j/AAAUAAIAAADq//3/AAAWAAAAAADq//7/AAAWAAEAAADq////AAAWAAIAAADm//3/AAAWAAAAAADm//7/AAAWAAEAAADm////AAAWAAIAAAD0/wkAAAAWAAAAAAD0/woAAAAWAAEAAAD0/wsAAAAWAAIAAADw/wkAAAAWAAAAAADw/woAAAAWAAEAAADw/wsAAAAWAAIAAADu//b/AAALAAUAAQD8//r/AAALAAUAAQD0/wUAAAAIAAcAAAD0/wYAAAAIAAgAAAD6/w0AAAAHAAkAAADv/w4AAAAHAAkAACDn/wgAAAAHAAkAABDq/wAAAAAHAAkAABDq//n/AAAHAAkAABD3//v/AAAHAAkAABAFAPr/AAAHAAkAAAD3//n/AAALAAMAAAD3//r/AAALAAQAAAD4//n/AAAMAAMAAAD4//r/AAAMAAQAAADr//3/AAALAAUAAADk//3/AAALAAUAAAAnAAIAAAALAAUAAQA=")
 tile_set = SubResource("TileSet_bkird")
+
+[node name="ChestDungeon" parent="." unique_id=1564093039 instance=ExtResource("8_n4p36")]
+position = Vector2(-592, 211.5)
+
+[node name="ChestDungeon2" parent="." unique_id=1844361742 instance=ExtResource("8_n4p36")]
+position = Vector2(-526, 145.5)
+
+[node name="ChestDungeon3" parent="." unique_id=917644404 instance=ExtResource("8_n4p36")]
+position = Vector2(-621, 49)
+
+[node name="ChestDungeon4" parent="." unique_id=1501679292 instance=ExtResource("8_n4p36")]
+position = Vector2(-727, 94)
+
+[node name="ChestDungeon5" parent="." unique_id=247792447 instance=ExtResource("8_n4p36")]
+position = Vector2(-463.5, 348.5)
+
+[node name="ChestDungeon6" parent="." unique_id=163519842 instance=ExtResource("8_n4p36")]
+position = Vector2(-345.5, 176.5)
+
+[node name="ChestDungeon7" parent="." unique_id=1856091995 instance=ExtResource("8_n4p36")]
+position = Vector2(-339.5, 277)
+
+[node name="ChestDungeon8" parent="." unique_id=1994856628 instance=ExtResource("8_n4p36")]
+position = Vector2(-246, 332)
+
+[node name="ChestDungeon9" parent="." unique_id=1596031247 instance=ExtResource("8_n4p36")]
+position = Vector2(-115, 195)
+
+[node name="ChestDungeon10" parent="." unique_id=1966108444 instance=ExtResource("8_n4p36")]
+position = Vector2(-130.5, 113)
+
+[node name="ChestDungeon11" parent="." unique_id=1056165171 instance=ExtResource("8_n4p36")]
+position = Vector2(-173, 35)
+
+[node name="ChestDungeon12" parent="." unique_id=183739612 instance=ExtResource("8_n4p36")]
+position = Vector2(-68.5, -104)
+
+[node name="ChestDungeon13" parent="." unique_id=399570 instance=ExtResource("8_n4p36")]
+position = Vector2(-0.5, 221)
+
+[node name="ChestDungeon14" parent="." unique_id=779188219 instance=ExtResource("8_n4p36")]
+position = Vector2(67.5, 116.5)
+
+[node name="ChestDungeon15" parent="." unique_id=24980722 instance=ExtResource("8_n4p36")]
+position = Vector2(295.5, 67.5)
+
+[node name="ChestDungeon16" parent="." unique_id=1923866587 instance=ExtResource("8_n4p36")]
+position = Vector2(314.5, 164)
+
+[node name="ChestDungeon17" parent="." unique_id=1659293952 instance=ExtResource("8_n4p36")]
+position = Vector2(432, 7)
+
+[node name="ChestDungeon18" parent="." unique_id=39605022 instance=ExtResource("8_n4p36")]
+position = Vector2(366, -128.5)
+
+[node name="ChestDungeon19" parent="." unique_id=1304946602 instance=ExtResource("8_n4p36")]
+position = Vector2(186.5, -145)
+
+[node name="ChestDungeon20" parent="." unique_id=1119796792 instance=ExtResource("8_n4p36")]
+position = Vector2(78.5, -82.5)
+
+[node name="ChestDungeon21" parent="." unique_id=257680731 instance=ExtResource("8_n4p36")]
+position = Vector2(150, 178)
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=1640726942]
 texture = SubResource("ImageTexture_y0n1a")

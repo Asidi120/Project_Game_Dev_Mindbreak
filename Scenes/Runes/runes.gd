@@ -17,7 +17,7 @@ func _process(delta: float) -> void:
 		if Input.is_action_just_pressed("action (open door, sleep etc.)"):
 			queue_free()
 			unlock_rune()
-			get_tree().change_scene_to_file("res://Player/word.tscn")
+			SceneTransition.change_scene_with_save("res://Scripts/playground.tscn")
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Players"):
@@ -28,10 +28,17 @@ func _on_body_exited(body: Node2D) -> void:
 	if body.is_in_group("Players"):
 		player_in_range=false
 		click_to_open_label.visible=false
-		
+
 func unlock_rune():
-	var rune = get_tree().get_first_node_in_group("TotemBar").find_child(BossManager.current_rune_name, true, false)
-	var rune_light = get_tree().get_first_node_in_group("TotemBar").find_child(BossManager.current_rune_light_name, true, false)
+	BossManager.unlocked_runes[BossManager.current_rune_name] = true
+
+	var rune = get_tree().get_first_node_in_group("TotemBar").find_child(
+		BossManager.current_rune_name, true, false
+	)
+
+	var rune_light = get_tree().get_first_node_in_group("TotemBar").find_child(
+		BossManager.current_rune_light_name, true, false
+	)
 
 	if rune:
 		rune.visible = true

@@ -45,6 +45,7 @@ Dungeon=""
 Boss=""
 crafting_ui=""
 TotemBar=""
+EndGameButton=""
 
 [input]
 

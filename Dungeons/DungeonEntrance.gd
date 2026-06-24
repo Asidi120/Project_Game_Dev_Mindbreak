@@ -23,7 +23,7 @@ func _process(delta):
 			print("DOOR NAME =", name)
 			if door_to_dungeon.has(door_name):
 				var dungeon_key = door_to_dungeon[door_name]
-				get_tree().change_scene_to_file(dungeon_paths[dungeon_key])
+				SceneTransition.change_scene_with_save(dungeon_paths[dungeon_key])
 			
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Players"):

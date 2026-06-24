@@ -93,9 +93,8 @@ func _ready() -> void:
 
 	if fasteq_ui:
 		fasteq_ui.refresh(inventory)
-
+	reinitialize()
 	apply_appearance()
-
 
 func save_state() -> void:
 	SceneTransition.saved_hp       = current_hp
@@ -163,24 +162,18 @@ func _physics_process(delta):
 			return
 
 	update_animation()
-	if get_held_item() != null:
-		var item = get_held_item()
-		if Input.is_action_just_pressed("attack") \
-		and not is_attacking \
-		and state != State.STUNNED \
-		and can_player_attack() \
-		and item["item_type"] == "sword":
-			attack()
+	if Input.is_action_just_pressed("attack") \
+	and not is_attacking \
+	and state != State.STUNNED \
+	and can_player_attack():
+		attack()
 
 func can_player_attack() -> bool:
 	if inventory_system and inventory_system.inventory_visible:
 		return false
-
 	if get_viewport().gui_get_hovered_control():
 		return false
-
 	return true
-
 
 func update_held_item():
 	if inventory_system == null:
@@ -226,17 +219,24 @@ func update_held_item():
 
 func update_held_position():
 	if facing_direction == Vector2.UP:
-		held_item.position = Vector2(-5, -8)
+		held_item.position = Vector2(0, -12)
 		held_item.z_index = -1
-	elif facing_direction == Vector2.DOWN:
-		held_item.position = Vector2(-6, -6)
+		held_item.rotation_degrees = -30
+
+	elif facing_direction == Vector2.DOWN or facing_direction == Vector2.ZERO:
+		held_item.position = Vector2(-13, 0)
 		held_item.z_index = 10
+		held_item.rotation_degrees = -75
+
 	elif facing_direction == Vector2.LEFT:
-		held_item.position = Vector2(-9.5, -7.5)
-		held_item.z_index = 10
+		held_item.position = Vector2(-14, 1)
+		held_item.z_index = -1
+		held_item.rotation_degrees = -90
+
 	elif facing_direction == Vector2.RIGHT:
-		held_item.position = Vector2(2, -2)
+		held_item.position = Vector2(-3, -10)
 		held_item.z_index = 10
+		held_item.rotation_degrees = 0
 
 func place_held_item():
 	if inventory_system == null:
@@ -391,18 +391,18 @@ func attack():
 		attack_hitbox.monitoring = true
 		if get_held_item() != null:
 			var item = get_held_item()
-			if item["item_type"] == "sword" and inventory_system.inventory_visible == false:
+			if item["item_type"] == "sword":
 				sounds.play_sound("attack")
-			#update durability narzedzi
+				attack_swing()
 			#if item["item_type"] == "sword" or item["item_type"] == "axe" or item["item_type"] == "pickaxe":
 				#update_item_durability(item)
+		current_stamina-=15
+		stamina_recovery()
 		await get_tree().create_timer(0.2).timeout
 		attack_hitbox.monitoring = false
 		is_attacking = false
 		already_hit = []
 		state = State.IDLE
-		current_stamina-=15
-		stamina_recovery()
 		
 		
 	
@@ -577,6 +577,66 @@ func update_flip():
 	layer_hair.flip_h    = flipped
 	layer_clothes.flip_h = flipped
 
+
+func attack_swing():
+	var tween = create_tween()
+
+	match facing_direction:
+		Vector2.UP:
+			held_item.position = Vector2(-6, -14)
+			held_item.z_index = -1
+			held_item.rotation_degrees = -40
+
+			tween.tween_property(
+				held_item,
+				"rotation_degrees",
+				40,
+				0.15
+			)
+
+		Vector2.DOWN:
+			held_item.position = Vector2(-6, 8)
+			held_item.z_index = 10
+			held_item.rotation_degrees = 40
+
+			tween.tween_property(
+				held_item,
+				"rotation_degrees",
+				-40,
+				0.15
+			)
+
+		Vector2.LEFT:
+			held_item.position = Vector2(-14, -4)
+			held_item.z_index = 10
+			held_item.rotation_degrees = -80
+
+			tween.tween_property(
+				held_item,
+				"rotation_degrees",
+				20,
+				0.15
+			)
+
+		Vector2.RIGHT:
+			held_item.position = Vector2(8, -4)
+			held_item.z_index = 10
+			held_item.rotation_degrees = 80
+
+			tween.tween_property(
+				held_item,
+				"rotation_degrees",
+				-20,
+				0.15
+			)
+
+	tween.tween_property(
+		held_item,
+		"rotation_degrees",
+		0,
+		0.08
+	)
+
 func update_attack_hitbox():
 	var flipped: bool = velocity.x < 0
 	if state!=State.ATTACK:
@@ -591,6 +651,7 @@ func update_attack_hitbox():
 
 func _process(_delta):
 	update_held_item()
+	update_held_position()
 	throw()
 	place_held_item()
 	if Input.is_action_just_pressed("pick_up") and items_in_range.size() > 0:

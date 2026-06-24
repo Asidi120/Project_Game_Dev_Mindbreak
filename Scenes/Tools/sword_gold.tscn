@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c0i8ciebv1msb"]
 
-[ext_resource type="Script" uid="uid://b3b8lfehbksly" path="res://Scripts/sword.gd" id="1_c71hy"]
+[ext_resource type="Script" path="res://Scripts/sword.gd" id="1_c71hy"]
 [ext_resource type="Texture2D" uid="uid://i5uud04jfce" path="res://OtherSprites/Items/Full Sheet.png" id="2_ghqvw"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_3ouv3"]
@@ -17,8 +17,9 @@ item_type = "sword"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=834627305]
 z_index = -1
-position = Vector2(4, 4)
+position = Vector2(-0.8333333, 9.166666)
 texture = ExtResource("2_ghqvw")
+offset = Vector2(4.8333335, -5.166666)
 region_enabled = true
 region_rect = Rect2(16.806015, 32.065025, 14.478626, 14.388699)
 

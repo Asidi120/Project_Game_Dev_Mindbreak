@@ -1,0 +1,149 @@
+[gd_scene format=3 uid="uid://c7vpxmr5es1r3"]
+
+[ext_resource type="FontFile" uid="uid://b0nphpwk324ms" path="res://Fonts/PixelPurl.ttf" id="1_7myri"]
+[ext_resource type="Script" uid="uid://vm8o5ht5vsd0" path="res://EndScene/endinglabels.gd" id="2_dug5d"]
+[ext_resource type="AudioStream" uid="uid://c18sq72v5mhgy" path="res://Sounds/dragon-studio-typing-keyboard-asmr-356116.mp3" id="3_xa1b5"]
+
+[node name="Endscene" type="Control" unique_id=454635058]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1912391318]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="click" type="AudioStreamPlayer" parent="." unique_id=2089458672]
+stream = ExtResource("3_xa1b5")
+autoplay = true
+
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=1834860037]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -265.0
+offset_bottom = 223.0
+grow_horizontal = 2
+grow_vertical = 2
+follow_focus = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer" unique_id=86998375]
+layout_mode = 2
+size_flags_horizontal = 6
+alignment = 1
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer" unique_id=884821399]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("1_7myri")
+theme_override_font_sizes/font_size = 32
+script = ExtResource("2_dug5d")
+full_text = "Day 1.
+
+I opened my eyes.
+
+The cold wind was gone.
+The forests were gone.
+The monsters were gone.
+
+The runes.
+The dungeons.
+The ancient totems.
+
+Gone.
+
+For a moment, I thought I had failed.
+
+Then I heard a voice.
+
+\"He's waking up.\"
+
+A bright light blinded me.
+
+Machines beeped around my bed.
+Doctors rushed into the room.
+
+I tried to move.
+
+Everything hurt.
+
+\"Easy,\" someone said.
+
+\"You've been unconscious for months.\"
+
+Months?
+
+None of it made sense.
+
+I remembered fighting monsters.
+I remembered collecting runes.
+I remembered defeating the guardians hidden deep beneath forgotten lands.
+
+But none of it was real.
+
+There was no kingdom.
+
+There were no dungeons.
+
+There was no world to save.
+
+There was only me.
+
+And the accident.
+
+A rainy evening.
+A sudden flash of headlights.
+Screeching tires.
+
+Then darkness.
+
+The doctors explained everything.
+
+The entire world I had experienced was created by my own mind while I lay in a coma.
+
+Every monster was a fear.
+
+Every dungeon was a memory.
+
+Every rune was a fragment of myself that I had lost.
+
+And every battle brought me closer to waking up.
+
+The final boss was never a creature.
+
+It was the part of me that refused to let go.
+
+The part that wanted to remain asleep forever.
+
+I closed my eyes.
+
+Not to escape.
+
+But to remember.
+
+The friends I met.
+
+The places I explored.
+
+The impossible world I called home.
+
+Even if it never existed.
+
+It saved me.
+
+And now...
+
+It was time to live in the real world again.
+
+The End.
+"

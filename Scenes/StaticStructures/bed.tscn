@@ -45,6 +45,7 @@ outline_size = 1
 outline_color = Color(0, 0, 0, 1)
 
 [node name="Bed" type="Node2D" unique_id=1754547488]
+z_index = 3
 position = Vector2(0, 20)
 script = ExtResource("1_b02y7")
 

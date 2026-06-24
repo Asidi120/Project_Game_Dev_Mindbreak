@@ -4,6 +4,7 @@ var return_scene:    String  = ""
 var return_position: Vector2 = Vector2.ZERO
 var spawn_name:      String  = "SpawnPoint"
 var player_node:     Node    = null
+var force_return_position: Vector2 = Vector2.ZERO
 
 var saved_hp:        int   = 200
 var saved_hunger:    int   = 150

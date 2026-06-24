@@ -18,6 +18,8 @@ config/icon="res://icon.svg"
 [autoload]
 
 BossManager="*uid://ld0s6b38bht6"
+TotemManger="uid://d08xowmhti55k"
+SaveManager="*uid://cbngvupa6hkvc"
 CaveItemManager="*res://CaveItemManager.gd"
 WorldStateManager="*res://WorldStateManager.gd"
 SceneTransition="*res://SceneTransition.gd"

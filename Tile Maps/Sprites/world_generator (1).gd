@@ -30,7 +30,7 @@ const SCENE_SEASHELL2 := preload("res://Scenes/Items/seashell_2.tscn")
 const SCENE_TREE      := preload("res://Scenes/StaticStructures/tree.tscn")
 const SCENE_BOULDER   := preload("res://Scenes/StaticStructures/boulder.tscn")
 
-@export var cave_scene_path: String = "res://cave.tscn"
+@export var cave_scene_path:  String = "res://cave.tscn"
 @export var house_scene_path: String = "res://house.tscn"
 
 @onready var tile_map:      TileMapLayer = $TileMapLayer
@@ -38,10 +38,8 @@ const SCENE_BOULDER   := preload("res://Scenes/StaticStructures/boulder.tscn")
 @onready var player:        Node2D       = $Player
 @onready var loading_label: Label        = $UI/LoadingLabel
 
-
 var world_seed: int    = 0
 var world_name: String = "Świat"
-
 
 var noise_height  := FastNoiseLite.new()
 var noise_warp    := FastNoiseLite.new()
@@ -223,11 +221,23 @@ func _generate() -> void:
 		await get_tree().process_frame
 
 	_spawn_cave(rng)
+	_spawn_house()
 
-	player.global_position = _find_spawn(rng)
-	_spawn_house(player.global_position)
-	loading_label.visible  = false
+	player.global_position = _find_spawn_for_house() + Vector2(0, 50)
+
+	if SceneTransition.return_scene == "res://Player/word.tscn" and SceneTransition.return_position != Vector2.ZERO:
+		player.global_position = SceneTransition.return_position
+		SceneTransition.return_position = Vector2.ZERO
+		SceneTransition.return_scene = ""
+
+	if SceneTransition.saved_hp != 200 or SceneTransition.saved_inventory.size() > 0:
+		player.reinitialize()
+
+	loading_label.visible = false
 	WorldStateManager.restore_scene(get_tree().current_scene.scene_file_path)
+	var saver := get_tree().get_first_node_in_group("world_saver")
+	if saver and saver.has_method("save_game"):
+		saver.save_game()
 	print("Świat \"%s\" gotowy! Seed: %d" % [world_name, world_seed])
 
 
@@ -235,7 +245,6 @@ func _spawn_cave(rng: RandomNumberGenerator) -> void:
 	if mountain_tiles.is_empty():
 		push_warning("Brak kafelków gór — jaskinia nie zostanie umieszczona")
 		return
-
 	if not ResourceLoader.exists(cave_scene_path):
 		push_warning("Brak sceny jaskini: %s" % cave_scene_path)
 		return
@@ -253,16 +262,32 @@ func _spawn_cave(rng: RandomNumberGenerator) -> void:
 	cave_world_pos = cave.position
 	print("Jaskinia: kafelek %s, pozycja %s" % [tile, cave.position])
 
-func _spawn_house(spawn_pos: Vector2) -> void:
+
+func _find_spawn_for_house() -> Vector2:
+	# Stały seed = zawsze ta sama pozycja dla tego świata
+	var rng_house := RandomNumberGenerator.new()
+	rng_house.seed = world_seed + 9999
+	for _i in range(1000):
+		var x := rng_house.randi_range(60, WORLD_WIDTH - 60)
+		var y := rng_house.randi_range(60, WORLD_HEIGHT - 60)
+		var t := _get_terrain(x, y)
+		if t == TERRAIN_GRASS or t == TERRAIN_FOREST:
+			return Vector2(x * TILE_SIZE + TILE_SIZE / 2,
+						   y * TILE_SIZE + TILE_SIZE / 2)
+	return Vector2(WORLD_WIDTH * TILE_SIZE / 2, WORLD_HEIGHT * TILE_SIZE / 2)
+
+
+func _spawn_house() -> void:
 	if not ResourceLoader.exists(house_scene_path):
 		push_warning("Brak sceny domku: %s" % house_scene_path)
 		return
+
 	var house_scene := load(house_scene_path)
 	var house: Node2D = house_scene.instantiate()
-	house.position = spawn_pos + Vector2(TILE_SIZE * 4, 0)
+	#var save := SaveManager.load_save()
+	house.position = _find_spawn_for_house()
 	objects.add_child(house)
 	print("Domek: pozycja %s" % house.position)
-	
 
 
 func _try_object(x: int, y: int, terrain: int, rng: RandomNumberGenerator) -> void:
@@ -308,19 +333,19 @@ func _spawn_scene(scene: PackedScene, tx: int, ty: int) -> void:
 
 func _find_spawn(rng: RandomNumberGenerator) -> Vector2:
 	for _i in range(1000):
-		var x := rng.randi_range(60, WORLD_WIDTH  - 60)
+		var x := rng.randi_range(60, WORLD_WIDTH - 60)
 		var y := rng.randi_range(60, WORLD_HEIGHT - 60)
 		var t := _get_terrain(x, y)
 		if t == TERRAIN_GRASS:
 			return Vector2(x * TILE_SIZE + TILE_SIZE / 2,
 						   y * TILE_SIZE + TILE_SIZE / 2)
 	return Vector2(WORLD_WIDTH * TILE_SIZE / 2, WORLD_HEIGHT * TILE_SIZE / 2)
-	
-func _find_spawn_cave(rng: RandomNumberGenerator) -> Vector2:
+
+
+func _find_spawn_cave(_rng: RandomNumberGenerator) -> Vector2:
 	if cave_world_pos != Vector2.ZERO:
 		return cave_world_pos + Vector2(0, 32)
 	return Vector2(WORLD_WIDTH * TILE_SIZE / 2, WORLD_HEIGHT * TILE_SIZE / 2)
-
 
 
 func _norm(v: float) -> float:

@@ -134,6 +134,8 @@ func _on_create_button_pressed() -> void:
 	player_data.world_name  = world_name
 	player_data.player_name = player_name
 	player_data.world_seed  = randi()
+	
+	SaveManager.delete_save() 
 
 	_save_player_data()
 	get_tree().change_scene_to_file("res://Player/word.tscn")

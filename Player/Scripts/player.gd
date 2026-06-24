@@ -106,6 +106,8 @@ func save_state() -> void:
 
 
 func reinitialize() -> void:
+	if not is_inside_tree():
+		await ready
 	await get_tree().process_frame
 
 	var hud = get_tree().get_first_node_in_group("hud")

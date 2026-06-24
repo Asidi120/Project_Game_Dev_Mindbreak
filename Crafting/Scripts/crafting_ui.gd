@@ -9,6 +9,8 @@ var crafting_slot_scene = preload("res://Crafting/Scenes/crafting_slot.tscn")
 var inventory_system = null
 var texture_cache := {}
 
+const NON_STACKABLE_TYPES = ["axe", "pickaxe", "sword"]
+
 
 var recipes := [
 	#Stick
@@ -222,7 +224,7 @@ var recipes := [
 	},
 	{
 		"result_scene": "res://Scenes/Tools/sword_copper.tscn",
-		"result_id": "axe_copper",
+		"result_id": "sword_copper",
 		"result_amount": 1,
 		"requirements": [
 			{
@@ -341,6 +343,42 @@ var recipes := [
 			}
 		]
 	},
+	#Ognisko
+	{
+	"result_scene": "res://Scenes/Items/bonfire_item.tscn",
+	"result_id": "bonfire_item",
+	"result_amount": 1,
+	"requirements": [
+		{
+			"item_id": "stick",
+			"needed_amount": 4,
+			"scene_path": "res://Scenes/Items/stick.tscn"
+		},
+		{
+			"item_id": "stone",
+			"needed_amount": 3,
+			"scene_path": "res://Scenes/Items/stone.tscn"
+		}
+	]
+},
+#Skrzynka
+{
+	"result_scene": "res://Scenes/Items/chest_item.tscn",
+	"result_id": "chest_item",
+	"result_amount": 1,
+	"requirements": [
+		{
+			"item_id": "wood",
+			"needed_amount": 8,
+			"scene_path": "res://Scenes/Items/wood.tscn"
+		},
+		{
+			"item_id": "stick",
+			"needed_amount": 2,
+			"scene_path": "res://Scenes/Items/stick.tscn"
+		}
+	]
+},
 	
 	
 ]
@@ -495,15 +533,32 @@ func can_craft(recipe: Dictionary) -> bool:
 
 	return true
 
+func can_stack_items(a: Dictionary, b: Dictionary) -> bool:
+	if a == null or b == null:
+		return false
 
+	if a["item_id"] != b["item_id"]:
+		return false
+
+	if NON_STACKABLE_TYPES.has(a.get("item_type", "")):
+		return false
+
+	if NON_STACKABLE_TYPES.has(b.get("item_type", "")):
+		return false
+
+	return true
+	
 func can_add_result_to_inventory(recipe: Dictionary) -> bool:
-	var result_id = recipe["result_id"]
+	var result_item = create_item_data_from_scene(recipe["result_scene"], recipe["result_amount"])
+
+	if result_item.is_empty():
+		return false
 
 	for item in inventory_system.current_inventory:
 		if item == null:
 			return true
 
-		if item["item_id"] == result_id and item["amount"] < MAX_STACK:
+		if can_stack_items(item, result_item) and item["amount"] < MAX_STACK:
 			return true
 
 	return false
@@ -595,9 +650,14 @@ func create_item_data_from_scene(scene_path: String, amount: int = 1) -> Diction
 	if item_instance is Tool:
 		item_data["tool_power"] = item_instance.tool_power
 		item_data["position_of_power"] = item_instance.position_of_power
+		item_data["item_durability"] = item_instance.item_durability
 		
 	if item_instance is Sword:
 		item_data["power"] = item_instance.power
+		item_data["item_durability"] = item_instance.item_durability
+		
+	if item_instance is PlaceableItem:
+		item_data["place_scene_path"] = item_instance.place_scene_path
 
 	item_instance.queue_free()
 
@@ -611,7 +671,7 @@ func add_item_to_inventory(item_data: Dictionary) -> bool:
 		if item == null:
 			continue
 
-		if item["item_id"] == item_data["item_id"] and item["amount"] < MAX_STACK:
+		if can_stack_items(item, item_data) and item["amount"] < MAX_STACK:
 			var space = MAX_STACK - item["amount"]
 			var transfer = min(space, item_data["amount"])
 

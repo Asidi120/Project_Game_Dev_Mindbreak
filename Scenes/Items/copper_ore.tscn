@@ -12,6 +12,7 @@ scale = Vector2(1.1600013, 1.1600013)
 script = ExtResource("1_dj610")
 item_id = "copper_ore"
 item_name = "CopperOre"
+item_type = "ore"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=485898290]
 position = Vector2(0.862068, -0.862068)

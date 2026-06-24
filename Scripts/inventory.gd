@@ -31,6 +31,8 @@ var inventory_chest_position : Vector2
 var crafting_ui = null
 var fasteq = null
 
+var NON_STACKABLE_TYPES = ["axe", "pickaxe", "sword"]
+
 
 func _ready() -> void:
 	if self.name == "Inventory":
@@ -57,6 +59,19 @@ func _process(_delta: float) -> void:
 		handle_fasteq_scroll()
 		handle_fasteq_keys()
 
+#czy mozna stackowac (wykluczone sa elementy axe pickaxe i sword)
+func can_stack_items(a: Dictionary, b: Dictionary) -> bool:
+	if a == null or b == null:
+		return false
+
+	if a["item_id"] != b["item_id"]:
+		return false
+
+	if NON_STACKABLE_TYPES.has(a.get("item_type", "")):
+		return false
+
+	return true
+	
 func handle_fasteq_keys() -> void:
 	
 	if Input.is_action_just_pressed("1"):
@@ -195,7 +210,7 @@ func add_item_to_storage(storage: Array, item_data: Dictionary) -> bool:
 
 	for i in range(storage.size()):
 		if storage[i] != null:
-			if storage[i]["item_id"] == item_data["item_id"] and storage[i]["amount"] < MAX_STACK:
+			if can_stack_items(storage[i], item_data) and storage[i]["amount"] < MAX_STACK:
 				var space = MAX_STACK - storage[i]["amount"]
 				var transfer = min(space, item_data["amount"])
 
@@ -321,7 +336,7 @@ func swap_slots(from_index: int, to_index: int) -> void:
 		refresh_all()
 		return
 
-	if a != null and b != null and a["item_id"] == b["item_id"]:
+	if a != null and b != null and can_stack_items(a, b):
 		var space = MAX_STACK - b["amount"]
 
 		if space > 0:
@@ -360,7 +375,7 @@ func swap_slots_in_storage(storage: Array, from_index: int, to_index: int) -> vo
 		storage[from_index] = null
 		return
 
-	if a["item_id"] == b["item_id"]:
+	if can_stack_items(a, b):
 		var space = MAX_STACK - b["amount"]
 
 		if space > 0:
@@ -395,7 +410,7 @@ func move_between_storages(from_storage: Array, from_index: int, to_storage: Arr
 		from_storage[from_index] = null
 		return
 
-	if a["item_id"] == b["item_id"]:
+	if can_stack_items(a, b):
 		var space = MAX_STACK - b["amount"]
 
 		if space > 0:

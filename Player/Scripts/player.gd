@@ -105,6 +105,8 @@ func save_state() -> void:
 
 
 func reinitialize() -> void:
+	if not is_inside_tree():
+		await ready
 	await get_tree().process_frame
 
 	var hud = get_tree().get_first_node_in_group("hud")
@@ -207,9 +209,13 @@ func update_held_item():
 	if Input.is_action_just_pressed("eat") and (item["item_type"] == "food" or item["item_type"] == "meat_raw" or item["item_type"] == "meat_cooked" or item["item_type"] == "potion"):
 		if eating(item):
 			print("Znikaaaaa")
-			inventory_system.current_inventory[index] = null
+			
+			if item.has("amount") and item["amount"] > 1:
+				item["amount"] -= 1
+			else:
+				inventory_system.current_inventory[index] = null
+			
 			inventory_system.refresh_all()
-
 
 func update_held_position():
 	if facing_direction == Vector2.UP:
@@ -232,34 +238,85 @@ func update_held_position():
 		held_item.z_index = 10
 		held_item.rotation_degrees = 0
 
+func place_held_item():
+	if inventory_system == null:
+		return
 
+	if inventory_system.inventory_visible:
+		return
+
+	var index = inventory_system.selected_fasteq_index
+
+	if index < 0 or index >= inventory_system.current_inventory.size():
+		return
+
+	var item = inventory_system.current_inventory[index]
+
+	if item == null:
+		return
+
+	if item.get("item_type", "") != "placeable":
+		return
+
+	if not item.has("place_scene_path"):
+		return
+
+	if Input.is_action_just_pressed("place"):
+		var scene = load(item["place_scene_path"])
+
+		if scene == null:
+			push_error("Nie udało się wczytać sceny: " + item["place_scene_path"])
+			return
+
+		var placed_object = scene.instantiate()
+		get_tree().current_scene.add_child(placed_object)
+
+		placed_object.global_position = global_position + facing_direction * 32
+
+		if item["amount"] > 1:
+			item["amount"] -= 1
+		else:
+			inventory_system.current_inventory[index] = null
+
+		inventory_system.refresh_all()
+		
 func eating(item):
-	var czy_zjedzone = false
-	if not inventory_system.inventory_visible:
-		if item["item_id"] == "potion_health": #health potka
-			if current_hp == 200:
-				return
-			else:
-				current_hp = 200
-				emit_signal("hp_changed", current_hp, max_hp)
-		if item["item_id"] == "potion_stamina": #wypicie stamina potion
-			drank_stamina_potion = true
-			stamina_bar.modulate = Color(0.0, 0.853, 0.0, 1.0)
-			
-			print("heath potka")
-		elif item is Food:
-			if item["hunger_points"] <= max_hunger:
-				if current_hunger == max_hunger:
-					print("Nie można zjeść. Jesteś najedzony!")
-					return
-				elif item["hunger_points"] + current_hunger >= max_hunger:
-					current_hunger = max_hunger
-					print("Najadłeś się")
-				else:
-					print("Zjadłeś")
-					current_hunger += item["hunger_points"]
-		czy_zjedzone = true
-		return czy_zjedzone
+	if inventory_system.inventory_visible:
+		return false
+	
+	if item == null:
+		return false
+	
+	if item["item_id"] == "potion_health":
+		if current_hp == max_hp:
+			return false
+		
+		current_hp = max_hp
+		emit_signal("hp_changed", current_hp, max_hp)
+		return true
+	
+	elif item["item_id"] == "potion_stamina":
+		drank_stamina_potion = true
+		stamina_bar.modulate = Color(0.0, 0.853, 0.0, 1.0)
+		return true
+	
+	elif item.has("hunger_points"):
+		if current_hunger == max_hunger:
+			print("Nie można zjeść. Jesteś najedzony!")
+			return false
+		
+		current_hunger += item["hunger_points"]
+		
+		if current_hunger >= max_hunger:
+			current_hunger = max_hunger
+			print("Najadłeś się")
+		else:
+			print("Zjadłeś")
+		
+		emit_signal("hunger_changed", current_hunger, max_hunger)
+		return true
+	
+	return false
 
 
 func throw():
@@ -287,6 +344,10 @@ func throw():
 
 		var item_scene = load(item["scene_path"])
 		var dropped_item = item_scene.instantiate()
+		
+		#tutaj zapamietuje durability wyrzuconych przedmiotow
+		if dropped_item is Tool or dropped_item is Sword:
+			dropped_item.item_durability = item.get("item_durability", dropped_item.item_durability)
 
 		get_tree().current_scene.add_child(dropped_item)
 		dropped_item.global_position = global_position + facing_direction * 20
@@ -333,6 +394,8 @@ func attack():
 			if item["item_type"] == "sword":
 				sounds.play_sound("attack")
 				attack_swing()
+			#if item["item_type"] == "sword" or item["item_type"] == "axe" or item["item_type"] == "pickaxe":
+				#update_item_durability(item)
 		current_stamina-=15
 		stamina_recovery()
 		await get_tree().create_timer(0.2).timeout
@@ -340,7 +403,9 @@ func attack():
 		is_attacking = false
 		already_hit = []
 		state = State.IDLE
-
+		
+		
+	
 func apply_stun(duration: float):
 	if state == State.DEAD:
 		return
@@ -588,6 +653,7 @@ func _process(_delta):
 	update_held_item()
 	update_held_position()
 	throw()
+	place_held_item()
 	if Input.is_action_just_pressed("pick_up") and items_in_range.size() > 0:
 		var item = items_in_range[0]
 		var item_picked_up = item.collect()
@@ -598,7 +664,7 @@ func _process(_delta):
 		for i in range(inventory.size() - 1, -1, -1):
 			if inventory[i] != null:
 				var item_data = inventory[i]
-				if item_data["item_id"] == item_picked_up["item_id"] and item_data["amount"] < MAX_STACK:
+				if inventory_system.can_stack_items(item_data, item_picked_up) and item_data["amount"] < MAX_STACK:
 					item_data["amount"] += 1
 					added = true
 					break

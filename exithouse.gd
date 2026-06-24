@@ -1,8 +1,5 @@
 extends Area2D
 
-@export var cave_scene: String = "res://cave1.tscn"
-@export var spawn_name: String = "SpawnPoint"
-
 var player_inside: bool = false
 
 
@@ -15,7 +12,7 @@ func _process(_delta: float) -> void:
 	if player_inside and Input.is_action_just_pressed("interact"):
 		var player := get_tree().get_first_node_in_group("player")
 		if player:
-			SceneTransition.travel(player, cave_scene, spawn_name)
+			SceneTransition.travel_back(player)
 
 
 func _on_body_entered(body: Node) -> void:

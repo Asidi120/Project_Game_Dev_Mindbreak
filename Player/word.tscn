@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://bhk8wb8aud5hg" path="res://Scenes/Items/wood.tscn" id="7_ump0c"]
 [ext_resource type="Texture2D" uid="uid://cramspjee52ry" path="res://TitleMapsLayer/plaza_gory.png" id="9_f2ovg"]
 [ext_resource type="Texture2D" uid="uid://d2d5mkewrvuo1" path="res://TitleMapsLayer/plaza_las.png" id="10_cpn7g"]
+[ext_resource type="Script" uid="uid://cm4douxr3p5an" path="res://Player/WorldSaver.gd" id="14_62xdw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qnhtb"]
 texture = ExtResource("4_60257")
@@ -1539,3 +1540,6 @@ position = Vector2(208, -38)
 
 [node name="Wood2" parent="." unique_id=297404989 instance=ExtResource("7_ump0c")]
 position = Vector2(284, -37)
+
+[node name="WorldSaver" type="Node" parent="." unique_id=1536106010]
+script = ExtResource("14_62xdw")

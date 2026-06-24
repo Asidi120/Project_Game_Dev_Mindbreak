@@ -3,8 +3,10 @@
 [ext_resource type="Script" uid="uid://djc81mnyyoise" path="res://CaveScene.gd" id="1_80hx2"]
 [ext_resource type="Texture2D" uid="uid://b84akgdj152yj" path="res://house/walls_floor.png" id="2_we6po"]
 [ext_resource type="Texture2D" uid="uid://dukcxec5bpyr1" path="res://house/Interior.png" id="3_lrqm8"]
-[ext_resource type="Script" uid="uid://dkpojwklb6f8w" path="res://exitcave.gd" id="4_s0jn8"]
+[ext_resource type="Script" uid="uid://d4jh3v5v5ahrd" path="res://exithouse.gd" id="4_lrqm8"]
 [ext_resource type="PackedScene" uid="uid://b70fk741qrjt7" path="res://hud/HUD.tscn" id="5_d36us"]
+[ext_resource type="PackedScene" uid="uid://wuwot8hv4p00" path="res://Scenes/StaticStructures/chest.tscn" id="5_lrqm8"]
+[ext_resource type="PackedScene" uid="uid://dwr75oy600gxk" path="res://Scenes/StaticStructures/bed.tscn" id="6_s0jn8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e2u7s"]
 texture = ExtResource("2_we6po")
@@ -805,8 +807,8 @@ tile_set = SubResource("TileSet_tfmxe")
 use_kinematic_bodies = true
 
 [node name="Area2D" type="Area2D" parent="." unique_id=2054773578]
-position = Vector2(0, 1)
-script = ExtResource("4_s0jn8")
+position = Vector2(0, -2)
+script = ExtResource("4_lrqm8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1518451475]
 position = Vector2(416, 140)
@@ -819,5 +821,11 @@ offset_right = 426.0
 offset_bottom = 143.0
 theme_override_font_sizes/font_size = 4
 text = "Press \"E\" to exit"
+
+[node name="Chest" parent="Area2D" unique_id=1564093039 instance=ExtResource("5_lrqm8")]
+position = Vector2(379, 168)
+
+[node name="Bed" parent="Area2D" unique_id=1754547488 instance=ExtResource("6_s0jn8")]
+position = Vector2(349, 269)
 
 [node name="HUD" parent="." unique_id=1148326026 instance=ExtResource("5_d36us")]

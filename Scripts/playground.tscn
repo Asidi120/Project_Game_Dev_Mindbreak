@@ -65,6 +65,7 @@
 [ext_resource type="PackedScene" uid="uid://vebg06r8ojnf" path="res://Scenes/Potions/potion_stamina.tscn" id="62_28vq4"]
 [ext_resource type="PackedScene" uid="uid://iqmeit2sjngx" path="res://Scenes/Items/diamond_ore.tscn" id="63_d2ds1"]
 [ext_resource type="PackedScene" uid="uid://dpkd68plrh24n" path="res://Scenes/Food/berry_1.tscn" id="65_seywm"]
+[ext_resource type="PackedScene" uid="uid://b06s010oyn8y1" path="res://Scenes/Items/bonfire_item.tscn" id="66_3glsb"]
 
 [node name="Playground" type="Node2D" unique_id=571104678]
 scale = Vector2(1.9740651, 1.9740651)
@@ -346,3 +347,6 @@ position = Vector2(-32.92698, 45.084633)
 
 [node name="Berry1" parent="." unique_id=1383328395 instance=ExtResource("65_seywm")]
 position = Vector2(-84.59701, -0.5065689)
+
+[node name="BonfireItem" parent="." unique_id=2145226744 instance=ExtResource("66_3glsb")]
+position = Vector2(-102.83349, 32.42041)

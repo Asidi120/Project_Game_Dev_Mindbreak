@@ -343,6 +343,24 @@ var recipes := [
 			}
 		]
 	},
+	#Ognisko
+	{
+	"result_scene": "res://Scenes/Items/bonfire_item.tscn",
+	"result_id": "bonfire_item",
+	"result_amount": 1,
+	"requirements": [
+		{
+			"item_id": "stick",
+			"needed_amount": 1,
+			"scene_path": "res://Scenes/Items/stick.tscn"
+		},
+		{
+			"item_id": "stone",
+			"needed_amount": 1,
+			"scene_path": "res://Scenes/Items/stone.tscn"
+		}
+	]
+},
 	
 	
 ]

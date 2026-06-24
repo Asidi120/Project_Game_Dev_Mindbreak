@@ -17,7 +17,7 @@ func _ready():
 	for monster in get_tree().get_nodes_in_group("Enemies"):
 		monster.died.connect(monster_died)
 	open_door.visible=false
-	can_open=false
+	can_open=true
 
 func _process(delta):
 	var door_screen_pos = open_door.get_global_transform_with_canvas().origin
@@ -26,14 +26,16 @@ func _process(delta):
 	click_to_open_label.position = door_screen_pos + Vector2(-210, -180)
 	if can_exit:
 		if Input.is_action_just_pressed("action (open door, sleep etc.)"):
-			get_tree().change_scene_to_file("res://Player/word.tscn")
+			SceneTransition.change_scene_with_save("res://Player/word.tscn")
 	if player_in_door_area:
 		if can_open:
 			click_to_open_label.visible = true
-
 			if Input.is_action_just_pressed("action (open door, sleep etc.)"):
+				BossManager.connect_signal()
 				emit_signal("boss_door_entered", get_tree().current_scene.name)
-				get_tree().change_scene_to_file("res://Boss_Area/BossArea.tscn")
+				BossManager.current_dungeon_name=get_tree().current_scene.name
+				print(BossManager.current_dungeon_name)
+				SceneTransition.change_scene_with_save("res://Boss_Area/BossArea.tscn")
 		else:
 			click_to_open_label.visible = false
 

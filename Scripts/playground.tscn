@@ -64,6 +64,7 @@
 [ext_resource type="PackedScene" uid="uid://cgucfj6me8w55" path="res://Scenes/Potions/potion_health.tscn" id="61_1grgn"]
 [ext_resource type="PackedScene" uid="uid://vebg06r8ojnf" path="res://Scenes/Potions/potion_stamina.tscn" id="62_28vq4"]
 [ext_resource type="PackedScene" uid="uid://iqmeit2sjngx" path="res://Scenes/Items/diamond_ore.tscn" id="63_d2ds1"]
+[ext_resource type="PackedScene" uid="uid://ekykjh8h0tui" path="res://Dungeons/DungeonFirst/Dungeon1Entrance.tscn" id="66_3glsb"]
 [ext_resource type="PackedScene" uid="uid://dpkd68plrh24n" path="res://Scenes/Food/berry_1.tscn" id="65_seywm"]
 [ext_resource type="PackedScene" uid="uid://b06s010oyn8y1" path="res://Scenes/Items/bonfire_item.tscn" id="66_3glsb"]
 
@@ -110,7 +111,6 @@ position = Vector2(-35.161194, -65.117584)
 
 [node name="Player" parent="BleakYellowGrass/level" unique_id=257810088 instance=ExtResource("4_b7mh3")]
 unique_name_in_owner = true
-z_index = 3
 position = Vector2(-66.56847, -17.5001)
 
 [node name="Boulder" parent="BleakYellowGrass/level" unique_id=2132276029 instance=ExtResource("10_08ji3")]
@@ -134,13 +134,13 @@ position = Vector2(-90.37722, 24.038544)
 position = Vector2(-168.89545, -1.2898941)
 
 [node name="Fox" parent="BleakYellowGrass/level" unique_id=1904369127 instance=ExtResource("18_okydv")]
-position = Vector2(-97.46918, -22.059235)
+position = Vector2(-79.2327, -93.48544)
 
 [node name="Grouse" parent="BleakYellowGrass/level" unique_id=413200121 instance=ExtResource("19_4oawc")]
 position = Vector2(-172.44138, -27.631493)
 
 [node name="Boar" parent="BleakYellowGrass/level" unique_id=2082633821 instance=ExtResource("20_i77k7")]
-position = Vector2(-127.35674, -22.059235)
+position = Vector2(-78.21956, -71.70298)
 
 [node name="SwordWood" parent="BleakYellowGrass/level" unique_id=1010033666 instance=ExtResource("23_i77k7")]
 position = Vector2(-58.969917, 50.886696)
@@ -282,9 +282,6 @@ position = Vector2(-42.253166, 127.88517)
 [node name="ChestDungeon2" parent="BleakYellowGrass/level" unique_id=1261636958 instance=ExtResource("58_61y65")]
 position = Vector2(2.8314667, 130.41801)
 
-[node name="Dungeon1Entrance" parent="BleakYellowGrass/level" unique_id=2060744612 instance=ExtResource("59_v7jvq")]
-position = Vector2(230.78748, -255.19336)
-
 [node name="Dungeon1Entrance2" parent="BleakYellowGrass/level" unique_id=723689509 instance=ExtResource("58_1grgn")]
 position = Vector2(343.75232, -283.05466)
 
@@ -293,6 +290,9 @@ position = Vector2(460.26318, -253.05466)
 
 [node name="PotionHunger" parent="BleakYellowGrass/level" unique_id=1662720649 instance=ExtResource("57_oo2fk")]
 position = Vector2(-162.31, 150.17418)
+
+[node name="Dungeon1Entrance" parent="BleakYellowGrass/level" unique_id=2060744612 instance=ExtResource("66_3glsb")]
+position = Vector2(179.11745, -280.01523)
 
 [node name="HUD" parent="BleakYellowGrass" unique_id=1148326026 instance=ExtResource("14_djkbh")]
 

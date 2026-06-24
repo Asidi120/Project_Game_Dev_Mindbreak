@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://cgc3sk5yjh5sm" path="res://OtherSprites/Premium_Trees_Black_Outline.png" id="1_0vwjc"]
 [ext_resource type="Script" uid="uid://xihm3wugii01" path="res://Scripts/static_breakable_object.gd" id="1_l7sa7"]
 [ext_resource type="PackedScene" uid="uid://bhk8wb8aud5hg" path="res://Scenes/Items/wood.tscn" id="2_l7sa7"]
+[ext_resource type="AudioStream" uid="uid://ctfiqx6uxodrh" path="res://Sounds/15_Hit_on_wood_1.wav" id="4_x1s3l"]
 [ext_resource type="PackedScene" uid="uid://bjgxjuvclurjp" path="res://Scenes/Food/apple.tscn" id="3_x1s3l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rsuno"]
@@ -39,6 +40,9 @@ shape = SubResource("RectangleShape2D_rsuno")
 position = Vector2(-3, -20)
 scale = Vector2(1.9511187, 4.8321476)
 shape = SubResource("RectangleShape2D_l7sa7")
+
+[node name="TreeHit" type="AudioStreamPlayer2D" parent="." unique_id=413914212]
+stream = ExtResource("4_x1s3l")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

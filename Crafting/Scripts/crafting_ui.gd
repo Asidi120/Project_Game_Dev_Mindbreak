@@ -351,13 +351,31 @@ var recipes := [
 	"requirements": [
 		{
 			"item_id": "stick",
-			"needed_amount": 1,
+			"needed_amount": 4,
 			"scene_path": "res://Scenes/Items/stick.tscn"
 		},
 		{
 			"item_id": "stone",
-			"needed_amount": 1,
+			"needed_amount": 3,
 			"scene_path": "res://Scenes/Items/stone.tscn"
+		}
+	]
+},
+#Skrzynka
+{
+	"result_scene": "res://Scenes/Items/chest_item.tscn",
+	"result_id": "chest_item",
+	"result_amount": 1,
+	"requirements": [
+		{
+			"item_id": "wood",
+			"needed_amount": 1,
+			"scene_path": "res://Scenes/Items/wood.tscn"
+		},
+		{
+			"item_id": "stick",
+			"needed_amount": 1,
+			"scene_path": "res://Scenes/Items/stick.tscn"
 		}
 	]
 },

@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bltnftcyd54do" path="res://OtherSprites/Bonfire/Bonfire_05-Sheet.png" id="2_iqhrp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tfydv"]
-size = Vector2(99.359985, 47.02102)
+size = Vector2(70.97142, 47.02102)
 
 [node name="BonfireItem" type="Area2D" unique_id=1592250268]
 scale = Vector2(0.77396375, 0.77396375)
@@ -19,9 +19,9 @@ z_index = -1
 position = Vector2(4, 4)
 texture = ExtResource("2_iqhrp")
 region_enabled = true
-region_rect = Rect2(97.11, 9.283747, 29.545761, 21.579992)
+region_rect = Rect2(102.15953, 13.293669, 20.362099, 9.305874)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=730860820]
-position = Vector2(3.2301247, 2.3119235)
+position = Vector2(4.522176, 3.8761501)
 scale = Vector2(0.2730783, 0.2632046)
 shape = SubResource("RectangleShape2D_tfydv")

@@ -8,12 +8,10 @@
 [ext_resource type="Texture2D" uid="uid://b3gmrqfjr3d0t" path="res://TitleMapsLayer/Beach_Tile_2.png" id="4_60257"]
 [ext_resource type="PackedScene" uid="uid://b70fk741qrjt7" path="res://hud/HUD.tscn" id="4_cw7yw"]
 [ext_resource type="Texture2D" uid="uid://cgc3w470qgfn5" path="res://TitleMapsLayer/Water_Tile_1.png" id="4_sx7xa"]
-[ext_resource type="PackedScene" uid="uid://cm00qlqub0neu" path="res://Enemies/Spirit_Wolf/EvilWolf.tscn" id="5_s7w4w"]
 [ext_resource type="Texture2D" uid="uid://dsu4qobdt6546" path="res://TitleMapsLayer/laka_las.png" id="6_aqciq"]
-[ext_resource type="PackedScene" uid="uid://bhk8wb8aud5hg" path="res://Scenes/Items/wood.tscn" id="7_ump0c"]
 [ext_resource type="Texture2D" uid="uid://cramspjee52ry" path="res://TitleMapsLayer/plaza_gory.png" id="9_f2ovg"]
 [ext_resource type="Texture2D" uid="uid://d2d5mkewrvuo1" path="res://TitleMapsLayer/plaza_las.png" id="10_cpn7g"]
-[ext_resource type="Script" path="res://Player/WorldSaver.gd" id="14_62xdw"]
+[ext_resource type="Script" uid="uid://cm4douxr3p5an" path="res://Player/WorldSaver.gd" id="14_62xdw"]
 [ext_resource type="Script" uid="uid://bs3h32b6gxe2i" path="res://Scripts/day_night_overlay.gd" id="15_61npg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qnhtb"]
@@ -1517,10 +1515,14 @@ sources/13 = SubResource("TileSetAtlasSource_sx7xa")
 script = ExtResource("1_61npg")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1097302440]
+z_index = -1
 tile_set = SubResource("TileSet_mpty1")
 use_kinematic_bodies = true
 
 [node name="Objects" type="Node2D" parent="." unique_id=1685361630]
+y_sort_enabled = true
+
+[node name="Player" parent="Objects" unique_id=257810088 instance=ExtResource("3_kmqk7")]
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=1479214549]
 
@@ -1528,19 +1530,7 @@ use_kinematic_bodies = true
 offset_right = 40.0
 offset_bottom = 23.0
 
-[node name="Player" parent="." unique_id=257810088 instance=ExtResource("3_kmqk7")]
-
 [node name="HUD" parent="." unique_id=1148326026 instance=ExtResource("4_cw7yw")]
-
-[node name="EvilWolfWithPoints" parent="." unique_id=697092607 instance=ExtResource("5_s7w4w")]
-position = Vector2(451.99997, 276)
-rotation = 0.67159015
-
-[node name="Wood" parent="." unique_id=1592250268 instance=ExtResource("7_ump0c")]
-position = Vector2(208, -38)
-
-[node name="Wood2" parent="." unique_id=297404989 instance=ExtResource("7_ump0c")]
-position = Vector2(284, -37)
 
 [node name="WorldSaver" type="Node" parent="." unique_id=1536106010]
 script = ExtResource("14_62xdw")

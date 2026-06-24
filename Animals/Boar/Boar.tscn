@@ -644,6 +644,8 @@ size = Vector2(39, 35)
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1307423306 groups=["Enemies"]]
 position = Vector2(0, -27)
 scale = Vector2(0.6, 0.6)
+collision_layer = 2
+collision_mask = 16
 script = ExtResource("1_w3f6v")
 scene = ExtResource("2_tnnlm")
 

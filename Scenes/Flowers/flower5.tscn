@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cptk67nengjd5" path="res://OtherSprites/Flowers/DaffodilOUTLINED.png" id="2_wu37v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d43ed"]
-size = Vector2(11.664753, 296.94937)
+size = Vector2(13.882496, 32.73616)
 
 [node name="Flower5" type="Area2D" unique_id=13035520]
 z_index = 12
@@ -19,7 +19,7 @@ scale = Vector2(0.51599216, 0.51599216)
 texture = ExtResource("2_wu37v")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1266554538]
-position = Vector2(0.0019769003, 0.40321648)
+position = Vector2(-0.0054447893, -0.30437645)
 rotation = -1.5756979
-scale = Vector2(1.0017768, -0.2959776)
+scale = Vector2(1.0017768, -0.2959775)
 shape = SubResource("RectangleShape2D_d43ed")

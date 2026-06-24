@@ -1,9 +1,9 @@
-[gd_scene format=3 uid="uid://do35dwig5w8gm"]
+[gd_scene format=3 uid="uid://usiojwysxo2i"]
 
-[ext_resource type="Texture2D" uid="uid://cwfs677lcks4k" path="res://OtherSprites/Bush 1 - GREEN 2.png" id="1_6r6ay"]
-[ext_resource type="Script" uid="uid://xihm3wugii01" path="res://Scripts/static_breakable_object.gd" id="1_c0a6k"]
-[ext_resource type="PackedScene" uid="uid://thfp6dkj2dwq" path="res://Scenes/Items/stick.tscn" id="2_5jp6s"]
-[ext_resource type="PackedScene" uid="uid://b8og7hc4dkpmo" path="res://Scenes/Food/berry_2.tscn" id="3_c0a6k"]
+[ext_resource type="Script" uid="uid://xihm3wugii01" path="res://Scripts/static_breakable_object.gd" id="1_a102p"]
+[ext_resource type="PackedScene" uid="uid://thfp6dkj2dwq" path="res://Scenes/Items/stick.tscn" id="2_p0kni"]
+[ext_resource type="PackedScene" uid="uid://dpkd68plrh24n" path="res://Scenes/Food/berry_1.tscn" id="3_a102p"]
+[ext_resource type="Texture2D" uid="uid://b6xfroa506o7r" path="res://OtherSprites/Bush 1 - GREEN.png" id="4_p0kni"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0g5n5"]
 size = Vector2(42, 25)
@@ -11,15 +11,15 @@ size = Vector2(42, 25)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k4fjl"]
 size = Vector2(30.5, 4.75)
 
-[node name="Bush" type="StaticBody2D" unique_id=194477259]
+[node name="Bush2" type="StaticBody2D" unique_id=194477259]
 collision_layer = 16
 collision_mask = 3
-script = ExtResource("1_c0a6k")
+script = ExtResource("1_a102p")
 hits_needed = 3.0
-object_id = "bush"
+object_id = "bush_2"
 object_type = "bush"
-scene = ExtResource("2_5jp6s")
-scene2 = ExtResource("3_c0a6k")
+scene = ExtResource("2_p0kni")
+scene2 = ExtResource("3_a102p")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1645182401]
 z_index = -2
@@ -31,7 +31,7 @@ shape = SubResource("RectangleShape2D_0g5n5")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1877447958]
 position = Vector2(1, -8)
-texture = ExtResource("1_6r6ay")
+texture = ExtResource("4_p0kni")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1689938043]
 position = Vector2(0, 0.625)

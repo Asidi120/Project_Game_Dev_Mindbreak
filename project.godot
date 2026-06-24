@@ -17,12 +17,12 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-SceneTransition="*uid://blkywgueipie3"
-CaveItemManager="*uid://d2vpd5jtsj1am"
-WorldStateManager="*uid://dv41yvoht82cq"
 BossManager="*uid://ld0s6b38bht6"
 TotemManger="uid://d08xowmhti55k"
 SaveManager="*uid://cbngvupa6hkvc"
+CaveItemManager="*res://CaveItemManager.gd"
+WorldStateManager="*res://WorldStateManager.gd"
+SceneTransition="*res://SceneTransition.gd"
 
 [display]
 

@@ -1,54 +1,54 @@
-[gd_scene format=3 uid="uid://ekykjh8h0tui"]
+[gd_scene format=3 uid="uid://dwfu6w7p8yqvm"]
 
-[ext_resource type="Texture2D" uid="uid://n6cg63wwkytk" path="res://Dungeons/Tiles/Objects_animated.png" id="1_lyj60"]
-[ext_resource type="Script" uid="uid://c0xt7ghhxdjyn" path="res://Dungeons/DungeonEntrance.gd" id="1_xxqrf"]
-[ext_resource type="FontFile" uid="uid://b0nphpwk324ms" path="res://Fonts/PixelPurl.ttf" id="2_ku4bh"]
-[ext_resource type="Texture2D" uid="uid://bn00i1og0tkom" path="res://OtherSprites/LightSprite/2d_lights_and_shadows_neutral_point_light.webp" id="4_ncw11"]
+[ext_resource type="Script" uid="uid://c0xt7ghhxdjyn" path="res://Dungeons/DungeonEntrance.gd" id="1_ntib3"]
+[ext_resource type="Texture2D" uid="uid://bqxyksl7llylg" path="res://Dungeons/Tiles/Objects_animated2.png" id="2_i3utg"]
+[ext_resource type="FontFile" uid="uid://b0nphpwk324ms" path="res://Fonts/PixelPurl.ttf" id="3_d661v"]
+[ext_resource type="Texture2D" uid="uid://bn00i1og0tkom" path="res://OtherSprites/LightSprite/2d_lights_and_shadows_neutral_point_light.webp" id="4_thrlh"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ku4bh"]
-atlas = ExtResource("1_lyj60")
+[sub_resource type="AtlasTexture" id="AtlasTexture_thrlh"]
+atlas = ExtResource("2_i3utg")
 region = Rect2(22, 312, 83, 104)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xxqrf"]
-atlas = ExtResource("1_lyj60")
+[sub_resource type="AtlasTexture" id="AtlasTexture_ix3fn"]
+atlas = ExtResource("2_i3utg")
 region = Rect2(134, 312, 83, 104)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ncw11"]
-atlas = ExtResource("1_lyj60")
+[sub_resource type="AtlasTexture" id="AtlasTexture_rtgf0"]
+atlas = ExtResource("2_i3utg")
 region = Rect2(246, 312, 83, 104)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qssfl"]
-atlas = ExtResource("1_lyj60")
+[sub_resource type="AtlasTexture" id="AtlasTexture_oup0h"]
+atlas = ExtResource("2_i3utg")
 region = Rect2(358, 312, 83, 104)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3n3ej"]
-atlas = ExtResource("1_lyj60")
+[sub_resource type="AtlasTexture" id="AtlasTexture_6iibb"]
+atlas = ExtResource("2_i3utg")
 region = Rect2(470, 312, 83, 104)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_j6crf"]
-atlas = ExtResource("1_lyj60")
+[sub_resource type="AtlasTexture" id="AtlasTexture_h50m8"]
+atlas = ExtResource("2_i3utg")
 region = Rect2(582, 312, 83, 104)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_w4lsj"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ku4bh")
+"texture": SubResource("AtlasTexture_thrlh")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_xxqrf")
+"texture": SubResource("AtlasTexture_ix3fn")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ncw11")
+"texture": SubResource("AtlasTexture_rtgf0")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qssfl")
+"texture": SubResource("AtlasTexture_oup0h")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_3n3ej")
+"texture": SubResource("AtlasTexture_6iibb")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_j6crf")
+"texture": SubResource("AtlasTexture_h50m8")
 }],
 "loop": true,
 "name": &"default",
@@ -61,9 +61,9 @@ size = Vector2(85, 54.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d7pj6"]
 size = Vector2(52.5, 27)
 
-[node name="Dungeon1Entrance" type="Node2D" unique_id=2060744612]
+[node name="Dungeon2Entrance" type="Node2D" unique_id=2060744612]
 position = Vector2(0, -30)
-script = ExtResource("1_xxqrf")
+script = ExtResource("1_ntib3")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=673815812]
 collision_layer = 16
@@ -73,7 +73,7 @@ collision_mask = 3
 position = Vector2(0, -19)
 sprite_frames = SubResource("SpriteFrames_w4lsj")
 autoplay = "default"
-frame_progress = 0.6648309
+frame_progress = 0.98738915
 
 [node name="Area2D" type="Area2D" parent="StaticBody2D" unique_id=1341611932]
 
@@ -92,17 +92,17 @@ offset_left = -272.0
 offset_top = -107.0
 offset_right = 272.0
 offset_bottom = -79.0
-theme_override_fonts/font = ExtResource("2_ku4bh")
+theme_override_fonts/font = ExtResource("3_d661v")
 theme_override_font_sizes/font_size = 32
 text = "Click 'E' to enter!"
 horizontal_alignment = 1
 
-[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1037004322]
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=937731544]
 position = Vector2(0, -23)
 scale = Vector2(0.43359378, 0.4355469)
-color = Color(0.2566794, 0.6998722, 0.8293748, 1)
+color = Color(0.27682447, 0.7530587, 0.4377228, 1)
 energy = 2.0
-texture = ExtResource("4_ncw11")
+texture = ExtResource("4_thrlh")
 
 [connection signal="body_entered" from="StaticBody2D/Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="StaticBody2D/Area2D" to="." method="_on_area_2d_body_exited"]

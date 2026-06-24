@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cndwfmy332g28" path="res://OtherSprites/Items/ChatGPT_Image_20_cze_2026_00_22_40-removebg-preview.png" id="2_1rrki"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tfydv"]
-size = Vector2(43.94344, 45.591896)
+size = Vector2(75.23736, 47.72998)
 
 [node name="MeatRaw4" type="Area2D" unique_id=1592250268]
 scale = Vector2(0.2, 0.2)
@@ -23,6 +23,6 @@ region_enabled = true
 region_rect = Rect2(261.4152, 332.92014, 101.640045, 108.900055)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=730860820]
-position = Vector2(5.0000005, 3)
-scale = Vector2(0.2730783, 0.26320463)
+position = Vector2(6.3776255, 7.499996)
+scale = Vector2(0.56827146, 0.94280344)
 shape = SubResource("RectangleShape2D_tfydv")

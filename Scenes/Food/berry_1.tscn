@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://dpkd68plrh24n"]
+
+[ext_resource type="Script" uid="uid://ck0rx7f1ghuxu" path="res://Scripts/food.gd" id="1_lgn8q"]
+[ext_resource type="Texture2D" uid="uid://cc28si628gyup" path="res://OtherSprites/Items/Froots N Veggies.png" id="2_lgn8q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tfydv"]
+size = Vector2(43.94344, 45.591896)
+
+[node name="Berry1" type="Area2D" unique_id=1592250268]
+scale = Vector2(0.712, 0.712)
+script = ExtResource("1_lgn8q")
+item_id = "berry_1"
+item_name = "Berry1"
+item_type = "food"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=834627305]
+z_index = -1
+position = Vector2(4, 4)
+texture = ExtResource("2_lgn8q")
+region_enabled = true
+region_rect = Rect2(17.458796, 31.594437, 13.175226, 16.55349)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=730860820]
+position = Vector2(4.0000005, 5)
+scale = Vector2(0.2730783, 0.26320463)
+shape = SubResource("RectangleShape2D_tfydv")

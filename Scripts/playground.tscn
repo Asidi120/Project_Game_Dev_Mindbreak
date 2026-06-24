@@ -55,17 +55,16 @@
 [ext_resource type="PackedScene" uid="uid://bxah3ngnftgeo" path="res://Scenes/Food/meat_raw_3.tscn" id="51_kkea6"]
 [ext_resource type="PackedScene" uid="uid://hwpi48hrlmyu" path="res://Scenes/Food/meat_raw_4.tscn" id="52_hlkfb"]
 [ext_resource type="PackedScene" uid="uid://bjb88osnfjlic" path="res://Scenes/StaticStructures/bonfire.tscn" id="55_kkea6"]
-[ext_resource type="PackedScene" path="res://Scenes/StaticStructures/chest.tscn" id="56_hlkfb"]
+[ext_resource type="PackedScene" uid="uid://wuwot8hv4p00" path="res://Scenes/StaticStructures/chest.tscn" id="56_hlkfb"]
+[ext_resource type="PackedScene" uid="uid://cuwbw76t8spcd" path="res://Scenes/Potions/potion_hunger.tscn" id="57_oo2fk"]
 [ext_resource type="PackedScene" uid="uid://dwfu6w7p8yqvm" path="res://Dungeons/DungeonSecond/Dungeon2Entrance.tscn" id="58_1grgn"]
 [ext_resource type="PackedScene" uid="uid://bu47s3h11vmi5" path="res://Scenes/StaticStructures/chest_dungeon.tscn" id="58_61y65"]
 [ext_resource type="PackedScene" uid="uid://djjvgfq14orgc" path="res://Dungeons/DungeonThird/Dungeon3Entrance.tscn" id="59_28vq4"]
-[ext_resource type="PackedScene" uid="uid://ekykjh8h0tui" path="res://Dungeons/DungeonFirst/Dungeon1Entrance.tscn" id="59_v7jvq"]
-[ext_resource type="PackedScene" uid="uid://wuwot8hv4p00" path="res://Scenes/StaticStructures/chest.tscn" id="56_hlkfb"]
-[ext_resource type="PackedScene" uid="uid://cuwbw76t8spcd" path="res://Scenes/Potions/potion_hunger.tscn" id="57_oo2fk"]
 [ext_resource type="PackedScene" uid="uid://p4mxbst4j585" path="res://Scenes/Items/gold_bar.tscn" id="59_v7jvq"]
 [ext_resource type="PackedScene" uid="uid://cgucfj6me8w55" path="res://Scenes/Potions/potion_health.tscn" id="61_1grgn"]
 [ext_resource type="PackedScene" uid="uid://vebg06r8ojnf" path="res://Scenes/Potions/potion_stamina.tscn" id="62_28vq4"]
 [ext_resource type="PackedScene" uid="uid://iqmeit2sjngx" path="res://Scenes/Items/diamond_ore.tscn" id="63_d2ds1"]
+[ext_resource type="PackedScene" uid="uid://dpkd68plrh24n" path="res://Scenes/Food/berry_1.tscn" id="65_seywm"]
 
 [node name="Playground" type="Node2D" unique_id=571104678]
 scale = Vector2(1.9740651, 1.9740651)
@@ -216,10 +215,7 @@ position = Vector2(-160.79031, 193.73915)
 position = Vector2(-203.3421, 128.89832)
 
 [node name="house" parent="BleakYellowGrass/level" unique_id=1748543629 instance=ExtResource("58_61y65")]
-z_index = 0
 position = Vector2(156.32185, 137.51)
-collision_layer = 16
-collision_mask = 3
 
 [node name="GoldOre" parent="BleakYellowGrass/level" unique_id=2120493795 instance=ExtResource("18_g0rsy")]
 position = Vector2(-180.54648, 123.83262)
@@ -293,6 +289,7 @@ position = Vector2(343.75232, -283.05466)
 
 [node name="Dungeon1Entrance3" parent="BleakYellowGrass/level" unique_id=369519732 instance=ExtResource("59_28vq4")]
 position = Vector2(460.26318, -253.05466)
+
 [node name="PotionHunger" parent="BleakYellowGrass/level" unique_id=1662720649 instance=ExtResource("57_oo2fk")]
 position = Vector2(-162.31, 150.17418)
 
@@ -346,3 +343,6 @@ position = Vector2(-198.57501, 40.525513)
 
 [node name="SwordIron" parent="." unique_id=1349906632 instance=ExtResource("46_sdjit")]
 position = Vector2(-32.92698, 45.084633)
+
+[node name="Berry1" parent="." unique_id=1383328395 instance=ExtResource("65_seywm")]
+position = Vector2(-84.59701, -0.5065689)

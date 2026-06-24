@@ -40,14 +40,15 @@ func update_durability():
 		return 
 
 		#tutaj update durability miecza
-	item["item_durability"] -= 1
-	print(item["item_durability"])
-	
-	#usuwanie przedmiotu jesli durability ponizej zera
-	if item["item_durability"] <= 0:
-		inventory[index] = null
-		player.inventory_system.refresh_all()
-		return
+	if item["item_type"] == "sword":	
+		item["item_durability"] -= 1
+		print(item["item_durability"])
+		
+		#usuwanie przedmiotu jesli durability ponizej zera
+		if item["item_durability"] <= 0:
+			inventory[index] = null
+			player.inventory_system.refresh_all()
+			return
 		
 	return 
 		

@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://siqgssdbabnj"]
+
+[ext_resource type="Script" uid="uid://ck0rx7f1ghuxu" path="res://Scripts/food.gd" id="1_xtcau"]
+[ext_resource type="Texture2D" uid="uid://b3b521rbrcqhh" path="res://OtherSprites/Items/Items.png" id="2_ytmvy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tfydv"]
+size = Vector2(43.94344, 45.591896)
+
+[node name="FriedEgg" type="Area2D" unique_id=1592250268]
+scale = Vector2(0.6989972, 0.7015085)
+script = ExtResource("1_xtcau")
+hunger_points = 30
+item_id = "fried_egg"
+item_name = "FriedEgg"
+item_type = "food"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=834627305]
+z_index = -1
+position = Vector2(4, 4)
+texture = ExtResource("2_ytmvy")
+region_enabled = true
+region_rect = Rect2(31, 44.75, 17, 24.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=730860820]
+position = Vector2(5.0000005, 3)
+scale = Vector2(0.2730783, 0.26320463)
+shape = SubResource("RectangleShape2D_tfydv")

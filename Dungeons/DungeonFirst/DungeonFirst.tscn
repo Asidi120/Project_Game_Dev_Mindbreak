@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://c2e0o08q8buid" path="res://Player/player.tscn" id="5_4vc73"]
 [ext_resource type="FontFile" uid="uid://b0nphpwk324ms" path="res://Fonts/PixelPurl.ttf" id="5_llydp"]
 [ext_resource type="PackedScene" uid="uid://b70fk741qrjt7" path="res://hud/HUD.tscn" id="6_nfn2q"]
+[ext_resource type="PackedScene" uid="uid://bu47s3h11vmi5" path="res://Scenes/StaticStructures/chest_dungeon.tscn" id="8_xpj7c"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nfn2q"]
 texture = ExtResource("1_iaxc2")
@@ -299,6 +300,39 @@ tile_set = SubResource("TileSet_umf08")
 tile_map_data = PackedByteArray("AAAnAAwAAAALAAMAAAAnAA0AAAAMAAUAAAAoAAwAAAAMAAMAAAAoAA0AAAAMAAQAAAAUAA8AAAALAAMAAAAUABAAAAALAAQAAAAVAA8AAAAMAAMAAAAVABAAAAAMAAQAAAAOAAoAAAALAAMAAAAOAAsAAAALAAQAAAAPAAoAAAAMAAMAAAAPAAsAAAAMAAQAAAALAAoAAAAGAAcAAAALAAsAAAAGAAgAAAAXAAcAAAAKAAUAAAAGAAYAAAAKAAUAAAAUAAYAAAALAAUAAAAQABMAAAALAAUAAQAFABEAAAALAAUAAQAjABgAAAALAAUAAQApABgAAAALAAUAAQAcABAAAAALAAUAAQAmAAwAAAALAAUAAQAiAAgAAAALAAUAAQAGAAoAAAALAAUAAAAkAAcAAAAAAAcAAAAkAAgAAAAAAAgAAAAlAAcAAAABAAcAAAAlAAgAAAABAAgAAAAmAAcAAAACAAcAAAAmAAgAAAACAAgAAAAnAAcAAAAFAAMAAAAnAAgAAAAFAAQAAAAjAAcAAAAFAAMAAAAjAAgAAAAFAAQAAAAoAAgAAAALAAUAAQARAAgAAAAHAAUAAAAZAAYAAAAHAAUAAAAIAAwAAAAIAAUAAAABAAIAAAAMAAUAAAAoAA4AAAAJAAUAAAAeAAkAAAAJAAUAAAAmABQAAAAPAAQAAAAbAAUAAAAPAAQAAAAHABIAAAAPAAQAAAAPAAwAAAAPAAQAAAADAAwAAAAPAAQAAAAoAA8AAAAHAAkAAAAaABUAAAAHAAkAAAAcAAsAAAAHAAkAAAAYAAMAAAAHAAkAAAAQABUAAAAHAAkAAAANAA0AAAAHAAkAAAAEAA4AAAAHAAkAAAAEABUAAAAHAAkAAAAEAAQAAAAHAAkAAAAXAAgAAAAHAAkAAAAKAAMAAAAHAAkAAAA=")
 tile_set = SubResource("TileSet_umf08")
 
+[node name="ChestDungeon" parent="." unique_id=1564093039 instance=ExtResource("8_xpj7c")]
+position = Vector2(428.5, 272)
+
+[node name="ChestDungeon2" parent="." unique_id=954853856 instance=ExtResource("8_xpj7c")]
+position = Vector2(115, 193)
+
+[node name="ChestDungeon3" parent="." unique_id=1143743523 instance=ExtResource("8_xpj7c")]
+position = Vector2(591, 210.5)
+
+[node name="ChestDungeon4" parent="." unique_id=2049175369 instance=ExtResource("8_xpj7c")]
+position = Vector2(356, 126.5)
+
+[node name="ChestDungeon5" parent="." unique_id=983966081 instance=ExtResource("8_xpj7c")]
+position = Vector2(146.5, 290)
+
+[node name="ChestDungeon6" parent="." unique_id=157098287 instance=ExtResource("8_xpj7c")]
+position = Vector2(145.5, 112)
+
+[node name="ChestDungeon7" parent="." unique_id=1690275120 instance=ExtResource("8_xpj7c")]
+position = Vector2(411, 109.5)
+
+[node name="ChestDungeon8" parent="." unique_id=1644612064 instance=ExtResource("8_xpj7c")]
+position = Vector2(258, 320.5)
+
+[node name="ChestDungeon9" parent="." unique_id=432891698 instance=ExtResource("8_xpj7c")]
+position = Vector2(511.5, 146)
+
+[node name="ChestDungeon10" parent="." unique_id=983939779 instance=ExtResource("8_xpj7c")]
+position = Vector2(179, 29)
+
+[node name="ChestDungeon11" parent="." unique_id=941375436 instance=ExtResource("8_xpj7c")]
+position = Vector2(244, 194.5)
+
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=1757499968]
 position = Vector2(104.00001, 169)
 scale = Vector2(0.39550775, 0.2919922)
@@ -470,13 +504,6 @@ position = Vector2(592, 128)
 tile_map_data = PackedByteArray("AAD/////AAADAAcAAAAAAP//AAAEAAcAAAD//wAAAAADAAgAAAAAAAAAAAAEAAgAAAABAP//AAAFAAcAAAABAAAAAAAFAAgAAAA=")
 tile_set = SubResource("TileSet_umf08")
 
-[node name="Player" parent="." unique_id=257810088 instance=ExtResource("5_4vc73")]
-position = Vector2(616.2001, 364.9)
-scale = Vector2(0.8, 0.8)
-
-[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=14420715]
-color = Color(0.23248088, 0.23248091, 0.23248091, 1)
-
 [node name="HUD" parent="." unique_id=1148326026 instance=ExtResource("6_nfn2q")]
 
 [node name="Labels" type="CanvasLayer" parent="." unique_id=740464257]
@@ -487,6 +514,7 @@ offset_left = 936.0
 offset_top = 89.0
 offset_right = 1468.0
 offset_bottom = 202.0
+mouse_filter = 0
 theme_override_fonts/font = ExtResource("5_llydp")
 theme_override_font_sizes/font_size = 64
 text = "You need to kill all mobs
@@ -525,6 +553,13 @@ text = "The door opened somewhere! "
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Exit" unique_id=2048187649]
 position = Vector2(616.5, 379)
 shape = SubResource("CircleShape2D_nfn2q")
+
+[node name="Player" parent="Exit" unique_id=257810088 instance=ExtResource("5_4vc73")]
+position = Vector2(616.2001, 364.9)
+scale = Vector2(0.8, 0.8)
+
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=14420715]
+color = Color(0.23248088, 0.23248091, 0.23248091, 1)
 
 [connection signal="body_entered" from="BossDoor" to="." method="_on_boss_door_body_entered"]
 [connection signal="body_exited" from="BossDoor" to="." method="_on_boss_door_body_exited"]

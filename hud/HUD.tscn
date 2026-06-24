@@ -7,6 +7,21 @@
 [ext_resource type="PackedScene" uid="uid://bpdatfhqafv8t" path="res://Scenes/fast_eq.tscn" id="5_s5l88"]
 [ext_resource type="PackedScene" uid="uid://cdrmdeiqjit5u" path="res://TotemBank/totems.tscn" id="6_fimwm"]
 [ext_resource type="PackedScene" uid="uid://cplvkbow014ta" path="res://Crafting/Scenes/crafting_ui.tscn" id="7_st07x"]
+[ext_resource type="FontFile" uid="uid://b0nphpwk324ms" path="res://Fonts/PixelPurl.ttf" id="8_r0cji"]
+[ext_resource type="Texture2D" uid="uid://deu87legra8yk" path="res://MenuIcon/Blank_Not-Pressed.png" id="9_k8hvg"]
+[ext_resource type="Texture2D" uid="uid://h5kcaeuujfnv" path="res://MenuIcon/Blank_Pressed.png" id="10_yy42l"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2goff"]
+atlas = ExtResource("9_k8hvg")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_p38s1"]
+texture = SubResource("AtlasTexture_2goff")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yrmux"]
+texture = ExtResource("10_yy42l")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r0cji"]
+texture = ExtResource("9_k8hvg")
 
 [node name="HUD" type="CanvasLayer" unique_id=1148326026 groups=["hud"]]
 
@@ -17,6 +32,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 color = Color(0.47312066, 0, 0.13335153, 0.34800002)
 
 [node name="Clock" parent="." unique_id=385021879 groups=["Clock"] instance=ExtResource("1_vow1y")]
@@ -56,8 +72,27 @@ offset_bottom = 289.0
 visible = false
 self_modulate = Color(0.4840902, 0.0045073065, 8.904189e-07, 1)
 top_level = true
+
 [node name="CraftingUI" parent="." unique_id=597152013 instance=ExtResource("7_st07x")]
 offset_left = 279.0
 offset_top = 73.0
 offset_right = 879.0
 offset_bottom = 473.0
+
+[node name="EndGameButton" type="Button" parent="." unique_id=1020375136 groups=["EndGameButton"]]
+visible = false
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -191.0
+offset_top = -66.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("8_r0cji")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxTexture_p38s1")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_yrmux")
+theme_override_styles/hover = SubResource("StyleBoxTexture_r0cji")
+text = "Combine Runes"

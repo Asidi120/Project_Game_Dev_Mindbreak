@@ -102,3 +102,21 @@ func travel_back(player: Node) -> void:
 	player.set_process(false)
 
 	get_tree().change_scene_to_file(return_scene)
+
+
+func change_scene_with_save(target_scene: String):
+	var player = get_tree().get_first_node_in_group("Players")
+
+	if player and player.has_method("save_state"):
+		player.save_state()
+
+	saved_hp = player.current_hp
+	saved_hunger = player.current_hunger
+	saved_stamina = player.current_stamina
+
+	if player.inventory_system:
+		saved_inventory = player.inventory_system.current_inventory.duplicate(true)
+
+	WorldStateManager.save_scene(get_tree().current_scene.scene_file_path)
+
+	get_tree().change_scene_to_file(target_scene)

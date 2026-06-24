@@ -4,6 +4,7 @@ var boss_path
 var current_totem
 var current_rune_name
 var current_rune_light_name
+var current_dungeon_name
 
 var boss_data = {
 	"DungeonFirst": {
@@ -26,12 +27,33 @@ var boss_data = {
 	}
 }
 
-func _ready():
+var defeated_bosses := {
+	"DungeonFirst": false,
+	"DungeonSecond": false,
+	"DungeonThird": false
+}
+
+var unlocked_runes := {
+	"Rune1": false,
+	"Rune2": false,
+	"Rune3": false
+}
+
+var rune_lights = {
+	"Rune1": "RuneLight",
+	"Rune2": "RuneLight2",
+	"Rune3": "RuneLight3"
+}
+
+func connect_signal():
 	for dungeon in get_tree().get_nodes_in_group("Dungeon"):
 		dungeon.boss_door_entered.connect(_on_boss_door_entered)
+	
 
 func _on_boss_door_entered(dungeon_name: String):
 	if boss_data.has(dungeon_name):
+		print(current_dungeon_name)
+		current_dungeon_name=dungeon_name
 		boss_path = boss_data[dungeon_name]["boss"]
 		current_totem = boss_data[dungeon_name]["totem"]
 		current_rune_name = boss_data[dungeon_name]["name_totembar"]

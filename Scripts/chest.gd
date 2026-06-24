@@ -21,7 +21,6 @@ func _ready() -> void:
 	area_2d.body_entered.connect(_on_area_2d_body_entered)
 	area_2d.body_exited.connect(_on_area_2d_body_exited)
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if chest_in_range and Input.is_action_just_pressed("open_chest"):

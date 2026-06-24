@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://p1v4rjrmgsnf" path="res://TotemBank/Sprite/32x32-Tilesheet.png" id="1_srm3c"]
 [ext_resource type="FontFile" uid="uid://b0nphpwk324ms" path="res://Fonts/PixelPurl.ttf" id="2_l0hxa"]
+[ext_resource type="Script" uid="uid://u5xu82rsavor" path="res://TotemBank/Totembar.gd" id="2_yq0vd"]
 [ext_resource type="Texture2D" uid="uid://cj2acuml1meqp" path="res://OtherSprites/Runes/rune1.png" id="3_ila8a"]
 [ext_resource type="Texture2D" uid="uid://bn00i1og0tkom" path="res://OtherSprites/LightSprite/2d_lights_and_shadows_neutral_point_light.webp" id="3_llxnb"]
 [ext_resource type="Texture2D" uid="uid://cspo05d1mbjsv" path="res://OtherSprites/Runes/rune2.png" id="4_llxnb"]
@@ -37,6 +38,7 @@ patch_margin_left = 14
 patch_margin_top = 14
 patch_margin_right = 14
 patch_margin_bottom = 14
+script = ExtResource("2_yq0vd")
 
 [node name="TotemSlot1" type="Panel" parent="TotemBar" unique_id=464001670]
 layout_mode = 0

@@ -5,6 +5,7 @@ var inventory_system = null
 const MAX_STACK = 12
 
 var meat_ids_list := []
+var ore_ids_list := []
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -19,6 +20,13 @@ func _process(delta: float) -> void:
 		var path = "res://Scenes/Food/meat_cooked_" + cooked_meat_id + ".tscn"
 		await get_tree().create_timer(4.0).timeout
 		print("meat putttttttttttttttt")
+		get_cooked_meat(path)
+	
+	if put_ore_into_bonfire():
+		var ore_id = ore_ids_list.pop_front()
+		var path = "res://Scenes/Items/" + ore_id + "_bar.tscn"
+		await get_tree().create_timer(4.0).timeout
+		print("ore putttttttttttttttt")
 		get_cooked_meat(path)
 
 func has_raw_meat_in_hand() -> bool:
@@ -42,6 +50,27 @@ func has_raw_meat_in_hand() -> bool:
 	
 	return raw_meat_held
 	
+func has_ore_in_hand() -> bool:
+	var ore_held := false
+	
+	if inventory_system == null:
+		return ore_held
+
+	var index = inventory_system.selected_fasteq_index
+	
+	if index < 0 or index >= inventory_system.current_inventory.size():
+		return ore_held
+
+	var item = inventory_system.current_inventory[index]
+	
+	if item == null:
+		return ore_held
+	
+	if item["item_type"] == "ore":
+		ore_held = true
+	
+	return ore_held
+	
 func put_meat_into_bonfire() -> bool:
 	var if_meat_put := false
 	if player_in_range and Input.is_action_just_pressed("cook") and has_raw_meat_in_hand():
@@ -64,6 +93,29 @@ func put_meat_into_bonfire() -> bool:
 		if_meat_put = true
 		
 	return if_meat_put
+	
+func put_ore_into_bonfire() -> bool:
+	var if_ore_put := false
+	if player_in_range and Input.is_action_just_pressed("cook") and has_ore_in_hand():
+		print("oreeeeeeeeeeee")
+		
+		var index = inventory_system.selected_fasteq_index
+		var item = inventory_system.current_inventory[index]
+		
+		var ore_material = item["item_id"].split("_")[0]
+		ore_ids_list.append(ore_material)
+		print(ore_ids_list)
+		
+		#usuniecie z ekwipunka 
+		if item["amount"] > 1:
+			item["amount"] -= 1
+		else:
+			inventory_system.current_inventory[index] = null
+
+		inventory_system.refresh_all()
+		if_ore_put = true
+		
+	return if_ore_put
 
 func create_item_data_from_scene(scene_path: String) -> Dictionary:
 	var item_scene = load(scene_path)

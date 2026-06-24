@@ -214,9 +214,13 @@ func update_held_item():
 	if Input.is_action_just_pressed("eat") and (item["item_type"] == "food" or item["item_type"] == "meat_raw" or item["item_type"] == "meat_cooked" or item["item_type"] == "potion"):
 		if eating(item):
 			print("Znikaaaaa")
-			inventory_system.current_inventory[index] = null
+			
+			if item.has("amount") and item["amount"] > 1:
+				item["amount"] -= 1
+			else:
+				inventory_system.current_inventory[index] = null
+			
 			inventory_system.refresh_all()
-
 
 func update_held_position():
 	if facing_direction == Vector2.UP:
@@ -234,32 +238,42 @@ func update_held_position():
 
 
 func eating(item):
-	var czy_zjedzone = false
-	if not inventory_system.inventory_visible:
-		if item["item_id"] == "potion_health": #health potka
-			if current_hp == 200:
-				return
-			else:
-				current_hp = 200
-				emit_signal("hp_changed", current_hp, max_hp)
-		if item["item_id"] == "potion_stamina": #wypicie stamina potion
-			drank_stamina_potion = true
-			stamina_bar.modulate = Color(0.0, 0.853, 0.0, 1.0)
-			
-			print("heath potka")
-		elif item is Food:
-			if item["hunger_points"] <= max_hunger:
-				if current_hunger == max_hunger:
-					print("Nie można zjeść. Jesteś najedzony!")
-					return
-				elif item["hunger_points"] + current_hunger >= max_hunger:
-					current_hunger = max_hunger
-					print("Najadłeś się")
-				else:
-					print("Zjadłeś")
-					current_hunger += item["hunger_points"]
-		czy_zjedzone = true
-		return czy_zjedzone
+	if inventory_system.inventory_visible:
+		return false
+	
+	if item == null:
+		return false
+	
+	if item["item_id"] == "potion_health":
+		if current_hp == max_hp:
+			return false
+		
+		current_hp = max_hp
+		emit_signal("hp_changed", current_hp, max_hp)
+		return true
+	
+	elif item["item_id"] == "potion_stamina":
+		drank_stamina_potion = true
+		stamina_bar.modulate = Color(0.0, 0.853, 0.0, 1.0)
+		return true
+	
+	elif item.has("hunger_points"):
+		if current_hunger == max_hunger:
+			print("Nie można zjeść. Jesteś najedzony!")
+			return false
+		
+		current_hunger += item["hunger_points"]
+		
+		if current_hunger >= max_hunger:
+			current_hunger = max_hunger
+			print("Najadłeś się")
+		else:
+			print("Zjadłeś")
+		
+		emit_signal("hunger_changed", current_hunger, max_hunger)
+		return true
+	
+	return false
 
 
 func throw():

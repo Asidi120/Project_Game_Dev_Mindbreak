@@ -40,7 +40,7 @@ func update_durability():
 		return 
 
 		#tutaj update durability miecza
-	item["item_durability"] -= 50
+	item["item_durability"] -= 1
 	print(item["item_durability"])
 	
 	#usuwanie przedmiotu jesli durability ponizej zera

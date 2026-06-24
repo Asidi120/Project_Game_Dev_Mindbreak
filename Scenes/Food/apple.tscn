@@ -7,8 +7,9 @@
 size = Vector2(43.94344, 45.591896)
 
 [node name="Apple" type="Area2D" unique_id=1592250268]
-scale = Vector2(0.670316, 0.670316)
+scale = Vector2(0.6989972, 0.7015085)
 script = ExtResource("1_mtgt5")
+hunger_points = 15
 item_id = "apple"
 item_name = "Apple"
 item_type = "food"
@@ -16,7 +17,6 @@ item_type = "food"
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=834627305]
 z_index = -1
 position = Vector2(4, 4)
-scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_bpemc")
 region_enabled = true
 region_rect = Rect2(31, 44.75, 17, 24.5)

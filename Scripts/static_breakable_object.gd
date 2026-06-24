@@ -32,7 +32,7 @@ func update_hits():
 	# niszczenie tree majac axe
 	if item["item_type"] == "axe" and object_type == "tree":
 		hits += item["tool_power"]
-		item["item_durability"] -= 50
+		item["item_durability"] -= 1
 	# niszczenie boulder majac pickaxe
 	elif item["item_type"] == "pickaxe" and object_type == "boulder":
 		hits += item["tool_power"]

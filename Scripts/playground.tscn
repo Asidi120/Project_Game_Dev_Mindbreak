@@ -64,9 +64,11 @@
 [ext_resource type="PackedScene" uid="uid://cgucfj6me8w55" path="res://Scenes/Potions/potion_health.tscn" id="61_1grgn"]
 [ext_resource type="PackedScene" uid="uid://vebg06r8ojnf" path="res://Scenes/Potions/potion_stamina.tscn" id="62_28vq4"]
 [ext_resource type="PackedScene" uid="uid://iqmeit2sjngx" path="res://Scenes/Items/diamond_ore.tscn" id="63_d2ds1"]
-[ext_resource type="PackedScene" uid="uid://ekykjh8h0tui" path="res://Dungeons/DungeonFirst/Dungeon1Entrance.tscn" id="66_3glsb"]
 [ext_resource type="PackedScene" uid="uid://dpkd68plrh24n" path="res://Scenes/Food/berry_1.tscn" id="65_seywm"]
 [ext_resource type="PackedScene" uid="uid://b06s010oyn8y1" path="res://Scenes/Items/bonfire_item.tscn" id="66_3glsb"]
+[ext_resource type="PackedScene" uid="uid://dy01bojqvq48k" path="res://Scenes/Items/egg.tscn" id="67_pauvb"]
+[ext_resource type="PackedScene" uid="uid://siqgssdbabnj" path="res://Scenes/Food/fried_egg.tscn" id="68_tbk65"]
+[ext_resource type="PackedScene" uid="uid://cdla8w7bau77o" path="res://Scenes/StaticStructures/boulder_cave.tscn" id="69_tbk65"]
 
 [node name="Playground" type="Node2D" unique_id=571104678]
 scale = Vector2(1.9740651, 1.9740651)
@@ -350,3 +352,24 @@ position = Vector2(-84.59701, -0.5065689)
 
 [node name="BonfireItem" parent="." unique_id=2145226744 instance=ExtResource("66_3glsb")]
 position = Vector2(-102.83349, 32.42041)
+
+[node name="Egg" parent="." unique_id=269271046 instance=ExtResource("67_pauvb")]
+position = Vector2(-118.537125, -35.966393)
+
+[node name="FriedEgg" parent="." unique_id=650129794 instance=ExtResource("68_tbk65")]
+position = Vector2(-134.24075, -45.5912)
+
+[node name="Egg2" parent="." unique_id=1423134221 instance=ExtResource("67_pauvb")]
+position = Vector2(-126.64223, -61.294838)
+
+[node name="Egg3" parent="." unique_id=325934229 instance=ExtResource("67_pauvb")]
+position = Vector2(-114.99114, -55.72258)
+
+[node name="BoulderCave" parent="." unique_id=582371490 instance=ExtResource("69_tbk65")]
+position = Vector2(-276.5866, -63.321114)
+
+[node name="BoulderCave2" parent="." unique_id=348915637 instance=ExtResource("69_tbk65")]
+position = Vector2(-287.22458, -118.030556)
+
+[node name="BoulderCave3" parent="." unique_id=259577790 instance=ExtResource("69_tbk65")]
+position = Vector2(-264.42896, -31.407272)

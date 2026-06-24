@@ -53,10 +53,12 @@ func update_hits():
 			hits += item["tool_power"]
 			item["item_durability"] -= 1
 			
-	if object_type in list_of_nodes and item["item_durability"] <= 0:
-		inventory_system.current_inventory[index] = null
-		inventory_system.refresh_all()
-		return
+			
+	if item is Tool:
+		if item["item_durability"] <= 0:
+			inventory_system.current_inventory[index] = null
+			inventory_system.refresh_all()
+			return
 		
 	
 func _ready() -> void:

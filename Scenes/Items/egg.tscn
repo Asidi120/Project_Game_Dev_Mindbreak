@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://dy01bojqvq48k"]
+
+[ext_resource type="Script" uid="uid://cvtmhh1hpljyx" path="res://Scripts/item.gd" id="1_8cd31"]
+[ext_resource type="Texture2D" uid="uid://cyrec613v8ve4" path="res://OtherSprites/Items/items_sheet.png" id="2_8cd31"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mc6tm"]
+radius = 6.2439294
+
+[node name="Egg" type="Area2D" unique_id=604079078]
+z_index = -1
+scale = Vector2(0.6406222, 0.6406222)
+script = ExtResource("1_8cd31")
+item_id = "egg"
+item_name = "egg"
+item_type = "egg"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1984872830]
+z_index = -1
+position = Vector2(-0.5000041, -1.500004)
+texture = ExtResource("2_8cd31")
+region_enabled = true
+region_rect = Rect2(208.94534, 144.73102, 14.127274, 15.076538)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=708047904]
+z_index = -1
+position = Vector2(0, -1.5609822)
+shape = SubResource("CircleShape2D_mc6tm")

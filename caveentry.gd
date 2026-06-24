@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var cave_scene: String = "res://house_interior.tscn"
+@export var cave_scene: String = "res://cave1.tscn"
 @export var spawn_name: String = "SpawnPoint"
 
 var player_inside: bool = false

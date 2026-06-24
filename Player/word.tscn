@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://cibhk7ljbna1c"]
+[gd_scene format=3 uid="uid://cg1mtxnuby17p"]
 
 [ext_resource type="Script" uid="uid://d4e6n5gjyuxob" path="res://Tile Maps/Sprites/world_generator (1).gd" id="1_61npg"]
 [ext_resource type="Texture2D" uid="uid://ctwn1wtm6dqov" path="res://TitleMapsLayer/gory_laka.png" id="3_62xdw"]
@@ -13,7 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://bhk8wb8aud5hg" path="res://Scenes/Items/wood.tscn" id="7_ump0c"]
 [ext_resource type="Texture2D" uid="uid://cramspjee52ry" path="res://TitleMapsLayer/plaza_gory.png" id="9_f2ovg"]
 [ext_resource type="Texture2D" uid="uid://d2d5mkewrvuo1" path="res://TitleMapsLayer/plaza_las.png" id="10_cpn7g"]
-[ext_resource type="Script" uid="uid://cm4douxr3p5an" path="res://Player/WorldSaver.gd" id="14_62xdw"]
+[ext_resource type="Script" path="res://Player/WorldSaver.gd" id="14_62xdw"]
+[ext_resource type="Script" uid="uid://bs3h32b6gxe2i" path="res://Scripts/day_night_overlay.gd" id="15_61npg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qnhtb"]
 texture = ExtResource("4_60257")
@@ -1543,3 +1544,7 @@ position = Vector2(284, -37)
 
 [node name="WorldSaver" type="Node" parent="." unique_id=1536106010]
 script = ExtResource("14_62xdw")
+
+[node name="DayNightOverlay" type="CanvasModulate" parent="." unique_id=198874310]
+position = Vector2(819, 160)
+script = ExtResource("15_61npg")

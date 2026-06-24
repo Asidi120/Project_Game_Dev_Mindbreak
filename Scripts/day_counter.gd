@@ -14,7 +14,7 @@ func _process(delta):
 	clock_texture_update(delta)
 	
 func time_passage(delta):
-	time += 10*delta  # acceleration of time (1 second = 10 minutes in game)
+	time += 2.5*delta  # acceleration of time (1 second = 10 minutes in game)
 	hours = int(time / 60) % 24
 	minutes = int(time) % 60
 	days=time/1440

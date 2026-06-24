@@ -7,7 +7,6 @@
 size = Vector2(21.774225, 33.629044)
 
 [node name="house" type="Area2D" unique_id=13035520]
-z_index = 10
 scale = Vector2(1.2399994, 1.2399994)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1622709971]

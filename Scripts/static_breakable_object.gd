@@ -81,12 +81,12 @@ func drop_item():
 		item.global_position = global_position + Vector2(0, 20)
 		
 	if scene2:
-		if object_id == "tree" and if_item_drops():
+		if (object_id == "tree" or object_type == "bush") and if_item_drops():
 			var item2 = scene2.instantiate()
 			get_parent().add_child(item2)
 			item2.global_position = global_position + Vector2(10, 35)
 
-func if_item_drops() -> bool:
+func if_item_drops() -> bool: #25 % szans na dropniecie
 	var drops = false
 	var random := randi_range(1,4)
 	if random == 1:

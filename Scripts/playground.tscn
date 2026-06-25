@@ -69,6 +69,7 @@
 [ext_resource type="PackedScene" uid="uid://dy01bojqvq48k" path="res://Scenes/Items/egg.tscn" id="67_pauvb"]
 [ext_resource type="PackedScene" uid="uid://siqgssdbabnj" path="res://Scenes/Food/fried_egg.tscn" id="68_tbk65"]
 [ext_resource type="PackedScene" uid="uid://cdla8w7bau77o" path="res://Scenes/StaticStructures/boulder_cave.tscn" id="69_tbk65"]
+[ext_resource type="PackedScene" uid="uid://usiojwysxo2i" path="res://Scenes/StaticStructures/bush_2.tscn" id="70_g3ii7"]
 
 [node name="Playground" type="Node2D" unique_id=571104678]
 scale = Vector2(1.9740651, 1.9740651)
@@ -391,3 +392,15 @@ position = Vector2(110.93859, -12.664223)
 
 [node name="Tree5" parent="." unique_id=411767140 instance=ExtResource("9_bm257")]
 position = Vector2(-241.1268, -102.83349)
+
+[node name="Bush2" parent="." unique_id=1621687921 instance=ExtResource("70_g3ii7")]
+position = Vector2(-119.55026, -160.07578)
+
+[node name="Bush3" parent="." unique_id=1148580340 instance=ExtResource("70_g3ii7")]
+position = Vector2(-45.084633, -172.73999)
+
+[node name="Bush" parent="." unique_id=839524930 instance=ExtResource("11_42c27")]
+position = Vector2(-318.12527, 57.242287)
+
+[node name="Bush4" parent="." unique_id=1315543737 instance=ExtResource("70_g3ii7")]
+position = Vector2(-330.7895, 116.51085)

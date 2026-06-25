@@ -7,6 +7,7 @@ var player: AudioStreamPlayer = null
 
 func _ready() -> void:
 	player = AudioStreamPlayer.new()
+	player.process_mode = Node.PROCESS_MODE_ALWAYS
 	add_child(player)
 	_load_settings()
 	player.stream = load("res://Music/music.mp3")
@@ -40,6 +41,9 @@ func _save_settings() -> void:
 
 func _load_settings() -> void:
 	var config := ConfigFile.new()
-	if config.load("user://settings.cfg") == OK:
+	var err = config.load("user://settings.cfg")
+	print("Load settings error: ", err)
+	if err == OK:
 		music_enabled = config.get_value("audio", "music_enabled", true)
 		music_volume  = config.get_value("audio", "music_volume", 0.5)
+		print("Wczytano: enabled=", music_enabled, " volume=", music_volume)

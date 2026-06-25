@@ -108,16 +108,16 @@ func drop_item():
 		)
 	if scene2:
 		if (object_id == "tree" or object_type == "bush") and if_item_drops():
-      var item2 = scene2.instantiate()
-      get_parent().add_child(item2)
-      item2.global_position = global_position + Vector2(10, 35)
-      WorldStateManager.save_dropped_item(
-        get_tree().current_scene.scene_file_path,
-        scene2.resource_path,
-        "",
-        "",
-        item2.global_position
-      )
+	  var item2 = scene2.instantiate()
+	  get_parent().add_child(item2)
+	  item2.global_position = global_position + Vector2(10, 35)
+	  WorldStateManager.save_dropped_item(
+		get_tree().current_scene.scene_file_path,
+		scene2.resource_path,
+		"",
+		"",
+		item2.global_position
+	  )
 
 
 func if_item_drops() -> bool: #25 % szans na dropniecie

@@ -250,6 +250,8 @@ func _generate() -> void:
 
 	if SceneTransition.saved_hp != 200 or SceneTransition.saved_inventory.size() > 0:
 		player.reinitialize()
+		
+	player.spawn_point = player.global_position
 
 	loading_label.visible = false
 	WorldStateManager.restore_scene(get_tree().current_scene.scene_file_path)

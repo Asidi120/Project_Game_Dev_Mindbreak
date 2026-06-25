@@ -81,10 +81,17 @@ func drop_item():
 		item.global_position = global_position + Vector2(0, 20)
 		
 	if scene2:
-		var item2 = scene2.instantiate()
-		get_parent().add_child(item2)
-		item2.global_position = global_position + Vector2(10, 35)
+		if object_id == "tree" and if_item_drops():
+			var item2 = scene2.instantiate()
+			get_parent().add_child(item2)
+			item2.global_position = global_position + Vector2(10, 35)
 
+func if_item_drops() -> bool:
+	var drops = false
+	var random := randi_range(1,4)
+	if random == 1:
+		drops = true
+	return drops
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
 		player_in_range = true #player w obrębie struktury

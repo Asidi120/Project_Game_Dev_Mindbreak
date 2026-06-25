@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://xihm3wugii01" path="res://Scripts/static_breakable_object.gd" id="1_fp1x5"]
 [ext_resource type="PackedScene" uid="uid://bhk8wb8aud5hg" path="res://Scenes/Items/wood.tscn" id="2_13l6l"]
-[ext_resource type="PackedScene" uid="uid://bjgxjuvclurjp" path="res://Scenes/Food/apple.tscn" id="3_13l6l"]
 [ext_resource type="Texture2D" uid="uid://bal1wmds4tln3" path="res://OtherSprites/Spruce Tree - GREEN - 0002.png" id="3_fp1x5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rsuno"]
@@ -21,7 +20,6 @@ hits_needed = 8.0
 object_id = "tree_spruce"
 object_type = "tree"
 scene = ExtResource("2_13l6l")
-scene2 = ExtResource("3_13l6l")
 
 [node name="Sprite2D2" type="Sprite2D" parent="." unique_id=685670152]
 position = Vector2(0, -39)

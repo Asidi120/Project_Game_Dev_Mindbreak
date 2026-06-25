@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://ewclvb7o1os" path="res://OtherSprites/512x1024.png" id="1_g1xk7"]
 [ext_resource type="Script" uid="uid://xihm3wugii01" path="res://Scripts/static_breakable_object.gd" id="1_o0rpx"]
 [ext_resource type="PackedScene" uid="uid://dre6w3svhd6ko" path="res://Scenes/Items/stone.tscn" id="2_xovyd"]
+[ext_resource type="AudioStream" uid="uid://b05bgmwafx3vy" path="res://Sounds/16_Hit_on_brick_2.wav" id="4_xovyd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_blcey"]
 size = Vector2(36, 22.5)
@@ -35,6 +36,9 @@ shape = SubResource("RectangleShape2D_blcey")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1298316451]
 position = Vector2(0, -3)
 shape = SubResource("RectangleShape2D_oedoi")
+
+[node name="BoulderHit" type="AudioStreamPlayer2D" parent="." unique_id=439617578]
+stream = ExtResource("4_xovyd")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

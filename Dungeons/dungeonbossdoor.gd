@@ -26,7 +26,8 @@ func _process(delta):
 	click_to_open_label.position = door_screen_pos + Vector2(-210, -180)
 	if can_exit:
 		if Input.is_action_just_pressed("action (open door, sleep etc.)"):
-			SceneTransition.change_scene_with_save("res://Player/word.tscn")
+			SceneTransition.change_scene_with_save("res://Scripts/playground.tscn")
+			#SceneTransition.change_scene_with_save("res://Player/word.tscn")
 	if player_in_door_area:
 		if can_open:
 			click_to_open_label.visible = true

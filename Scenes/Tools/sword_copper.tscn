@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dh6i6au7y31gq"]
 
-[ext_resource type="Script" path="res://Scripts/sword.gd" id="1_r7el0"]
+[ext_resource type="Script" uid="uid://b3b8lfehbksly" path="res://Scripts/sword.gd" id="1_r7el0"]
 [ext_resource type="Texture2D" uid="uid://i5uud04jfce" path="res://OtherSprites/Items/Full Sheet.png" id="2_thsub"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_3ouv3"]
@@ -16,13 +16,13 @@ item_name = "SwordCopper"
 item_type = "sword"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=834627305]
-position = Vector2(0, 8.333333)
+position = Vector2(0.3333332, -0.5)
 texture = ExtResource("2_thsub")
 offset = Vector2(4.166667, -4.1666665)
 region_enabled = true
 region_rect = Rect2(96.36551, 16.933157, 14.917725, 14.917713)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=730860820]
-position = Vector2(5.8333325, 2.5)
+position = Vector2(6.1666656, -6.333333)
 scale = Vector2(1.4958837, 1.6145017)
 shape = SubResource("SegmentShape2D_3ouv3")

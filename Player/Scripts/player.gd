@@ -28,6 +28,7 @@ var hunger_interval_normal:float= 2.0
 var hunger_interval_sprint:float= 0.5
 var spawn_point=Vector2.ZERO
 var already_hit = []
+var is_idle := true
 
 var inventory = []
 const MAX_STACK = 12
@@ -175,6 +176,9 @@ func can_player_attack() -> bool:
 	return true
 
 func update_held_item():
+	if is_attacking:
+		return
+	
 	if inventory_system == null:
 		return
 
@@ -190,25 +194,36 @@ func update_held_item():
 		held_item.visible = false
 		return
 	
-	var size:= Vector2(13, 13)
 	held_item.visible = true
 	held_item.texture = item["texture"]
-	held_item.z_index = 10
-	
-	if item["item_type"] == "axe" or item["item_type"] == "pickaxe" or item["item_type"] == "sword":
-		size = Vector2(15,15)
-	held_item.size = size
-	held_item.custom_minimum_size = Vector2(10, 10)
-	held_item.position = Vector2(-10, -10)
-	held_item.scale = Vector2.ONE
-	held_item.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
-	held_item.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-	
-	#jedzenie trzymanego itema
-	if Input.is_action_just_pressed("eat") and (item["item_type"] == "food" or item["item_type"] == "meat_raw" or item["item_type"] == "meat_cooked" or item["item_type"] == "potion"):
+
+	if held_item.texture == null:
+		held_item.visible = false
+		return
+
+	var tex_size: Vector2 = held_item.texture.get_size()
+	held_item.centered = false
+	held_item.offset = Vector2(0, -tex_size.y)
+	var target_size = Vector2(16, 16)
+	var base_scale = target_size / tex_size
+	var type_multiplier = 1.0
+	match item["item_type"]:
+		"sword", "axe", "pickaxe":
+			type_multiplier = 1.0
+		"food", "meat_raw", "meat_cooked", "potion":
+			type_multiplier = 0.6
+		_:
+			type_multiplier = 0.7
+
+	held_item.scale = base_scale * type_multiplier
+
+	if Input.is_action_just_pressed("eat") and (
+		item["item_type"] == "food" 
+		or item["item_type"] == "meat_raw" 
+		or item["item_type"] == "meat_cooked" 
+		or item["item_type"] == "potion"
+	):
 		if eating(item):
-			print("Znikaaaaa")
-			
 			if item.has("amount") and item["amount"] > 1:
 				item["amount"] -= 1
 			else:
@@ -217,66 +232,105 @@ func update_held_item():
 			inventory_system.refresh_all()
 
 func update_held_position():
+	if is_attacking:
+		return
+	if inventory_system == null:
+		return
+	var index = inventory_system.selected_fasteq_index
+	if index < 0 or index >= inventory_system.current_inventory.size():
+		held_item.visible = false
+		return
+	var item = inventory_system.current_inventory[index]
+	if item == null:
+		held_item.visible = false
+		return
+	if held_item.texture == null:
+		return
+	held_item.visible = true
+	var can_rotate := false
+	match item["item_type"]:
+		"sword", "axe", "pickaxe":
+			can_rotate = true
+		_:
+			can_rotate = false
+	var old_center_position := Vector2.ZERO
+	var new_rotation := 0.0
+	var new_z_index := 0
 	if facing_direction == Vector2.UP:
-		held_item.position = Vector2(0, -12)
-		held_item.z_index = -1
-		held_item.rotation_degrees = -30
-
+		old_center_position = Vector2(10, -12)
+		new_z_index = -1
+		if can_rotate:
+			new_rotation = -30
 	elif facing_direction == Vector2.DOWN or facing_direction == Vector2.ZERO:
-		held_item.position = Vector2(-13, 0)
-		held_item.z_index = 10
-		held_item.rotation_degrees = -75
+		old_center_position = Vector2(-5, -5)
+		new_z_index = 10
+		
+		if can_rotate:
+			new_rotation = -75
 
 	elif facing_direction == Vector2.LEFT:
-		held_item.position = Vector2(-14, 1)
-		held_item.z_index = -1
-		held_item.rotation_degrees = -90
+		old_center_position = Vector2(-8, -8)
+		new_z_index = 0
+		
+		if can_rotate:
+			new_rotation = -90
 
 	elif facing_direction == Vector2.RIGHT:
-		held_item.position = Vector2(-3, -10)
-		held_item.z_index = 10
-		held_item.rotation_degrees = 0
+		old_center_position = Vector2(6, -4)
+		new_z_index = 10
+		
+		if can_rotate:
+			new_rotation = 0
+
+	if not can_rotate:
+		new_rotation = 0
+
+		if facing_direction == Vector2.UP:
+			old_center_position += Vector2(2, 2)
+		elif facing_direction == Vector2.DOWN or facing_direction == Vector2.ZERO:
+			old_center_position += Vector2(2, 2)
+		elif facing_direction == Vector2.LEFT:
+			old_center_position += Vector2(2, 2)
+		elif facing_direction == Vector2.RIGHT:
+			old_center_position += Vector2(-2, 4)
+
+	held_item.rotation_degrees = new_rotation
+	held_item.z_index = new_z_index
+
+	var tex_size: Vector2 = held_item.texture.get_size()
+	var center_from_bottom_left := Vector2(
+		(tex_size.x * held_item.scale.x) / 2.0,
+		-(tex_size.y * held_item.scale.y) / 2.0
+	)
+	held_item.position = old_center_position - center_from_bottom_left.rotated(held_item.rotation)
 
 func place_held_item():
 	if inventory_system == null:
 		return
-
 	if inventory_system.inventory_visible:
 		return
-
 	var index = inventory_system.selected_fasteq_index
-
 	if index < 0 or index >= inventory_system.current_inventory.size():
 		return
-
 	var item = inventory_system.current_inventory[index]
-
 	if item == null:
 		return
-
 	if item.get("item_type", "") != "placeable":
 		return
-
 	if not item.has("place_scene_path"):
 		return
-
 	if Input.is_action_just_pressed("place"):
 		var scene = load(item["place_scene_path"])
-
 		if scene == null:
 			push_error("Nie udało się wczytać sceny: " + item["place_scene_path"])
 			return
-
 		var placed_object = scene.instantiate()
 		get_tree().current_scene.add_child(placed_object)
-
 		placed_object.global_position = global_position + facing_direction * 32
-
 		if item["amount"] > 1:
 			item["amount"] -= 1
 		else:
 			inventory_system.current_inventory[index] = null
-
 		inventory_system.refresh_all()
 		
 func eating(item):
@@ -312,6 +366,7 @@ func eating(item):
 		else:
 			print("Zjadłeś")
 		
+		sounds.play_sound("eat")
 		emit_signal("hunger_changed", current_hunger, max_hunger)
 		return true
 	
@@ -402,8 +457,6 @@ func attack():
 		is_attacking = false
 		already_hit = []
 		state = State.IDLE
-		
-		
 	
 func apply_stun(duration: float):
 	if state == State.DEAD:
@@ -548,14 +601,18 @@ func stamina_recovery():
 
 func update_animation():
 	update_attack_hitbox()
+
 	if velocity == Vector2.ZERO:
+		facing_direction = Vector2.DOWN
 		play_anim("idle")
 		return
+
 	if abs(velocity.x) > abs(velocity.y):
 		if velocity.x > 0:
 			facing_direction = Vector2.RIGHT
 		else:
 			facing_direction = Vector2.LEFT
+
 		play_anim("walk_side")
 		update_flip()
 	else:
@@ -580,61 +637,45 @@ func update_flip():
 func attack_swing():
 	var tween = create_tween()
 
+	var base_pos = held_item.position
+
 	match facing_direction:
 		Vector2.UP:
-			held_item.position = Vector2(-6, -14)
-			held_item.z_index = -1
-			held_item.rotation_degrees = -40
-
 			tween.tween_property(
 				held_item,
-				"rotation_degrees",
-				40,
-				0.15
+				"position",
+				base_pos + Vector2(-6, -6),
+				0.05
 			)
-
+			held_item.rotation_degrees = 30
+			tween.tween_property(held_item, "rotation_degrees", -110, 0.15)
 		Vector2.DOWN:
-			held_item.position = Vector2(-6, 8)
-			held_item.z_index = 10
-			held_item.rotation_degrees = 40
-
+			tween.tween_property(
+				held_item,
+				"position",
+				base_pos + Vector2(0, -4),
+				0.05
+			)
+			held_item.rotation_degrees = 200
 			tween.tween_property(
 				held_item,
 				"rotation_degrees",
-				-40,
+				60,
 				0.15
 			)
 
 		Vector2.LEFT:
-			held_item.position = Vector2(-14, -4)
-			held_item.z_index = 10
-			held_item.rotation_degrees = -80
-
-			tween.tween_property(
-				held_item,
-				"rotation_degrees",
-				20,
-				0.15
-			)
+			#płynny ruch w dół w stronę -190 stopni
+			tween.tween_property(held_item, "rotation_degrees", -190, 0.15)
 
 		Vector2.RIGHT:
-			held_item.position = Vector2(8, -4)
-			held_item.z_index = 10
-			held_item.rotation_degrees = 80
-
 			tween.tween_property(
 				held_item,
-				"rotation_degrees",
-				-20,
-				0.15
+				"position",
+				base_pos, #+ Vector2(6, 0),
+				0.05
 			)
-
-	tween.tween_property(
-		held_item,
-		"rotation_degrees",
-		0,
-		0.08
-	)
+			tween.tween_property(held_item, "rotation_degrees", 80, 0.15)
 
 func update_attack_hitbox():
 	var flipped: bool = velocity.x < 0

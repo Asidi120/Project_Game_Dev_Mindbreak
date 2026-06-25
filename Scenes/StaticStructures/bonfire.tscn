@@ -1,10 +1,11 @@
 [gd_scene format=3 uid="uid://bjb88osnfjlic"]
 
-[ext_resource type="Script" path="res://Scripts/bonfire.gd" id="1_tp1om"]
+[ext_resource type="Script" uid="uid://cm2xa22vdalj0" path="res://Scripts/bonfire.gd" id="1_tp1om"]
 [ext_resource type="Texture2D" uid="uid://bltnftcyd54do" path="res://OtherSprites/Bonfire/Bonfire_05-Sheet.png" id="3_lup3b"]
 [ext_resource type="Texture2D" uid="uid://c2mm2me56wagt" path="res://OtherSprites/Bonfire/Fire_02-Sheet.png" id="4_lkxcx"]
 [ext_resource type="Texture2D" uid="uid://bn00i1og0tkom" path="res://OtherSprites/LightSprite/2d_lights_and_shadows_neutral_point_light.webp" id="5_lup3b"]
 [ext_resource type="Texture2D" uid="uid://bev2aifpunbcg" path="res://OtherSprites/Bonfire/Smoke-Sheet.png" id="5_n3tei"]
+[ext_resource type="AudioStream" uid="uid://bbnjoe5mern0j" path="res://Sounds/dragon-studio-fire-crackling-sounds-427410.mp3" id="6_lkxcx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sih5k"]
 atlas = ExtResource("3_lup3b")
@@ -160,6 +161,12 @@ scale = Vector2(0.5208332, 0.45572904)
 color = Color(0.77793896, 0.4570015, 0, 1)
 energy = 2.0
 texture = ExtResource("5_lup3b")
+
+[node name="BonfireSound" type="AudioStreamPlayer2D" parent="." unique_id=1424436523]
+stream = ExtResource("6_lkxcx")
+autoplay = true
+max_distance = 220.0
+attenuation = 1.6817932
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

@@ -7,6 +7,7 @@
 size = Vector2(62.86641, 45.591896)
 
 [node name="FriedEgg" type="Area2D" unique_id=1592250268]
+z_index = -1
 scale = Vector2(0.6989972, 0.7015085)
 script = ExtResource("1_xtcau")
 hunger_points = 30

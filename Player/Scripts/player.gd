@@ -263,7 +263,7 @@ func update_held_position():
 			new_rotation = -30
 	elif facing_direction == Vector2.DOWN or facing_direction == Vector2.ZERO:
 		old_center_position = Vector2(-5, -5)
-		new_z_index = 10
+		new_z_index = 0
 		
 		if can_rotate:
 			new_rotation = -75
@@ -277,7 +277,7 @@ func update_held_position():
 
 	elif facing_direction == Vector2.RIGHT:
 		old_center_position = Vector2(6, -4)
-		new_z_index = 10
+		new_z_index = 0
 		
 		if can_rotate:
 			new_rotation = 0

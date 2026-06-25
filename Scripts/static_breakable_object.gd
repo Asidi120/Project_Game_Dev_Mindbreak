@@ -9,6 +9,8 @@ var hits := 0.0
 @onready var tree_hit: AudioStreamPlayer2D = $TreeHit
 @export var scene: PackedScene
 @export var scene2: PackedScene
+@onready var boulder_hit: AudioStreamPlayer2D = $BoulderHit
+
 var inventory_system = null
 
 
@@ -33,6 +35,9 @@ func update_hits():
 	if item == null and (object_type == "tree" or object_type == "bush"):
 		hits += 1
 
+		if tree_hit:
+			tree_hit.play()
+	
 	if item == null:
 		return
 
@@ -47,12 +52,27 @@ func update_hits():
 	elif object_type == "tree" or object_type == "bush":
 		hits += 1
 
+		if boulder_hit:
+			boulder_hit.play()
+	# niszczenie tree i bush majac jakikolwiek inny przedmiot
+	elif object_type == "tree" or object_type == "bush":
+		hits += 1	
+		if tree_hit:
+			tree_hit.play()
+		
+	
+	
+	#nodes
 	var list_of_nodes = ["iron", "copper", "gold", "diamond"]
 	if object_type in list_of_nodes and item["item_type"] == "pickaxe":
 		if item["position_of_power"] >= position_of_power_needed:
 			hits += item["tool_power"]
 			item["item_durability"] -= 1
 
+			if boulder_hit:
+				boulder_hit.play()
+			
+			
 	if item is Tool:
 		if item["item_durability"] <= 0:
 			inventory_system.current_inventory[index] = null
@@ -64,7 +84,7 @@ func _process(_delta: float) -> void:
 	if player_in_range and Input.is_action_just_pressed("attack"):
 		update_hits()
 		print("Uderzenie: ", hits)
-		if hits >= hits_needed:
+		if hits >= hits_needed: #jesli player przekroczy ilosc uderzen
 			print(object_id, " destroyed")
 			WorldStateManager.mark_removed(
 				get_tree().current_scene.scene_file_path,
@@ -87,18 +107,26 @@ func drop_item():
 			item.global_position
 		)
 	if scene2:
-		var item2 = scene2.instantiate()
-		get_parent().add_child(item2)
-		item2.global_position = global_position + Vector2(10, 35)
-		WorldStateManager.save_dropped_item(
-			get_tree().current_scene.scene_file_path,
-			scene2.resource_path,
-			"",
-			"",
-			item2.global_position
-		)
+		if (object_id == "tree" or object_type == "bush") and if_item_drops():
+      var item2 = scene2.instantiate()
+      get_parent().add_child(item2)
+      item2.global_position = global_position + Vector2(10, 35)
+      WorldStateManager.save_dropped_item(
+        get_tree().current_scene.scene_file_path,
+        scene2.resource_path,
+        "",
+        "",
+        item2.global_position
+      )
 
 
+func if_item_drops() -> bool: #25 % szans na dropniecie
+	var drops = false
+	var random := randi_range(1,4)
+	if random == 1:
+		drops = true
+	return drops
+	
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
 		player_in_range = true

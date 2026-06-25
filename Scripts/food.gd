@@ -8,6 +8,6 @@ func collect():
 	var item = super.collect()
 
 	item["hunger_points"] = hunger_points
-
+	
 	return item
 	

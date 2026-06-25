@@ -2,6 +2,7 @@ extends StaticBody2D
 class_name Chest
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var chest_open: AudioStreamPlayer2D = $ChestOpen
 
 @export var chest_size := 18
 
@@ -32,6 +33,7 @@ func _process(delta: float) -> void:
 func open_chest():
 	print("skrzynka otwarta")
 	is_open = true
+	chest_open.play()
 	animated_sprite.play("open_chest")
 	
 	if player_in_range != null:

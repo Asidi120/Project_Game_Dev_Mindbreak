@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://0b4okexrbs0e" path="res://Sounds/musicholder-sword-sound-260274.mp3" id="6_vtle1"]
 [ext_resource type="AudioStream" uid="uid://dsf8u6y8us8j1" path="res://Sounds/freesound_community-male_hurt7-48124.mp3" id="8_00tjw"]
 [ext_resource type="AudioStream" uid="uid://dattf6mg16b0n" path="res://Sounds/coghezzi-game-over-orchestral-stinger-cartoon-defeat-546515.mp3" id="9_x3vf3"]
+[ext_resource type="AudioStream" uid="uid://c2i2byt7rmage" path="res://Sounds/freesound_community-eating-chips-81092.mp3" id="10_x3vf3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4ntmi"]
 size = Vector2(8.695815, 17.99936)
@@ -291,13 +292,9 @@ vframes = 8
 position = Vector2(-3.99504, -5.5930514)
 scale = Vector2(1.0000001, 1.0000001)
 
-[node name="HeldItem" type="TextureRect" parent="Hand" unique_id=108708875]
-custom_minimum_size = Vector2(5, 5)
-offset_left = -2.3970194
-offset_top = -2.397021
-offset_right = 2.6029806
-offset_bottom = 2.602979
-stretch_mode = 3
+[node name="HeldItem" type="Sprite2D" parent="Hand" unique_id=1572543144]
+position = Vector2(0, -3.9950347)
+scale = Vector2(6.392057, 4.9950347)
 
 [node name="Sounds" type="Node2D" parent="." unique_id=571508219]
 script = ExtResource("5_vtle1")
@@ -314,6 +311,11 @@ stream = ExtResource("8_00tjw")
 [node name="Dead" type="AudioStreamPlayer2D" parent="Sounds" unique_id=1348202481]
 process_mode = 3
 stream = ExtResource("9_x3vf3")
+
+[node name="Eat" type="AudioStreamPlayer2D" parent="Sounds" unique_id=873007924]
+stream = ExtResource("10_x3vf3")
+
+[node name="AudioListener2D" type="AudioListener2D" parent="." unique_id=995454583]
 
 [connection signal="area_entered" from="AttackHitbox" to="AttackHitbox" method="_on_area_entered"]
 [connection signal="body_entered" from="AttackHitbox" to="AttackHitbox" method="_on_body_entered"]

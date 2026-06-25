@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://htik4r6mo1j0" path="res://Enemies/Spirit_Wolf/Script/evilwolfscript.gd" id="1_8ppc7"]
 [ext_resource type="Texture2D" uid="uid://m0j7dbrgrkkg" path="res://Enemies/Spirit_Wolf/Sprite/Massacre Sprite Sheet.png" id="1_qvnen"]
+[ext_resource type="PackedScene" uid="uid://yuiv02y0p5vm" path="res://Scenes/Food/meat_raw_1.tscn" id="2_inhxp"]
 [ext_resource type="Texture2D" uid="uid://d34crl0llr6ot" path="res://Player/Sprite/hp_bar/HealthBar DARK.png" id="3_5qibe"]
 [ext_resource type="Script" uid="uid://dfgdasket7d4t" path="res://Scripts/healthbar.gd" id="4_bjf20"]
 
@@ -261,6 +262,7 @@ position = Vector2(85, 44)
 collision_layer = 2
 collision_mask = 16
 script = ExtResource("1_8ppc7")
+scene = ExtResource("2_inhxp")
 
 [node name="Visual" type="Node2D" parent="EvilWolf" unique_id=438623042]
 

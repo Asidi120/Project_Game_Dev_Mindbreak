@@ -4,6 +4,7 @@ extends Node
 @onready var hurt: AudioStreamPlayer2D = $Hurt
 @onready var dead: AudioStreamPlayer2D = $Dead
 @onready var player: Player = $".."
+@onready var eat: AudioStreamPlayer2D = $Eat
 
 func play_sound(sound: String):
 	match sound:
@@ -17,6 +18,11 @@ func play_sound(sound: String):
 				hurt.play()
 		"dead":
 			dead.play()
+		"eat":
+			eat.play()
+			await get_tree().create_timer(1.5).timeout
+			if eat.playing:
+				eat.stop()
 			
 func stop_walk():
 	walk.stop()

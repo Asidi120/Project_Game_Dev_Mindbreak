@@ -55,7 +55,7 @@
 [ext_resource type="PackedScene" uid="uid://bxah3ngnftgeo" path="res://Scenes/Food/meat_raw_3.tscn" id="51_kkea6"]
 [ext_resource type="PackedScene" uid="uid://hwpi48hrlmyu" path="res://Scenes/Food/meat_raw_4.tscn" id="52_hlkfb"]
 [ext_resource type="PackedScene" uid="uid://bjb88osnfjlic" path="res://Scenes/StaticStructures/bonfire.tscn" id="55_kkea6"]
-[ext_resource type="PackedScene" uid="uid://wuwot8hv4p00" path="res://Scenes/StaticStructures/chest.tscn" id="56_hlkfb"]
+[ext_resource type="PackedScene" uid="uid://pqbtd01vkvyo" path="res://Scenes/StaticStructures/chest.tscn" id="56_hlkfb"]
 [ext_resource type="PackedScene" uid="uid://cuwbw76t8spcd" path="res://Scenes/Potions/potion_hunger.tscn" id="57_oo2fk"]
 [ext_resource type="PackedScene" uid="uid://dwfu6w7p8yqvm" path="res://Dungeons/DungeonSecond/Dungeon2Entrance.tscn" id="58_1grgn"]
 [ext_resource type="PackedScene" uid="uid://bu47s3h11vmi5" path="res://Scenes/StaticStructures/chest_dungeon.tscn" id="58_61y65"]
@@ -69,6 +69,8 @@
 [ext_resource type="PackedScene" uid="uid://dy01bojqvq48k" path="res://Scenes/Items/egg.tscn" id="67_pauvb"]
 [ext_resource type="PackedScene" uid="uid://siqgssdbabnj" path="res://Scenes/Food/fried_egg.tscn" id="68_tbk65"]
 [ext_resource type="PackedScene" uid="uid://cdla8w7bau77o" path="res://Scenes/StaticStructures/boulder_cave.tscn" id="69_tbk65"]
+[ext_resource type="PackedScene" uid="uid://usiojwysxo2i" path="res://Scenes/StaticStructures/bush_2.tscn" id="70_g3ii7"]
+[ext_resource type="PackedScene" uid="uid://oqqk8s0uvmvp" path="res://Enemies/Spirit_Wolf/EvilWolfDungeon.tscn" id="71_0kwmd"]
 
 [node name="Playground" type="Node2D" unique_id=571104678]
 scale = Vector2(1.9740651, 1.9740651)
@@ -167,6 +169,7 @@ position = Vector2(-154.2049, 22.518837)
 
 [node name="Flower5" parent="BleakYellowGrass/level" unique_id=1776031276 instance=ExtResource("29_vnnrc")]
 position = Vector2(-134.44872, 20.99913)
+item_type = ""
 
 [node name="AxeStone" parent="BleakYellowGrass/level" unique_id=1146610572 instance=ExtResource("39_05gq1")]
 position = Vector2(-26.54953, -2.8096085)
@@ -367,9 +370,51 @@ position = Vector2(-114.99114, -55.72258)
 
 [node name="BoulderCave" parent="." unique_id=582371490 instance=ExtResource("69_tbk65")]
 position = Vector2(-276.5866, -63.321114)
+hits_needed = 4.0
 
 [node name="BoulderCave2" parent="." unique_id=348915637 instance=ExtResource("69_tbk65")]
 position = Vector2(-287.22458, -118.030556)
+hits_needed = 4.0
 
 [node name="BoulderCave3" parent="." unique_id=259577790 instance=ExtResource("69_tbk65")]
 position = Vector2(-264.42896, -31.407272)
+hits_needed = 4.0
+
+[node name="Tree" parent="." unique_id=1307110634 instance=ExtResource("9_bm257")]
+position = Vector2(20.262756, -97.26123)
+
+[node name="Tree2" parent="." unique_id=73868354 instance=ExtResource("9_bm257")]
+position = Vector2(182.3648, -97.7678)
+
+[node name="Tree3" parent="." unique_id=1242208368 instance=ExtResource("9_bm257")]
+position = Vector2(42.04522, -16.210205)
+
+[node name="Tree4" parent="." unique_id=779685919 instance=ExtResource("9_bm257")]
+position = Vector2(110.93859, -12.664223)
+
+[node name="Tree5" parent="." unique_id=411767140 instance=ExtResource("9_bm257")]
+position = Vector2(-241.1268, -102.83349)
+
+[node name="Bush2" parent="." unique_id=1621687921 instance=ExtResource("70_g3ii7")]
+position = Vector2(-119.55026, -160.07578)
+
+[node name="Bush3" parent="." unique_id=1148580340 instance=ExtResource("70_g3ii7")]
+position = Vector2(-45.084633, -172.73999)
+
+[node name="Bush" parent="." unique_id=839524930 instance=ExtResource("11_42c27")]
+position = Vector2(-318.12527, 57.242287)
+
+[node name="Bush4" parent="." unique_id=1315543737 instance=ExtResource("70_g3ii7")]
+position = Vector2(-330.7895, 116.51085)
+
+[node name="EvilWolfWithPoints" parent="." unique_id=1120942002 instance=ExtResource("8_l7aru")]
+position = Vector2(62.814545, 106.37947)
+
+[node name="EvilWolfDungeon" parent="." unique_id=2115354962 instance=ExtResource("71_0kwmd")]
+position = Vector2(65.34739, 52.176598)
+
+[node name="EvilWolfWithPoints2" parent="." unique_id=962760952 instance=ExtResource("8_l7aru")]
+position = Vector2(7.5985336, 149.9444)
+
+[node name="EvilWolfWithPoints3" parent="." unique_id=1258337449 instance=ExtResource("8_l7aru")]
+position = Vector2(16.716774, 107.39261)

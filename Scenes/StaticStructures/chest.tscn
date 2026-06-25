@@ -1,7 +1,8 @@
-[gd_scene format=3 uid="uid://wuwot8hv4p00"]
+[gd_scene format=3 uid="uid://pqbtd01vkvyo"]
 
 [ext_resource type="Script" uid="uid://cowjyn5ifyi5f" path="res://Scripts/chest.gd" id="1_cx1tu"]
 [ext_resource type="Texture2D" uid="uid://6tyrtdrx3aia" path="res://OtherSprites/RPG Chests.png" id="1_k8b8m"]
+[ext_resource type="AudioStream" uid="uid://ia7gw7i8t3kt" path="res://Sounds/chestopen.mp3" id="3_rtce2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cx1tu"]
 size = Vector2(16, 7)
@@ -109,6 +110,9 @@ frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1140083320]
 shape = SubResource("RectangleShape2D_rtce2")
+
+[node name="ChestOpen" type="AudioStreamPlayer2D" parent="." unique_id=1118081]
+stream = ExtResource("3_rtce2")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

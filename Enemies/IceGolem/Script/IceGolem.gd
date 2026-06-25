@@ -43,6 +43,8 @@ var patrol_origin: Vector2
 @onready var points_container: Node2D = $"../PatrolPionts"
 @onready var follow_area: Area2D = $Follow_Area
 
+@export var scene: PackedScene #instancja sceny struktury
+
 func _ready():
 	current_hp = max_hp
 	patrol_origin = global_position
@@ -129,7 +131,21 @@ func start_attack():
 	await sprite.animation_finished
 	state = State.CHASE
 	can_attack = true
-
+	
+func if_item_drops() -> bool: #14 % szans na dropniecie
+	var drops = false
+	var random := randi_range(1,7)
+	if random == 1:
+		drops = true
+	return drops
+		
+func drop_item():	
+	if scene:
+		if  if_item_drops():
+			var item = scene.instantiate()
+			get_parent().add_child(item)
+			item.global_position = global_position + Vector2(10, 35)
+			
 func interrupt_attack():
 	if state != State.ATTACK:
 		return

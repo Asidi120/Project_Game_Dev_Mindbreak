@@ -28,6 +28,7 @@ var hunger_interval_normal:float= 2.0
 var hunger_interval_sprint:float= 0.5
 var spawn_point=Vector2.ZERO
 var already_hit = []
+var is_idle := true
 
 var inventory = []
 const MAX_STACK = 12
@@ -366,6 +367,7 @@ func eating(item):
 		else:
 			print("Zjadłeś")
 		
+		sounds.play_sound("eat")
 		emit_signal("hunger_changed", current_hunger, max_hunger)
 		return true
 	
@@ -600,14 +602,18 @@ func stamina_recovery():
 
 func update_animation():
 	update_attack_hitbox()
+
 	if velocity == Vector2.ZERO:
+		facing_direction = Vector2.DOWN
 		play_anim("idle")
 		return
+
 	if abs(velocity.x) > abs(velocity.y):
 		if velocity.x > 0:
 			facing_direction = Vector2.RIGHT
 		else:
 			facing_direction = Vector2.LEFT
+
 		play_anim("walk_side")
 		update_flip()
 	else:
@@ -643,25 +649,25 @@ func attack_swing():
 				0.05
 			)
 			held_item.rotation_degrees = 30
-			tween.tween_property(held_item, "rotation_degrees", -120, 0.15)
-
+			tween.tween_property(held_item, "rotation_degrees", -110, 0.15)
 		Vector2.DOWN:
 			tween.tween_property(
 				held_item,
 				"position",
-				base_pos + Vector2(0, 6),
+				base_pos + Vector2(0, -4),
 				0.05
 			)
-			tween.tween_property(held_item, "rotation_degrees", -40, 0.15)
-
-		Vector2.LEFT:
+			held_item.rotation_degrees = 200
 			tween.tween_property(
 				held_item,
-				"position",
-				base_pos + Vector2(-6, 0),
-				0.05
+				"rotation_degrees",
+				60,
+				0.15
 			)
-			tween.tween_property(held_item, "rotation_degrees", -80, 0.15)
+
+		Vector2.LEFT:
+			#płynny ruch w dół w stronę -190 stopni
+			tween.tween_property(held_item, "rotation_degrees", -190, 0.15)
 
 		Vector2.RIGHT:
 			tween.tween_property(
@@ -671,20 +677,6 @@ func attack_swing():
 				0.05
 			)
 			tween.tween_property(held_item, "rotation_degrees", 80, 0.15)
-
-	# powrót do zera (opcjonalnie)
-	tween.tween_property(
-		held_item,
-		"rotation_degrees",
-		0,
-		0.08
-	)
-	tween.tween_property(
-		held_item,
-		"position",
-		base_pos,
-		0.08
-	)
 
 func update_attack_hitbox():
 	var flipped: bool = velocity.x < 0

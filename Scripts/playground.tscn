@@ -55,7 +55,7 @@
 [ext_resource type="PackedScene" uid="uid://bxah3ngnftgeo" path="res://Scenes/Food/meat_raw_3.tscn" id="51_kkea6"]
 [ext_resource type="PackedScene" uid="uid://hwpi48hrlmyu" path="res://Scenes/Food/meat_raw_4.tscn" id="52_hlkfb"]
 [ext_resource type="PackedScene" uid="uid://bjb88osnfjlic" path="res://Scenes/StaticStructures/bonfire.tscn" id="55_kkea6"]
-[ext_resource type="PackedScene" path="res://Scenes/StaticStructures/chest.tscn" id="56_hlkfb"]
+[ext_resource type="PackedScene" uid="uid://pqbtd01vkvyo" path="res://Scenes/StaticStructures/chest.tscn" id="56_hlkfb"]
 [ext_resource type="PackedScene" uid="uid://cuwbw76t8spcd" path="res://Scenes/Potions/potion_hunger.tscn" id="57_oo2fk"]
 [ext_resource type="PackedScene" uid="uid://dwfu6w7p8yqvm" path="res://Dungeons/DungeonSecond/Dungeon2Entrance.tscn" id="58_1grgn"]
 [ext_resource type="PackedScene" uid="uid://bu47s3h11vmi5" path="res://Scenes/StaticStructures/chest_dungeon.tscn" id="58_61y65"]

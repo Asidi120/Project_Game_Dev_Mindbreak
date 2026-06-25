@@ -26,6 +26,8 @@ func update_hits():
 	#jesli nie ma nic w raczce mozna niszczyc tree i bush
 	if item == null and (object_type == "tree" or object_type == "bush"):
 		hits += 1
+		if tree_hit:
+			tree_hit.play()
 	
 	if item == null:
 		return
@@ -45,6 +47,8 @@ func update_hits():
 	# niszczenie tree i bush majac jakikolwiek inny przedmiot
 	elif object_type == "tree" or object_type == "bush":
 		hits += 1	
+		if tree_hit:
+			tree_hit.play()
 		
 	
 	
@@ -55,6 +59,8 @@ func update_hits():
 		if item["position_of_power"] >= position_of_power_needed:
 			hits += item["tool_power"]
 			item["item_durability"] -= 1
+			if boulder_hit:
+				boulder_hit.play()
 			
 	if item["item_durability"] <= 0:
 		inventory_system.current_inventory[index] = null
@@ -69,7 +75,6 @@ func _process(delta: float) -> void:
 	if player_in_range and Input.is_action_just_pressed("attack"): #jesli player w zasiegu i uderzy
 		update_hits()
 		print("Uderzenie: ", hits)
-
 		if hits >= hits_needed: #jesli player przekroczy ilosc uderzen
 			print(object_id, " destroyed")
 			queue_free() #struktura znika

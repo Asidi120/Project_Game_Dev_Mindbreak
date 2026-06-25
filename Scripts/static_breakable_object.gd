@@ -8,6 +8,7 @@ var hits := 0.0
 @onready var tree_hit: AudioStreamPlayer2D = $TreeHit
 @export var scene: PackedScene #instancja sceny struktury
 @export var scene2: PackedScene
+@onready var boulder_hit: AudioStreamPlayer2D = $BoulderHit
 
 var inventory_system = null
 
@@ -39,6 +40,8 @@ func update_hits():
 	elif item["item_type"] == "pickaxe" and object_type == "boulder":
 		hits += item["tool_power"]
 		item["item_durability"] -= 1
+		if boulder_hit:
+			boulder_hit.play()
 	# niszczenie tree i bush majac jakikolwiek inny przedmiot
 	elif object_type == "tree" or object_type == "bush":
 		hits += 1	

@@ -55,7 +55,7 @@
 [ext_resource type="PackedScene" uid="uid://bxah3ngnftgeo" path="res://Scenes/Food/meat_raw_3.tscn" id="51_kkea6"]
 [ext_resource type="PackedScene" uid="uid://hwpi48hrlmyu" path="res://Scenes/Food/meat_raw_4.tscn" id="52_hlkfb"]
 [ext_resource type="PackedScene" uid="uid://bjb88osnfjlic" path="res://Scenes/StaticStructures/bonfire.tscn" id="55_kkea6"]
-[ext_resource type="PackedScene" uid="uid://wuwot8hv4p00" path="res://Scenes/StaticStructures/chest.tscn" id="56_hlkfb"]
+[ext_resource type="PackedScene" path="res://Scenes/StaticStructures/chest.tscn" id="56_hlkfb"]
 [ext_resource type="PackedScene" uid="uid://cuwbw76t8spcd" path="res://Scenes/Potions/potion_hunger.tscn" id="57_oo2fk"]
 [ext_resource type="PackedScene" uid="uid://dwfu6w7p8yqvm" path="res://Dungeons/DungeonSecond/Dungeon2Entrance.tscn" id="58_1grgn"]
 [ext_resource type="PackedScene" uid="uid://bu47s3h11vmi5" path="res://Scenes/StaticStructures/chest_dungeon.tscn" id="58_61y65"]
@@ -64,7 +64,6 @@
 [ext_resource type="PackedScene" uid="uid://cgucfj6me8w55" path="res://Scenes/Potions/potion_health.tscn" id="61_1grgn"]
 [ext_resource type="PackedScene" uid="uid://vebg06r8ojnf" path="res://Scenes/Potions/potion_stamina.tscn" id="62_28vq4"]
 [ext_resource type="PackedScene" uid="uid://iqmeit2sjngx" path="res://Scenes/Items/diamond_ore.tscn" id="63_d2ds1"]
-[ext_resource type="PackedScene" uid="uid://ekykjh8h0tui" path="res://Dungeons/DungeonFirst/Dungeon1Entrance.tscn" id="66_3glsb"]
 [ext_resource type="PackedScene" uid="uid://dpkd68plrh24n" path="res://Scenes/Food/berry_1.tscn" id="65_seywm"]
 [ext_resource type="PackedScene" uid="uid://b06s010oyn8y1" path="res://Scenes/Items/bonfire_item.tscn" id="66_3glsb"]
 
@@ -165,6 +164,7 @@ position = Vector2(-154.2049, 22.518837)
 
 [node name="Flower5" parent="BleakYellowGrass/level" unique_id=1776031276 instance=ExtResource("29_vnnrc")]
 position = Vector2(-134.44872, 20.99913)
+item_type = ""
 
 [node name="AxeStone" parent="BleakYellowGrass/level" unique_id=1146610572 instance=ExtResource("39_05gq1")]
 position = Vector2(-26.54953, -2.8096085)

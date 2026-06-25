@@ -1,7 +1,7 @@
 extends Button
 
-func _ready() -> void:
-	disabled = not SaveManager.save_exists()
+#func _ready() -> void:
+	#disabled = not SaveManager.save_exists()
 
 
 func _on_pressed() -> void:

@@ -291,13 +291,9 @@ vframes = 8
 position = Vector2(-3.99504, -5.5930514)
 scale = Vector2(1.0000001, 1.0000001)
 
-[node name="HeldItem" type="TextureRect" parent="Hand" unique_id=108708875]
-custom_minimum_size = Vector2(5, 5)
-offset_left = -2.3970194
-offset_top = -2.397021
-offset_right = 2.6029806
-offset_bottom = 2.602979
-stretch_mode = 3
+[node name="HeldItem" type="Sprite2D" parent="Hand" unique_id=1572543144]
+position = Vector2(0, -3.9950347)
+scale = Vector2(6.392057, 4.9950347)
 
 [node name="Sounds" type="Node2D" parent="." unique_id=571508219]
 script = ExtResource("5_vtle1")

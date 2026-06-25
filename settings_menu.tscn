@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dssrahmptw05u"]
 
 [ext_resource type="Script" uid="uid://d0w0m2lpnbrxr" path="res://settings_menu.gd" id="1_ufg0w"]
+[ext_resource type="Texture2D" uid="uid://c7g7a1td7hidb" path="res://MenuIcon/4.jpg" id="2_0cmel"]
 
 [node name="Control" type="Control" unique_id=1624329592]
 layout_mode = 3
@@ -9,12 +10,19 @@ offset_right = 472.0
 offset_bottom = 200.0
 script = ExtResource("1_ufg0w")
 
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1399571594]
+layout_mode = 0
+offset_left = -24.0
+offset_right = 1552.0
+offset_bottom = 864.0
+texture = ExtResource("2_0cmel")
+
 [node name="VBox" type="VBoxContainer" parent="." unique_id=1191533818]
 layout_mode = 0
-offset_left = 616.0
-offset_top = 264.0
-offset_right = 776.0
-offset_bottom = 368.0
+offset_left = 552.0
+offset_top = 352.0
+offset_right = 856.0
+offset_bottom = 462.0
 
 [node name="MusicRow" type="HBoxContainer" parent="VBox" unique_id=255254987]
 layout_mode = 2
@@ -34,6 +42,27 @@ layout_mode = 2
 text = "Volume"
 
 [node name="VolumeSlider" type="HSlider" parent="VBox/VolumeRow" unique_id=2127263300]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+
+[node name="SoundsRow" type="HBoxContainer" parent="VBox" unique_id=270186359]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBox/SoundsRow" unique_id=8422113]
+layout_mode = 2
+text = "Sounds"
+
+[node name="MusicToggle" type="CheckButton" parent="VBox/SoundsRow" unique_id=481558184]
+layout_mode = 2
+
+[node name="VolumeRow2" type="HBoxContainer" parent="VBox" unique_id=396195995]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBox/VolumeRow2" unique_id=1860380217]
+layout_mode = 2
+text = "Volume"
+
+[node name="VolumeSlider" type="HSlider" parent="VBox/VolumeRow2" unique_id=395355880]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 

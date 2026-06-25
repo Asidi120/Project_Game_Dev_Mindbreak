@@ -10,6 +10,7 @@ var saved_hp:        int   = 200
 var saved_hunger:    int   = 150
 var saved_stamina:   int   = 100
 var saved_inventory: Array = []
+var saved_game_time: float = 720.0
 
 
 func _ready() -> void:

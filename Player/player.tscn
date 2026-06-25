@@ -299,20 +299,20 @@ scale = Vector2(6.392057, 4.9950347)
 [node name="Sounds" type="Node2D" parent="." unique_id=571508219]
 script = ExtResource("5_vtle1")
 
-[node name="Walk" type="AudioStreamPlayer2D" parent="Sounds" unique_id=1117729225]
+[node name="Walk" type="AudioStreamPlayer2D" parent="Sounds" unique_id=1117729225 groups=["Sounds"]]
 stream = ExtResource("5_fhl08")
 
-[node name="Attack" type="AudioStreamPlayer2D" parent="Sounds" unique_id=1383052976]
+[node name="Attack" type="AudioStreamPlayer2D" parent="Sounds" unique_id=1383052976 groups=["Sounds"]]
 stream = ExtResource("6_vtle1")
 
-[node name="Hurt" type="AudioStreamPlayer2D" parent="Sounds" unique_id=1346486703]
+[node name="Hurt" type="AudioStreamPlayer2D" parent="Sounds" unique_id=1346486703 groups=["Sounds"]]
 stream = ExtResource("8_00tjw")
 
-[node name="Dead" type="AudioStreamPlayer2D" parent="Sounds" unique_id=1348202481]
+[node name="Dead" type="AudioStreamPlayer2D" parent="Sounds" unique_id=1348202481 groups=["Sounds"]]
 process_mode = 3
 stream = ExtResource("9_x3vf3")
 
-[node name="Eat" type="AudioStreamPlayer2D" parent="Sounds" unique_id=873007924]
+[node name="Eat" type="AudioStreamPlayer2D" parent="Sounds" unique_id=873007924 groups=["Sounds"]]
 stream = ExtResource("10_x3vf3")
 
 [node name="AudioListener2D" type="AudioListener2D" parent="." unique_id=995454583]

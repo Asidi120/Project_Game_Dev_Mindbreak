@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bxah3ngnftgeo" path="res://Scenes/Food/meat_raw_3.tscn" id="2_anktm"]
 [ext_resource type="Texture2D" uid="uid://d34crl0llr6ot" path="res://Player/Sprite/hp_bar/HealthBar DARK.png" id="2_twh85"]
 [ext_resource type="Script" uid="uid://dfgdasket7d4t" path="res://Scripts/healthbar.gd" id="3_anktm"]
-[ext_resource type="PackedScene" uid="uid://dy01bojqvq48k" path="res://Scenes/Items/egg.tscn" id="3_k33p5"]
+[ext_resource type="PackedScene" uid="uid://cmgcttqllmjjk" path="res://Scenes/Items/egg.tscn" id="3_k33p5"]
 [ext_resource type="Texture2D" uid="uid://dsdxgnj0cj7af" path="res://Animals/Grouse/Sprite/Black_grouse_Death.png" id="4_ovctp"]
 [ext_resource type="Texture2D" uid="uid://bl3lx1b4137n2" path="res://Animals/Grouse/Sprite/Black_grouse_Hurt.png" id="5_twh85"]
 [ext_resource type="Texture2D" uid="uid://dda2c7lke6268" path="res://Animals/Grouse/Sprite/Black_grouse_Idle.png" id="6_anktm"]
@@ -658,7 +658,7 @@ size = Vector2(39, 38)
 [node name="Grouse" type="Node2D" unique_id=413200121]
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=480284438 groups=["Enemies"]]
-position = Vector2(0, -27)
+position = Vector2(0, -7)
 scale = Vector2(0.5, 0.5)
 collision_layer = 2
 collision_mask = 16

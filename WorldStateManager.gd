@@ -41,7 +41,7 @@ func restore_scene(scene_path: String) -> void:
 				break
 
 	await get_tree().process_frame
-	var current := get_tree().current_scene
+	var current := get_tree().current_scene.get_node("Objects")
 	for data in state.get("items", []):
 		if not ResourceLoader.exists(data["scene_path"]):
 			continue

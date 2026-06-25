@@ -42,7 +42,7 @@ const SCENE_DIAMOND      := preload("res://Scenes/StaticStructures/diamond_node.
 
 @onready var tile_map:      TileMapLayer = $TileMapLayer
 @onready var objects:       Node2D       = $Objects
-@onready var player:        Node2D       = $Player
+@onready var player:        Node2D       = $Objects/Player
 @onready var loading_label: Label        = $UI/LoadingLabel
 
 var world_seed: int    = 0
@@ -389,7 +389,7 @@ func _spawn_scene(scene: PackedScene, tx: int, ty: int) -> void:
 		tx * TILE_SIZE + TILE_SIZE / 2,
 		ty * TILE_SIZE + TILE_SIZE / 2
 	)
-	obj.z_index = ty
+	#obj.z_index = ty
 	objects.add_child(obj)
 
 

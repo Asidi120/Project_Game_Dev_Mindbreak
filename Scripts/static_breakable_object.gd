@@ -62,10 +62,12 @@ func update_hits():
 			if boulder_hit:
 				boulder_hit.play()
 			
-	if item["item_durability"] <= 0:
-		inventory_system.current_inventory[index] = null
-		inventory_system.refresh_all()
-		return
+			
+	if item is Tool:
+		if item["item_durability"] <= 0:
+			inventory_system.current_inventory[index] = null
+			inventory_system.refresh_all()
+			return
 		
 	
 func _ready() -> void:

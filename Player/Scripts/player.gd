@@ -94,7 +94,6 @@ func _ready() -> void:
 
 	if fasteq_ui:
 		fasteq_ui.refresh(inventory)
-	reinitialize()
 	apply_appearance()
 
 func save_state() -> void:

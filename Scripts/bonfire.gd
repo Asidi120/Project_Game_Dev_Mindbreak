@@ -28,7 +28,34 @@ func _process(delta: float) -> void:
 		await get_tree().create_timer(4.0).timeout
 		print("ore putttttttttttttttt")
 		get_cooked_meat(path)
+	
+	if put_egg_into_bonfire():
+		var path = "res://Scenes/Food/fried_egg.tscn"
+		await get_tree().create_timer(4.0).timeout
+		print("egg putttttttttttttttt")
+		get_cooked_meat(path)
 
+func has_egg_in_hand() -> bool:
+	var egg_held := false
+	
+	if inventory_system == null:
+		return egg_held
+
+	var index = inventory_system.selected_fasteq_index
+	
+	if index < 0 or index >= inventory_system.current_inventory.size():
+		return egg_held
+
+	var item = inventory_system.current_inventory[index]
+	
+	if item == null:
+		return egg_held
+	
+	if item["item_type"] == "egg":
+		egg_held = true
+	
+	return egg_held
+	
 func has_raw_meat_in_hand() -> bool:
 	var raw_meat_held := false
 	
@@ -70,6 +97,29 @@ func has_ore_in_hand() -> bool:
 		ore_held = true
 	
 	return ore_held
+
+func put_egg_into_bonfire() -> bool:
+	var if_egg_put := false
+	if player_in_range and Input.is_action_just_pressed("cook") and has_egg_in_hand():
+		print("coooooooooook")
+		
+		var index = inventory_system.selected_fasteq_index
+		var item = inventory_system.current_inventory[index]
+		
+		#var meat_id = item["item_id"].split("_")[-1]
+		#meat_ids_list.append(meat_id)
+		#print(meat_ids_list)
+		
+		#usuniecie z ekwipunka 
+		if item["amount"] > 1:
+			item["amount"] -= 1
+		else:
+			inventory_system.current_inventory[index] = null
+
+		inventory_system.refresh_all()
+		if_egg_put = true
+		
+	return if_egg_put
 	
 func put_meat_into_bonfire() -> bool:
 	var if_meat_put := false

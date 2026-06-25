@@ -7,6 +7,7 @@
 size = Vector2(13.882496, 32.73616)
 
 [node name="Flower5" type="Area2D" unique_id=13035520]
+z_index = -1
 scale = Vector2(1.2399994, 1.2399994)
 script = ExtResource("1_wu37v")
 item_id = "flower5"

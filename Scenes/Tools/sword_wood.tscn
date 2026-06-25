@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cvdo0rxrv3fmb"]
 
-[ext_resource type="Script" path="res://Scripts/sword.gd" id="1_ujjoi"]
+[ext_resource type="Script" uid="uid://b3b8lfehbksly" path="res://Scripts/sword.gd" id="1_ujjoi"]
 [ext_resource type="Texture2D" uid="uid://i5uud04jfce" path="res://OtherSprites/Items/Full Sheet.png" id="2_ujjoi"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_3ouv3"]
@@ -8,6 +8,7 @@ a = Vector2(3.5653393, -3.4066238)
 b = Vector2(-4.7909245, 4.335703)
 
 [node name="SwordWood" type="Area2D" unique_id=1592250268]
+z_index = -1
 scale = Vector2(1.2, 1.2)
 script = ExtResource("1_ujjoi")
 power = 5.0

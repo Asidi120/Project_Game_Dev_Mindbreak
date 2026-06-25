@@ -7,6 +7,7 @@
 size = Vector2(75.23736, 47.72998)
 
 [node name="MeatRaw4" type="Area2D" unique_id=1592250268]
+z_index = -1
 scale = Vector2(0.2, 0.2)
 script = ExtResource("1_d0ulk")
 hunger_points = 15

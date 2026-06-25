@@ -8,6 +8,7 @@ a = Vector2(3.1553116, -2.3749857)
 b = Vector2(-4.4246407, 4.7957325)
 
 [node name="PickaxeIron" type="Area2D" unique_id=1592250268]
+z_index = -1
 scale = Vector2(1.2, 1.2)
 script = ExtResource("1_gmixl")
 tool_power = 2.5

@@ -1,6 +1,5 @@
 extends Button
-
-var player: Player
+var player: CharacterBody2D
 var death_panel: Control
 var stamina_bar: TextureProgressBar
 var hunger_bar: TextureProgressBar
@@ -22,7 +21,7 @@ func _ready() -> void:
 func _on_pressed() -> void:
 	if not player:
 		return
-	player.state=player.State.IDLE
+	player.state           = player.State.IDLE
 	player.current_hp      = player.max_hp
 	player.current_hunger  = player.max_hunger
 	player.current_stamina = player.max_stamina

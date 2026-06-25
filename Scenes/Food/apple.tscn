@@ -11,6 +11,7 @@ atlas = ExtResource("2_mtgt5")
 region = Rect2(25, 20, 15, 17)
 
 [node name="Apple" type="Area2D" unique_id=1592250268]
+z_index = -1
 scale = Vector2(0.6989972, 0.7015085)
 script = ExtResource("1_mtgt5")
 hunger_points = 15

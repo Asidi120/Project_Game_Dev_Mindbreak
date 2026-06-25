@@ -64,6 +64,21 @@ func _physics_process(delta):
 	move_and_slide()
 	update_animation()
 
+@export var scene: PackedScene #instancja sceny struktury
+
+func if_item_drops() -> bool: #20 % szans na dropniecie
+	var drops = false
+	var random := randi_range(1,5)
+	if random == 1:
+		drops = true
+	return drops
+		
+func drop_item():	
+	if scene:
+		if  if_item_drops():
+			var item = scene.instantiate()
+			get_parent().add_child(item)
+			item.global_position = global_position + Vector2(10, 35)
 # AI
 func patrol():
 	if patrol_points.is_empty():

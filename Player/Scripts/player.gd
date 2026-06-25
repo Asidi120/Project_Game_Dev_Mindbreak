@@ -265,7 +265,7 @@ func update_held_position():
 			new_rotation = -30
 	elif facing_direction == Vector2.DOWN or facing_direction == Vector2.ZERO:
 		old_center_position = Vector2(-5, -5)
-		new_z_index = 10
+		new_z_index = 0
 		
 		if can_rotate:
 			new_rotation = -75
@@ -279,7 +279,7 @@ func update_held_position():
 
 	elif facing_direction == Vector2.RIGHT:
 		old_center_position = Vector2(6, -4)
-		new_z_index = 10
+		new_z_index = 0
 		
 		if can_rotate:
 			new_rotation = 0
@@ -327,7 +327,14 @@ func place_held_item():
 			push_error("Nie udało się wczytać sceny: " + item["place_scene_path"])
 			return
 		var placed_object = scene.instantiate()
-		get_tree().current_scene.add_child(placed_object)
+
+		var objects_node = get_tree().get_first_node_in_group("objects")
+
+		if objects_node == null:
+			push_error("Nie znaleziono Level/Objects")
+			return
+
+		objects_node.add_child(placed_object)
 		placed_object.global_position = global_position + facing_direction * 32
 		if item["amount"] > 1:
 			item["amount"] -= 1

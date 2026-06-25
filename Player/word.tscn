@@ -12,8 +12,9 @@
 [ext_resource type="Texture2D" uid="uid://cramspjee52ry" path="res://TitleMapsLayer/plaza_gory.png" id="9_f2ovg"]
 [ext_resource type="Texture2D" uid="uid://d2d5mkewrvuo1" path="res://TitleMapsLayer/plaza_las.png" id="10_cpn7g"]
 [ext_resource type="Script" uid="uid://c1eeama42l8cl" path="res://Player/animal_spawner.gd" id="14_61npg"]
-[ext_resource type="Script" path="res://Player/WorldSaver.gd" id="14_62xdw"]
+[ext_resource type="Script" uid="uid://cm4douxr3p5an" path="res://Player/WorldSaver.gd" id="14_62xdw"]
 [ext_resource type="Script" uid="uid://bs3h32b6gxe2i" path="res://Scripts/day_night_overlay.gd" id="15_61npg"]
+[ext_resource type="Script" uid="uid://bbn01f82la58" path="res://Player/PauseMenu.gd" id="15_sx7xa"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qnhtb"]
 texture = ExtResource("4_60257")
@@ -1521,7 +1522,7 @@ z_index = -1
 tile_set = SubResource("TileSet_mpty1")
 use_kinematic_bodies = true
 
-[node name="Objects" type="Node2D" parent="." unique_id=1685361630]
+[node name="Objects" type="Node2D" parent="." unique_id=1685361630 groups=["objects"]]
 y_sort_enabled = true
 
 [node name="Player" parent="Objects" unique_id=257810088 instance=ExtResource("3_kmqk7")]
@@ -1534,7 +1535,7 @@ offset_bottom = 23.0
 
 [node name="HUD" parent="." unique_id=1148326026 instance=ExtResource("4_cw7yw")]
 
-[node name="WorldSaver" type="Node" parent="." unique_id=1536106010]
+[node name="WorldSaver" type="Node" parent="." unique_id=1536106010 groups=["world_saver"]]
 script = ExtResource("14_62xdw")
 
 [node name="DayNightOverlay" type="CanvasModulate" parent="." unique_id=198874310]
@@ -1543,3 +1544,6 @@ script = ExtResource("15_61npg")
 
 [node name="AnimalSpawner" type="Node" parent="." unique_id=1411358738]
 script = ExtResource("14_61npg")
+
+[node name="PauseMenu" type="Node" parent="." unique_id=1890177320]
+script = ExtResource("15_sx7xa")

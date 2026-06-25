@@ -92,6 +92,7 @@ func if_item_drops() -> bool: #25 % szans na dropniecie
 	if random == 1:
 		drops = true
 	return drops
+	
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
 		player_in_range = true #player w obrębie struktury

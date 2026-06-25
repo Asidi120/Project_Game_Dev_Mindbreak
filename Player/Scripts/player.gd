@@ -269,8 +269,14 @@ func place_held_item():
 			return
 
 		var placed_object = scene.instantiate()
-		get_tree().current_scene.add_child(placed_object)
 
+		var objects_node = get_tree().get_first_node_in_group("objects")
+
+		if objects_node == null:
+			push_error("Nie znaleziono Level/Objects")
+			return
+
+		objects_node.add_child(placed_object)
 		placed_object.global_position = global_position + facing_direction * 32
 
 		if item["amount"] > 1:

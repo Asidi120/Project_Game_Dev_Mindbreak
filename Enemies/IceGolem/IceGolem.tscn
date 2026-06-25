@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bnvix2ex2pbsw"]
 
 [ext_resource type="Script" uid="uid://btopxqsgxgvc2" path="res://Enemies/IceGolem/Script/IceGolem.gd" id="1_oib8w"]
+[ext_resource type="PackedScene" uid="uid://iqmeit2sjngx" path="res://Scenes/Items/diamond_ore.tscn" id="2_lctqp"]
 [ext_resource type="Texture2D" uid="uid://d34crl0llr6ot" path="res://Player/Sprite/hp_bar/HealthBar DARK.png" id="2_r5ogw"]
 [ext_resource type="Script" uid="uid://dfgdasket7d4t" path="res://Scripts/healthbar.gd" id="3_ltv32"]
 [ext_resource type="Texture2D" uid="uid://dv883ychji85v" path="res://Enemies/IceGolem/Sprite/Golem_1_attack.png" id="4_nbpqa"]
@@ -386,7 +387,7 @@ max_hp = null
 speed = null
 attack_range = null
 attack_cooldown = null
-spell_scene = null
+scene = ExtResource("2_lctqp")
 
 [node name="Hp_bar" type="TextureProgressBar" parent="IceGolem" unique_id=2009711514]
 offset_left = -21.0

@@ -162,7 +162,7 @@ color = Color(0.77793896, 0.4570015, 0, 1)
 energy = 2.0
 texture = ExtResource("5_lup3b")
 
-[node name="BonfireSound" type="AudioStreamPlayer2D" parent="." unique_id=1424436523]
+[node name="BonfireSound" type="AudioStreamPlayer2D" parent="." unique_id=1424436523 groups=["Sounds"]]
 stream = ExtResource("6_lkxcx")
 autoplay = true
 max_distance = 220.0

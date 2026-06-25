@@ -373,10 +373,10 @@ func _try_object(x: int, y: int, terrain: int, rng: RandomNumberGenerator) -> vo
 				_spawn_scene(SCENE_TREE_SPRUCE, x, y)
 			# Copper — najczęstszy
 			elif rare > 0.72 and rare < 0.724:
-				_spawn_scene(SCENE_COPPER, x, y)
+				_spawn_scene(SCENE_IRON, x, y)
 			# Iron — rzadszy
 			elif rare > 0.80 and rare < 0.803:
-				_spawn_scene(SCENE_IRON, x, y)
+				_spawn_scene(SCENE_COPPER, x, y)
 			# Gold — rzadki
 			elif rare > 0.87 and rare < 0.872:
 				_spawn_scene(SCENE_GOLD, x, y)

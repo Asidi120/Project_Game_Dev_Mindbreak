@@ -178,6 +178,7 @@ func can_player_attack() -> bool:
 func update_held_item():
 	if is_attacking:
 		return
+	
 	if inventory_system == null:
 		return
 
@@ -193,32 +194,36 @@ func update_held_item():
 		held_item.visible = false
 		return
 	
-	var size:= Vector2(13, 13)
-	
 	held_item.visible = true
 	held_item.texture = item["texture"]
-	# rozmiary przedmiotow trzymanych przez gracza 
+
+	if held_item.texture == null:
+		held_item.visible = false
+		return
+
+	var tex_size: Vector2 = held_item.texture.get_size()
+	held_item.centered = false
+	held_item.offset = Vector2(0, -tex_size.y)
 	var target_size = Vector2(16, 16)
-	var tex_size = held_item.texture.get_size()
 	var base_scale = target_size / tex_size
 	var type_multiplier = 1.0
 	match item["item_type"]:
-		"sword":
-			type_multiplier = 1
-		"axe":
-			type_multiplier = 1
-		"pickaxe":
-			type_multiplier = 1
-		"food":
+		"sword", "axe", "pickaxe":
+			type_multiplier = 1.0
+		"food", "meat_raw", "meat_cooked", "potion":
 			type_multiplier = 0.6
 		_:
 			type_multiplier = 0.7
+
 	held_item.scale = base_scale * type_multiplier
-	#jedzenie trzymanego itema
-	if Input.is_action_just_pressed("eat") and (item["item_type"] == "food" or item["item_type"] == "meat_raw" or item["item_type"] == "meat_cooked" or item["item_type"] == "potion"):
+
+	if Input.is_action_just_pressed("eat") and (
+		item["item_type"] == "food" 
+		or item["item_type"] == "meat_raw" 
+		or item["item_type"] == "meat_cooked" 
+		or item["item_type"] == "potion"
+	):
 		if eating(item):
-			print("Znikaaaaa")
-			
 			if item.has("amount") and item["amount"] > 1:
 				item["amount"] -= 1
 			else:
@@ -231,107 +236,101 @@ func update_held_position():
 		return
 	if inventory_system == null:
 		return
-
 	var index = inventory_system.selected_fasteq_index
-
 	if index < 0 or index >= inventory_system.current_inventory.size():
 		held_item.visible = false
 		return
-
 	var item = inventory_system.current_inventory[index]
-
 	if item == null:
 		held_item.visible = false
 		return
-
+	if held_item.texture == null:
+		return
 	held_item.visible = true
-
-	var can_rotate = false
+	var can_rotate := false
 	match item["item_type"]:
-		"sword":
-			can_rotate = true
-		"axe":
-			can_rotate = true
-		"pickaxe":
+		"sword", "axe", "pickaxe":
 			can_rotate = true
 		_:
 			can_rotate = false
-
+	var old_center_position := Vector2.ZERO
+	var new_rotation := 0.0
+	var new_z_index := 0
 	if facing_direction == Vector2.UP:
-		held_item.position = Vector2(10, -12)
-		held_item.z_index = -1
+		old_center_position = Vector2(10, -12)
+		new_z_index = -1
 		if can_rotate:
-			held_item.rotation_degrees = -30
-
+			new_rotation = -30
 	elif facing_direction == Vector2.DOWN or facing_direction == Vector2.ZERO:
-		held_item.position = Vector2(-5, -5)
-		held_item.z_index = 10
+		old_center_position = Vector2(-5, -5)
+		new_z_index = 10
+		
 		if can_rotate:
-			held_item.rotation_degrees = -75
+			new_rotation = -75
 
 	elif facing_direction == Vector2.LEFT:
-		held_item.position = Vector2(-8, -8)
-		held_item.z_index = 0
+		old_center_position = Vector2(-8, -8)
+		new_z_index = 0
+		
 		if can_rotate:
-			held_item.rotation_degrees = -90
+			new_rotation = -90
 
 	elif facing_direction == Vector2.RIGHT:
-		held_item.position = Vector2(6, -4)
-		held_item.z_index = 10
+		old_center_position = Vector2(6, -4)
+		new_z_index = 10
+		
 		if can_rotate:
-			held_item.rotation_degrees = 0
+			new_rotation = 0
 
 	if not can_rotate:
+		new_rotation = 0
+
 		if facing_direction == Vector2.UP:
-			held_item.position += Vector2(2, 2)
+			old_center_position += Vector2(2, 2)
 		elif facing_direction == Vector2.DOWN or facing_direction == Vector2.ZERO:
-			held_item.position += Vector2(2, 2)
+			old_center_position += Vector2(2, 2)
 		elif facing_direction == Vector2.LEFT:
-			held_item.position += Vector2(2, 2)
+			old_center_position += Vector2(2, 2)
 		elif facing_direction == Vector2.RIGHT:
-			held_item.position += Vector2(-2, 4)
-			
+			old_center_position += Vector2(-2, 4)
+
+	held_item.rotation_degrees = new_rotation
+	held_item.z_index = new_z_index
+
+	var tex_size: Vector2 = held_item.texture.get_size()
+	var center_from_bottom_left := Vector2(
+		(tex_size.x * held_item.scale.x) / 2.0,
+		-(tex_size.y * held_item.scale.y) / 2.0
+	)
+	held_item.position = old_center_position - center_from_bottom_left.rotated(held_item.rotation)
 
 func place_held_item():
 	if inventory_system == null:
 		return
-
 	if inventory_system.inventory_visible:
 		return
-
 	var index = inventory_system.selected_fasteq_index
-
 	if index < 0 or index >= inventory_system.current_inventory.size():
 		return
-
 	var item = inventory_system.current_inventory[index]
-
 	if item == null:
 		return
-
 	if item.get("item_type", "") != "placeable":
 		return
-
 	if not item.has("place_scene_path"):
 		return
-
 	if Input.is_action_just_pressed("place"):
 		var scene = load(item["place_scene_path"])
-
 		if scene == null:
 			push_error("Nie udało się wczytać sceny: " + item["place_scene_path"])
 			return
-
 		var placed_object = scene.instantiate()
 		get_tree().current_scene.add_child(placed_object)
-
 		placed_object.global_position = global_position + facing_direction * 32
-
 		if item["amount"] > 1:
 			item["amount"] -= 1
 		else:
 			inventory_system.current_inventory[index] = null
-
 		inventory_system.refresh_all()
 		
 func eating(item):
@@ -662,7 +661,7 @@ func attack_swing():
 				base_pos + Vector2(-6, 0),
 				0.05
 			)
-			tween.tween_property(held_item, "rotation_degrees", 20, 0.15)
+			tween.tween_property(held_item, "rotation_degrees", -80, 0.15)
 
 		Vector2.RIGHT:
 			tween.tween_property(

@@ -2,14 +2,14 @@ extends Node
 
 
 
-const MAX_ANIMALS    := 70
+const MAX_ANIMALS    := 100
 const SPAWN_INTERVAL := 120.0  
 const SPAWN_COUNT    := 2
-const START_COUNT    := 30
+const START_COUNT    := 50
 const TILE_SIZE      := 16
 
-const MAX_MONSTERS   := 50
-const MONSTER_NIGHT_COUNT := 20 
+const MAX_MONSTERS   := 70
+const MONSTER_NIGHT_COUNT := 40 
 
 @export var animal_scenes: Array[PackedScene] = [
 	preload("res://Animals/Fox/Fox.tscn"),

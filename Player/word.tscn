@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://cramspjee52ry" path="res://TitleMapsLayer/plaza_gory.png" id="9_f2ovg"]
 [ext_resource type="Texture2D" uid="uid://d2d5mkewrvuo1" path="res://TitleMapsLayer/plaza_las.png" id="10_cpn7g"]
 [ext_resource type="Script" uid="uid://c1eeama42l8cl" path="res://Player/animal_spawner.gd" id="14_61npg"]
-[ext_resource type="Script" path="res://Player/WorldSaver.gd" id="14_62xdw"]
+[ext_resource type="Script" uid="uid://cm4douxr3p5an" path="res://Player/WorldSaver.gd" id="14_62xdw"]
 [ext_resource type="Script" uid="uid://bs3h32b6gxe2i" path="res://Scripts/day_night_overlay.gd" id="15_61npg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qnhtb"]
@@ -1521,7 +1521,7 @@ z_index = -1
 tile_set = SubResource("TileSet_mpty1")
 use_kinematic_bodies = true
 
-[node name="Objects" type="Node2D" parent="." unique_id=1685361630]
+[node name="Objects" type="Node2D" parent="." unique_id=1685361630 groups=["objects"]]
 y_sort_enabled = true
 
 [node name="Player" parent="Objects" unique_id=257810088 instance=ExtResource("3_kmqk7")]

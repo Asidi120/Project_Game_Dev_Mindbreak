@@ -8,6 +8,7 @@ a = Vector2(6, -5.442178)
 b = Vector2(-6, 7.256237)
 
 [node name="AxeWood" type="Area2D" unique_id=1592250268]
+z_index = -1
 scale = Vector2(1.2, 1.26)
 script = ExtResource("1_r50kh")
 tool_power = 1.6

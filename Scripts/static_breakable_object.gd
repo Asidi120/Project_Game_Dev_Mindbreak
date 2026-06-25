@@ -73,7 +73,7 @@ func update_hits():
 				boulder_hit.play()
 			
 			
-	if item is Tool:
+	if item["item_type"] == "pickaxe" or item["item_type"] == "axe":
 		if item["item_durability"] <= 0:
 			inventory_system.current_inventory[index] = null
 			inventory_system.refresh_all()

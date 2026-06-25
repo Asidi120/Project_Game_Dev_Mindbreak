@@ -16,6 +16,7 @@ item_name = "SwordCopper"
 item_type = "sword"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=834627305]
+z_index = -1
 position = Vector2(0.3333332, -0.5)
 texture = ExtResource("2_thsub")
 offset = Vector2(4.166667, -4.1666665)

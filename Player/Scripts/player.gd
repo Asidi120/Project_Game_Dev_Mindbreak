@@ -102,6 +102,8 @@ func save_state() -> void:
 	SceneTransition.saved_stamina  = current_stamina
 	if inventory_system:
 		SceneTransition.saved_inventory = inventory_system.current_inventory.duplicate(true)
+	if !get_tree().current_scene.is_in_group("Cave") and !get_tree().current_scene.is_in_group("House"):
+		reinitialize()
 
 
 func reinitialize() -> void:

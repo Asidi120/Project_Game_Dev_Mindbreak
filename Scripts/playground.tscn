@@ -66,8 +66,8 @@
 [ext_resource type="PackedScene" uid="uid://iqmeit2sjngx" path="res://Scenes/Items/diamond_ore.tscn" id="63_d2ds1"]
 [ext_resource type="PackedScene" uid="uid://dpkd68plrh24n" path="res://Scenes/Food/berry_1.tscn" id="65_seywm"]
 [ext_resource type="PackedScene" uid="uid://b06s010oyn8y1" path="res://Scenes/Items/bonfire_item.tscn" id="66_3glsb"]
-[ext_resource type="PackedScene" uid="uid://dy01bojqvq48k" path="res://Scenes/Items/egg.tscn" id="67_pauvb"]
-[ext_resource type="PackedScene" uid="uid://siqgssdbabnj" path="res://Scenes/Food/fried_egg.tscn" id="68_tbk65"]
+[ext_resource type="PackedScene" uid="uid://cmgcttqllmjjk" path="res://Scenes/Items/egg.tscn" id="67_pauvb"]
+[ext_resource type="PackedScene" path="res://Scenes/Food/fried_egg.tscn" id="68_tbk65"]
 [ext_resource type="PackedScene" uid="uid://cdla8w7bau77o" path="res://Scenes/StaticStructures/boulder_cave.tscn" id="69_tbk65"]
 [ext_resource type="PackedScene" uid="uid://usiojwysxo2i" path="res://Scenes/StaticStructures/bush_2.tscn" id="70_g3ii7"]
 [ext_resource type="PackedScene" uid="uid://oqqk8s0uvmvp" path="res://Enemies/Spirit_Wolf/EvilWolfDungeon.tscn" id="71_0kwmd"]
@@ -138,10 +138,10 @@ position = Vector2(-90.37722, 24.038544)
 position = Vector2(-168.89545, -1.2898941)
 
 [node name="Fox" parent="BleakYellowGrass/level" unique_id=1904369127 instance=ExtResource("18_okydv")]
-position = Vector2(-79.2327, -93.48544)
+position = Vector2(-121.277916, -66.13073)
 
 [node name="Grouse" parent="BleakYellowGrass/level" unique_id=413200121 instance=ExtResource("19_4oawc")]
-position = Vector2(-172.44138, -27.631493)
+position = Vector2(-183.07932, -53.4665)
 
 [node name="Boar" parent="BleakYellowGrass/level" unique_id=2082633821 instance=ExtResource("20_i77k7")]
 position = Vector2(-78.21956, -71.70298)
@@ -301,7 +301,7 @@ position = Vector2(179.11745, -280.01523)
 
 [node name="HUD" parent="BleakYellowGrass" unique_id=1148326026 instance=ExtResource("14_djkbh")]
 
-[node name="DayNightOverlay" type="CanvasModulate" parent="." unique_id=1490973845]
+[node name="DayNightOverlay" type="CanvasModulate" parent="." unique_id=1490973845 groups=["DayNight"]]
 position = Vector2(819, 160)
 script = ExtResource("19_tc4ax")
 

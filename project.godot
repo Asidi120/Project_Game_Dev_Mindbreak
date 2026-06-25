@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 BossManager="*uid://ld0s6b38bht6"
 TotemManger="uid://d08xowmhti55k"
+SaveManager="*res://SaveManager.gd"
 CaveItemManager="*res://CaveItemManager.gd"
 WorldStateManager="*res://WorldStateManager.gd"
 SceneTransition="*res://SceneTransition.gd"
@@ -47,6 +48,10 @@ Boss=""
 crafting_ui=""
 TotemBar=""
 EndGameButton=""
+House=""
+Cave=""
+DayNight=""
+Sounds=""
 
 [input]
 

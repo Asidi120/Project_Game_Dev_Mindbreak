@@ -36,8 +36,6 @@ func _place_player() -> void:
 	if current == null:
 		return
 
-
-
 	for existing in get_tree().get_nodes_in_group("player"):
 		if existing != player_node and is_instance_valid(existing):
 			existing.get_parent().remove_child(existing)
@@ -50,10 +48,14 @@ func _place_player() -> void:
 			player_node.global_position = marker.global_position
 		else:
 			push_warning("SceneTransition: brak '%s'" % spawn_name)
+	if player_node.get_parent():
+		player_node.get_parent().remove_child(player_node)
+	var objects = current.get_node_or_null("Objects")
+	if objects != null:
+		objects.add_child(player_node)
+	else:
+		current.add_child(player_node)
 
-	remove_child(player_node)
-	current.add_child(player_node)
-	player_node.z_index = 10
 	player_node.visible = true
 	player_node.set_physics_process(true)
 	player_node.set_process(true)

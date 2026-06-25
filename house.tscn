@@ -1,7 +1,10 @@
 [gd_scene format=3 uid="uid://b7lbh1xjq0hxw"]
 
 [ext_resource type="Texture2D" uid="uid://ccrm716d5356o" path="res://house/6B4QtvF_16x.png" id="1_metfq"]
-[ext_resource type="Script" uid="uid://ce272btfm6y7c" path="res://houseinterior.gd" id="2_metfq"]
+[ext_resource type="Script" path="res://houseinterior.gd" id="2_metfq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_metfq"]
+size = Vector2(100.000046, 94.35487)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dnhvd"]
 size = Vector2(21.774225, 33.629044)
@@ -10,7 +13,7 @@ size = Vector2(21.774225, 33.629044)
 scale = Vector2(1.2399994, 1.2399994)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1622709971]
-position = Vector2(133.87102, -152.41943)
+position = Vector2(0.16126251, -52.17743)
 scale = Vector2(0.11395057, 0.12150055)
 texture = ExtResource("1_metfq")
 
@@ -19,16 +22,16 @@ visibility_layer = 33
 z_index = 10
 collision_mask = 17
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=1740325023]
-position = Vector2(94.35488, -125.00005)
-polygon = PackedVector2Array(-18.548393, -58.870995, 36.290337, -88.709724, 41.93551, -88.709724, 62.09681, -77.419395, 97.580696, -58.064552, 97.580696, 0.8064499, 90.322624, 3.2258072, 90.322624, 33.06453, 50.80648, 33.06453, 50.000023, 0.8064499, 28.225822, 0.8064499, 49.19357, -10.483875, 46.774208, -8.870979, 43.54841, -7.2580643, 37.903236, -4.838722, 30.645172, -0.8064575, 28.225822, 0, 27.419365, 0, 26.612915, 0.8064499, 27.419365, 2.4193497, 27.419365, 4.032257, 49.193565, 2.4193497, 49.193565, 11.290321, 50.000023, 30.645172, 39.51615, 33.06453, 27.419365, 30.645172, 21.7742, 29.838722, 16.129036, 29.838722, 8.870972, 30.645172, 2.4193573, 30.645172, -3.2258072, 30.645172, -7.258072, 29.838722, -8.870972, 25.000008, -9.677429, 17.741943, -8.870972, 10.483871, -11.290329, 1.6128998, -17.741943, -1.6129074)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1141203769]
+position = Vector2(0.806452, -39.516148)
+shape = SubResource("RectangleShape2D_metfq")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1764081812]
 position = Vector2(0, 0.806452)
 script = ExtResource("2_metfq")
 
 [node name="entry" type="CollisionShape2D" parent="Area2D" unique_id=21223600]
-position = Vector2(133.46779, -108.185524)
+position = Vector2(-0.24194336, -7.943527)
 shape = SubResource("RectangleShape2D_dnhvd")
 
 [node name="entry2" type="Label" parent="Area2D" unique_id=1766930304]

@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://dssrahmptw05u"]
+
+[ext_resource type="Script" uid="uid://d0w0m2lpnbrxr" path="res://settings_menu.gd" id="1_ufg0w"]
+
+[node name="Control" type="Control" unique_id=1624329592]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 472.0
+offset_bottom = 200.0
+script = ExtResource("1_ufg0w")
+
+[node name="VBox" type="VBoxContainer" parent="." unique_id=1191533818]
+layout_mode = 0
+offset_left = 616.0
+offset_top = 264.0
+offset_right = 776.0
+offset_bottom = 368.0
+
+[node name="MusicRow" type="HBoxContainer" parent="VBox" unique_id=255254987]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBox/MusicRow" unique_id=1589391451]
+layout_mode = 2
+text = "Music"
+
+[node name="MusicToggle" type="CheckButton" parent="VBox/MusicRow" unique_id=1472497663]
+layout_mode = 2
+
+[node name="VolumeRow" type="HBoxContainer" parent="VBox" unique_id=292927179]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBox/VolumeRow" unique_id=980867014]
+layout_mode = 2
+text = "Volume"
+
+[node name="VolumeSlider" type="HSlider" parent="VBox/VolumeRow" unique_id=2127263300]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+
+[node name="BackButton" type="Button" parent="VBox" unique_id=527220283]
+layout_mode = 2
+text = "Back"

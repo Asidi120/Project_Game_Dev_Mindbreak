@@ -65,6 +65,8 @@ var facing_direction := Vector2.DOWN
 var drank_stamina_potion := false
 var stamina_bar = null
 
+@onready var torch_light: PointLight2D = $Hand/TorchLight
+
 func _ready() -> void:
 	await get_tree().process_frame
 	add_to_group("player")
@@ -198,9 +200,13 @@ func update_held_item():
 	
 	held_item.visible = true
 	held_item.texture = item["texture"]
+	if torch_light != null:
+		torch_light.visible = item.get("item_type", "") == "torch"
 
 	if held_item.texture == null:
 		held_item.visible = false
+		if torch_light != null:
+			torch_light.visible = false
 		return
 
 	var tex_size: Vector2 = held_item.texture.get_size()
@@ -255,6 +261,8 @@ func update_held_position():
 			can_rotate = true
 		_:
 			can_rotate = false
+	if item["item_type"] == "torch":
+		held_item.scale *= 1.6
 	var old_center_position := Vector2.ZERO
 	var new_rotation := 0.0
 	var new_z_index := 0
@@ -305,7 +313,18 @@ func update_held_position():
 		-(tex_size.y * held_item.scale.y) / 2.0
 	)
 	held_item.position = old_center_position - center_from_bottom_left.rotated(held_item.rotation)
+	if torch_light != null:
+		if item.get("item_type", "") == "torch":
+			torch_light.visible = true
 
+			var torch_top_offset := Vector2(
+				(tex_size.x * held_item.scale.x) / 2.0,
+				-(tex_size.y * held_item.scale.y)
+			)
+
+			torch_light.position = held_item.position + torch_top_offset.rotated(held_item.rotation)
+		else:
+			torch_light.visible = false
 func place_held_item():
 	if inventory_system == null:
 		return

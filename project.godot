@@ -23,7 +23,7 @@ SaveManager="*res://SaveManager.gd"
 CaveItemManager="*res://CaveItemManager.gd"
 WorldStateManager="*res://WorldStateManager.gd"
 SceneTransition="*res://SceneTransition.gd"
-MusicManager="*uid://ca5i0irmb7rax"
+MusicManager="*res://MusicManager.gd"
 
 [display]
 

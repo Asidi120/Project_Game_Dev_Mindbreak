@@ -1,5 +1,6 @@
 extends Node2D
 
+@export var dungeon_id := 0
 @onready var click_to_open_label: Label = $ClickToOpenLabel
 
 var player_in_door_area = false
@@ -19,18 +20,20 @@ var dungeon_paths = {
 func _process(delta):
 	if player_in_door_area:
 		if Input.is_action_just_pressed("action (open door, sleep etc.)"):
-			var door_name = name
-			print("DOOR NAME =", name)
+			var door_name = dungeon_id
+			print("DOOR NAME =", dungeon_id)
 			if door_to_dungeon.has(door_name):
 				var dungeon_key = door_to_dungeon[door_name]
+				print("sfijk")
 				SceneTransition.change_scene_with_save(dungeon_paths[dungeon_key])
+				print("lollllllllllllll")
 			
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Players"):
+	if body.is_in_group("Players") or body.is_in_group("player"):
 		player_in_door_area = true
 		click_to_open_label.visible = true
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
-	if body.is_in_group("Players"):
+	if body.is_in_group("Players") or body.is_in_group("player"):
 		player_in_door_area = false
 		click_to_open_label.visible = false

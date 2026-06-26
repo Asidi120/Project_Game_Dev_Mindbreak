@@ -36,6 +36,9 @@ const SCENE_COPPER       := preload("res://Scenes/StaticStructures/copper_node.t
 const SCENE_IRON         := preload("res://Scenes/StaticStructures/iron_node.tscn")
 const SCENE_GOLD         := preload("res://Scenes/StaticStructures/gold_node.tscn")
 const SCENE_DIAMOND      := preload("res://Scenes/StaticStructures/diamond_node.tscn")
+const SCENE_DUNGEON1     := preload("res://Dungeons/DungeonFirst/Dungeon1Entrance.tscn")
+const SCENE_DUNGEON2     := preload("res://Dungeons/DungeonSecond/Dungeon2Entrance.tscn")
+const SCENE_DUNGEON3     := preload("res://Dungeons/DungeonThird/Dungeon3Entrance.tscn")
 
 @export var cave_scene_path:  String = "res://cave.tscn"
 @export var house_scene_path: String = "res://house.tscn"
@@ -61,12 +64,16 @@ var terrain_cells := {}
 
 var mountain_tiles: Array[Vector2i] = []
 var cave_world_pos: Vector2 = Vector2.ZERO
+var dungeon_positions: Array[Vector2] = []
+
+var house_pos: Vector2 = Vector2.ZERO
+var cave_pos:  Vector2 = Vector2.ZERO
 
 
 func _ready() -> void:
 	_load_save()
 	_setup_noise()
-	#loading_label.text = "Generowanie świata \"%s\"…" % world_name
+	loading_label.text = "Generowanie świata \"%s\"…" % world_name
 	call_deferred("_generate")
 
 
@@ -101,18 +108,15 @@ func _setup_noise() -> void:
 	noise_temp.frequency       = 0.004
 	noise_temp.fractal_octaves = 3
 
-	# Szum klastrów — tworzy naturalne skupiska obiektów
 	noise_cluster.noise_type      = FastNoiseLite.TYPE_SIMPLEX_SMOOTH
 	noise_cluster.seed            = world_seed + 777
 	noise_cluster.frequency       = 0.15
 	noise_cluster.fractal_octaves = 2
 
-	# Szum rozproszenia — małe lokalne różnice (zapobiega rzędom)
 	noise_scatter.noise_type = FastNoiseLite.TYPE_VALUE
 	noise_scatter.seed       = world_seed + 1337
 	noise_scatter.frequency  = 0.35
 
-	# Szum rzadkich obiektów (rudy, diamenty)
 	noise_rare.noise_type = FastNoiseLite.TYPE_SIMPLEX_SMOOTH
 	noise_rare.seed       = world_seed + 5555
 	noise_rare.frequency  = 0.25
@@ -214,8 +218,6 @@ func _generate() -> void:
 		terrain_cells[t] = []
 
 	mountain_tiles.clear()
-
-	# Oblicz pozycję domku przed generacją żeby wykluczyć obszar wokół niego
 	house_pos = _find_spawn_for_house()
 
 	for y in range(WORLD_HEIGHT):
@@ -229,6 +231,10 @@ func _generate() -> void:
 		if y % 20 == 0:
 			loading_label.text = ".... %d%%" % int(float(y) / WORLD_HEIGHT * 100)
 			await get_tree().process_frame
+
+	loading_label.text = "………………"
+	await get_tree().process_frame
+
 	for t in [TERRAIN_WATER, TERRAIN_BEACH, TERRAIN_GRASS, TERRAIN_FOREST, TERRAIN_MOUNTAIN]:
 		if terrain_cells[t].size() > 0:
 			tile_map.set_cells_terrain_connect(terrain_cells[t], 0, t, false)
@@ -236,6 +242,7 @@ func _generate() -> void:
 
 	_spawn_cave(rng)
 	_spawn_house()
+	_spawn_dungeons()
 
 	player.global_position = _find_spawn_for_house() + Vector2(0, 50)
 
@@ -246,7 +253,14 @@ func _generate() -> void:
 
 	if SceneTransition.saved_hp != 200 or SceneTransition.saved_inventory.size() > 0:
 		player.reinitialize()
-		
+
+	if SceneTransition.saved_game_time != 720.0:
+		var clock := get_tree().get_first_node_in_group("Clock")
+		if clock:
+			var dc = clock.get_node_or_null("day_counter")
+			if dc:
+				dc.time = SceneTransition.saved_game_time
+
 	player.spawn_point = player.global_position
 
 	loading_label.visible = false
@@ -308,11 +322,48 @@ func _spawn_house() -> void:
 	print("Domek: pozycja %s" % house.position)
 
 
-var house_pos: Vector2 = Vector2.ZERO
-var cave_pos:  Vector2 = Vector2.ZERO
+func _spawn_dungeons() -> void:
+	var dungeon_scenes := [SCENE_DUNGEON1, SCENE_DUNGEON2, SCENE_DUNGEON3]
+	var min_dist_between := 800.0
+	dungeon_positions.clear()
+
+	for i in range(dungeon_scenes.size()):
+		var pos := _find_dungeon_position(min_dist_between)
+		if pos == Vector2.ZERO:
+			continue
+		var dungeon: Node2D = dungeon_scenes[i].instantiate()
+		dungeon.position = pos
+		objects.add_child(dungeon)
+		dungeon_positions.append(pos)
+		print("Dungeon %d: pozycja %s" % [i, pos])
+
+
+func _find_dungeon_position(min_dist: float) -> Vector2:
+	var rng_d := RandomNumberGenerator.new()
+	rng_d.seed = world_seed + 77777 + dungeon_positions.size() * 1000
+	for _i in range(500):
+		var x := rng_d.randi_range(60, WORLD_WIDTH - 60)
+		var y := rng_d.randi_range(60, WORLD_HEIGHT - 60)
+		var t := _get_terrain(x, y)
+		if t == TERRAIN_WATER or t == TERRAIN_BEACH:
+			continue
+		var world_pos := Vector2(x * TILE_SIZE + TILE_SIZE / 2, y * TILE_SIZE + TILE_SIZE / 2)
+		if world_pos.distance_to(house_pos) < 300:
+			continue
+		if world_pos.distance_to(cave_world_pos) < 300:
+			continue
+		var too_close := false
+		for dp in dungeon_positions:
+			if world_pos.distance_to(dp) < min_dist:
+				too_close = true
+				break
+		if too_close:
+			continue
+		return world_pos
+	return Vector2.ZERO
+
 
 func _try_object(x: int, y: int, terrain: int, rng: RandomNumberGenerator) -> void:
-	# Nie stawiaj nic zbyt blisko domku lub jaskini
 	var world_pos := Vector2(x * TILE_SIZE + TILE_SIZE / 2, y * TILE_SIZE + TILE_SIZE / 2)
 	if house_pos != Vector2.ZERO and world_pos.distance_to(house_pos) < 80:
 		return
@@ -325,61 +376,46 @@ func _try_object(x: int, y: int, terrain: int, rng: RandomNumberGenerator) -> vo
 
 	match terrain:
 		TERRAIN_BEACH:
-			# Muszle — od czasu do czasu
 			if cluster > 0.45 and cluster < 0.48 and scatter > 0.45 and scatter < 0.55:
 				var scene = SCENE_SEASHELL1 if rng.randi() % 2 == 0 else SCENE_SEASHELL2
 				_spawn_scene(scene, x, y)
-			# Skały na plaży — rzadko
 			elif cluster > 0.80 and cluster < 0.82 and scatter > 0.80 and scatter < 0.82:
 				_spawn_scene(SCENE_BOULDER, x, y)
 
 		TERRAIN_GRASS:
-			# Kwiaty
 			if cluster > 0.55 and cluster < 0.58 and scatter > 0.60 and scatter < 0.75:
 				var flowers = [SCENE_FLOWER1, SCENE_FLOWER2, SCENE_FLOWER3, SCENE_FLOWER4, SCENE_FLOWER5]
 				_spawn_scene(flowers[rng.randi() % flowers.size()], x, y)
-			# Krzaki — trochę mniej
 			elif cluster > 0.64 and cluster < 0.67 and scatter > 0.60 and scatter < 0.68:
 				var bush = SCENE_BUSH if rng.randi() % 2 == 0 else SCENE_BUSH2
 				_spawn_scene(bush, x, y)
-			# Drzewa — trochę częściej
 			elif cluster > 0.70 and cluster < 0.75 and scatter > 0.70 and scatter < 0.75:
 				_spawn_scene(SCENE_TREE, x, y)
-			# Skały — trochę częściej
 			elif cluster > 0.82 and cluster < 0.86 and scatter > 0.82 and scatter < 0.86:
 				_spawn_scene(SCENE_BOULDER, x, y)
 
 		TERRAIN_FOREST:
-			# Drzewa — więcej, szerszy zakres
 			if cluster > 0.40 and cluster < 0.48 and scatter > 0.40 and scatter < 0.48:
 				var tree = SCENE_TREE if rng.randi() % 2 == 0 else SCENE_TREE_SPRUCE
 				_spawn_scene(tree, x, y)
-			# Kwiaty
 			elif cluster > 0.60 and cluster < 0.63 and scatter > 0.68 and scatter < 0.72:
 				var flowers = [SCENE_FLOWER1, SCENE_FLOWER2, SCENE_FLOWER3, SCENE_FLOWER4, SCENE_FLOWER5]
 				_spawn_scene(flowers[rng.randi() % flowers.size()], x, y)
-			# Krzaki
 			elif cluster > 0.72 and cluster < 0.74 and scatter > 0.55 and scatter < 0.58:
 				var bush = SCENE_BUSH if rng.randi() % 2 == 0 else SCENE_BUSH2
 				_spawn_scene(bush, x, y)
 
 		TERRAIN_MOUNTAIN:
-			# Skały — odrobinę mniej
 			if cluster > 0.52 and cluster < 0.57 and scatter > 0.52 and scatter < 0.57:
 				_spawn_scene(SCENE_BOULDER, x, y)
-			# Jodły
 			elif cluster > 0.62 and cluster < 0.66 and scatter > 0.62 and scatter < 0.66:
 				_spawn_scene(SCENE_TREE_SPRUCE, x, y)
-			# Copper — najczęstszy
 			elif rare > 0.72 and rare < 0.724:
 				_spawn_scene(SCENE_IRON, x, y)
-			# Iron — rzadszy
 			elif rare > 0.80 and rare < 0.803:
 				_spawn_scene(SCENE_COPPER, x, y)
-			# Gold — rzadki
 			elif rare > 0.87 and rare < 0.872:
 				_spawn_scene(SCENE_GOLD, x, y)
-			# Diamond — bardzo rzadki
 			elif rare > 0.93 and rare < 0.932:
 				_spawn_scene(SCENE_DIAMOND, x, y)
 
@@ -390,14 +426,13 @@ func _spawn_scene(scene: PackedScene, tx: int, ty: int) -> void:
 		tx * TILE_SIZE + TILE_SIZE / 2,
 		ty * TILE_SIZE + TILE_SIZE / 2
 	)
-	#obj.z_index = ty
 	objects.add_child(obj)
 
 
-func _find_spawn(rng: RandomNumberGenerator) -> Vector2:
+func _find_spawn(_rng: RandomNumberGenerator) -> Vector2:
 	for _i in range(1000):
-		var x := rng.randi_range(60, WORLD_WIDTH - 60)
-		var y := rng.randi_range(60, WORLD_HEIGHT - 60)
+		var x := _rng.randi_range(60, WORLD_WIDTH - 60)
+		var y := _rng.randi_range(60, WORLD_HEIGHT - 60)
 		var t := _get_terrain(x, y)
 		if t == TERRAIN_GRASS:
 			return Vector2(x * TILE_SIZE + TILE_SIZE / 2,

@@ -164,6 +164,7 @@ texture = ExtResource("5_lup3b")
 
 [node name="BonfireSound" type="AudioStreamPlayer2D" parent="." unique_id=1424436523 groups=["Sounds"]]
 stream = ExtResource("6_lkxcx")
+volume_db = -21.471
 autoplay = true
 max_distance = 220.0
 attenuation = 1.6817932

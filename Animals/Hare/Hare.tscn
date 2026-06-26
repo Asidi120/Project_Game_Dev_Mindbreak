@@ -649,6 +649,8 @@ collision_layer = 2
 collision_mask = 16
 script = ExtResource("1_qts2b")
 max_hp = 30
+speed = 40.0
+flee_speed = 70.0
 scene = ExtResource("2_f6xl2")
 
 [node name="Hp_bar" type="TextureProgressBar" parent="CharacterBody2D" unique_id=1730628956]

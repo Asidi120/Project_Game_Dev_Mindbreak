@@ -383,10 +383,6 @@ animations = [{
 
 [node name="IceGolem" type="CharacterBody2D" parent="." unique_id=560651506]
 script = ExtResource("1_oib8w")
-max_hp = null
-speed = null
-attack_range = null
-attack_cooldown = null
 scene = ExtResource("2_lctqp")
 
 [node name="Hp_bar" type="TextureProgressBar" parent="IceGolem" unique_id=2009711514]

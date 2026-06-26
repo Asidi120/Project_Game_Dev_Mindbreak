@@ -17,7 +17,7 @@ var recipes := [
 	{
 		"result_scene": "res://Scenes/Items/stick.tscn",
 		"result_id": "stick",
-		"result_amount": 1,
+		"result_amount": 2,
 		"requirements": [
 			{
 				"item_id": "wood",

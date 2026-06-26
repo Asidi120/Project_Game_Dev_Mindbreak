@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b7lbh1xjq0hxw"]
 
 [ext_resource type="Texture2D" uid="uid://ccrm716d5356o" path="res://house/6B4QtvF_16x.png" id="1_metfq"]
-[ext_resource type="Script" path="res://houseinterior.gd" id="2_metfq"]
+[ext_resource type="Script" uid="uid://ce272btfm6y7c" path="res://houseinterior.gd" id="2_metfq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_metfq"]
 size = Vector2(100.000046, 94.35487)

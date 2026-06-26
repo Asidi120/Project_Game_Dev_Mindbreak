@@ -283,7 +283,6 @@ hframes = 8
 vframes = 8
 
 [node name="LayerClothes" type="Sprite2D" parent="Layers" unique_id=645934433]
-visible = false
 texture = ExtResource("5_od3ui")
 centered = false
 offset = Vector2(-32, -40)

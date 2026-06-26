@@ -42,6 +42,8 @@ var patrol_origin: Vector2
 @onready var follow_area: Area2D = $Follow_Area
 @export var spell_scene: PackedScene = preload("uid://cc6mqodld7i5h")
 
+var damage := 60
+
 func _ready():
 	current_hp = max_hp
 	patrol_origin = global_position
@@ -117,7 +119,7 @@ func start_attack():
 	sprite.play("attack")
 	await get_tree().create_timer(1).timeout
 	if target and player_in_attack_range and target.has_method("take_damage"):
-		target.take_damage(10)
+		target.take_damage(damage)
 	await sprite.animation_finished
 	state = State.CHASE
 	can_attack = true

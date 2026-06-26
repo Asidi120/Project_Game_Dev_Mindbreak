@@ -1,5 +1,6 @@
 extends Button
 
+const LOADING_SCREEN = preload("uid://ba3c0jg2tqp2f")
 
 func _ready() -> void:
 	disabled = not SaveManager.save_exists()
@@ -79,5 +80,7 @@ func _on_pressed() -> void:
 	if data.has("pos_x"):
 		SceneTransition.return_position = Vector2(float(data["pos_x"]), float(data["pos_y"]))
 		SceneTransition.return_scene = "res://Player/word.tscn"
-
+	var loading = LOADING_SCREEN.instantiate()
+	get_tree().root.add_child(loading)
+	await get_tree().process_frame
 	get_tree().change_scene_to_file("res://Player/word.tscn")

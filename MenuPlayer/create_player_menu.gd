@@ -112,32 +112,39 @@ func _refresh_preview() -> void:
 		preview_clothes.texture = load(clothes_path)
 	clothes_label.text = "Outfit %d / %d" % [player_data.clothes_index + 1, CLOTHES_TEXTURES.size()]
 
+const LOADING_SCREEN = preload("uid://ba3c0jg2tqp2f")
+
 func _on_create_button_pressed() -> void:
 	error_label.text = ""
 
-	var world_name:  String = world_name_edit.text.strip_edges()
+	var world_name: String = world_name_edit.text.strip_edges()
 	var player_name: String = player_name_edit.text.strip_edges()
 
 	if world_name.is_empty():
-		error_label.text = "⚠ Podaj nazwę świata!"
+		error_label.text = "⚠ Name your world!"
 		return
 	if player_name.is_empty():
-		error_label.text = "⚠ Podaj nazwę gracza!"
+		error_label.text = "⚠ Nickname is empty!"
 		return
 	if world_name.length() > 24:
-		error_label.text = "⚠ Nazwa świata max 24 znaki."
+		error_label.text = "⚠ World name has limit of 24 characters."
 		return
 	if player_name.length() > 20:
-		error_label.text = "⚠ Nazwa gracza max 20 znaków."
+		error_label.text = "⚠ Nickname has limit of 20 characters."
 		return
 
-	player_data.world_name  = world_name
+	player_data.world_name = world_name
 	player_data.player_name = player_name
-	player_data.world_seed  = randi()
-	
-	SaveManager.delete_save() 
+	player_data.world_seed = randi()
 
+	SaveManager.delete_save()
 	_save_player_data()
+
+	var loading = LOADING_SCREEN.instantiate()
+	get_tree().root.add_child(loading)
+
+	await get_tree().process_frame
+
 	get_tree().change_scene_to_file("res://Player/word.tscn")
 
 func _save_player_data() -> void:
@@ -146,7 +153,7 @@ func _save_player_data() -> void:
 		save_file.store_string(JSON.stringify(player_data))
 		save_file.close()
 	else:
-		error_label.text = "⚠ Nie udało się zapisać danych!"
+		error_label.text = "⚠ Error in saving data!"
 
 func _on_back_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://Menu/control.tscn")

@@ -5,6 +5,7 @@ var return_position: Vector2 = Vector2.ZERO
 var spawn_name:      String  = "SpawnPoint"
 var player_node:     Node    = null
 var force_return_position: Vector2 = Vector2.ZERO
+const LOADING_SCREEN = preload("uid://ba3c0jg2tqp2f")
 
 var saved_hp:        int   = 200
 var saved_hunger:    int   = 150
@@ -104,7 +105,10 @@ func travel_back(player: Node) -> void:
 	player.visible = false
 	player.set_physics_process(false)
 	player.set_process(false)
+	var loading = LOADING_SCREEN.instantiate()
+	get_tree().root.add_child(loading)
 
+	await get_tree().process_frame
 	get_tree().change_scene_to_file(return_scene)
 
 
@@ -120,7 +124,10 @@ func change_scene_with_save(target_scene: String):
 
 	if player.inventory_system:
 		saved_inventory = player.inventory_system.current_inventory.duplicate(true)
-
+	
 	WorldStateManager.save_scene(get_tree().current_scene.scene_file_path)
-
+	if(target_scene=="res://Player/word.tscn"):
+		var loading = LOADING_SCREEN.instantiate()
+		get_tree().root.add_child(loading)
+		await get_tree().process_frame
 	get_tree().change_scene_to_file(target_scene)

@@ -10,7 +10,7 @@ func _ready() -> void:
 	player.process_mode = Node.PROCESS_MODE_ALWAYS
 	add_child(player)
 	_load_settings()
-	player.stream = load("res://Music/music.mp3")
+	player.stream = load("res://Music/music2.mp3")
 	player.volume_db = linear_to_db(music_volume)
 	if music_enabled:
 		player.play()

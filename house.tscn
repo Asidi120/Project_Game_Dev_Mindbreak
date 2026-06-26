@@ -20,7 +20,8 @@ texture = ExtResource("1_metfq")
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1830448251]
 visibility_layer = 33
 z_index = 10
-collision_mask = 17
+collision_layer = 16
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1141203769]
 position = Vector2(0.806452, -39.516148)

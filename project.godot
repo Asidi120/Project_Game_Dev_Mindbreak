@@ -23,8 +23,7 @@ SaveManager="*res://SaveManager.gd"
 CaveItemManager="*res://CaveItemManager.gd"
 WorldStateManager="*res://WorldStateManager.gd"
 SceneTransition="*res://SceneTransition.gd"
-SaveManager="*res://SaveManager.gd"
-MusicManager="*uid://eick6ocolrpl"
+MusicManager="*uid://ca5i0irmb7rax"
 
 [display]
 
@@ -52,6 +51,7 @@ House=""
 Cave=""
 DayNight=""
 Sounds=""
+LoadingScreen=""
 
 [input]
 

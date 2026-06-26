@@ -70,8 +70,7 @@
 [ext_resource type="PackedScene" uid="uid://siqgssdbabnj" path="res://Scenes/Food/fried_egg.tscn" id="68_tbk65"]
 [ext_resource type="PackedScene" uid="uid://cdla8w7bau77o" path="res://Scenes/StaticStructures/boulder_cave.tscn" id="69_tbk65"]
 [ext_resource type="PackedScene" uid="uid://usiojwysxo2i" path="res://Scenes/StaticStructures/bush_2.tscn" id="70_g3ii7"]
-[ext_resource type="PackedScene" uid="uid://oqqk8s0uvmvp" path="res://Enemies/Spirit_Wolf/EvilWolfDungeon.tscn" id="71_0kwmd"]
-[ext_resource type="PackedScene" uid="uid://6ndp4jx8anie" path="res://Scenes/Items/torch.tscn" id="72_jlj5e"]
+[ext_resource type="PackedScene" uid="uid://5j2s4nwj42lu" path="res://Scenes/Items/torch.tscn" id="72_jlj5e"]
 
 [node name="Playground" type="Node2D" unique_id=571104678]
 scale = Vector2(1.9740651, 1.9740651)
@@ -411,17 +410,5 @@ position = Vector2(-330.7895, 116.51085)
 [node name="EvilWolfWithPoints" parent="." unique_id=1120942002 instance=ExtResource("8_l7aru")]
 position = Vector2(62.814545, 106.37947)
 
-[node name="EvilWolfDungeon" parent="." unique_id=2115354962 instance=ExtResource("71_0kwmd")]
-position = Vector2(65.34739, 52.176598)
-
-[node name="EvilWolfWithPoints2" parent="." unique_id=962760952 instance=ExtResource("8_l7aru")]
-position = Vector2(7.5985336, 149.9444)
-
-[node name="EvilWolfWithPoints3" parent="." unique_id=1258337449 instance=ExtResource("8_l7aru")]
-position = Vector2(16.716774, 107.39261)
-
 [node name="Torch" parent="." unique_id=1113152459 instance=ExtResource("72_jlj5e")]
 position = Vector2(-57.74887, -40.018944)
-
-[node name="Torch2" parent="." unique_id=1418841258 instance=ExtResource("72_jlj5e")]
-position = Vector2(-233.0217, -65.34739)

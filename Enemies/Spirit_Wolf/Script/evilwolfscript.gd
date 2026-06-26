@@ -36,6 +36,8 @@ var patrol_origin: Vector2
 @onready var attack_area: Area2D = $Attack_Area
 @onready var visual: Node2D = $Visual
 
+var damage := 30
+
 
 func _ready():
 	current_hp = max_hp
@@ -118,7 +120,7 @@ func start_attack():
 	sprite.play("attack")
 
 	if target and target.has_method("take_damage"):
-		target.take_damage(10)
+		target.take_damage(damage)
 
 	await sprite.animation_finished
 

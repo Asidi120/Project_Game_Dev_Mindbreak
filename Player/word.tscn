@@ -1518,7 +1518,7 @@ sources/13 = SubResource("TileSetAtlasSource_sx7xa")
 script = ExtResource("1_61npg")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1097302440]
-z_index = -1
+z_index = -2
 tile_set = SubResource("TileSet_mpty1")
 use_kinematic_bodies = true
 

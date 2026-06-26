@@ -39,6 +39,8 @@ var patrol_points: Array = []
 var patrol_index: int = 0
 var patrol_origin: Vector2
 
+var damage := 50
+
 @onready var nav_agent: NavigationAgent2D = $NavigationAgent2D
 @onready var sprite: AnimatedSprite2D = $Visual/AnimatedSprite2D
 @onready var hp_bar = $Hp_bar
@@ -151,7 +153,7 @@ func start_attack():
 	
 	print('faza 3 dmg')
 	if target and not attack_interrupted and player_in_attack_range and target.has_method("take_damage"):
-		target.take_damage(10)
+		target.take_damage(damage)
 		if target.has_method("apply_stun"):
 			target.apply_stun(2.0)
 		print("obrazenia")

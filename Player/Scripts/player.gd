@@ -24,8 +24,8 @@ var in_stamina_recovery=true
 var current_hunger=150
 var max_hunger=150
 var hunger_timer:float= 0.0
-var hunger_interval_normal:float= 2.0
-var hunger_interval_sprint:float= 0.5
+var hunger_interval_normal:float= 10.0
+var hunger_interval_sprint:float= 5.0
 var spawn_point=Vector2.ZERO
 var already_hit = []
 var is_idle := true
@@ -67,6 +67,31 @@ var stamina_bar = null
 
 @onready var torch_light: PointLight2D = $Hand/TorchLight
 
+var health_regen_timer: float = 0.0
+var health_regen_interval: float = 3.0
+var health_regen_amount: int = 2
+var health_regen_hunger_needed: int = 100
+
+func update_health_regen(delta):
+	if state == State.DEAD:
+		return
+
+	if current_hunger <= health_regen_hunger_needed:
+		health_regen_timer = 0.0
+		return
+
+	if current_hp >= max_hp:
+		health_regen_timer = 0.0
+		return
+
+	health_regen_timer += delta
+
+	if health_regen_timer >= health_regen_interval:
+		health_regen_timer = 0.0
+		current_hp += health_regen_amount
+		current_hp = clamp(current_hp, 0, max_hp)
+		emit_signal("hp_changed", current_hp, max_hp)
+		
 func _ready() -> void:
 	await get_tree().process_frame
 	add_to_group("player")
@@ -146,6 +171,7 @@ func reinitialize() -> void:
 
 func _physics_process(delta):
 	update_hunger(delta)
+	update_health_regen(delta)
 
 	match state:
 		State.IDLE:

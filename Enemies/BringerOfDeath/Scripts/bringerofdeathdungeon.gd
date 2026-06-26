@@ -36,6 +36,8 @@ var patrol_points: Array = []
 var patrol_index: int = 0
 var patrol_origin: Vector2
 
+var damage := 60
+
 @onready var nav_agent: NavigationAgent2D = $NavigationAgent2D # Dodane dla optymalizacji ruchu
 @onready var sprite: AnimatedSprite2D = $Visual/AnimatedSprite2D
 @onready var hp_bar = $Hp_bar
@@ -135,7 +137,7 @@ func start_attack():
 	if state != State.ATTACK: return # Zabezpieczenie hita/śmierci podczas timera
 	
 	if target and player_in_attack_range and target.has_method("take_damage"):
-		target.take_damage(10)
+		target.take_damage(damage)
 		
 	await sprite.animation_finished
 	

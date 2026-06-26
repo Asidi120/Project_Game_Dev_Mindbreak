@@ -63,10 +63,10 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="TotemBank" parent="." unique_id=277440264 instance=ExtResource("6_fimwm")]
-offset_left = 1261.0
-offset_top = 249.0
-offset_right = 1301.0
-offset_bottom = 289.0
+offset_left = 1301.0001
+offset_top = 255.0
+offset_right = 1341.0001
+offset_bottom = 295.0
 
 [node name="DeathPanel" parent="." unique_id=67905963 instance=ExtResource("3_xxqia")]
 visible = false

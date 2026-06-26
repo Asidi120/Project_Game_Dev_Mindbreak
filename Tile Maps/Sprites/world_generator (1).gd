@@ -66,7 +66,7 @@ var cave_world_pos: Vector2 = Vector2.ZERO
 func _ready() -> void:
 	_load_save()
 	_setup_noise()
-	loading_label.text = "Generowanie świata \"%s\"…" % world_name
+	#loading_label.text = "Generowanie świata \"%s\"…" % world_name
 	call_deferred("_generate")
 
 
@@ -229,10 +229,6 @@ func _generate() -> void:
 		if y % 20 == 0:
 			loading_label.text = ".... %d%%" % int(float(y) / WORLD_HEIGHT * 100)
 			await get_tree().process_frame
-
-	loading_label.text = "………………"
-	await get_tree().process_frame
-
 	for t in [TERRAIN_WATER, TERRAIN_BEACH, TERRAIN_GRASS, TERRAIN_FOREST, TERRAIN_MOUNTAIN]:
 		if terrain_cells[t].size() > 0:
 			tile_map.set_cells_terrain_connect(terrain_cells[t], 0, t, false)
@@ -259,6 +255,9 @@ func _generate() -> void:
 	if saver and saver.has_method("save_game"):
 		saver.save_game()
 	print("Świat \"%s\" gotowy! Seed: %d" % [world_name, world_seed])
+	for child in get_parent().get_children():
+		if child.name.contains("Loading"):
+			child.queue_free()
 
 
 func _spawn_cave(rng: RandomNumberGenerator) -> void:

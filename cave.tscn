@@ -1,13 +1,12 @@
 [gd_scene format=3 uid="uid://d2rimyyc5milm"]
 
 [ext_resource type="Texture2D" uid="uid://jln4m7eoniw7" path="res://Tile Maps/Sprites/pixil-frame-0.png" id="2_23xot"]
-[ext_resource type="Script" uid="uid://cx1ymh0ptu0sj" path="res://caveentry.gd" id="3_xtwoi"]
+[ext_resource type="Script" path="res://caveentry.gd" id="3_xtwoi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dnhvd"]
 size = Vector2(21.774225, 33.629044)
 
 [node name="cave" type="Area2D" unique_id=13035520]
-z_index = 10
 scale = Vector2(1.2399994, 1.2399994)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1622709971]

@@ -51,6 +51,7 @@ House=""
 Cave=""
 DayNight=""
 Sounds=""
+LoadingScreen=""
 
 [input]
 

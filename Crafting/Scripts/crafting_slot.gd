@@ -10,6 +10,7 @@ signal craft_pressed(recipe)
 @onready var ingredient_2_amount: Label = $Ingredient2/AmountLabel
 
 @onready var result_icon: TextureRect = $Result/Icon
+@onready var result_amount: Label = $Result/AmountLabel
 
 var recipe: Dictionary = {}
 var can_make := false
@@ -29,6 +30,7 @@ func _ready() -> void:
 
 	$Result.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	$Result/Icon.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	$Result/AmountLabel.mouse_filter = Control.MOUSE_FILTER_IGNORE
 
 
 func set_recipe(new_recipe: Dictionary, new_can_make: bool) -> void:
@@ -44,6 +46,8 @@ func set_recipe(new_recipe: Dictionary, new_can_make: bool) -> void:
 	ingredient_2_amount.text = "x" + str(requirements[1]["needed_amount"])
 
 	result_icon.texture = recipe["result_texture"]
+	var amount = recipe.get("result_amount", 1)
+	result_amount.text = "x" + str(amount)
 
 	if can_make:
 		modulate = Color(1, 1, 1)

@@ -31,6 +31,24 @@ var recipes := [
 			}
 		]
 	},
+	#Torch
+	{
+		"result_scene": "res://Scenes/Items/torch.tscn",
+		"result_id": "torch",
+		"result_amount": 1,
+		"requirements": [
+			{
+				"item_id": "stick",
+				"needed_amount": 2,
+				"scene_path": "res://Scenes/Items/stick.tscn"
+			},
+			{
+				"item_id": "stone",
+				"needed_amount": 1,
+				"scene_path": "res://Scenes/Items/stone.tscn"
+			}
+		]
+	},
 	#WOOD
 	{
 		"result_scene": "res://Scenes/Tools/axe_wood.tscn",

@@ -61,9 +61,6 @@ func _place_player() -> void:
 	player_node.set_physics_process(true)
 	player_node.set_process(true)
 
-	if player_node.has_method("reinitialize"):
-		player_node.reinitialize()
-
 	player_node = null
 
 

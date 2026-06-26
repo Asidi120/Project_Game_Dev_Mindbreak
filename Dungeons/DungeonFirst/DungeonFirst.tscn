@@ -8,6 +8,7 @@
 [ext_resource type="FontFile" uid="uid://b0nphpwk324ms" path="res://Fonts/PixelPurl.ttf" id="5_llydp"]
 [ext_resource type="PackedScene" uid="uid://b70fk741qrjt7" path="res://hud/HUD.tscn" id="6_nfn2q"]
 [ext_resource type="PackedScene" uid="uid://bu47s3h11vmi5" path="res://Scenes/StaticStructures/chest_dungeon.tscn" id="8_xpj7c"]
+[ext_resource type="PackedScene" uid="uid://dh6i6au7y31gq" path="res://Scenes/Tools/sword_copper.tscn" id="9_6m2x0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nfn2q"]
 texture = ExtResource("1_iaxc2")
@@ -281,7 +282,7 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(654.5, 367, 655.5, 228,
 radius = 34.59046
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nfn2q"]
-radius = 36.496574
+radius = 26.004807
 
 [node name="DungeonFirst" type="Node2D" unique_id=1063781243 groups=["Dungeon"]]
 scale = Vector2(2, 2)
@@ -561,6 +562,9 @@ scale = Vector2(0.8, 0.8)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=14420715]
 color = Color(0.23248088, 0.23248091, 0.23248091, 1)
+
+[node name="SwordCopper" parent="." unique_id=1592250268 instance=ExtResource("9_6m2x0")]
+position = Vector2(580, 344)
 
 [connection signal="body_entered" from="BossDoor" to="." method="_on_boss_door_body_entered"]
 [connection signal="body_exited" from="BossDoor" to="." method="_on_boss_door_body_exited"]

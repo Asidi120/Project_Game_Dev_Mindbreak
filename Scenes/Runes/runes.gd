@@ -17,7 +17,7 @@ func _process(delta: float) -> void:
 		if Input.is_action_just_pressed("action (open door, sleep etc.)"):
 			queue_free()
 			unlock_rune()
-			SceneTransition.change_scene_with_save("res://word.gd")
+			SceneTransition.change_scene_with_save("res://Player/word.tscn")
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Players"):

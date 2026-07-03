@@ -1,0 +1,149 @@
+[gd_scene format=3 uid="uid://c3vtb742b7c5c"]
+
+[ext_resource type="AudioStream" uid="uid://c18sq72v5mhgy" path="res://Sounds/dragon-studio-typing-keyboard-asmr-356116.mp3" id="1_6lqxf"]
+[ext_resource type="FontFile" uid="uid://b0nphpwk324ms" path="res://Fonts/PixelPurl.ttf" id="2_5hu5a"]
+[ext_resource type="Script" uid="uid://2x8i27dxwn4i" path="res://Instruction/startgamelabels.gd" id="3_5hu5a"]
+[ext_resource type="Script" uid="uid://4gi1awggt65n" path="res://Instruction/instructions.gd" id="4_its11"]
+
+[node name="Instruction" type="Control" unique_id=1142128240 groups=["Instructions"]]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=274227190]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="click" type="AudioStreamPlayer" parent="." unique_id=470563227]
+stream = ExtResource("1_6lqxf")
+autoplay = true
+
+[node name="History" type="ScrollContainer" parent="." unique_id=897406627]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -265.0
+offset_bottom = 223.0
+grow_horizontal = 2
+grow_vertical = 2
+follow_focus = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="History" unique_id=728959827]
+layout_mode = 2
+size_flags_horizontal = 6
+alignment = 1
+
+[node name="Label" type="Label" parent="History/VBoxContainer" unique_id=947698669]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_5hu5a")
+theme_override_font_sizes/font_size = 32
+text = "Something feels… off.
+
+The world is quiet.
+Too quiet.
+
+Grass under my feet. Wind in the air.
+Everything looks normal.
+
+But I don’t remember waking up here."
+script = ExtResource("3_5hu5a")
+full_text = "Something feels… off.
+
+The world is quiet.
+Too quiet.
+
+Grass under my feet. Wind in the air.
+Everything looks normal.
+
+But I don’t remember waking up here.
+
+Click 'T to show instructions..."
+
+[node name="Instructions" type="ScrollContainer" parent="." unique_id=1665895547]
+visible = false
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -352.0
+offset_bottom = 353.0
+grow_horizontal = 2
+grow_vertical = 2
+follow_focus = true
+draw_focus_border = true
+vertical_scroll_mode = 2
+script = ExtResource("4_its11")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Instructions" unique_id=2032356927]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+alignment = 1
+
+[node name="Label" type="Label" parent="Instructions/VBoxContainer" unique_id=1049948312]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_5hu5a")
+theme_override_font_sizes/font_size = 32
+text = "MindBreak 
+
+Main Goal
+
+Complete all 3 dungeons and defeat the 3 bosses hidden within them. After defeating each boss, you'll obtain a Rune. Collect all 3 Runes to escape the world of your own imagination and complete the game.
+
+Controls
+WASD — movement
+Shift — sprint (uses stamina)
+E — interact (enter house, cave, dungeon)
+
+Combat
+LMB / attack key — attack
+Swords deal more damage than fists
+Watch your HP and hunger — when hunger hits zero, you lose HP
+
+Gathering Resources
+Chop trees with an axe → wood
+Mine rocks and ores with a pickaxe → stone, copper, iron, gold, diamonds
+Pick up flowers, shells, bushes by hand
+Ores are found in mountains, wood in forests
+
+Crafting
+Open inventory → crafting tab
+Use wood and stone to craft your first tools
+Better tools = faster mining and more damage
+
+Totems
+Scattered across the world in different biomes
+Collect the required totems to unlock the boss fight
+
+Boss
+Once you have the required totems — find the boss entrance
+The boss is the hardest enemy in the game
+Defeat it to complete the game
+
+Dungeons
+3 dungeons scattered across the map
+Each dungeon is a challenge with rewards
+Warning — monsters spawn at night!
+
+Tips
+Return home to stay safe at night
+Save the game via ESC → Save
+The game autosaves every minute
+You respawn near your house after death"
+horizontal_alignment = 1
+autowrap_mode = 3

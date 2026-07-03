@@ -39,6 +39,8 @@ const SCENE_DIAMOND      := preload("res://Scenes/StaticStructures/diamond_node.
 const SCENE_DUNGEON1     := preload("res://Dungeons/DungeonFirst/Dungeon1Entrance.tscn")
 const SCENE_DUNGEON2     := preload("res://Dungeons/DungeonSecond/Dungeon2Entrance.tscn")
 const SCENE_DUNGEON3     := preload("res://Dungeons/DungeonThird/Dungeon3Entrance.tscn")
+const INSTRUCTION = preload("uid://c3vtb742b7c5c")
+
 
 @export var cave_scene_path:  String = "res://cave.tscn"
 @export var house_scene_path: String = "res://house.tscn"
@@ -272,6 +274,7 @@ func _generate() -> void:
 	for child in get_parent().get_children():
 		if child.name.contains("Loading"):
 			child.queue_free()
+	$HUD.add_child(INSTRUCTION.instantiate())
 
 
 func _spawn_cave(rng: RandomNumberGenerator) -> void:

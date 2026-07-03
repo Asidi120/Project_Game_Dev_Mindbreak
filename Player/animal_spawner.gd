@@ -111,6 +111,7 @@ func _find_valid_position() -> Vector2:
 			var terrain: int = world_ref._get_terrain(tx, ty)
 			if terrain in VALID_TERRAINS:
 				var player := get_tree().get_first_node_in_group("player")
+				
 				var world_pos := Vector2(tx * TILE_SIZE + TILE_SIZE / 2,
 										ty * TILE_SIZE + TILE_SIZE / 2)
 				if player and player.global_position.distance_to(world_pos) < 200:

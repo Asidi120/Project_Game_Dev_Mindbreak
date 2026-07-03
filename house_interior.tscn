@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b84akgdj152yj" path="res://house/walls_floor.png" id="2_we6po"]
 [ext_resource type="Texture2D" uid="uid://dukcxec5bpyr1" path="res://house/Interior.png" id="3_lrqm8"]
 [ext_resource type="Texture2D" uid="uid://cg8yh3couc3ae" path="res://Dungeons/Tiles/Dungeon tileset.png" id="4_e2u7s"]
-[ext_resource type="Script" path="res://exithouse.gd" id="4_lrqm8"]
+[ext_resource type="Script" uid="uid://d4jh3v5v5ahrd" path="res://exithouse.gd" id="4_lrqm8"]
 [ext_resource type="PackedScene" uid="uid://b70fk741qrjt7" path="res://hud/HUD.tscn" id="5_d36us"]
 [ext_resource type="PackedScene" uid="uid://pqbtd01vkvyo" path="res://Scenes/StaticStructures/chest.tscn" id="5_lrqm8"]
 [ext_resource type="PackedScene" uid="uid://dwr75oy600gxk" path="res://Scenes/StaticStructures/bed.tscn" id="6_s0jn8"]
@@ -1187,7 +1187,6 @@ position = Vector2(379, 168)
 position = Vector2(349, 269)
 
 [node name="HUD" parent="." unique_id=1148326026 instance=ExtResource("5_d36us")]
-visible = false
 
 [node name="DayNightOverlay" type="CanvasModulate" parent="." unique_id=644578345 groups=["DayNight"]]
 position = Vector2(819, 160)

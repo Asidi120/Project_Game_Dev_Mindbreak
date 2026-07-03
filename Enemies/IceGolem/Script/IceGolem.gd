@@ -44,6 +44,7 @@ var patrol_origin: Vector2
 @onready var follow_area: Area2D = $Follow_Area
 
 @export var scene: PackedScene #instancja sceny struktury
+var damage := 50
 
 func _ready():
 	current_hp = max_hp
@@ -125,7 +126,7 @@ func start_attack():
 	await get_tree().create_timer(0.5).timeout
 	print('faza 3 dmg')
 	if target and not attack_interrupted and player_in_attack_range and target.has_method("take_damage"):
-		target.take_damage(10)
+		target.take_damage(damage)
 		target.apply_stun(2.0)
 		print("obrazenia")
 	await sprite.animation_finished

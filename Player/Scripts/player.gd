@@ -97,7 +97,8 @@ func _ready() -> void:
 	add_to_group("player")
 	add_to_group("Players")
 	inventory_system = get_tree().get_first_node_in_group("inventory_ui")
-
+	if !get_tree().current_scene.is_in_group("Cave") and !get_tree().current_scene.is_in_group("House"):
+		reinitialize()
 	var hud = get_tree().get_first_node_in_group("hud")
 	if hud:
 		death_panel = hud.get_node_or_null("DeathPanel")
@@ -129,15 +130,12 @@ func save_state() -> void:
 	SceneTransition.saved_stamina  = current_stamina
 	if inventory_system:
 		SceneTransition.saved_inventory = inventory_system.current_inventory.duplicate(true)
-	if !get_tree().current_scene.is_in_group("Cave") and !get_tree().current_scene.is_in_group("House"):
-		reinitialize()
-
 
 func reinitialize() -> void:
 	if not is_inside_tree():
 		await ready
 	await get_tree().process_frame
-
+	
 	var hud = get_tree().get_first_node_in_group("hud")
 	if hud:
 		death_panel  = hud.get_node_or_null("DeathPanel")

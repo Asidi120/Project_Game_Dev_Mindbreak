@@ -10,6 +10,7 @@
 [ext_resource type="FontFile" uid="uid://b0nphpwk324ms" path="res://Fonts/PixelPurl.ttf" id="8_r0cji"]
 [ext_resource type="Texture2D" uid="uid://deu87legra8yk" path="res://MenuIcon/Blank_Not-Pressed.png" id="9_k8hvg"]
 [ext_resource type="Texture2D" uid="uid://h5kcaeuujfnv" path="res://MenuIcon/Blank_Pressed.png" id="10_yy42l"]
+[ext_resource type="Script" uid="uid://b50op3w4d64ow" path="res://hud/end_game_button.gd" id="11_k8hvg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2goff"]
 atlas = ExtResource("9_k8hvg")
@@ -96,3 +97,4 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_p38s1")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_yrmux")
 theme_override_styles/hover = SubResource("StyleBoxTexture_r0cji")
 text = "Combine Runes"
+script = ExtResource("11_k8hvg")

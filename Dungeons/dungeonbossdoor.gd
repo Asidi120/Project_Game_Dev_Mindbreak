@@ -17,7 +17,7 @@ func _ready():
 	for monster in get_tree().get_nodes_in_group("Enemies"):
 		monster.died.connect(monster_died)
 	open_door.visible=false
-	can_open=true
+	can_open=false
 
 func _process(delta):
 	var door_screen_pos = open_door.get_global_transform_with_canvas().origin

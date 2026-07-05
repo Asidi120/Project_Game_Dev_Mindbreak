@@ -12,7 +12,7 @@ func _ready():
 	for child in bar.get_children():
 		rune_map[child.name] = child
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if player_in_range:
 		if Input.is_action_just_pressed("action (open door, sleep etc.)"):
 			queue_free()

@@ -38,7 +38,7 @@ position = Vector2(-0.9999995, -20)
 scale = Vector2(1.9511187, 4.8321476)
 shape = SubResource("RectangleShape2D_l7sa7")
 
-[node name="TreeHit" type="AudioStreamPlayer2D" parent="." unique_id=258703401]
+[node name="TreeHit" type="AudioStreamPlayer2D" parent="." unique_id=258703401 groups=["Sounds"]]
 stream = ExtResource("5_u2ugf")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

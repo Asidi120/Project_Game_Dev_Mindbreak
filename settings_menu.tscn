@@ -52,7 +52,7 @@ layout_mode = 2
 layout_mode = 2
 text = "Sounds"
 
-[node name="MusicToggle" type="CheckButton" parent="VBox/SoundsRow" unique_id=481558184]
+[node name="SoundsToggle" type="CheckButton" parent="VBox/SoundsRow" unique_id=481558184]
 layout_mode = 2
 
 [node name="VolumeRow2" type="HBoxContainer" parent="VBox" unique_id=396195995]
@@ -62,7 +62,7 @@ layout_mode = 2
 layout_mode = 2
 text = "Volume"
 
-[node name="VolumeSlider" type="HSlider" parent="VBox/VolumeRow2" unique_id=395355880]
+[node name="SoundsVolumeSlider" type="HSlider" parent="VBox/VolumeRow2" unique_id=395355880]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 

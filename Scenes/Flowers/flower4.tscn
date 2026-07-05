@@ -1,10 +1,46 @@
 [gd_scene format=3 uid="uid://cx8c6x4vg4ifg"]
 
 [ext_resource type="Script" uid="uid://cvtmhh1hpljyx" path="res://Scripts/item.gd" id="1_12a0e"]
-[ext_resource type="Texture2D" uid="uid://1ekghggrhcb0" path="res://OtherSprites/Flowers/DaisyOUTLINED.png" id="2_12a0e"]
+[ext_resource type="Texture2D" uid="uid://bnjb3jcf1f82u" path="res://OtherSprites/Flowers/ChatGPT Image 6 lip 2026, 01_21_49.png" id="2_12a0e"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_785bg"]
+atlas = ExtResource("2_12a0e")
+region = Rect2(399, 675, 109, 146)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_crbhk"]
+atlas = ExtResource("2_12a0e")
+region = Rect2(608, 675, 115, 146)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ks7wx"]
+atlas = ExtResource("2_12a0e")
+region = Rect2(817, 675, 117, 146)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_megh3"]
+atlas = ExtResource("2_12a0e")
+region = Rect2(1041, 675, 117, 146)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_thq83"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_785bg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_crbhk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ks7wx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_megh3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d43ed"]
-size = Vector2(15.295227, 20)
+size = Vector2(11.270167, 23.650082)
 
 [node name="Flower4" type="Area2D" unique_id=13035520]
 z_index = -1
@@ -13,12 +49,15 @@ script = ExtResource("1_12a0e")
 item_id = "flower4"
 item_name = "Flower4"
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1622709971]
-scale = Vector2(0.51599216, 0.51599216)
-texture = ExtResource("2_12a0e")
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=200944661]
+position = Vector2(-0.3733248, 1.8734679)
+scale = Vector2(0.067136414, 0.08480893)
+sprite_frames = SubResource("SpriteFrames_thq83")
+autoplay = "default"
+frame_progress = 0.32029188
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1266554538]
-position = Vector2(0.0019769003, 0.40321648)
+position = Vector2(-0.5283057, 2.4219456)
 rotation = -1.5756979
-scale = Vector2(1.0017768, -0.2959776)
+scale = Vector2(1.0017768, -0.29597753)
 shape = SubResource("RectangleShape2D_d43ed")

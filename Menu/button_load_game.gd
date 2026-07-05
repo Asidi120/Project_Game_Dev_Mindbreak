@@ -76,7 +76,10 @@ func _on_pressed() -> void:
 	# Wczytaj stan świata
 	if data.has("world_state"):
 		WorldStateManager.scene_states = data["world_state"]
-
+	if data.has("history_played"):
+		SceneTransition.history_played = bool(data["history_played"])
+	else:
+		SceneTransition.history_played = false
 	if data.has("pos_x"):
 		SceneTransition.return_position = Vector2(float(data["pos_x"]), float(data["pos_y"]))
 		SceneTransition.return_scene = "res://Player/word.tscn"

@@ -6,10 +6,10 @@ var player_in_range := false
 @export var object_type := ""
 @export var position_of_power_needed := 0
 var hits := 0.0
-@onready var tree_hit: AudioStreamPlayer2D = $TreeHit
 @export var scene: PackedScene
 @export var scene2: PackedScene
-@onready var boulder_hit: AudioStreamPlayer2D = $BoulderHit
+@onready var tree_hit: AudioStreamPlayer2D = get_node_or_null("TreeHit")
+@onready var boulder_hit: AudioStreamPlayer2D = get_node_or_null("BoulderHit")
 
 var inventory_system = null
 
@@ -49,8 +49,13 @@ func update_hits():
 	elif item["item_type"] == "pickaxe" and object_type == "boulder":
 		hits += item["tool_power"]
 		item["item_durability"] -= 1
+		if boulder_hit:
+			boulder_hit.play()
 	elif object_type == "tree" or object_type == "bush":
 		hits += 1
+		if object_type=="tree": 
+			if tree_hit:
+				tree_hit.play()
 
 		if boulder_hit:
 			boulder_hit.play()

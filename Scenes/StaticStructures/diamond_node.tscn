@@ -38,7 +38,7 @@ position = Vector2(1, 1)
 scale = Vector2(0.8108486, 1.1686891)
 shape = SubResource("RectangleShape2D_oedoi")
 
-[node name="BoulderHit" type="AudioStreamPlayer2D" parent="." unique_id=1876080241]
+[node name="BoulderHit" type="AudioStreamPlayer2D" parent="." unique_id=1876080241 groups=["Sounds"]]
 stream = ExtResource("4_t5lo1")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

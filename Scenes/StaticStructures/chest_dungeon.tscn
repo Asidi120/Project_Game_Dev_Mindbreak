@@ -108,7 +108,7 @@ sprite_frames = SubResource("SpriteFrames_o74ts")
 position = Vector2(0, -0.8333333)
 shape = SubResource("RectangleShape2D_rtce2")
 
-[node name="ChestOpen" type="AudioStreamPlayer2D" parent="." unique_id=1609149717]
+[node name="ChestOpen" type="AudioStreamPlayer2D" parent="." unique_id=1609149717 groups=["Sounds"]]
 stream = ExtResource("3_g2id3")
 volume_db = -14.09
 

@@ -99,6 +99,10 @@ func _ready() -> void:
 	inventory_system = get_tree().get_first_node_in_group("inventory_ui")
 	if !get_tree().current_scene.is_in_group("Cave") and !get_tree().current_scene.is_in_group("House"):
 		reinitialize()
+	if SceneTransition.skip_reinitialize:
+		SceneTransition.skip_reinitialize = false
+	else:
+		reinitialize()
 	var hud = get_tree().get_first_node_in_group("hud")
 	if hud:
 		death_panel = hud.get_node_or_null("DeathPanel")
@@ -134,8 +138,6 @@ func save_state() -> void:
 func reinitialize() -> void:
 	if not is_inside_tree():
 		await ready
-	await get_tree().process_frame
-	
 	var hud = get_tree().get_first_node_in_group("hud")
 	if hud:
 		death_panel  = hud.get_node_or_null("DeathPanel")

@@ -4,16 +4,31 @@ var player_in_range := false
 @export var item_id := ""
 @export var item_name := ""
 @export var item_type := ""
-@onready var sprite_2d: Sprite2D = $Sprite2D
+@onready var sprite_2d: Node = $Sprite2D
 
 func get_icon() -> Texture2D:
-	if sprite_2d.region_enabled:
-		var atlas_texture = AtlasTexture.new()
-		atlas_texture.atlas = sprite_2d.texture
-		atlas_texture.region = sprite_2d.region_rect
-		return atlas_texture
-	else:
-		return sprite_2d.texture
+	if sprite_2d is AnimatedSprite2D:
+		var anim_sprite := sprite_2d as AnimatedSprite2D
+		var frames := anim_sprite.sprite_frames
+		var anim := anim_sprite.animation
+
+		if frames and frames.has_animation(anim):
+			return frames.get_frame_texture(anim, anim_sprite.frame)
+
+		return null
+
+	elif sprite_2d is Sprite2D:
+		var s := sprite_2d as Sprite2D
+
+		if s.region_enabled:
+			var atlas_texture = AtlasTexture.new()
+			atlas_texture.atlas = s.texture
+			atlas_texture.region = s.region_rect
+			return atlas_texture
+		else:
+			return s.texture
+
+	return null
 
 func _ready() -> void:
 	body_entered.connect(_on_body_entered)

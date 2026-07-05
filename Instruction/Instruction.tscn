@@ -23,9 +23,8 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="click" type="AudioStreamPlayer" parent="." unique_id=470563227]
+[node name="click" type="AudioStreamPlayer" parent="." unique_id=470563227 groups=["Sounds"]]
 stream = ExtResource("1_6lqxf")
-autoplay = true
 
 [node name="History" type="ScrollContainer" parent="." unique_id=897406627]
 layout_mode = 1

@@ -64,6 +64,7 @@ size = Vector2(52.5, 27)
 [node name="Dungeon3Entrance" type="Node2D" unique_id=2060744612]
 position = Vector2(0, -30)
 script = ExtResource("1_evkq2")
+dungeon_id = 3
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=673815812]
 collision_layer = 16

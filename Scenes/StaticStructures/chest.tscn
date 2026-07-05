@@ -111,7 +111,7 @@ frame_progress = 1.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1140083320]
 shape = SubResource("RectangleShape2D_rtce2")
 
-[node name="ChestOpen" type="AudioStreamPlayer2D" parent="." unique_id=1118081]
+[node name="ChestOpen" type="AudioStreamPlayer2D" parent="." unique_id=1118081 groups=["Sounds"]]
 stream = ExtResource("3_rtce2")
 volume_db = -13.419
 

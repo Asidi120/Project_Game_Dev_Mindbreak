@@ -6,18 +6,28 @@ var hunger_bar: TextureProgressBar
 var hp_bar: TextureProgressBar
 var hp_label: Label
 var playerbar
+var inventory = null
 
 func _ready() -> void:
 	await get_tree().process_frame
 	player      = get_tree().get_first_node_in_group("player")
 	death_panel = get_parent()
 	playerbar   = get_tree().get_first_node_in_group("PlayerBar")
+	inventory = player.inventory_system
 	if playerbar:
 		stamina_bar = playerbar.get_node_or_null("stamina_bar")
 		hunger_bar  = playerbar.get_node_or_null("hunger_bar")
 		hp_bar      = playerbar.get_node_or_null("hp_bar")
 		hp_label    = playerbar.get_node_or_null("hp_label")
+		
+func clear_inventory() -> void:
+	for i in range(inventory.current_inventory.size()):
+		inventory.current_inventory[i] = null
 
+	inventory.selected_slot_index = -1
+	inventory.selected_fasteq_index = 0
+
+	inventory.refresh_all()
 func _on_pressed() -> void:
 	if not player:
 		return
@@ -30,5 +40,6 @@ func _on_pressed() -> void:
 	if hunger_bar:  hunger_bar.update_bar(player.current_hunger, player.max_hunger)
 	if stamina_bar: stamina_bar.update_bar(player.current_stamina, player.max_stamina)
 	if hp_bar:      hp_bar.update_bar(player.max_hp, player.max_hp)
+	clear_inventory()
 	get_tree().paused   = false
 	death_panel.visible = false

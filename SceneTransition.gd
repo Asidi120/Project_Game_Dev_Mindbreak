@@ -9,6 +9,7 @@ const LOADING_SCREEN = preload("uid://ba3c0jg2tqp2f")
 var history_played=false
 var skip_reinitialize=false
 var days_survived=0
+var last_death_day = 0
 
 var saved_hp:        int   = 200
 var saved_hunger:    int   = 150

@@ -185,8 +185,8 @@ object_type = "tree"
 scene = ExtResource("2_13l6l")
 
 [node name="Sprite2D2" type="AnimatedSprite2D" parent="." unique_id=1546151665]
-position = Vector2(-0.6274786, -26.43996)
-scale = Vector2(0.6901572, 0.65552783)
+position = Vector2(0.5847738, -30.480799)
+scale = Vector2(0.76938933, 0.76699936)
 sprite_frames = SubResource("SpriteFrames_cruim")
 autoplay = "default"
 frame_progress = 0.09774213

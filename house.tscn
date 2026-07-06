@@ -43,5 +43,5 @@ offset_right = 45.16131
 offset_bottom = -5.2903404
 theme_override_fonts/font = ExtResource("3_6syyc")
 theme_override_font_sizes/font_size = 12
-text = "Press \"E\" to entry"
+text = "Press \"E\" to enter"
 autowrap_mode = 3

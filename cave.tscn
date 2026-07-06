@@ -31,7 +31,7 @@ offset_right = 83.96774
 offset_bottom = -13.419373
 theme_override_fonts/font = ExtResource("3_shk3w")
 theme_override_font_sizes/font_size = 16
-text = "Press \"E\" to exit"
+text = "Press \"E\" to enter"
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1830448251]
 collision_mask = 17

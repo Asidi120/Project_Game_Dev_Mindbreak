@@ -9,6 +9,7 @@ signal stamina_usage(current_stamina, max_stamina)
 signal hunger_changed(current_hunger,max_hunger)
 @onready var attack_hitbox: Area2D = $AttackHitbox
 var is_attacking = false
+var clock_label
 
 @export var move_speed = 100
 var direction = Vector2.ZERO
@@ -111,6 +112,8 @@ func _ready() -> void:
 		damage_flash  = hud.get_node_or_null("ColorRect")
 		if hp_bar:
 			hp_bar.set_target(self)
+		if clock:
+			clock_label=clock.get_node_or_null("day_counter")
 
 	inventory_ui = get_tree().get_first_node_in_group("inventory")
 	fasteq_ui = get_tree().get_first_node_in_group("fasteq")
@@ -583,8 +586,8 @@ func die():
 		death_panel.visible = true
 		death_panel.get_node("YouSurvived").text = "You survived\n %d days!" % SceneTransition.days_survived
 		SceneTransition.days_survived=0
-		clock.time = 720.0
-		clock.current_day = 0
+		clock_label.time = 720.0
+		clock_label.current_day = 0
 	get_tree().paused = true
 
 func update_hunger(delta):

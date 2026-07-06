@@ -4,13 +4,40 @@
 [ext_resource type="Script" uid="uid://xihm3wugii01" path="res://Scripts/static_breakable_object.gd" id="1_l7sa7"]
 [ext_resource type="PackedScene" uid="uid://bhk8wb8aud5hg" path="res://Scenes/Items/wood.tscn" id="2_l7sa7"]
 [ext_resource type="PackedScene" uid="uid://bjgxjuvclurjp" path="res://Scenes/Food/apple.tscn" id="3_x1s3l"]
+[ext_resource type="Texture2D" uid="uid://c2uo6r8ao7y34" path="res://OtherSprites/ELR_SpringlLeaf.png" id="4_dwrmi"]
 [ext_resource type="AudioStream" uid="uid://ctfiqx6uxodrh" path="res://Sounds/15_Hit_on_wood_1.wav" id="4_x1s3l"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vcvgp"]
+atlas = ExtResource("4_dwrmi")
+region = Rect2(67, 6, 6, 5)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_f4bre"]
+particle_flag_disable_z = true
+angle_min = -57.59999
+angle_max = 152.30002
+spread = 20.0
+flatness = 0.62
+initial_velocity_max = 60.0
+gravity = Vector3(0, 116, 0)
+linear_accel_min = -2.2351742e-06
+linear_accel_max = 9.519998
+radial_accel_min = -1.9300022
+radial_accel_max = 4.239998
+tangential_accel_min = -40.0
+tangential_accel_max = -40.0
+damping_max = 7.3810005
+hue_variation_min = 0.009999977
+hue_variation_max = 0.25999996
+turbulence_enabled = true
+turbulence_influence_max = 0.13000001
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rsuno"]
 size = Vector2(10, 10.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l7sa7"]
 size = Vector2(13.325687, 10.845661)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dwrmi"]
 
 [node name="Tree" type="StaticBody2D" unique_id=669837160]
 collision_layer = 16
@@ -22,6 +49,28 @@ object_type = "tree"
 scene = ExtResource("2_l7sa7")
 scene2 = ExtResource("3_x1s3l")
 
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="." unique_id=411495779]
+self_modulate = Color(0.11339999, 0.54, 0.25560006, 1)
+position = Vector2(8, -23)
+amount = 3
+amount_ratio = 0.85
+sub_emitter = NodePath(".")
+texture = SubResource("AtlasTexture_vcvgp")
+lifetime = 1.5
+speed_scale = 0.9
+process_material = SubResource("ParticleProcessMaterial_f4bre")
+
+[node name="GPUParticles2D3" type="GPUParticles2D" parent="." unique_id=135746577]
+self_modulate = Color(0.11339999, 0.54, 0.25560006, 1)
+position = Vector2(-21, -29)
+amount = 2
+amount_ratio = 0.85
+sub_emitter = NodePath(".")
+texture = SubResource("AtlasTexture_vcvgp")
+lifetime = 1.8
+speed_scale = 0.9
+process_material = SubResource("ParticleProcessMaterial_f4bre")
+
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=621871514]
 position = Vector2(29, 51)
 texture = ExtResource("1_0vwjc")
@@ -29,12 +78,24 @@ offset = Vector2(-28, -85)
 region_enabled = true
 region_rect = Rect2(451.5, 115.25, 60.5, 108.75)
 
+[node name="GPUParticles2D4" type="GPUParticles2D" parent="Sprite2D" unique_id=1669283593]
+self_modulate = Color(0.11339999, 0.54, 0.25560006, 1)
+position = Vector2(-35, -76)
+amount = 2
+amount_ratio = 0.58
+sub_emitter = NodePath(".")
+texture = SubResource("AtlasTexture_vcvgp")
+lifetime = 1.5
+speed_scale = 0.7
+process_material = SubResource("ParticleProcessMaterial_f4bre")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1326982635]
 y_sort_enabled = true
 position = Vector2(-1.000001, -1.6501274)
 shape = SubResource("RectangleShape2D_rsuno")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1071285620]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2083692366]
 position = Vector2(-3, -20)
@@ -43,6 +104,9 @@ shape = SubResource("RectangleShape2D_l7sa7")
 
 [node name="TreeHit" type="AudioStreamPlayer2D" parent="." unique_id=413914212 groups=["Sounds"]]
 stream = ExtResource("4_x1s3l")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1229999688]
+sprite_frames = SubResource("SpriteFrames_dwrmi")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

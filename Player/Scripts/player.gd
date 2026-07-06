@@ -581,6 +581,10 @@ func die():
 	print("player died")
 	if death_panel:
 		death_panel.visible = true
+		death_panel.get_node("YouSurvived").text = "You survived\n %d days!" % SceneTransition.days_survived
+		SceneTransition.days_survived=0
+		clock.time = 720.0
+		clock.current_day = 0
 	get_tree().paused = true
 
 func update_hunger(delta):

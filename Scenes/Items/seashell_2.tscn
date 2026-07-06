@@ -11,6 +11,7 @@ scale = Vector2(0.6406222, 0.6406222)
 script = ExtResource("1_1yrp2")
 item_id = "seashell2"
 item_name = "Seashell2"
+item_type = "shell"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1984872830]
 z_index = -1

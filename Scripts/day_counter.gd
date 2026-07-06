@@ -8,6 +8,7 @@ var target_alpha := 0.0 #alpha clock overlay
 var hours:int=0
 var minutes:int= 0
 var days:int=0
+var current_day = 0
 
 func _process(delta):
 	time_passage(delta)
@@ -17,7 +18,11 @@ func time_passage(delta):
 	time += 5*delta  # acceleration of time (1 second = 10 minutes in game)
 	hours = int(time / 60) % 24
 	minutes = int(time) % 60
-	days=time/1440
+	days = int(time / 1440)
+
+	if days > current_day:
+		current_day = days
+		SceneTransition.days_survived += 1
 	
 func skip_to_morning():
 	var target_time = 6 * 60 # 6:00 morning = 360 minutes

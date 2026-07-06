@@ -113,6 +113,21 @@ label_settings = SubResource("LabelSettings_vbh1h")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="YouSurvived" type="Label" parent="." unique_id=906177689]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -68.0
+offset_top = 194.0
+offset_right = 68.0
+offset_bottom = 222.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_bl5rj")
+theme_override_font_sizes/font_size = 32
+text = "You survived
+"
+
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="pressed" from="ReviveButton" to="ReviveButton" method="_on_pressed"]
 [connection signal="pressed" from="QuitButton" to="QuitButton" method="_on_pressed"]

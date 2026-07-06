@@ -20,9 +20,7 @@ func time_passage(delta):
 	minutes = int(time) % 60
 	days = int(time / 1440)
 
-	if days > current_day:
-		current_day = days
-		SceneTransition.days_survived += 1
+	SceneTransition.days_survived = max(0, days - SceneTransition.last_death_day)
 	
 func skip_to_morning():
 	var target_time = 6 * 60 # 6:00 morning = 360 minutes

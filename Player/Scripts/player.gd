@@ -618,12 +618,15 @@ func die():
 	state = State.DEAD
 	sounds.play_sound("dead")
 	print("player died")
+
 	if death_panel:
 		death_panel.visible = true
 		death_panel.get_node("YouSurvived").text = "You survived\n %d days!" % SceneTransition.days_survived
-		SceneTransition.days_survived=0
-		clock_label.time = 720.0
-		clock_label.current_day = 0
+		var day = int(clock_label.time / 1440)
+		if clock_label.hours >= 22 or clock_label.hours < 6:
+			day += 1
+		SceneTransition.last_death_day = day
+		clock_label.time = day * 1440 + 12 * 60
 	get_tree().paused = true
 
 func update_hunger(delta):

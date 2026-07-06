@@ -4,9 +4,34 @@
 [ext_resource type="Script" uid="uid://xihm3wugii01" path="res://Scripts/static_breakable_object.gd" id="1_c0a6k"]
 [ext_resource type="PackedScene" uid="uid://thfp6dkj2dwq" path="res://Scenes/Items/stick.tscn" id="2_5jp6s"]
 [ext_resource type="PackedScene" uid="uid://b8og7hc4dkpmo" path="res://Scenes/Food/berry_2.tscn" id="3_c0a6k"]
+[ext_resource type="Texture2D" uid="uid://c2uo6r8ao7y34" path="res://OtherSprites/ELR_SpringlLeaf.png" id="5_5jp6s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0g5n5"]
 size = Vector2(42, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d1ube"]
+atlas = ExtResource("5_5jp6s")
+region = Rect2(67, 6, 6, 5)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_v8fi0"]
+particle_flag_disable_z = true
+angle_min = -57.59999
+angle_max = 152.30002
+spread = 20.0
+flatness = 0.62
+initial_velocity_max = 60.0
+gravity = Vector3(0, 116, 0)
+linear_accel_min = -2.2351742e-06
+linear_accel_max = 9.519998
+radial_accel_min = -1.9300022
+radial_accel_max = 4.239998
+tangential_accel_min = -40.0
+tangential_accel_max = -40.0
+damping_max = 7.3810005
+hue_variation_min = 0.009999977
+hue_variation_max = 0.25999996
+turbulence_enabled = true
+turbulence_influence_max = 0.13000001
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k4fjl"]
 size = Vector2(30.5, 4.75)
@@ -32,6 +57,36 @@ shape = SubResource("RectangleShape2D_0g5n5")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1877447958]
 position = Vector2(1, -8)
 texture = ExtResource("1_6r6ay")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Sprite2D" unique_id=1127352439]
+self_modulate = Color(0.11339999, 0.54, 0.25560006, 1)
+position = Vector2(-11, 2)
+amount = 2
+amount_ratio = 0.6
+sub_emitter = NodePath(".")
+texture = SubResource("AtlasTexture_d1ube")
+lifetime = 0.7
+speed_scale = 0.3
+explosiveness = 0.23
+randomness = 0.6
+use_fixed_seed = true
+seed = 3307087385
+process_material = SubResource("ParticleProcessMaterial_v8fi0")
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="Sprite2D" unique_id=241037609]
+self_modulate = Color(0.11339999, 0.54, 0.25560006, 1)
+position = Vector2(6, -5)
+amount = 1
+amount_ratio = 0.5
+sub_emitter = NodePath(".")
+texture = SubResource("AtlasTexture_d1ube")
+lifetime = 0.7
+speed_scale = 0.3
+explosiveness = 0.23
+randomness = 0.6
+use_fixed_seed = true
+seed = 3307087385
+process_material = SubResource("ParticleProcessMaterial_v8fi0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1689938043]
 position = Vector2(0, 0.625)

@@ -72,6 +72,10 @@ var health_regen_interval: float = 3.0
 var health_regen_amount: int = 2
 var health_regen_hunger_needed: int = 100
 
+var player_message_label: Label = null
+var player_message_tween: Tween = null
+var crafting_message_shown = false
+
 func update_health_regen(delta):
 	if state == State.DEAD:
 		return
@@ -128,6 +132,38 @@ func _ready() -> void:
 		fasteq_ui.refresh(inventory)
 	apply_appearance()
 
+func show_player_message(text: String, duration: float = 2.0) -> void:
+	if !crafting_message_shown:
+		if player_message_label == null:
+			player_message_label = Label.new()
+			add_child(player_message_label)
+
+			player_message_label.size = Vector2(20, 10)
+			player_message_label.position = Vector2(-85, -45)
+			player_message_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+			player_message_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+			player_message_label.z_index = 100
+
+			player_message_label.add_theme_color_override("font_color", Color.WHITE)
+			player_message_label.add_theme_color_override("font_shadow_color", Color.BLACK)
+			player_message_label.add_theme_constant_override("shadow_offset_x", 2)
+			player_message_label.add_theme_constant_override("shadow_offset_y", 2)
+
+		player_message_label.text = text
+		player_message_label.visible = true
+		player_message_label.modulate.a = 1.0
+
+		if player_message_tween != null:
+			player_message_tween.kill()
+
+		player_message_tween = create_tween()
+		player_message_tween.tween_interval(duration)
+		player_message_tween.tween_property(player_message_label, "modulate:a", 0.0, 0.4)
+		player_message_tween.tween_callback(func():
+			player_message_label.visible = false
+		)
+		crafting_message_shown = true
+	
 func save_state() -> void:
 	SceneTransition.saved_hp       = current_hp
 	SceneTransition.saved_hunger   = current_hunger
@@ -753,6 +789,8 @@ func _process(_delta):
 		var item_picked_up = item.collect()
 		if not item_picked_up:
 			return
+		if item_picked_up["item_type"] not in ["meat_cooked", "meat_raw", "food", "shell", "ore", "egg"]:
+			show_player_message("Click 'C' to open crafting", 0.8)
 		var added = false
 
 		for i in range(inventory.size() - 1, -1, -1):

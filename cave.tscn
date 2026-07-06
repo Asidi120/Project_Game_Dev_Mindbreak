@@ -1,12 +1,14 @@
 [gd_scene format=3 uid="uid://d2rimyyc5milm"]
 
 [ext_resource type="Texture2D" uid="uid://jln4m7eoniw7" path="res://Tile Maps/Sprites/pixil-frame-0.png" id="2_23xot"]
+[ext_resource type="FontFile" uid="uid://b0nphpwk324ms" path="res://Fonts/PixelPurl.ttf" id="3_shk3w"]
 [ext_resource type="Script" path="res://caveentry.gd" id="3_xtwoi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dnhvd"]
 size = Vector2(21.774225, 33.629044)
 
 [node name="cave" type="Area2D" unique_id=13035520]
+position = Vector2(0, 6.9999995)
 scale = Vector2(1.2399994, 1.2399994)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1622709971]
@@ -22,13 +24,14 @@ script = ExtResource("3_xtwoi")
 position = Vector2(36.9355, -4.274198)
 shape = SubResource("RectangleShape2D_dnhvd")
 
-[node name="entry2" type="Label" parent="Area2D" unique_id=1766930304]
-offset_left = 20.161299
-offset_top = -8.870972
-offset_right = 62.1613
-offset_bottom = -0.8709717
-theme_override_font_sizes/font_size = 4
-text = "Press \"E\" to entry"
+[node name="Label" type="Label" parent="Area2D" unique_id=126974551]
+offset_left = -4.032257
+offset_top = -27.419373
+offset_right = 83.96774
+offset_bottom = -13.419373
+theme_override_fonts/font = ExtResource("3_shk3w")
+theme_override_font_sizes/font_size = 16
+text = "Press \"E\" to exit"
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1830448251]
 collision_mask = 17

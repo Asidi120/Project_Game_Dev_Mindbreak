@@ -18,7 +18,7 @@ func _process(delta):
 	if player_in_door_area:
 		if Input.is_action_just_pressed("action (open door, sleep etc.)"):
 			print("DUNGEON ID =", dungeon_id)
-
+			
 			if dungeon_paths.has(dungeon_id):
 				SceneTransition.change_scene_with_save(dungeon_paths[dungeon_id])
 			else:

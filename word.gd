@@ -273,11 +273,11 @@ func _try_object(x: int, y: int, terrain: int, rng: RandomNumberGenerator) -> vo
 
 func _spawn_scene(scene: PackedScene, tx: int, ty: int) -> void:
 	var obj := scene.instantiate()
+	@warning_ignore("integer_division")
 	obj.position = Vector2(
 		tx * TILE_SIZE + TILE_SIZE / 2,
 		ty * TILE_SIZE + TILE_SIZE / 2
 	)
-	obj.z_index = ty
 	objects.add_child(obj)
 
 func _find_spawn(rng: RandomNumberGenerator) -> Vector2:
@@ -286,8 +286,10 @@ func _find_spawn(rng: RandomNumberGenerator) -> Vector2:
 		var y := rng.randi_range(60, WORLD_HEIGHT - 60)
 		var t := _get_terrain(x, y)
 		if t == TERRAIN_GRASS:
+			@warning_ignore("integer_division")
 			return Vector2(x * TILE_SIZE + TILE_SIZE / 2,
 						   y * TILE_SIZE + TILE_SIZE / 2)
+	@warning_ignore("integer_division")
 	return Vector2(WORLD_WIDTH * TILE_SIZE / 2, WORLD_HEIGHT * TILE_SIZE / 2)
 
 func _norm(v: float) -> float:

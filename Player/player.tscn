@@ -299,8 +299,8 @@ scale = Vector2(6.392057, 4.9950347)
 
 [node name="TorchLight" type="PointLight2D" parent="Hand" unique_id=1330863504]
 visible = false
-position = Vector2(-2.39702, -11.186097)
-scale = Vector2(0.21285686, 0.21285686)
+position = Vector2(2.3970222, -0.7990055)
+scale = Vector2(0.7459481, 0.5274695)
 color = Color(0.8212347, 0.48851305, 0.1793609, 1)
 energy = 1.3
 texture = ExtResource("5_apopc")

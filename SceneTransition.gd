@@ -6,6 +6,8 @@ var spawn_name:      String  = "SpawnPoint"
 var player_node:     Node    = null
 var force_return_position: Vector2 = Vector2.ZERO
 const LOADING_SCREEN = preload("uid://ba3c0jg2tqp2f")
+var history_played=false
+var skip_reinitialize=false
 
 var saved_hp:        int   = 200
 var saved_hunger:    int   = 150
@@ -60,7 +62,8 @@ func _place_player() -> void:
 	player_node.visible = true
 	player_node.set_physics_process(true)
 	player_node.set_process(true)
-
+	if player_node.has_method("reinitialize"):
+		await player_node.reinitialize()
 	player_node = null
 
 

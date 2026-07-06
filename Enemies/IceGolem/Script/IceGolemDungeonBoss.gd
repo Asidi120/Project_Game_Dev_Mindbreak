@@ -62,7 +62,7 @@ func _ready():
 	for p in points_container.get_children():
 		patrol_points.append(p)
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if state == State.DEAD:
 		move_and_slide()
 		return

@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://b7lbh1xjq0hxw"]
 
 [ext_resource type="Texture2D" uid="uid://ccrm716d5356o" path="res://house/6B4QtvF_16x.png" id="1_metfq"]
-[ext_resource type="Script" uid="uid://ce272btfm6y7c" path="res://houseinterior.gd" id="2_metfq"]
+[ext_resource type="Script" path="res://houseinterior.gd" id="2_metfq"]
+[ext_resource type="FontFile" uid="uid://b0nphpwk324ms" path="res://Fonts/PixelPurl.ttf" id="3_6syyc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_metfq"]
 size = Vector2(100.000046, 94.35487)
@@ -36,9 +37,11 @@ position = Vector2(-0.24194336, -7.943527)
 shape = SubResource("RectangleShape2D_dnhvd")
 
 [node name="entry2" type="Label" parent="Area2D" unique_id=1766930304]
-offset_left = 20.161299
-offset_top = -8.870972
-offset_right = 62.1613
-offset_bottom = -0.8709717
-theme_override_font_sizes/font_size = 4
+offset_left = -32.25808
+offset_top = -36.29034
+offset_right = 45.16131
+offset_bottom = -5.2903404
+theme_override_fonts/font = ExtResource("3_6syyc")
+theme_override_font_sizes/font_size = 12
 text = "Press \"E\" to entry"
+autowrap_mode = 3

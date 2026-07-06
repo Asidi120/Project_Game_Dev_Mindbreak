@@ -1,7 +1,43 @@
 [gd_scene format=3 uid="uid://cdrocg7pqwwbh"]
 
 [ext_resource type="Script" uid="uid://cvtmhh1hpljyx" path="res://Scripts/item.gd" id="1_wu37v"]
-[ext_resource type="Texture2D" uid="uid://cptk67nengjd5" path="res://OtherSprites/Flowers/DaffodilOUTLINED.png" id="2_wu37v"]
+[ext_resource type="Texture2D" uid="uid://bnjb3jcf1f82u" path="res://OtherSprites/Flowers/ChatGPT Image 6 lip 2026, 01_21_49.png" id="2_wu37v"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yts83"]
+atlas = ExtResource("2_wu37v")
+region = Rect2(377, 87, 128, 170)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4vs10"]
+atlas = ExtResource("2_wu37v")
+region = Rect2(597, 87, 128, 170)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qkl6t"]
+atlas = ExtResource("2_wu37v")
+region = Rect2(809, 87, 128, 170)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rvj7l"]
+atlas = ExtResource("2_wu37v")
+region = Rect2(1031, 87, 128, 170)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x2do8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yts83")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4vs10")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qkl6t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rvj7l")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d43ed"]
 size = Vector2(13.882496, 32.73616)
@@ -14,9 +50,12 @@ item_id = "flower5"
 item_name = "Flower5"
 item_type = null
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1622709971]
-scale = Vector2(0.51599216, 0.51599216)
-texture = ExtResource("2_wu37v")
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=1877761346]
+position = Vector2(-1.1920929e-07, -0.80645216)
+scale = Vector2(0.08497534, 0.081102446)
+sprite_frames = SubResource("SpriteFrames_x2do8")
+autoplay = "default"
+frame_progress = 0.3659035
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1266554538]
 position = Vector2(-0.0054447893, -0.30437645)

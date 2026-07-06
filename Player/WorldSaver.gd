@@ -71,5 +71,6 @@ func save_game() -> void:
 		"game_time":     game_time,
 		"inventory":     inv,
 		"world_state":   WorldStateManager.scene_states,
+		"history_played": SceneTransition.history_played
 	}
 	SaveManager.save(save_data)
